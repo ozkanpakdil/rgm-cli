@@ -1,0 +1,14 @@
+# cli.Model.BaseMonitorLocationDto
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**NetworkName** | **string** |  | [optional] 
+**PortNum** | **int** |  | [optional] 
+**Alias** | **string** |  | [optional] 
+**IsDisconnected** | **bool** |  | [optional] 
+**IsPrimary** | **bool** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

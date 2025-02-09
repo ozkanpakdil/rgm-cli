@@ -1,0 +1,14 @@
+# cli.Model.DisplayViewModel
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**TimeFormatOption** | **string** |  | 
+**CustomReportLogo** | **string** |  | 
+**FailoverClusterDisplayOption** | **FailoverClusterDisplayOption** |  | 
+**ShowSuspendedEntitiesOnGlobalDashboard** | **bool** |  | 
+**ForceErroredEntitiesOnGlobalDashboard** | **bool** |  | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

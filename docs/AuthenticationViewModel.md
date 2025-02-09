@@ -1,0 +1,12 @@
+# cli.Model.AuthenticationViewModel
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AuthenticationType** | **AuthenticationTypeDto** |  | [optional] 
+**ActiveDirectoryDomains** | [**List&lt;ActiveDirectoryDomainViewModel&gt;**](ActiveDirectoryDomainViewModel.md) |  | [optional] 
+**HasActiveDirectorySettings** | **bool** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

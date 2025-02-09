@@ -1,0 +1,86 @@
+# cli.Api.ServerTreeApiApi
+
+All URIs are relative to *http://localhost*
+
+| Method | HTTP request | Description |
+|--------|--------------|-------------|
+| [**AlertsServerTree**](ServerTreeApiApi.md#alertsservertree) | **GET** /api/alerts/servertree |  |
+
+<a id="alertsservertree"></a>
+# **AlertsServerTree**
+> void AlertsServerTree ()
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using cli.Api;
+using cli.Client;
+using cli.Model;
+
+namespace Example
+{
+    public class AlertsServerTreeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "http://localhost";
+            var apiInstance = new ServerTreeApiApi(config);
+
+            try
+            {
+                apiInstance.AlertsServerTree();
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ServerTreeApiApi.AlertsServerTree: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the AlertsServerTreeWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    apiInstance.AlertsServerTreeWithHttpInfo();
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ServerTreeApiApi.AlertsServerTreeWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
