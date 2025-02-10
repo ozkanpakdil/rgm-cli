@@ -17,4 +17,10 @@
     <ItemGroup>
         <ProjectReference Include="..\cli\cli.csproj"/>
     </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="RedGate.SqlMonitor.Channels">
+        <HintPath>..\..\..\..\..\..\..\..\Program Files\Red Gate\Redgate Monitor\BaseMonitor\RedGate.SqlMonitor.Channels.dll</HintPath>
+      </Reference>
+    </ItemGroup>
 </Project>

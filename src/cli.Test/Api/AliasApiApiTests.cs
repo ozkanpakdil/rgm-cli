@@ -9,6 +9,8 @@
 
 using System;
 using cli.Api;
+using cli.Model;
+using RedGate.SqlMonitor.Channels.Data;
 using Xunit;
 
 // uncomment below to import models
@@ -53,10 +55,14 @@ public class AliasApiApiTests : IDisposable
     [Fact]
     public void ApiBasemonitorsBaseMonitorNameMonitoredentitiesAliasPostTest()
     {
-        // TODO uncomment below to test the method and replace null with proper value
-        //string baseMonitorName = null;
-        //SaveAliasRequest? saveAliasRequest = null;
-        //var response = instance.ApiBasemonitorsBaseMonitorNameMonitoredentitiesAliasPost(baseMonitorName, saveAliasRequest);
-        //Assert.IsType<JSendSuccess>(response);
+        
+        // string baseMonitorName = "Secondary";
+        // ChannelInstanceRef CIR = ChannelInstanceRef.Parse("",null);
+        // SaveAliasRequest? saveAliasRequest = new SaveAliasRequest(
+        //     alias: "dbn4", CIR
+        // );
+        // var response =
+        //     instance.ApiBasemonitorsBaseMonitorNameMonitoredentitiesAliasPost(baseMonitorName, saveAliasRequest);
+        // Assert.IsType<JSendSuccess>(response);
     }
 }

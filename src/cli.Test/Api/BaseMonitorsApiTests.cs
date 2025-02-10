@@ -9,6 +9,8 @@
 
 using System;
 using cli.Api;
+using cli.Client;
+using cli.Model;
 using Xunit;
 
 // uncomment below to import models
@@ -77,9 +79,17 @@ public class BaseMonitorsApiTests : IDisposable
     [Fact]
     public void ApiBasemonitorsGetTest()
     {
-        // TODO uncomment below to test the method and replace null with proper value
-        //var response = instance.ApiBasemonitorsGet();
-        //Assert.IsType<BaseMonitorDtoArrayJSendSuccess>(response);
+        var config = new Configuration
+        {
+            BasePath = "https://monitor.red-gate.com/"
+        };
+
+        config.ApiKey.Add("Authorization", "Bearer CfDJ8EoKn-M5SQpEmCqQ3AXUvvZNV5IqRACex7ozo--1Y2RVqDDygjX6dPKGgPtDkAXIEfWBDKWVhHrOgZESE42q-62ulHeSMC_SoLJjjXk16ilZ1Jh9vFZuQBeBtdRZ9CZ3-FgM6tC8iXpW5rxG88KDNruqd1oH0GOOXGZ0jOFzgCE84ZoqllZs6hLtF6orbaKQNJE99geGe5VA3VOq4BRewuDo9jqbWOYv_sOXo61cPAMoIkRPGlci_LJLImTgy-IIRbQPRF1J6SZJn3VOX_K1KjMAQZpcMt-hUrWvmik2gQdX9wDIR0NUBrnObtJ92nhCZdF31v1Ub1eWrUlhjazWsMZemOC8Amt4p1fAAbPA8-94A9aSUZmnHdcK16vFY8OTKFn0rKy78OcaoQIHrrxwRlJ5O9XYJF-dthX-n6CK1_UjNo6hBByD_h-nbY8m52-gYXGVul3_i89gJ1XaZNeCPi9ahKFLMK2jnrVSrO-2BRVy5MywvFdEnJib6-K4-tDwjJnkdkXaJthtjecGPA7OtU1weyzuMSiyRJpgGj5z5iw2tBIUZa-IvZSqbD1ev03qgawYKXvhEeNVgPvxdF_mZ8L77Ehpzkr4mi37mr4Y1PgvyAxWWz0yfeQxjwDqz2cJAxTXJ0Jw2qD_--hi1-zaiHE");
+
+        var baseMonitorsApi = new BaseMonitorsApi(config);
+
+        var response = baseMonitorsApi.ApiBasemonitorsGet();
+        Assert.IsType<BaseMonitorDtoArrayJSendSuccess>(response);
     }
 
     /// <summary>
