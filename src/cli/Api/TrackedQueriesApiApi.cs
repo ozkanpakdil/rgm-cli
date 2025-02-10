@@ -9,767 +9,735 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface ITrackedQueriesApiApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface ITrackedQueriesApiApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameTrackedqueriesGet(string baseMonitorName,
+        SqlInstanceChannelInstanceRef? cir = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> ApiBasemonitorsBaseMonitorNameTrackedqueriesGetWithHttpInfo(string baseMonitorName,
+        SqlInstanceChannelInstanceRef? cir = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void Track(string baseMonitorName, object? body = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> TrackWithHttpInfo(string baseMonitorName, object? body = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void Untrack(string baseMonitorName,
+        SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> UntrackWithHttpInfo(string baseMonitorName,
+        SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default,
+        int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface ITrackedQueriesApiApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameTrackedqueriesGetAsync(string baseMonitorName,
+        SqlInstanceChannelInstanceRef? cir = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> ApiBasemonitorsBaseMonitorNameTrackedqueriesGetWithHttpInfoAsync(string baseMonitorName,
+        SqlInstanceChannelInstanceRef? cir = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task TrackAsync(string baseMonitorName, object? body = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> TrackWithHttpInfoAsync(string baseMonitorName, object? body = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task UntrackAsync(string baseMonitorName,
+        SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> UntrackWithHttpInfoAsync(string baseMonitorName,
+        SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface ITrackedQueriesApiApi : ITrackedQueriesApiApiSync, ITrackedQueriesApiApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class TrackedQueriesApiApi : ITrackedQueriesApiApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="TrackedQueriesApiApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public TrackedQueriesApiApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameTrackedqueriesGet(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameTrackedqueriesGetWithHttpInfo(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void Track(string baseMonitorName, Object? body = default(Object?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> TrackWithHttpInfo(string baseMonitorName, Object? body = default(Object?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void Untrack(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UntrackWithHttpInfo(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="TrackedQueriesApiApi" /> class.
     /// </summary>
-    public interface ITrackedQueriesApiApiAsync : IApiAccessor
+    /// <returns></returns>
+    public TrackedQueriesApiApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameTrackedqueriesGetAsync(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameTrackedqueriesGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task TrackAsync(string baseMonitorName, Object? body = default(Object?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TrackWithHttpInfoAsync(string baseMonitorName, Object? body = default(Object?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UntrackAsync(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UntrackWithHttpInfoAsync(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="TrackedQueriesApiApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface ITrackedQueriesApiApi : ITrackedQueriesApiApiSync, ITrackedQueriesApiApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public TrackedQueriesApiApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="TrackedQueriesApiApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class TrackedQueriesApiApi : ITrackedQueriesApiApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public TrackedQueriesApiApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TrackedQueriesApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public TrackedQueriesApiApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNameTrackedqueriesGet(string baseMonitorName,
+        SqlInstanceChannelInstanceRef? cir = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameTrackedqueriesGetWithHttpInfo(baseMonitorName, cir);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> ApiBasemonitorsBaseMonitorNameTrackedqueriesGetWithHttpInfo(string baseMonitorName,
+        SqlInstanceChannelInstanceRef? cir = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TrackedQueriesApiApi->ApiBasemonitorsBaseMonitorNameTrackedqueriesGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+
+        localVarRequestOptions.Operation = "TrackedQueriesApiApi.ApiBasemonitorsBaseMonitorNameTrackedqueriesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<object>("/api/basemonitors/{baseMonitorName}/trackedqueries",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameTrackedqueriesGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TrackedQueriesApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public TrackedQueriesApiApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task ApiBasemonitorsBaseMonitorNameTrackedqueriesGetAsync(string baseMonitorName,
+        SqlInstanceChannelInstanceRef? cir = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        await ApiBasemonitorsBaseMonitorNameTrackedqueriesGetWithHttpInfoAsync(baseMonitorName, cir, operationIndex,
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>> ApiBasemonitorsBaseMonitorNameTrackedqueriesGetWithHttpInfoAsync(
+        string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TrackedQueriesApiApi->ApiBasemonitorsBaseMonitorNameTrackedqueriesGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+
+        localVarRequestOptions.Operation = "TrackedQueriesApiApi.ApiBasemonitorsBaseMonitorNameTrackedqueriesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>("/api/basemonitors/{baseMonitorName}/trackedqueries", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameTrackedqueriesGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TrackedQueriesApiApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public TrackedQueriesApiApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void Track(string baseMonitorName, object? body = default, int operationIndex = 0)
+    {
+        TrackWithHttpInfo(baseMonitorName, body);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> TrackWithHttpInfo(string baseMonitorName, object? body = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TrackedQueriesApiApi->Track");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation = "TrackedQueriesApiApi.Track";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<object>("/api/basemonitors/{baseMonitorName}/trackedqueries/track",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("Track", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TrackedQueriesApiApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public TrackedQueriesApiApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task TrackAsync(string baseMonitorName, object? body = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        await TrackWithHttpInfoAsync(baseMonitorName, body, operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>> TrackWithHttpInfoAsync(string baseMonitorName, object? body = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TrackedQueriesApiApi->Track");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation = "TrackedQueriesApiApi.Track";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PostAsync<object>("/api/basemonitors/{baseMonitorName}/trackedqueries/track", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("Track", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void Untrack(string baseMonitorName,
+        SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default,
+        int operationIndex = 0)
+    {
+        UntrackWithHttpInfo(baseMonitorName, sqlInstanceTopQueriesChannelInstanceRef);
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> UntrackWithHttpInfo(string baseMonitorName,
+        SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default,
+        int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TrackedQueriesApiApi->Untrack");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            return this.Configuration.BasePath;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = sqlInstanceTopQueriesChannelInstanceRef;
+
+        localVarRequestOptions.Operation = "TrackedQueriesApiApi.Untrack";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Delete<object>("/api/basemonitors/{baseMonitorName}/trackedqueries/untrack",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("Untrack", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task UntrackAsync(string baseMonitorName,
+        SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await UntrackWithHttpInfoAsync(baseMonitorName, sqlInstanceTopQueriesChannelInstanceRef, operationIndex,
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>> UntrackWithHttpInfoAsync(string baseMonitorName,
+        SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TrackedQueriesApiApi->Untrack");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = sqlInstanceTopQueriesChannelInstanceRef;
+
+        localVarRequestOptions.Operation = "TrackedQueriesApiApi.Untrack";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .DeleteAsync<object>("/api/basemonitors/{baseMonitorName}/trackedqueries/untrack", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("Untrack", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameTrackedqueriesGet(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameTrackedqueriesGetWithHttpInfo(baseMonitorName, cir);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameTrackedqueriesGetWithHttpInfo(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TrackedQueriesApiApi->ApiBasemonitorsBaseMonitorNameTrackedqueriesGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-
-            localVarRequestOptions.Operation = "TrackedQueriesApiApi.ApiBasemonitorsBaseMonitorNameTrackedqueriesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/basemonitors/{baseMonitorName}/trackedqueries", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameTrackedqueriesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameTrackedqueriesGetAsync(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameTrackedqueriesGetWithHttpInfoAsync(baseMonitorName, cir, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameTrackedqueriesGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TrackedQueriesApiApi->ApiBasemonitorsBaseMonitorNameTrackedqueriesGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-
-            localVarRequestOptions.Operation = "TrackedQueriesApiApi.ApiBasemonitorsBaseMonitorNameTrackedqueriesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/basemonitors/{baseMonitorName}/trackedqueries", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameTrackedqueriesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void Track(string baseMonitorName, Object? body = default(Object?), int operationIndex = 0)
-        {
-            TrackWithHttpInfo(baseMonitorName, body);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> TrackWithHttpInfo(string baseMonitorName, Object? body = default(Object?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TrackedQueriesApiApi->Track");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "TrackedQueriesApiApi.Track";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/api/basemonitors/{baseMonitorName}/trackedqueries/track", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Track", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task TrackAsync(string baseMonitorName, Object? body = default(Object?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await TrackWithHttpInfoAsync(baseMonitorName, body, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> TrackWithHttpInfoAsync(string baseMonitorName, Object? body = default(Object?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TrackedQueriesApiApi->Track");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "TrackedQueriesApiApi.Track";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/api/basemonitors/{baseMonitorName}/trackedqueries/track", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Track", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void Untrack(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0)
-        {
-            UntrackWithHttpInfo(baseMonitorName, sqlInstanceTopQueriesChannelInstanceRef);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> UntrackWithHttpInfo(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TrackedQueriesApiApi->Untrack");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = sqlInstanceTopQueriesChannelInstanceRef;
-
-            localVarRequestOptions.Operation = "TrackedQueriesApiApi.Untrack";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Delete<Object>("/api/basemonitors/{baseMonitorName}/trackedqueries/untrack", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Untrack", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UntrackAsync(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await UntrackWithHttpInfoAsync(baseMonitorName, sqlInstanceTopQueriesChannelInstanceRef, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="sqlInstanceTopQueriesChannelInstanceRef"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> UntrackWithHttpInfoAsync(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? sqlInstanceTopQueriesChannelInstanceRef = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TrackedQueriesApiApi->Untrack");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = sqlInstanceTopQueriesChannelInstanceRef;
-
-            localVarRequestOptions.Operation = "TrackedQueriesApiApi.Untrack";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/api/basemonitors/{baseMonitorName}/trackedqueries/untrack", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("Untrack", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

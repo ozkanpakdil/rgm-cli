@@ -8,84 +8,73 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AnalysisLinkData
+/// </summary>
+[DataContract(Name = "AnalysisLinkData")]
+public class AnalysisLinkData : IValidatableObject
 {
     /// <summary>
-    /// AnalysisLinkData
+    ///     Initializes a new instance of the <see cref="AnalysisLinkData" /> class.
     /// </summary>
-    [DataContract(Name = "AnalysisLinkData")]
-    public partial class AnalysisLinkData : IValidatableObject
+    /// <param name="serializedTime">serializedTime.</param>
+    /// <param name="metrics">metrics.</param>
+    public AnalysisLinkData(string serializedTime = default, List<AnalysisLinkDataMetric> metrics = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AnalysisLinkData" /> class.
-        /// </summary>
-        /// <param name="serializedTime">serializedTime.</param>
-        /// <param name="metrics">metrics.</param>
-        public AnalysisLinkData(string serializedTime = default(string), List<AnalysisLinkDataMetric> metrics = default(List<AnalysisLinkDataMetric>))
-        {
-            this.SerializedTime = serializedTime;
-            this.Metrics = metrics;
-        }
-
-        /// <summary>
-        /// Gets or Sets SerializedTime
-        /// </summary>
-        [DataMember(Name = "serializedTime", EmitDefaultValue = true)]
-        public string SerializedTime { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Metrics
-        /// </summary>
-        [DataMember(Name = "metrics", EmitDefaultValue = true)]
-        public List<AnalysisLinkDataMetric> Metrics { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AnalysisLinkData {\n");
-            sb.Append("  SerializedTime: ").Append(SerializedTime).Append("\n");
-            sb.Append("  Metrics: ").Append(Metrics).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        SerializedTime = serializedTime;
+        Metrics = metrics;
     }
 
+    /// <summary>
+    ///     Gets or Sets SerializedTime
+    /// </summary>
+    [DataMember(Name = "serializedTime", EmitDefaultValue = true)]
+    public string SerializedTime { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Metrics
+    /// </summary>
+    [DataMember(Name = "metrics", EmitDefaultValue = true)]
+    public List<AnalysisLinkDataMetric> Metrics { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AnalysisLinkData {\n");
+        sb.Append("  SerializedTime: ").Append(SerializedTime).Append("\n");
+        sb.Append("  Metrics: ").Append(Metrics).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -9,107 +9,99 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     MonitoredEntityDetailsModelDto
+/// </summary>
+[DataContract(Name = "MonitoredEntityDetailsModelDto")]
+public class MonitoredEntityDetailsModelDto : IValidatableObject
 {
     /// <summary>
-    /// MonitoredEntityDetailsModelDto
+    ///     Initializes a new instance of the <see cref="MonitoredEntityDetailsModelDto" /> class.
     /// </summary>
-    [DataContract(Name = "MonitoredEntityDetailsModelDto")]
-    public partial class MonitoredEntityDetailsModelDto : IValidatableObject
+    [JsonConstructorAttribute]
+    protected MonitoredEntityDetailsModelDto()
     {
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
-        public MonitoredEntityStatusDto Status { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MonitoredEntityDetailsModelDto" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected MonitoredEntityDetailsModelDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MonitoredEntityDetailsModelDto" /> class.
-        /// </summary>
-        /// <param name="displayName">displayName (required).</param>
-        /// <param name="logEvents">logEvents (required).</param>
-        /// <param name="status">status (required).</param>
-        public MonitoredEntityDetailsModelDto(string displayName = default(string), List<MonitoredEntityLogEvent> logEvents = default(List<MonitoredEntityLogEvent>), MonitoredEntityStatusDto status = default(MonitoredEntityStatusDto))
-        {
-            // to ensure "displayName" is required (not null)
-            if (displayName == null)
-            {
-                throw new ArgumentNullException("displayName is a required property for MonitoredEntityDetailsModelDto and cannot be null");
-            }
-            this.DisplayName = displayName;
-            // to ensure "logEvents" is required (not null)
-            if (logEvents == null)
-            {
-                throw new ArgumentNullException("logEvents is a required property for MonitoredEntityDetailsModelDto and cannot be null");
-            }
-            this.LogEvents = logEvents;
-            this.Status = status;
-        }
-
-        /// <summary>
-        /// Gets or Sets DisplayName
-        /// </summary>
-        [DataMember(Name = "displayName", IsRequired = true, EmitDefaultValue = true)]
-        public string DisplayName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LogEvents
-        /// </summary>
-        [DataMember(Name = "logEvents", IsRequired = true, EmitDefaultValue = true)]
-        public List<MonitoredEntityLogEvent> LogEvents { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class MonitoredEntityDetailsModelDto {\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  LogEvents: ").Append(LogEvents).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="MonitoredEntityDetailsModelDto" /> class.
+    /// </summary>
+    /// <param name="displayName">displayName (required).</param>
+    /// <param name="logEvents">logEvents (required).</param>
+    /// <param name="status">status (required).</param>
+    public MonitoredEntityDetailsModelDto(string displayName = default,
+        List<MonitoredEntityLogEvent> logEvents = default, MonitoredEntityStatusDto status = default)
+    {
+        // to ensure "displayName" is required (not null)
+        if (displayName == null)
+            throw new ArgumentNullException(
+                "displayName is a required property for MonitoredEntityDetailsModelDto and cannot be null");
+        DisplayName = displayName;
+        // to ensure "logEvents" is required (not null)
+        if (logEvents == null)
+            throw new ArgumentNullException(
+                "logEvents is a required property for MonitoredEntityDetailsModelDto and cannot be null");
+        LogEvents = logEvents;
+        Status = status;
+    }
+
+    /// <summary>
+    ///     Gets or Sets Status
+    /// </summary>
+    [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
+    public MonitoredEntityStatusDto Status { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DisplayName
+    /// </summary>
+    [DataMember(Name = "displayName", IsRequired = true, EmitDefaultValue = true)]
+    public string DisplayName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LogEvents
+    /// </summary>
+    [DataMember(Name = "logEvents", IsRequired = true, EmitDefaultValue = true)]
+    public List<MonitoredEntityLogEvent> LogEvents { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class MonitoredEntityDetailsModelDto {\n");
+        sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+        sb.Append("  LogEvents: ").Append(LogEvents).Append("\n");
+        sb.Append("  Status: ").Append(Status).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

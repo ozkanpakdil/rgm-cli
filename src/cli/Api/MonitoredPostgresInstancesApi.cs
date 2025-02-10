@@ -9,595 +9,601 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IMonitoredPostgresInstancesApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IMonitoredPostgresInstancesApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut(string instanceName, string baseMonitorName,
+        PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutWithHttpInfo(string instanceName,
+        string baseMonitorName, PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="addPostgresInstanceRequest"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AddPostgresInstanceResultJSendSuccess</returns>
+    AddPostgresInstanceResultJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresinstancesPost(string baseMonitorName,
+        AddPostgresInstanceRequest? addPostgresInstanceRequest = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="addPostgresInstanceRequest"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AddPostgresInstanceResultJSendSuccess</returns>
+    ApiResponse<AddPostgresInstanceResultJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresinstancesPostWithHttpInfo(
+        string baseMonitorName, AddPostgresInstanceRequest? addPostgresInstanceRequest = default,
+        int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IMonitoredPostgresInstancesApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutAsync(string instanceName,
+        string baseMonitorName, PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutWithHttpInfoAsync(
+        string instanceName, string baseMonitorName,
+        PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="addPostgresInstanceRequest"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AddPostgresInstanceResultJSendSuccess</returns>
+    Task<AddPostgresInstanceResultJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresinstancesPostAsync(
+        string baseMonitorName, AddPostgresInstanceRequest? addPostgresInstanceRequest = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="addPostgresInstanceRequest"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AddPostgresInstanceResultJSendSuccess)</returns>
+    Task<ApiResponse<AddPostgresInstanceResultJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNamePostgresinstancesPostWithHttpInfoAsync(string baseMonitorName,
+            AddPostgresInstanceRequest? addPostgresInstanceRequest = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IMonitoredPostgresInstancesApi : IMonitoredPostgresInstancesApiSync,
+    IMonitoredPostgresInstancesApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class MonitoredPostgresInstancesApi : IMonitoredPostgresInstancesApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="MonitoredPostgresInstancesApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public MonitoredPostgresInstancesApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut(string instanceName, string baseMonitorName, PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default(PostgresServerAliasUpdateDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutWithHttpInfo(string instanceName, string baseMonitorName, PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default(PostgresServerAliasUpdateDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="addPostgresInstanceRequest"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AddPostgresInstanceResultJSendSuccess</returns>
-        AddPostgresInstanceResultJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresinstancesPost(string baseMonitorName, AddPostgresInstanceRequest? addPostgresInstanceRequest = default(AddPostgresInstanceRequest?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="addPostgresInstanceRequest"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AddPostgresInstanceResultJSendSuccess</returns>
-        ApiResponse<AddPostgresInstanceResultJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresinstancesPostWithHttpInfo(string baseMonitorName, AddPostgresInstanceRequest? addPostgresInstanceRequest = default(AddPostgresInstanceRequest?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="MonitoredPostgresInstancesApi" /> class.
     /// </summary>
-    public interface IMonitoredPostgresInstancesApiAsync : IApiAccessor
+    /// <returns></returns>
+    public MonitoredPostgresInstancesApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutAsync(string instanceName, string baseMonitorName, PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default(PostgresServerAliasUpdateDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutWithHttpInfoAsync(string instanceName, string baseMonitorName, PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default(PostgresServerAliasUpdateDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="addPostgresInstanceRequest"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AddPostgresInstanceResultJSendSuccess</returns>
-        System.Threading.Tasks.Task<AddPostgresInstanceResultJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresinstancesPostAsync(string baseMonitorName, AddPostgresInstanceRequest? addPostgresInstanceRequest = default(AddPostgresInstanceRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="addPostgresInstanceRequest"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AddPostgresInstanceResultJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AddPostgresInstanceResultJSendSuccess>> ApiBasemonitorsBaseMonitorNamePostgresinstancesPostWithHttpInfoAsync(string baseMonitorName, AddPostgresInstanceRequest? addPostgresInstanceRequest = default(AddPostgresInstanceRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="MonitoredPostgresInstancesApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IMonitoredPostgresInstancesApi : IMonitoredPostgresInstancesApiSync, IMonitoredPostgresInstancesApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public MonitoredPostgresInstancesApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="MonitoredPostgresInstancesApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class MonitoredPostgresInstancesApi : IMonitoredPostgresInstancesApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public MonitoredPostgresInstancesApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MonitoredPostgresInstancesApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public MonitoredPostgresInstancesApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut(string instanceName,
+        string baseMonitorName, PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default,
+        int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutWithHttpInfo(instanceName, baseMonitorName,
+            postgresServerAliasUpdateDto);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutWithHttpInfo(
+        string instanceName, string baseMonitorName,
+        PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling MonitoredPostgresInstancesApi->ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling MonitoredPostgresInstancesApi->ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = postgresServerAliasUpdateDto;
+
+        localVarRequestOptions.Operation =
+            "MonitoredPostgresInstancesApi.ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Put<object>("/api/basemonitors/{baseMonitorName}/postgresinstances/{instanceName}",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MonitoredPostgresInstancesApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public MonitoredPostgresInstancesApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutAsync(string instanceName,
+        string baseMonitorName, PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutWithHttpInfoAsync(instanceName,
+            baseMonitorName, postgresServerAliasUpdateDto, operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutWithHttpInfoAsync(string instanceName,
+            string baseMonitorName, PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling MonitoredPostgresInstancesApi->ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling MonitoredPostgresInstancesApi->ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = postgresServerAliasUpdateDto;
+
+        localVarRequestOptions.Operation =
+            "MonitoredPostgresInstancesApi.ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PutAsync<object>("/api/basemonitors/{baseMonitorName}/postgresinstances/{instanceName}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MonitoredPostgresInstancesApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public MonitoredPostgresInstancesApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="addPostgresInstanceRequest"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AddPostgresInstanceResultJSendSuccess</returns>
+    public AddPostgresInstanceResultJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresinstancesPost(
+        string baseMonitorName, AddPostgresInstanceRequest? addPostgresInstanceRequest = default,
+        int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNamePostgresinstancesPostWithHttpInfo(baseMonitorName,
+                addPostgresInstanceRequest);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="addPostgresInstanceRequest"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AddPostgresInstanceResultJSendSuccess</returns>
+    public ApiResponse<AddPostgresInstanceResultJSendSuccess>
+        ApiBasemonitorsBaseMonitorNamePostgresinstancesPostWithHttpInfo(string baseMonitorName,
+            AddPostgresInstanceRequest? addPostgresInstanceRequest = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling MonitoredPostgresInstancesApi->ApiBasemonitorsBaseMonitorNamePostgresinstancesPost");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = addPostgresInstanceRequest;
+
+        localVarRequestOptions.Operation =
+            "MonitoredPostgresInstancesApi.ApiBasemonitorsBaseMonitorNamePostgresinstancesPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<AddPostgresInstanceResultJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/postgresinstances", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresinstancesPost", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MonitoredPostgresInstancesApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public MonitoredPostgresInstancesApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="addPostgresInstanceRequest"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AddPostgresInstanceResultJSendSuccess</returns>
+    public async Task<AddPostgresInstanceResultJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresinstancesPostAsync(
+        string baseMonitorName, AddPostgresInstanceRequest? addPostgresInstanceRequest = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNamePostgresinstancesPostWithHttpInfoAsync(baseMonitorName,
+                addPostgresInstanceRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="addPostgresInstanceRequest"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AddPostgresInstanceResultJSendSuccess)</returns>
+    public async Task<ApiResponse<AddPostgresInstanceResultJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNamePostgresinstancesPostWithHttpInfoAsync(string baseMonitorName,
+            AddPostgresInstanceRequest? addPostgresInstanceRequest = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling MonitoredPostgresInstancesApi->ApiBasemonitorsBaseMonitorNamePostgresinstancesPost");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = addPostgresInstanceRequest;
+
+        localVarRequestOptions.Operation =
+            "MonitoredPostgresInstancesApi.ApiBasemonitorsBaseMonitorNamePostgresinstancesPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PostAsync<AddPostgresInstanceResultJSendSuccess>("/api/basemonitors/{baseMonitorName}/postgresinstances",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresinstancesPost", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
-
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
-
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
-        {
-            return this.Configuration.BasePath;
-        }
-
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
-
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
-        {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut(string instanceName, string baseMonitorName, PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default(PostgresServerAliasUpdateDto?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutWithHttpInfo(instanceName, baseMonitorName, postgresServerAliasUpdateDto);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutWithHttpInfo(string instanceName, string baseMonitorName, PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default(PostgresServerAliasUpdateDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling MonitoredPostgresInstancesApi->ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling MonitoredPostgresInstancesApi->ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = postgresServerAliasUpdateDto;
-
-            localVarRequestOptions.Operation = "MonitoredPostgresInstancesApi.ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Put<Object>("/api/basemonitors/{baseMonitorName}/postgresinstances/{instanceName}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutAsync(string instanceName, string baseMonitorName, PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default(PostgresServerAliasUpdateDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutWithHttpInfoAsync(instanceName, baseMonitorName, postgresServerAliasUpdateDto, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresServerAliasUpdateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePutWithHttpInfoAsync(string instanceName, string baseMonitorName, PostgresServerAliasUpdateDto? postgresServerAliasUpdateDto = default(PostgresServerAliasUpdateDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling MonitoredPostgresInstancesApi->ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling MonitoredPostgresInstancesApi->ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = postgresServerAliasUpdateDto;
-
-            localVarRequestOptions.Operation = "MonitoredPostgresInstancesApi.ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<Object>("/api/basemonitors/{baseMonitorName}/postgresinstances/{instanceName}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresinstancesInstanceNamePut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="addPostgresInstanceRequest"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AddPostgresInstanceResultJSendSuccess</returns>
-        public AddPostgresInstanceResultJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresinstancesPost(string baseMonitorName, AddPostgresInstanceRequest? addPostgresInstanceRequest = default(AddPostgresInstanceRequest?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<AddPostgresInstanceResultJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNamePostgresinstancesPostWithHttpInfo(baseMonitorName, addPostgresInstanceRequest);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="addPostgresInstanceRequest"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AddPostgresInstanceResultJSendSuccess</returns>
-        public cli.Client.ApiResponse<AddPostgresInstanceResultJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresinstancesPostWithHttpInfo(string baseMonitorName, AddPostgresInstanceRequest? addPostgresInstanceRequest = default(AddPostgresInstanceRequest?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling MonitoredPostgresInstancesApi->ApiBasemonitorsBaseMonitorNamePostgresinstancesPost");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = addPostgresInstanceRequest;
-
-            localVarRequestOptions.Operation = "MonitoredPostgresInstancesApi.ApiBasemonitorsBaseMonitorNamePostgresinstancesPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<AddPostgresInstanceResultJSendSuccess>("/api/basemonitors/{baseMonitorName}/postgresinstances", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresinstancesPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="addPostgresInstanceRequest"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AddPostgresInstanceResultJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<AddPostgresInstanceResultJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresinstancesPostAsync(string baseMonitorName, AddPostgresInstanceRequest? addPostgresInstanceRequest = default(AddPostgresInstanceRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<AddPostgresInstanceResultJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNamePostgresinstancesPostWithHttpInfoAsync(baseMonitorName, addPostgresInstanceRequest, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="addPostgresInstanceRequest"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AddPostgresInstanceResultJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AddPostgresInstanceResultJSendSuccess>> ApiBasemonitorsBaseMonitorNamePostgresinstancesPostWithHttpInfoAsync(string baseMonitorName, AddPostgresInstanceRequest? addPostgresInstanceRequest = default(AddPostgresInstanceRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling MonitoredPostgresInstancesApi->ApiBasemonitorsBaseMonitorNamePostgresinstancesPost");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = addPostgresInstanceRequest;
-
-            localVarRequestOptions.Operation = "MonitoredPostgresInstancesApi.ApiBasemonitorsBaseMonitorNamePostgresinstancesPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<AddPostgresInstanceResultJSendSuccess>("/api/basemonitors/{baseMonitorName}/postgresinstances", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresinstancesPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

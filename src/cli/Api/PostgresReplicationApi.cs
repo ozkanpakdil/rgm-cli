@@ -9,1129 +9,1109 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IPostgresReplicationApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IPostgresReplicationApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>PostgresReplicationDataDtoJSendSuccess</returns>
+    PostgresReplicationDataDtoJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresreplicationGet(string baseMonitorName,
+        PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of PostgresReplicationDataDtoJSendSuccess</returns>
+    ApiResponse<PostgresReplicationDataDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationGetWithHttpInfo(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>GroupedPostgresConfigurationOptionsDtoJSendSuccess</returns>
+    GroupedPostgresConfigurationOptionsDtoJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet(
+        string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of GroupedPostgresConfigurationOptionsDtoJSendSuccess</returns>
+    ApiResponse<GroupedPostgresConfigurationOptionsDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetWithHttpInfo(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>PostgresReplicationSlotsDataDtoJSendSuccess</returns>
+    PostgresReplicationSlotsDataDtoJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet(
+        string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of PostgresReplicationSlotsDataDtoJSendSuccess</returns>
+    ApiResponse<PostgresReplicationSlotsDataDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetWithHttpInfo(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="senderHost"> (optional)</param>
+    /// <param name="clusterName"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>PostgresSecondaryReplicationDataDtoJSendSuccess</returns>
+    PostgresSecondaryReplicationDataDtoJSendSuccess ApiPostgresreplicationSecondaryGet(
+        PostgresInstanceChannelInstanceRef? dbmsCir = default, string? senderHost = default,
+        string? clusterName = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="senderHost"> (optional)</param>
+    /// <param name="clusterName"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of PostgresSecondaryReplicationDataDtoJSendSuccess</returns>
+    ApiResponse<PostgresSecondaryReplicationDataDtoJSendSuccess> ApiPostgresreplicationSecondaryGetWithHttpInfo(
+        PostgresInstanceChannelInstanceRef? dbmsCir = default, string? senderHost = default,
+        string? clusterName = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IPostgresReplicationApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of PostgresReplicationDataDtoJSendSuccess</returns>
+    Task<PostgresReplicationDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationGetAsync(
+        string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (PostgresReplicationDataDtoJSendSuccess)</returns>
+    Task<ApiResponse<PostgresReplicationDataDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationGetWithHttpInfoAsync(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of GroupedPostgresConfigurationOptionsDtoJSendSuccess</returns>
+    Task<GroupedPostgresConfigurationOptionsDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetAsync(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (GroupedPostgresConfigurationOptionsDtoJSendSuccess)</returns>
+    Task<ApiResponse<GroupedPostgresConfigurationOptionsDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetWithHttpInfoAsync(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of PostgresReplicationSlotsDataDtoJSendSuccess</returns>
+    Task<PostgresReplicationSlotsDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetAsync(
+        string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (PostgresReplicationSlotsDataDtoJSendSuccess)</returns>
+    Task<ApiResponse<PostgresReplicationSlotsDataDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetWithHttpInfoAsync(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="senderHost"> (optional)</param>
+    /// <param name="clusterName"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of PostgresSecondaryReplicationDataDtoJSendSuccess</returns>
+    Task<PostgresSecondaryReplicationDataDtoJSendSuccess> ApiPostgresreplicationSecondaryGetAsync(
+        PostgresInstanceChannelInstanceRef? dbmsCir = default, string? senderHost = default,
+        string? clusterName = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="senderHost"> (optional)</param>
+    /// <param name="clusterName"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (PostgresSecondaryReplicationDataDtoJSendSuccess)</returns>
+    Task<ApiResponse<PostgresSecondaryReplicationDataDtoJSendSuccess>>
+        ApiPostgresreplicationSecondaryGetWithHttpInfoAsync(PostgresInstanceChannelInstanceRef? dbmsCir = default,
+            string? senderHost = default, string? clusterName = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IPostgresReplicationApi : IPostgresReplicationApiSync, IPostgresReplicationApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class PostgresReplicationApi : IPostgresReplicationApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="PostgresReplicationApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public PostgresReplicationApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>PostgresReplicationDataDtoJSendSuccess</returns>
-        PostgresReplicationDataDtoJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresreplicationGet(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of PostgresReplicationDataDtoJSendSuccess</returns>
-        ApiResponse<PostgresReplicationDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationGetWithHttpInfo(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>GroupedPostgresConfigurationOptionsDtoJSendSuccess</returns>
-        GroupedPostgresConfigurationOptionsDtoJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of GroupedPostgresConfigurationOptionsDtoJSendSuccess</returns>
-        ApiResponse<GroupedPostgresConfigurationOptionsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetWithHttpInfo(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>PostgresReplicationSlotsDataDtoJSendSuccess</returns>
-        PostgresReplicationSlotsDataDtoJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of PostgresReplicationSlotsDataDtoJSendSuccess</returns>
-        ApiResponse<PostgresReplicationSlotsDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetWithHttpInfo(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="senderHost"> (optional)</param>
-        /// <param name="clusterName"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>PostgresSecondaryReplicationDataDtoJSendSuccess</returns>
-        PostgresSecondaryReplicationDataDtoJSendSuccess ApiPostgresreplicationSecondaryGet(PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), string? senderHost = default(string?), string? clusterName = default(string?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="senderHost"> (optional)</param>
-        /// <param name="clusterName"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of PostgresSecondaryReplicationDataDtoJSendSuccess</returns>
-        ApiResponse<PostgresSecondaryReplicationDataDtoJSendSuccess> ApiPostgresreplicationSecondaryGetWithHttpInfo(PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), string? senderHost = default(string?), string? clusterName = default(string?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="PostgresReplicationApi" /> class.
     /// </summary>
-    public interface IPostgresReplicationApiAsync : IApiAccessor
+    /// <returns></returns>
+    public PostgresReplicationApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PostgresReplicationDataDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<PostgresReplicationDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationGetAsync(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PostgresReplicationDataDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PostgresReplicationDataDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNamePostgresreplicationGetWithHttpInfoAsync(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GroupedPostgresConfigurationOptionsDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<GroupedPostgresConfigurationOptionsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetAsync(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GroupedPostgresConfigurationOptionsDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GroupedPostgresConfigurationOptionsDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetWithHttpInfoAsync(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PostgresReplicationSlotsDataDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<PostgresReplicationSlotsDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetAsync(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PostgresReplicationSlotsDataDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PostgresReplicationSlotsDataDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetWithHttpInfoAsync(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="senderHost"> (optional)</param>
-        /// <param name="clusterName"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PostgresSecondaryReplicationDataDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<PostgresSecondaryReplicationDataDtoJSendSuccess> ApiPostgresreplicationSecondaryGetAsync(PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), string? senderHost = default(string?), string? clusterName = default(string?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="senderHost"> (optional)</param>
-        /// <param name="clusterName"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PostgresSecondaryReplicationDataDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PostgresSecondaryReplicationDataDtoJSendSuccess>> ApiPostgresreplicationSecondaryGetWithHttpInfoAsync(PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), string? senderHost = default(string?), string? clusterName = default(string?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="PostgresReplicationApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IPostgresReplicationApi : IPostgresReplicationApiSync, IPostgresReplicationApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public PostgresReplicationApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="PostgresReplicationApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class PostgresReplicationApi : IPostgresReplicationApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public PostgresReplicationApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PostgresReplicationApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public PostgresReplicationApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>PostgresReplicationDataDtoJSendSuccess</returns>
+    public PostgresReplicationDataDtoJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresreplicationGet(
+        string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNamePostgresreplicationGetWithHttpInfo(baseMonitorName, dbmsCir, startTime,
+                endTime);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of PostgresReplicationDataDtoJSendSuccess</returns>
+    public ApiResponse<PostgresReplicationDataDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationGetWithHttpInfo(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling PostgresReplicationApi->ApiBasemonitorsBaseMonitorNamePostgresreplicationGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (dbmsCir != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation =
+            "PostgresReplicationApi.ApiBasemonitorsBaseMonitorNamePostgresreplicationGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<PostgresReplicationDataDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/postgresreplication", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresreplicationGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PostgresReplicationApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public PostgresReplicationApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of PostgresReplicationDataDtoJSendSuccess</returns>
+    public async Task<PostgresReplicationDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationGetAsync(
+        string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNamePostgresreplicationGetWithHttpInfoAsync(baseMonitorName, dbmsCir,
+                startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (PostgresReplicationDataDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<PostgresReplicationDataDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationGetWithHttpInfoAsync(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling PostgresReplicationApi->ApiBasemonitorsBaseMonitorNamePostgresreplicationGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (dbmsCir != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation =
+            "PostgresReplicationApi.ApiBasemonitorsBaseMonitorNamePostgresreplicationGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<PostgresReplicationDataDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/postgresreplication",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresreplicationGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PostgresReplicationApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public PostgresReplicationApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>GroupedPostgresConfigurationOptionsDtoJSendSuccess</returns>
+    public GroupedPostgresConfigurationOptionsDtoJSendSuccess
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetWithHttpInfo(baseMonitorName, dbmsCir,
+                startTime, endTime);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of GroupedPostgresConfigurationOptionsDtoJSendSuccess</returns>
+    public ApiResponse<GroupedPostgresConfigurationOptionsDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetWithHttpInfo(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling PostgresReplicationApi->ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (dbmsCir != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation =
+            "PostgresReplicationApi.ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<GroupedPostgresConfigurationOptionsDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/postgresreplication/settings", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PostgresReplicationApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public PostgresReplicationApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of GroupedPostgresConfigurationOptionsDtoJSendSuccess</returns>
+    public async Task<GroupedPostgresConfigurationOptionsDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetAsync(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetWithHttpInfoAsync(baseMonitorName,
+                dbmsCir, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (GroupedPostgresConfigurationOptionsDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<GroupedPostgresConfigurationOptionsDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetWithHttpInfoAsync(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling PostgresReplicationApi->ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (dbmsCir != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation =
+            "PostgresReplicationApi.ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<GroupedPostgresConfigurationOptionsDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/postgresreplication/settings", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>PostgresReplicationSlotsDataDtoJSendSuccess</returns>
+    public PostgresReplicationSlotsDataDtoJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet(
+        string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetWithHttpInfo(baseMonitorName, dbmsCir, startTime,
+                endTime);
+        return localVarResponse.Data;
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of PostgresReplicationSlotsDataDtoJSendSuccess</returns>
+    public ApiResponse<PostgresReplicationSlotsDataDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetWithHttpInfo(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling PostgresReplicationApi->ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            return this.Configuration.BasePath;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (dbmsCir != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation =
+            "PostgresReplicationApi.ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<PostgresReplicationSlotsDataDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/postgresreplication/slots", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of PostgresReplicationSlotsDataDtoJSendSuccess</returns>
+    public async Task<PostgresReplicationSlotsDataDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetAsync(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetWithHttpInfoAsync(baseMonitorName, dbmsCir,
+                startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (PostgresReplicationSlotsDataDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<PostgresReplicationSlotsDataDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetWithHttpInfoAsync(string baseMonitorName,
+            PostgresInstanceChannelInstanceRef? dbmsCir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling PostgresReplicationApi->ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (dbmsCir != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation =
+            "PostgresReplicationApi.ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<PostgresReplicationSlotsDataDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/postgresreplication/slots", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>PostgresReplicationDataDtoJSendSuccess</returns>
-        public PostgresReplicationDataDtoJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresreplicationGet(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="senderHost"> (optional)</param>
+    /// <param name="clusterName"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>PostgresSecondaryReplicationDataDtoJSendSuccess</returns>
+    public PostgresSecondaryReplicationDataDtoJSendSuccess ApiPostgresreplicationSecondaryGet(
+        PostgresInstanceChannelInstanceRef? dbmsCir = default, string? senderHost = default,
+        string? clusterName = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiPostgresreplicationSecondaryGetWithHttpInfo(dbmsCir, senderHost, clusterName, startTime, endTime);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="senderHost"> (optional)</param>
+    /// <param name="clusterName"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of PostgresSecondaryReplicationDataDtoJSendSuccess</returns>
+    public ApiResponse<PostgresSecondaryReplicationDataDtoJSendSuccess> ApiPostgresreplicationSecondaryGetWithHttpInfo(
+        PostgresInstanceChannelInstanceRef? dbmsCir = default, string? senderHost = default,
+        string? clusterName = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<PostgresReplicationDataDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNamePostgresreplicationGetWithHttpInfo(baseMonitorName, dbmsCir, startTime, endTime);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (dbmsCir != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
+        if (senderHost != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "senderHost", senderHost));
+        if (clusterName != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "clusterName", clusterName));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation = "PostgresReplicationApi.ApiPostgresreplicationSecondaryGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<PostgresSecondaryReplicationDataDtoJSendSuccess>("/api/postgresreplication/secondary",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiPostgresreplicationSecondaryGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of PostgresReplicationDataDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<PostgresReplicationDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationGetWithHttpInfo(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="senderHost"> (optional)</param>
+    /// <param name="clusterName"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of PostgresSecondaryReplicationDataDtoJSendSuccess</returns>
+    public async Task<PostgresSecondaryReplicationDataDtoJSendSuccess> ApiPostgresreplicationSecondaryGetAsync(
+        PostgresInstanceChannelInstanceRef? dbmsCir = default, string? senderHost = default,
+        string? clusterName = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse = await ApiPostgresreplicationSecondaryGetWithHttpInfoAsync(dbmsCir, senderHost,
+            clusterName, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="dbmsCir"> (optional)</param>
+    /// <param name="senderHost"> (optional)</param>
+    /// <param name="clusterName"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (PostgresSecondaryReplicationDataDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<PostgresSecondaryReplicationDataDtoJSendSuccess>>
+        ApiPostgresreplicationSecondaryGetWithHttpInfoAsync(PostgresInstanceChannelInstanceRef? dbmsCir = default,
+            string? senderHost = default, string? clusterName = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling PostgresReplicationApi->ApiBasemonitorsBaseMonitorNamePostgresreplicationGet");
-            }
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        if (dbmsCir != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
+        if (senderHost != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "senderHost", senderHost));
+        if (clusterName != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "clusterName", clusterName));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (dbmsCir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "PostgresReplicationApi.ApiBasemonitorsBaseMonitorNamePostgresreplicationGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation = "PostgresReplicationApi.ApiPostgresreplicationSecondaryGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<PostgresReplicationDataDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/postgresreplication", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresreplicationGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<PostgresSecondaryReplicationDataDtoJSendSuccess>("/api/postgresreplication/secondary",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiPostgresreplicationSecondaryGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PostgresReplicationDataDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<PostgresReplicationDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationGetAsync(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<PostgresReplicationDataDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNamePostgresreplicationGetWithHttpInfoAsync(baseMonitorName, dbmsCir, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PostgresReplicationDataDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<PostgresReplicationDataDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNamePostgresreplicationGetWithHttpInfoAsync(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling PostgresReplicationApi->ApiBasemonitorsBaseMonitorNamePostgresreplicationGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (dbmsCir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "PostgresReplicationApi.ApiBasemonitorsBaseMonitorNamePostgresreplicationGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<PostgresReplicationDataDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/postgresreplication", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresreplicationGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>GroupedPostgresConfigurationOptionsDtoJSendSuccess</returns>
-        public GroupedPostgresConfigurationOptionsDtoJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<GroupedPostgresConfigurationOptionsDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetWithHttpInfo(baseMonitorName, dbmsCir, startTime, endTime);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of GroupedPostgresConfigurationOptionsDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<GroupedPostgresConfigurationOptionsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetWithHttpInfo(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling PostgresReplicationApi->ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (dbmsCir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "PostgresReplicationApi.ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<GroupedPostgresConfigurationOptionsDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/postgresreplication/settings", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GroupedPostgresConfigurationOptionsDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<GroupedPostgresConfigurationOptionsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetAsync(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<GroupedPostgresConfigurationOptionsDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetWithHttpInfoAsync(baseMonitorName, dbmsCir, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GroupedPostgresConfigurationOptionsDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<GroupedPostgresConfigurationOptionsDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGetWithHttpInfoAsync(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling PostgresReplicationApi->ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (dbmsCir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "PostgresReplicationApi.ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GroupedPostgresConfigurationOptionsDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/postgresreplication/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresreplicationSettingsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>PostgresReplicationSlotsDataDtoJSendSuccess</returns>
-        public PostgresReplicationSlotsDataDtoJSendSuccess ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<PostgresReplicationSlotsDataDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetWithHttpInfo(baseMonitorName, dbmsCir, startTime, endTime);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of PostgresReplicationSlotsDataDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<PostgresReplicationSlotsDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetWithHttpInfo(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling PostgresReplicationApi->ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (dbmsCir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "PostgresReplicationApi.ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<PostgresReplicationSlotsDataDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/postgresreplication/slots", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PostgresReplicationSlotsDataDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<PostgresReplicationSlotsDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetAsync(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<PostgresReplicationSlotsDataDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetWithHttpInfoAsync(baseMonitorName, dbmsCir, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PostgresReplicationSlotsDataDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<PostgresReplicationSlotsDataDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGetWithHttpInfoAsync(string baseMonitorName, PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling PostgresReplicationApi->ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (dbmsCir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "PostgresReplicationApi.ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<PostgresReplicationSlotsDataDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/postgresreplication/slots", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNamePostgresreplicationSlotsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="senderHost"> (optional)</param>
-        /// <param name="clusterName"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>PostgresSecondaryReplicationDataDtoJSendSuccess</returns>
-        public PostgresSecondaryReplicationDataDtoJSendSuccess ApiPostgresreplicationSecondaryGet(PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), string? senderHost = default(string?), string? clusterName = default(string?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<PostgresSecondaryReplicationDataDtoJSendSuccess> localVarResponse = ApiPostgresreplicationSecondaryGetWithHttpInfo(dbmsCir, senderHost, clusterName, startTime, endTime);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="senderHost"> (optional)</param>
-        /// <param name="clusterName"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of PostgresSecondaryReplicationDataDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<PostgresSecondaryReplicationDataDtoJSendSuccess> ApiPostgresreplicationSecondaryGetWithHttpInfo(PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), string? senderHost = default(string?), string? clusterName = default(string?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (dbmsCir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
-            }
-            if (senderHost != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "senderHost", senderHost));
-            }
-            if (clusterName != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "clusterName", clusterName));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "PostgresReplicationApi.ApiPostgresreplicationSecondaryGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<PostgresSecondaryReplicationDataDtoJSendSuccess>("/api/postgresreplication/secondary", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiPostgresreplicationSecondaryGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="senderHost"> (optional)</param>
-        /// <param name="clusterName"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PostgresSecondaryReplicationDataDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<PostgresSecondaryReplicationDataDtoJSendSuccess> ApiPostgresreplicationSecondaryGetAsync(PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), string? senderHost = default(string?), string? clusterName = default(string?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<PostgresSecondaryReplicationDataDtoJSendSuccess> localVarResponse = await ApiPostgresreplicationSecondaryGetWithHttpInfoAsync(dbmsCir, senderHost, clusterName, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="dbmsCir"> (optional)</param>
-        /// <param name="senderHost"> (optional)</param>
-        /// <param name="clusterName"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PostgresSecondaryReplicationDataDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<PostgresSecondaryReplicationDataDtoJSendSuccess>> ApiPostgresreplicationSecondaryGetWithHttpInfoAsync(PostgresInstanceChannelInstanceRef? dbmsCir = default(PostgresInstanceChannelInstanceRef?), string? senderHost = default(string?), string? clusterName = default(string?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (dbmsCir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "dbmsCir", dbmsCir));
-            }
-            if (senderHost != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "senderHost", senderHost));
-            }
-            if (clusterName != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "clusterName", clusterName));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "PostgresReplicationApi.ApiPostgresreplicationSecondaryGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<PostgresSecondaryReplicationDataDtoJSendSuccess>("/api/postgresreplication/secondary", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiPostgresreplicationSecondaryGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

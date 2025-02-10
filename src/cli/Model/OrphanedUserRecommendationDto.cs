@@ -8,99 +8,90 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     OrphanedUserRecommendationDto
+/// </summary>
+[DataContract(Name = "OrphanedUserRecommendationDto")]
+public class OrphanedUserRecommendationDto : IValidatableObject
 {
     /// <summary>
-    /// OrphanedUserRecommendationDto
+    ///     Initializes a new instance of the <see cref="OrphanedUserRecommendationDto" /> class.
     /// </summary>
-    [DataContract(Name = "OrphanedUserRecommendationDto")]
-    public partial class OrphanedUserRecommendationDto : IValidatableObject
+    /// <param name="databaseUserName">databaseUserName.</param>
+    /// <param name="databaseUserType">databaseUserType.</param>
+    public OrphanedUserRecommendationDto(string databaseUserName = default,
+        OrphanedUserTypeDto? databaseUserType = default)
     {
-
-        /// <summary>
-        /// Gets or Sets DatabaseUserType
-        /// </summary>
-        [DataMember(Name = "databaseUserType", EmitDefaultValue = false)]
-        public OrphanedUserTypeDto? DatabaseUserType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OrphanedUserRecommendationDto" /> class.
-        /// </summary>
-        /// <param name="databaseUserName">databaseUserName.</param>
-        /// <param name="databaseUserType">databaseUserType.</param>
-        public OrphanedUserRecommendationDto(string databaseUserName = default(string), OrphanedUserTypeDto? databaseUserType = default(OrphanedUserTypeDto?))
-        {
-            this.DatabaseUserName = databaseUserName;
-            this.DatabaseUserType = databaseUserType;
-        }
-
-        /// <summary>
-        /// Gets or Sets DatabaseUserSid
-        /// </summary>
-        [DataMember(Name = "databaseUserSid", EmitDefaultValue = true)]
-        public string DatabaseUserSid { get; private set; }
-
-        /// <summary>
-        /// Returns false as DatabaseUserSid should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeDatabaseUserSid()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets DatabaseUserName
-        /// </summary>
-        [DataMember(Name = "databaseUserName", EmitDefaultValue = true)]
-        public string DatabaseUserName { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class OrphanedUserRecommendationDto {\n");
-            sb.Append("  DatabaseUserSid: ").Append(DatabaseUserSid).Append("\n");
-            sb.Append("  DatabaseUserName: ").Append(DatabaseUserName).Append("\n");
-            sb.Append("  DatabaseUserType: ").Append(DatabaseUserType).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        DatabaseUserName = databaseUserName;
+        DatabaseUserType = databaseUserType;
     }
 
+    /// <summary>
+    ///     Gets or Sets DatabaseUserType
+    /// </summary>
+    [DataMember(Name = "databaseUserType", EmitDefaultValue = false)]
+    public OrphanedUserTypeDto? DatabaseUserType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DatabaseUserSid
+    /// </summary>
+    [DataMember(Name = "databaseUserSid", EmitDefaultValue = true)]
+    public string DatabaseUserSid { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets DatabaseUserName
+    /// </summary>
+    [DataMember(Name = "databaseUserName", EmitDefaultValue = true)]
+    public string DatabaseUserName { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns false as DatabaseUserSid should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeDatabaseUserSid()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class OrphanedUserRecommendationDto {\n");
+        sb.Append("  DatabaseUserSid: ").Append(DatabaseUserSid).Append("\n");
+        sb.Append("  DatabaseUserName: ").Append(DatabaseUserName).Append("\n");
+        sb.Append("  DatabaseUserType: ").Append(DatabaseUserType).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -8,102 +8,92 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     InstanceMetricLineGroup
+/// </summary>
+[DataContract(Name = "InstanceMetricLineGroup")]
+public class InstanceMetricLineGroup : IValidatableObject
 {
     /// <summary>
-    /// InstanceMetricLineGroup
+    ///     Initializes a new instance of the <see cref="InstanceMetricLineGroup" /> class.
     /// </summary>
-    [DataContract(Name = "InstanceMetricLineGroup")]
-    public partial class InstanceMetricLineGroup : IValidatableObject
+    /// <param name="name">name.</param>
+    /// <param name="lines">lines.</param>
+    /// <param name="max">max.</param>
+    /// <param name="analysisLinkData">analysisLinkData.</param>
+    public InstanceMetricLineGroup(string name = default, List<MetricLine> lines = default, double max = default,
+        AnalysisLinkData analysisLinkData = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InstanceMetricLineGroup" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="lines">lines.</param>
-        /// <param name="max">max.</param>
-        /// <param name="analysisLinkData">analysisLinkData.</param>
-        public InstanceMetricLineGroup(string name = default(string), List<MetricLine> lines = default(List<MetricLine>), double max = default(double), AnalysisLinkData analysisLinkData = default(AnalysisLinkData))
-        {
-            this.Name = name;
-            this.Lines = lines;
-            this.Max = max;
-            this.AnalysisLinkData = analysisLinkData;
-        }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Lines
-        /// </summary>
-        [DataMember(Name = "lines", EmitDefaultValue = true)]
-        public List<MetricLine> Lines { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Max
-        /// </summary>
-        [DataMember(Name = "max", EmitDefaultValue = false)]
-        public double Max { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AnalysisLinkData
-        /// </summary>
-        [DataMember(Name = "analysisLinkData", EmitDefaultValue = false)]
-        public AnalysisLinkData AnalysisLinkData { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class InstanceMetricLineGroup {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Lines: ").Append(Lines).Append("\n");
-            sb.Append("  Max: ").Append(Max).Append("\n");
-            sb.Append("  AnalysisLinkData: ").Append(AnalysisLinkData).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Name = name;
+        Lines = lines;
+        Max = max;
+        AnalysisLinkData = analysisLinkData;
     }
 
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Lines
+    /// </summary>
+    [DataMember(Name = "lines", EmitDefaultValue = true)]
+    public List<MetricLine> Lines { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Max
+    /// </summary>
+    [DataMember(Name = "max", EmitDefaultValue = false)]
+    public double Max { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AnalysisLinkData
+    /// </summary>
+    [DataMember(Name = "analysisLinkData", EmitDefaultValue = false)]
+    public AnalysisLinkData AnalysisLinkData { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class InstanceMetricLineGroup {\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  Lines: ").Append(Lines).Append("\n");
+        sb.Append("  Max: ").Append(Max).Append("\n");
+        sb.Append("  AnalysisLinkData: ").Append(AnalysisLinkData).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

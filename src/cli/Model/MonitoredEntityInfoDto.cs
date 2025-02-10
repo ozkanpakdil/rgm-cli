@@ -9,155 +9,151 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Channels.Data;
+using RedGate.SqlMonitor.Common.Domain;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     MonitoredEntityInfoDto
+/// </summary>
+[DataContract(Name = "MonitoredEntityInfoDto")]
+public class MonitoredEntityInfoDto : IValidatableObject
 {
     /// <summary>
-    /// MonitoredEntityInfoDto
+    ///     Initializes a new instance of the <see cref="MonitoredEntityInfoDto" /> class.
     /// </summary>
-    [DataContract(Name = "MonitoredEntityInfoDto")]
-    public partial class MonitoredEntityInfoDto : IValidatableObject
+    /// <param name="cir">cir.</param>
+    /// <param name="overviewUrl">overviewUrl.</param>
+    /// <param name="entityType">entityType.</param>
+    /// <param name="rootMonitoredEntityType">rootMonitoredEntityType.</param>
+    /// <param name="monitoredEntityStatusCategory">monitoredEntityStatusCategory.</param>
+    /// <param name="instanceName">instanceName.</param>
+    /// <param name="displayName">displayName.</param>
+    /// <param name="group">group.</param>
+    /// <param name="tags">tags.</param>
+    /// <param name="collectionDate">collectionDate.</param>
+    public MonitoredEntityInfoDto(ChannelInstanceRef cir = default, string overviewUrl = default,
+        EntityType? entityType = default, RootMonitoredEntityType? rootMonitoredEntityType = default,
+        MonitoredEntityStatusCategory? monitoredEntityStatusCategory = default, string instanceName = default,
+        string displayName = default, string group = default, List<TagDto> tags = default,
+        DateTime collectionDate = default)
     {
-
-        /// <summary>
-        /// Gets or Sets EntityType
-        /// </summary>
-        [DataMember(Name = "entityType", EmitDefaultValue = false)]
-        public EntityType? EntityType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RootMonitoredEntityType
-        /// </summary>
-        [DataMember(Name = "rootMonitoredEntityType", EmitDefaultValue = false)]
-        public RootMonitoredEntityType? RootMonitoredEntityType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MonitoredEntityStatusCategory
-        /// </summary>
-        [DataMember(Name = "monitoredEntityStatusCategory", EmitDefaultValue = false)]
-        public MonitoredEntityStatusCategory? MonitoredEntityStatusCategory { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MonitoredEntityInfoDto" /> class.
-        /// </summary>
-        /// <param name="cir">cir.</param>
-        /// <param name="overviewUrl">overviewUrl.</param>
-        /// <param name="entityType">entityType.</param>
-        /// <param name="rootMonitoredEntityType">rootMonitoredEntityType.</param>
-        /// <param name="monitoredEntityStatusCategory">monitoredEntityStatusCategory.</param>
-        /// <param name="instanceName">instanceName.</param>
-        /// <param name="displayName">displayName.</param>
-        /// <param name="group">group.</param>
-        /// <param name="tags">tags.</param>
-        /// <param name="collectionDate">collectionDate.</param>
-        public MonitoredEntityInfoDto(ChannelInstanceRef cir = default(ChannelInstanceRef), string overviewUrl = default(string), EntityTypeEnum? entityType = default(EntityTypeEnum?), RootMonitoredEntityType? rootMonitoredEntityType = default(RootMonitoredEntityType?), MonitoredEntityStatusCategory? monitoredEntityStatusCategory = default(MonitoredEntityStatusCategory?), string instanceName = default(string), string displayName = default(string), string group = default(string), List<TagDto> tags = default(List<TagDto>), DateTime collectionDate = default(DateTime))
-        {
-            this.Cir = cir;
-            this.OverviewUrl = overviewUrl;
-            this.EntityType = entityType;
-            this.RootMonitoredEntityType = rootMonitoredEntityType;
-            this.MonitoredEntityStatusCategory = monitoredEntityStatusCategory;
-            this.InstanceName = instanceName;
-            this.DisplayName = displayName;
-            this.Group = group;
-            this.Tags = tags;
-            this.CollectionDate = collectionDate;
-        }
-
-        /// <summary>
-        /// Gets or Sets Cir
-        /// </summary>
-        [DataMember(Name = "cir", EmitDefaultValue = true)]
-        public ChannelInstanceRef Cir { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OverviewUrl
-        /// </summary>
-        [DataMember(Name = "overviewUrl", EmitDefaultValue = true)]
-        public string OverviewUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets InstanceName
-        /// </summary>
-        [DataMember(Name = "instanceName", EmitDefaultValue = true)]
-        public string InstanceName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DisplayName
-        /// </summary>
-        [DataMember(Name = "displayName", EmitDefaultValue = true)]
-        public string DisplayName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Group
-        /// </summary>
-        [DataMember(Name = "group", EmitDefaultValue = true)]
-        public string Group { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Tags
-        /// </summary>
-        [DataMember(Name = "tags", EmitDefaultValue = true)]
-        public List<TagDto> Tags { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CollectionDate
-        /// </summary>
-        [DataMember(Name = "collectionDate", EmitDefaultValue = false)]
-        public DateTime CollectionDate { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class MonitoredEntityInfoDto {\n");
-            sb.Append("  Cir: ").Append(Cir).Append("\n");
-            sb.Append("  OverviewUrl: ").Append(OverviewUrl).Append("\n");
-            sb.Append("  EntityType: ").Append(EntityType).Append("\n");
-            sb.Append("  RootMonitoredEntityType: ").Append(RootMonitoredEntityType).Append("\n");
-            sb.Append("  MonitoredEntityStatusCategory: ").Append(MonitoredEntityStatusCategory).Append("\n");
-            sb.Append("  InstanceName: ").Append(InstanceName).Append("\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  Group: ").Append(Group).Append("\n");
-            sb.Append("  Tags: ").Append(Tags).Append("\n");
-            sb.Append("  CollectionDate: ").Append(CollectionDate).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Cir = cir;
+        OverviewUrl = overviewUrl;
+        EntityType = entityType;
+        RootMonitoredEntityType = rootMonitoredEntityType;
+        MonitoredEntityStatusCategory = monitoredEntityStatusCategory;
+        InstanceName = instanceName;
+        DisplayName = displayName;
+        Group = group;
+        Tags = tags;
+        CollectionDate = collectionDate;
     }
 
+    /// <summary>
+    ///     Gets or Sets EntityType
+    /// </summary>
+    [DataMember(Name = "entityType", EmitDefaultValue = false)]
+    public EntityType? EntityType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets RootMonitoredEntityType
+    /// </summary>
+    [DataMember(Name = "rootMonitoredEntityType", EmitDefaultValue = false)]
+    public RootMonitoredEntityType? RootMonitoredEntityType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MonitoredEntityStatusCategory
+    /// </summary>
+    [DataMember(Name = "monitoredEntityStatusCategory", EmitDefaultValue = false)]
+    public MonitoredEntityStatusCategory? MonitoredEntityStatusCategory { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Cir
+    /// </summary>
+    [DataMember(Name = "cir", EmitDefaultValue = true)]
+    public ChannelInstanceRef Cir { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets OverviewUrl
+    /// </summary>
+    [DataMember(Name = "overviewUrl", EmitDefaultValue = true)]
+    public string OverviewUrl { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets InstanceName
+    /// </summary>
+    [DataMember(Name = "instanceName", EmitDefaultValue = true)]
+    public string InstanceName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DisplayName
+    /// </summary>
+    [DataMember(Name = "displayName", EmitDefaultValue = true)]
+    public string DisplayName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Group
+    /// </summary>
+    [DataMember(Name = "group", EmitDefaultValue = true)]
+    public string Group { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Tags
+    /// </summary>
+    [DataMember(Name = "tags", EmitDefaultValue = true)]
+    public List<TagDto> Tags { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CollectionDate
+    /// </summary>
+    [DataMember(Name = "collectionDate", EmitDefaultValue = false)]
+    public DateTime CollectionDate { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class MonitoredEntityInfoDto {\n");
+        sb.Append("  Cir: ").Append(Cir).Append("\n");
+        sb.Append("  OverviewUrl: ").Append(OverviewUrl).Append("\n");
+        sb.Append("  EntityType: ").Append(EntityType).Append("\n");
+        sb.Append("  RootMonitoredEntityType: ").Append(RootMonitoredEntityType).Append("\n");
+        sb.Append("  MonitoredEntityStatusCategory: ").Append(MonitoredEntityStatusCategory).Append("\n");
+        sb.Append("  InstanceName: ").Append(InstanceName).Append("\n");
+        sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+        sb.Append("  Group: ").Append(Group).Append("\n");
+        sb.Append("  Tags: ").Append(Tags).Append("\n");
+        sb.Append("  CollectionDate: ").Append(CollectionDate).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -8,138 +8,132 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     GlobalDashboardViewModel
+/// </summary>
+[DataContract(Name = "GlobalDashboardViewModel")]
+public class GlobalDashboardViewModel : IValidatableObject
 {
     /// <summary>
-    /// GlobalDashboardViewModel
+    ///     Initializes a new instance of the <see cref="GlobalDashboardViewModel" /> class.
     /// </summary>
-    [DataContract(Name = "GlobalDashboardViewModel")]
-    public partial class GlobalDashboardViewModel : IValidatableObject
+    /// <param name="emailHasBeenConfigured">emailHasBeenConfigured.</param>
+    /// <param name="userHasPermissionToSeeOnboarding">userHasPermissionToSeeOnboarding.</param>
+    /// <param name="userHasPermissionToClearAlerts">userHasPermissionToClearAlerts.</param>
+    /// <param name="entities">entities.</param>
+    /// <param name="userHasPermissionToAlias">userHasPermissionToAlias.</param>
+    /// <param name="userHasGlobalPermissionToClearAlerts">userHasGlobalPermissionToClearAlerts.</param>
+    /// <param name="latestCollection">latestCollection.</param>
+    /// <param name="numberOfErroredMachinesWithNoSqlServers">numberOfErroredMachinesWithNoSqlServers.</param>
+    public GlobalDashboardViewModel(bool emailHasBeenConfigured = default,
+        bool userHasPermissionToSeeOnboarding = default, bool userHasPermissionToClearAlerts = default,
+        List<EntityViewModel> entities = default, bool userHasPermissionToAlias = default,
+        bool userHasGlobalPermissionToClearAlerts = default, long latestCollection = default,
+        long numberOfErroredMachinesWithNoSqlServers = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GlobalDashboardViewModel" /> class.
-        /// </summary>
-        /// <param name="emailHasBeenConfigured">emailHasBeenConfigured.</param>
-        /// <param name="userHasPermissionToSeeOnboarding">userHasPermissionToSeeOnboarding.</param>
-        /// <param name="userHasPermissionToClearAlerts">userHasPermissionToClearAlerts.</param>
-        /// <param name="entities">entities.</param>
-        /// <param name="userHasPermissionToAlias">userHasPermissionToAlias.</param>
-        /// <param name="userHasGlobalPermissionToClearAlerts">userHasGlobalPermissionToClearAlerts.</param>
-        /// <param name="latestCollection">latestCollection.</param>
-        /// <param name="numberOfErroredMachinesWithNoSqlServers">numberOfErroredMachinesWithNoSqlServers.</param>
-        public GlobalDashboardViewModel(bool emailHasBeenConfigured = default(bool), bool userHasPermissionToSeeOnboarding = default(bool), bool userHasPermissionToClearAlerts = default(bool), List<EntityViewModel> entities = default(List<EntityViewModel>), bool userHasPermissionToAlias = default(bool), bool userHasGlobalPermissionToClearAlerts = default(bool), long latestCollection = default(long), long numberOfErroredMachinesWithNoSqlServers = default(long))
-        {
-            this.EmailHasBeenConfigured = emailHasBeenConfigured;
-            this.UserHasPermissionToSeeOnboarding = userHasPermissionToSeeOnboarding;
-            this.UserHasPermissionToClearAlerts = userHasPermissionToClearAlerts;
-            this.Entities = entities;
-            this.UserHasPermissionToAlias = userHasPermissionToAlias;
-            this.UserHasGlobalPermissionToClearAlerts = userHasGlobalPermissionToClearAlerts;
-            this.LatestCollection = latestCollection;
-            this.NumberOfErroredMachinesWithNoSqlServers = numberOfErroredMachinesWithNoSqlServers;
-        }
-
-        /// <summary>
-        /// Gets or Sets EmailHasBeenConfigured
-        /// </summary>
-        [DataMember(Name = "emailHasBeenConfigured", EmitDefaultValue = true)]
-        public bool EmailHasBeenConfigured { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UserHasPermissionToSeeOnboarding
-        /// </summary>
-        [DataMember(Name = "userHasPermissionToSeeOnboarding", EmitDefaultValue = true)]
-        public bool UserHasPermissionToSeeOnboarding { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UserHasPermissionToClearAlerts
-        /// </summary>
-        [DataMember(Name = "userHasPermissionToClearAlerts", EmitDefaultValue = true)]
-        public bool UserHasPermissionToClearAlerts { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Entities
-        /// </summary>
-        [DataMember(Name = "entities", EmitDefaultValue = true)]
-        public List<EntityViewModel> Entities { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UserHasPermissionToAlias
-        /// </summary>
-        [DataMember(Name = "userHasPermissionToAlias", EmitDefaultValue = true)]
-        public bool UserHasPermissionToAlias { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UserHasGlobalPermissionToClearAlerts
-        /// </summary>
-        [DataMember(Name = "userHasGlobalPermissionToClearAlerts", EmitDefaultValue = true)]
-        public bool UserHasGlobalPermissionToClearAlerts { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LatestCollection
-        /// </summary>
-        [DataMember(Name = "latestCollection", EmitDefaultValue = false)]
-        public long LatestCollection { get; set; }
-
-        /// <summary>
-        /// Gets or Sets NumberOfErroredMachinesWithNoSqlServers
-        /// </summary>
-        [DataMember(Name = "numberOfErroredMachinesWithNoSqlServers", EmitDefaultValue = false)]
-        public long NumberOfErroredMachinesWithNoSqlServers { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class GlobalDashboardViewModel {\n");
-            sb.Append("  EmailHasBeenConfigured: ").Append(EmailHasBeenConfigured).Append("\n");
-            sb.Append("  UserHasPermissionToSeeOnboarding: ").Append(UserHasPermissionToSeeOnboarding).Append("\n");
-            sb.Append("  UserHasPermissionToClearAlerts: ").Append(UserHasPermissionToClearAlerts).Append("\n");
-            sb.Append("  Entities: ").Append(Entities).Append("\n");
-            sb.Append("  UserHasPermissionToAlias: ").Append(UserHasPermissionToAlias).Append("\n");
-            sb.Append("  UserHasGlobalPermissionToClearAlerts: ").Append(UserHasGlobalPermissionToClearAlerts).Append("\n");
-            sb.Append("  LatestCollection: ").Append(LatestCollection).Append("\n");
-            sb.Append("  NumberOfErroredMachinesWithNoSqlServers: ").Append(NumberOfErroredMachinesWithNoSqlServers).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        EmailHasBeenConfigured = emailHasBeenConfigured;
+        UserHasPermissionToSeeOnboarding = userHasPermissionToSeeOnboarding;
+        UserHasPermissionToClearAlerts = userHasPermissionToClearAlerts;
+        Entities = entities;
+        UserHasPermissionToAlias = userHasPermissionToAlias;
+        UserHasGlobalPermissionToClearAlerts = userHasGlobalPermissionToClearAlerts;
+        LatestCollection = latestCollection;
+        NumberOfErroredMachinesWithNoSqlServers = numberOfErroredMachinesWithNoSqlServers;
     }
 
+    /// <summary>
+    ///     Gets or Sets EmailHasBeenConfigured
+    /// </summary>
+    [DataMember(Name = "emailHasBeenConfigured", EmitDefaultValue = true)]
+    public bool EmailHasBeenConfigured { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UserHasPermissionToSeeOnboarding
+    /// </summary>
+    [DataMember(Name = "userHasPermissionToSeeOnboarding", EmitDefaultValue = true)]
+    public bool UserHasPermissionToSeeOnboarding { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UserHasPermissionToClearAlerts
+    /// </summary>
+    [DataMember(Name = "userHasPermissionToClearAlerts", EmitDefaultValue = true)]
+    public bool UserHasPermissionToClearAlerts { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Entities
+    /// </summary>
+    [DataMember(Name = "entities", EmitDefaultValue = true)]
+    public List<EntityViewModel> Entities { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UserHasPermissionToAlias
+    /// </summary>
+    [DataMember(Name = "userHasPermissionToAlias", EmitDefaultValue = true)]
+    public bool UserHasPermissionToAlias { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UserHasGlobalPermissionToClearAlerts
+    /// </summary>
+    [DataMember(Name = "userHasGlobalPermissionToClearAlerts", EmitDefaultValue = true)]
+    public bool UserHasGlobalPermissionToClearAlerts { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LatestCollection
+    /// </summary>
+    [DataMember(Name = "latestCollection", EmitDefaultValue = false)]
+    public long LatestCollection { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets NumberOfErroredMachinesWithNoSqlServers
+    /// </summary>
+    [DataMember(Name = "numberOfErroredMachinesWithNoSqlServers", EmitDefaultValue = false)]
+    public long NumberOfErroredMachinesWithNoSqlServers { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class GlobalDashboardViewModel {\n");
+        sb.Append("  EmailHasBeenConfigured: ").Append(EmailHasBeenConfigured).Append("\n");
+        sb.Append("  UserHasPermissionToSeeOnboarding: ").Append(UserHasPermissionToSeeOnboarding).Append("\n");
+        sb.Append("  UserHasPermissionToClearAlerts: ").Append(UserHasPermissionToClearAlerts).Append("\n");
+        sb.Append("  Entities: ").Append(Entities).Append("\n");
+        sb.Append("  UserHasPermissionToAlias: ").Append(UserHasPermissionToAlias).Append("\n");
+        sb.Append("  UserHasGlobalPermissionToClearAlerts: ").Append(UserHasGlobalPermissionToClearAlerts).Append("\n");
+        sb.Append("  LatestCollection: ").Append(LatestCollection).Append("\n");
+        sb.Append("  NumberOfErroredMachinesWithNoSqlServers: ").Append(NumberOfErroredMachinesWithNoSqlServers)
+            .Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

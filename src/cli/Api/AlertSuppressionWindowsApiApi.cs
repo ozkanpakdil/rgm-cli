@@ -10,1626 +10,1657 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAlertSuppressionWindowsApiApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAlertSuppressionWindowsApiApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="names"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
+    AlertSuppressionWindowDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet(
+        string baseMonitorName, List<string>? names = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="names"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
+    ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetWithHttpInfo(string baseMonitorName,
+            List<string>? names = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
+    AlertSuppressionWindowDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet(
+        string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
+    ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetWithHttpInfo(string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>BooleanJSendSuccess</returns>
+    BooleanJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete(IntegerIdentifier id,
+        string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of BooleanJSendSuccess</returns>
+    ApiResponse<BooleanJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteWithHttpInfo(
+        IntegerIdentifier id, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSuppressionWindowDtoJSendSuccess</returns>
+    AlertSuppressionWindowDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet(
+        IntegerIdentifier id, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSuppressionWindowDtoJSendSuccess</returns>
+    ApiResponse<AlertSuppressionWindowDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetWithHttpInfo(IntegerIdentifier id,
+            string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSuppressionWindowDtoJSendSuccess</returns>
+    AlertSuppressionWindowDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut(
+        IntegerIdentifier id, string baseMonitorName,
+        AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSuppressionWindowDtoJSendSuccess</returns>
+    ApiResponse<AlertSuppressionWindowDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutWithHttpInfo(IntegerIdentifier id,
+            string baseMonitorName,
+            AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSuppressionWindowDtoJSendSuccess</returns>
+    AlertSuppressionWindowDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost(
+        string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSuppressionWindowDtoJSendSuccess</returns>
+    ApiResponse<AlertSuppressionWindowDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostWithHttpInfo(string baseMonitorName,
+            AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSuppressionTargetDtoIEnumerableJSendSuccess</returns>
+    AlertSuppressionTargetDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet(
+        string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSuppressionTargetDtoIEnumerableJSendSuccess</returns>
+    ApiResponse<AlertSuppressionTargetDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetWithHttpInfo(string baseMonitorName,
+            int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAlertSuppressionWindowsApiApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="names"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
+    Task<AlertSuppressionWindowDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetAsync(string baseMonitorName,
+            List<string>? names = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="names"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoIEnumerableJSendSuccess)</returns>
+    Task<ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetWithHttpInfoAsync(string baseMonitorName,
+            List<string>? names = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
+    Task<AlertSuppressionWindowDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetAsync(string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoIEnumerableJSendSuccess)</returns>
+    Task<ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetWithHttpInfoAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of BooleanJSendSuccess</returns>
+    Task<BooleanJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteAsync(IntegerIdentifier id,
+        string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (BooleanJSendSuccess)</returns>
+    Task<ApiResponse<BooleanJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteWithHttpInfoAsync(IntegerIdentifier id,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSuppressionWindowDtoJSendSuccess</returns>
+    Task<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetAsync(
+        IntegerIdentifier id, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoJSendSuccess)</returns>
+    Task<ApiResponse<AlertSuppressionWindowDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetWithHttpInfoAsync(IntegerIdentifier id,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSuppressionWindowDtoJSendSuccess</returns>
+    Task<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutAsync(
+        IntegerIdentifier id, string baseMonitorName,
+        AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoJSendSuccess)</returns>
+    Task<ApiResponse<AlertSuppressionWindowDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutWithHttpInfoAsync(IntegerIdentifier id,
+            string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSuppressionWindowDtoJSendSuccess</returns>
+    Task<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostAsync(
+        string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoJSendSuccess)</returns>
+    Task<ApiResponse<AlertSuppressionWindowDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostWithHttpInfoAsync(string baseMonitorName,
+            AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSuppressionTargetDtoIEnumerableJSendSuccess</returns>
+    Task<AlertSuppressionTargetDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetAsync(string baseMonitorName,
+            int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSuppressionTargetDtoIEnumerableJSendSuccess)</returns>
+    Task<ApiResponse<AlertSuppressionTargetDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetWithHttpInfoAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAlertSuppressionWindowsApiApi : IAlertSuppressionWindowsApiApiSync,
+    IAlertSuppressionWindowsApiApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class AlertSuppressionWindowsApiApi : IAlertSuppressionWindowsApiApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="AlertSuppressionWindowsApiApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public AlertSuppressionWindowsApiApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="names"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
-        AlertSuppressionWindowDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet(string baseMonitorName, List<string>? names = default(List<string>?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="names"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
-        ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetWithHttpInfo(string baseMonitorName, List<string>? names = default(List<string>?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
-        AlertSuppressionWindowDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet(string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
-        ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetWithHttpInfo(string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>BooleanJSendSuccess</returns>
-        BooleanJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of BooleanJSendSuccess</returns>
-        ApiResponse<BooleanJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteWithHttpInfo(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSuppressionWindowDtoJSendSuccess</returns>
-        AlertSuppressionWindowDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSuppressionWindowDtoJSendSuccess</returns>
-        ApiResponse<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetWithHttpInfo(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSuppressionWindowDtoJSendSuccess</returns>
-        AlertSuppressionWindowDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut(IntegerIdentifier id, string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSuppressionWindowDtoJSendSuccess</returns>
-        ApiResponse<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutWithHttpInfo(IntegerIdentifier id, string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSuppressionWindowDtoJSendSuccess</returns>
-        AlertSuppressionWindowDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost(string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSuppressionWindowDtoJSendSuccess</returns>
-        ApiResponse<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostWithHttpInfo(string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSuppressionTargetDtoIEnumerableJSendSuccess</returns>
-        AlertSuppressionTargetDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet(string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSuppressionTargetDtoIEnumerableJSendSuccess</returns>
-        ApiResponse<AlertSuppressionTargetDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetWithHttpInfo(string baseMonitorName, int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AlertSuppressionWindowsApiApi" /> class.
     /// </summary>
-    public interface IAlertSuppressionWindowsApiApiAsync : IApiAccessor
+    /// <returns></returns>
+    public AlertSuppressionWindowsApiApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="names"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
-        System.Threading.Tasks.Task<AlertSuppressionWindowDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetAsync(string baseMonitorName, List<string>? names = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="names"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoIEnumerableJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetWithHttpInfoAsync(string baseMonitorName, List<string>? names = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
-        System.Threading.Tasks.Task<AlertSuppressionWindowDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoIEnumerableJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of BooleanJSendSuccess</returns>
-        System.Threading.Tasks.Task<BooleanJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteAsync(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (BooleanJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BooleanJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteWithHttpInfoAsync(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSuppressionWindowDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetAsync(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AlertSuppressionWindowDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetWithHttpInfoAsync(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSuppressionWindowDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutAsync(IntegerIdentifier id, string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AlertSuppressionWindowDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutWithHttpInfoAsync(IntegerIdentifier id, string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSuppressionWindowDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostAsync(string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AlertSuppressionWindowDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostWithHttpInfoAsync(string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSuppressionTargetDtoIEnumerableJSendSuccess</returns>
-        System.Threading.Tasks.Task<AlertSuppressionTargetDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSuppressionTargetDtoIEnumerableJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AlertSuppressionTargetDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AlertSuppressionWindowsApiApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IAlertSuppressionWindowsApiApi : IAlertSuppressionWindowsApiApiSync, IAlertSuppressionWindowsApiApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public AlertSuppressionWindowsApiApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AlertSuppressionWindowsApiApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class AlertSuppressionWindowsApiApi : IAlertSuppressionWindowsApiApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public AlertSuppressionWindowsApiApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertSuppressionWindowsApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AlertSuppressionWindowsApiApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="names"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
+    public AlertSuppressionWindowDtoIEnumerableJSendSuccess
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet(string baseMonitorName,
+            List<string>? names = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetWithHttpInfo(baseMonitorName, names);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="names"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
+    public ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetWithHttpInfo(string baseMonitorName,
+            List<string>? names = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (names != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("multi", "names", names));
+
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<AlertSuppressionWindowDtoIEnumerableJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/ByNames", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertSuppressionWindowsApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AlertSuppressionWindowsApiApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="names"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
+    public async Task<AlertSuppressionWindowDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetAsync(string baseMonitorName,
+            List<string>? names = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetWithHttpInfoAsync(baseMonitorName,
+                names, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="names"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoIEnumerableJSendSuccess)</returns>
+    public async Task<ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetWithHttpInfoAsync(string baseMonitorName,
+            List<string>? names = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (names != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("multi", "names", names));
+
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<AlertSuppressionWindowDtoIEnumerableJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/ByNames", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertSuppressionWindowsApiApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public AlertSuppressionWindowsApiApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
+    public AlertSuppressionWindowDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet(
+        string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse = ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetWithHttpInfo(baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
+    public ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetWithHttpInfo(string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<AlertSuppressionWindowDtoIEnumerableJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/alertsuppressionwindows", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertSuppressionWindowsApiApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public AlertSuppressionWindowsApiApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
+    public async Task<AlertSuppressionWindowDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetAsync(string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetWithHttpInfoAsync(baseMonitorName,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoIEnumerableJSendSuccess)</returns>
+    public async Task<ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetWithHttpInfoAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<AlertSuppressionWindowDtoIEnumerableJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/alertsuppressionwindows", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>BooleanJSendSuccess</returns>
+    public BooleanJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete(IntegerIdentifier id,
+        string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteWithHttpInfo(id, baseMonitorName);
+        return localVarResponse.Data;
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of BooleanJSendSuccess</returns>
+    public ApiResponse<BooleanJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteWithHttpInfo(
+        IntegerIdentifier id, string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'id' is set
+        if (id == null)
+            throw new ApiException(400,
+                "Missing required parameter 'id' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            return this.Configuration.BasePath;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("id", ClientUtils.ParameterToString(id)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Delete<BooleanJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/{id}", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of BooleanJSendSuccess</returns>
+    public async Task<BooleanJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteAsync(
+        IntegerIdentifier id, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteWithHttpInfoAsync(id, baseMonitorName,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (BooleanJSendSuccess)</returns>
+    public async Task<ApiResponse<BooleanJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteWithHttpInfoAsync(IntegerIdentifier id,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'id' is set
+        if (id == null)
+            throw new ApiException(400,
+                "Missing required parameter 'id' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("id", ClientUtils.ParameterToString(id)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .DeleteAsync<BooleanJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/{id}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="names"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
-        public AlertSuppressionWindowDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet(string baseMonitorName, List<string>? names = default(List<string>?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSuppressionWindowDtoJSendSuccess</returns>
+    public AlertSuppressionWindowDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet(
+        IntegerIdentifier id, string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetWithHttpInfo(id, baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSuppressionWindowDtoJSendSuccess</returns>
+    public ApiResponse<AlertSuppressionWindowDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetWithHttpInfo(IntegerIdentifier id,
+            string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'id' is set
+        if (id == null)
+            throw new ApiException(400,
+                "Missing required parameter 'id' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetWithHttpInfo(baseMonitorName, names);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("id", ClientUtils.ParameterToString(id)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<AlertSuppressionWindowDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/{id}", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="names"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
-        public cli.Client.ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetWithHttpInfo(string baseMonitorName, List<string>? names = default(List<string>?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSuppressionWindowDtoJSendSuccess</returns>
+    public async Task<AlertSuppressionWindowDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetAsync(IntegerIdentifier id, string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetWithHttpInfoAsync(id, baseMonitorName,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<AlertSuppressionWindowDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetWithHttpInfoAsync(IntegerIdentifier id,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'id' is set
+        if (id == null)
+            throw new ApiException(400,
+                "Missing required parameter 'id' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet");
-            }
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        localVarRequestOptions.PathParameters.Add("id", ClientUtils.ParameterToString(id)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (names != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "names", names));
-            }
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<AlertSuppressionWindowDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/ByNames", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<AlertSuppressionWindowDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/{id}", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="names"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<AlertSuppressionWindowDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetAsync(string baseMonitorName, List<string>? names = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSuppressionWindowDtoJSendSuccess</returns>
+    public AlertSuppressionWindowDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut(
+        IntegerIdentifier id, string baseMonitorName,
+        AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutWithHttpInfo(id, baseMonitorName,
+                alertSuppressionWindowEditDto);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSuppressionWindowDtoJSendSuccess</returns>
+    public ApiResponse<AlertSuppressionWindowDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutWithHttpInfo(IntegerIdentifier id,
+            string baseMonitorName,
+            AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'id' is set
+        if (id == null)
+            throw new ApiException(400,
+                "Missing required parameter 'id' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            cli.Client.ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetWithHttpInfoAsync(baseMonitorName, names, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("id", ClientUtils.ParameterToString(id)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = alertSuppressionWindowEditDto;
+
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Put<AlertSuppressionWindowDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/{id}", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="names"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoIEnumerableJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGetWithHttpInfoAsync(string baseMonitorName, List<string>? names = default(List<string>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSuppressionWindowDtoJSendSuccess</returns>
+    public async Task<AlertSuppressionWindowDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutAsync(IntegerIdentifier id, string baseMonitorName,
+            AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutWithHttpInfoAsync(id, baseMonitorName,
+                alertSuppressionWindowEditDto, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<AlertSuppressionWindowDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutWithHttpInfoAsync(IntegerIdentifier id,
+            string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'id' is set
+        if (id == null)
+            throw new ApiException(400,
+                "Missing required parameter 'id' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("id", ClientUtils.ParameterToString(id)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = alertSuppressionWindowEditDto;
+
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PutAsync<AlertSuppressionWindowDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/{id}", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
 
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (names != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "names", names));
-            }
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<AlertSuppressionWindowDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/ByNames", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsByNamesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
-        public AlertSuppressionWindowDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet(string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSuppressionWindowDtoJSendSuccess</returns>
+    public AlertSuppressionWindowDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost(
+        string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default,
+        int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostWithHttpInfo(baseMonitorName,
+                alertSuppressionWindowEditDto);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSuppressionWindowDtoJSendSuccess</returns>
+    public ApiResponse<AlertSuppressionWindowDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostWithHttpInfo(string baseMonitorName,
+            AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            cli.Client.ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetWithHttpInfo(baseMonitorName);
-            return localVarResponse.Data;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = alertSuppressionWindowEditDto;
+
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<AlertSuppressionWindowDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/alertsuppressionwindows", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
-        public cli.Client.ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetWithHttpInfo(string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSuppressionWindowDtoJSendSuccess</returns>
+    public async Task<AlertSuppressionWindowDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostAsync(string baseMonitorName,
+            AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostWithHttpInfoAsync(baseMonitorName,
+                alertSuppressionWindowEditDto, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<AlertSuppressionWindowDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostWithHttpInfoAsync(string baseMonitorName,
+            AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = alertSuppressionWindowEditDto;
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<AlertSuppressionWindowDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PostAsync<AlertSuppressionWindowDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/alertsuppressionwindows", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSuppressionWindowDtoIEnumerableJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<AlertSuppressionWindowDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSuppressionTargetDtoIEnumerableJSendSuccess</returns>
+    public AlertSuppressionTargetDtoIEnumerableJSendSuccess
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet(string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetWithHttpInfo(baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSuppressionTargetDtoIEnumerableJSendSuccess</returns>
+    public ApiResponse<AlertSuppressionTargetDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetWithHttpInfo(string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetWithHttpInfoAsync(baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<AlertSuppressionTargetDtoIEnumerableJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/targets", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoIEnumerableJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AlertSuppressionWindowDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSuppressionTargetDtoIEnumerableJSendSuccess</returns>
+    public async Task<AlertSuppressionTargetDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetAsync(string baseMonitorName,
+            int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetWithHttpInfoAsync(baseMonitorName,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSuppressionTargetDtoIEnumerableJSendSuccess)</returns>
+    public async Task<ApiResponse<AlertSuppressionTargetDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetWithHttpInfoAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet");
-            }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<AlertSuppressionTargetDtoIEnumerableJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/targets", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
 
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<AlertSuppressionWindowDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>BooleanJSendSuccess</returns>
-        public BooleanJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<BooleanJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteWithHttpInfo(id, baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of BooleanJSendSuccess</returns>
-        public cli.Client.ApiResponse<BooleanJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteWithHttpInfo(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'id' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("id", cli.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Delete<BooleanJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/{id}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of BooleanJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<BooleanJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteAsync(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<BooleanJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteWithHttpInfoAsync(id, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (BooleanJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<BooleanJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDeleteWithHttpInfoAsync(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'id' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("id", cli.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<BooleanJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdDelete", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSuppressionWindowDtoJSendSuccess</returns>
-        public AlertSuppressionWindowDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<AlertSuppressionWindowDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetWithHttpInfo(id, baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSuppressionWindowDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetWithHttpInfo(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'id' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("id", cli.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<AlertSuppressionWindowDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/{id}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSuppressionWindowDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetAsync(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<AlertSuppressionWindowDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetWithHttpInfoAsync(id, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AlertSuppressionWindowDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGetWithHttpInfoAsync(IntegerIdentifier id, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'id' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("id", cli.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<AlertSuppressionWindowDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSuppressionWindowDtoJSendSuccess</returns>
-        public AlertSuppressionWindowDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut(IntegerIdentifier id, string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<AlertSuppressionWindowDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutWithHttpInfo(id, baseMonitorName, alertSuppressionWindowEditDto);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSuppressionWindowDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutWithHttpInfo(IntegerIdentifier id, string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'id' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("id", cli.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = alertSuppressionWindowEditDto;
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Put<AlertSuppressionWindowDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/{id}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSuppressionWindowDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutAsync(IntegerIdentifier id, string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<AlertSuppressionWindowDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutWithHttpInfoAsync(id, baseMonitorName, alertSuppressionWindowEditDto, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AlertSuppressionWindowDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPutWithHttpInfoAsync(IntegerIdentifier id, string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'id' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("id", cli.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = alertSuppressionWindowEditDto;
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<AlertSuppressionWindowDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsIdPut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSuppressionWindowDtoJSendSuccess</returns>
-        public AlertSuppressionWindowDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost(string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<AlertSuppressionWindowDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostWithHttpInfo(baseMonitorName, alertSuppressionWindowEditDto);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSuppressionWindowDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostWithHttpInfo(string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = alertSuppressionWindowEditDto;
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<AlertSuppressionWindowDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSuppressionWindowDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<AlertSuppressionWindowDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostAsync(string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<AlertSuppressionWindowDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostWithHttpInfoAsync(baseMonitorName, alertSuppressionWindowEditDto, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertSuppressionWindowEditDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSuppressionWindowDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AlertSuppressionWindowDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPostWithHttpInfoAsync(string baseMonitorName, AlertSuppressionWindowEditDto? alertSuppressionWindowEditDto = default(AlertSuppressionWindowEditDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = alertSuppressionWindowEditDto;
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<AlertSuppressionWindowDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSuppressionTargetDtoIEnumerableJSendSuccess</returns>
-        public AlertSuppressionTargetDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet(string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<AlertSuppressionTargetDtoIEnumerableJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetWithHttpInfo(baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSuppressionTargetDtoIEnumerableJSendSuccess</returns>
-        public cli.Client.ApiResponse<AlertSuppressionTargetDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetWithHttpInfo(string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<AlertSuppressionTargetDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/targets", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSuppressionTargetDtoIEnumerableJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<AlertSuppressionTargetDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<AlertSuppressionTargetDtoIEnumerableJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetWithHttpInfoAsync(baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSuppressionTargetDtoIEnumerableJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AlertSuppressionTargetDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertSuppressionWindowsApiApi->ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AlertSuppressionWindowsApiApi.ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<AlertSuppressionTargetDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/alertsuppressionwindows/targets", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsuppressionwindowsTargetsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

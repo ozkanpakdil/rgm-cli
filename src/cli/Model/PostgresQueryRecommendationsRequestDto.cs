@@ -9,101 +9,93 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     PostgresQueryRecommendationsRequestDto
+/// </summary>
+[DataContract(Name = "PostgresQueryRecommendationsRequestDto")]
+public class PostgresQueryRecommendationsRequestDto : IValidatableObject
 {
     /// <summary>
-    /// PostgresQueryRecommendationsRequestDto
+    ///     Initializes a new instance of the <see cref="PostgresQueryRecommendationsRequestDto" /> class.
     /// </summary>
-    [DataContract(Name = "PostgresQueryRecommendationsRequestDto")]
-    public partial class PostgresQueryRecommendationsRequestDto : IValidatableObject
+    /// <param name="cir">cir.</param>
+    /// <param name="startDate">startDate.</param>
+    /// <param name="endDate">endDate.</param>
+    /// <param name="queryRecommendationKeys">queryRecommendationKeys.</param>
+    public PostgresQueryRecommendationsRequestDto(PostgresInstanceChannelInstanceRef cir = default,
+        DateTime startDate = default, DateTime endDate = default,
+        List<PostgresQueryPlanKeysDto> queryRecommendationKeys = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PostgresQueryRecommendationsRequestDto" /> class.
-        /// </summary>
-        /// <param name="cir">cir.</param>
-        /// <param name="startDate">startDate.</param>
-        /// <param name="endDate">endDate.</param>
-        /// <param name="queryRecommendationKeys">queryRecommendationKeys.</param>
-        public PostgresQueryRecommendationsRequestDto(PostgresInstanceChannelInstanceRef cir = default(PostgresInstanceChannelInstanceRef), DateTime startDate = default(DateTime), DateTime endDate = default(DateTime), List<PostgresQueryPlanKeysDto> queryRecommendationKeys = default(List<PostgresQueryPlanKeysDto>))
-        {
-            this.Cir = cir;
-            this.StartDate = startDate;
-            this.EndDate = endDate;
-            this.QueryRecommendationKeys = queryRecommendationKeys;
-        }
-
-        /// <summary>
-        /// Gets or Sets Cir
-        /// </summary>
-        [DataMember(Name = "cir", EmitDefaultValue = false)]
-        public PostgresInstanceChannelInstanceRef Cir { get; set; }
-
-        /// <summary>
-        /// Gets or Sets StartDate
-        /// </summary>
-        [DataMember(Name = "startDate", EmitDefaultValue = false)]
-        public DateTime StartDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EndDate
-        /// </summary>
-        [DataMember(Name = "endDate", EmitDefaultValue = false)]
-        public DateTime EndDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets QueryRecommendationKeys
-        /// </summary>
-        [DataMember(Name = "queryRecommendationKeys", EmitDefaultValue = true)]
-        public List<PostgresQueryPlanKeysDto> QueryRecommendationKeys { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class PostgresQueryRecommendationsRequestDto {\n");
-            sb.Append("  Cir: ").Append(Cir).Append("\n");
-            sb.Append("  StartDate: ").Append(StartDate).Append("\n");
-            sb.Append("  EndDate: ").Append(EndDate).Append("\n");
-            sb.Append("  QueryRecommendationKeys: ").Append(QueryRecommendationKeys).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Cir = cir;
+        StartDate = startDate;
+        EndDate = endDate;
+        QueryRecommendationKeys = queryRecommendationKeys;
     }
 
+    /// <summary>
+    ///     Gets or Sets Cir
+    /// </summary>
+    [DataMember(Name = "cir", EmitDefaultValue = false)]
+    public PostgresInstanceChannelInstanceRef Cir { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets StartDate
+    /// </summary>
+    [DataMember(Name = "startDate", EmitDefaultValue = false)]
+    public DateTime StartDate { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EndDate
+    /// </summary>
+    [DataMember(Name = "endDate", EmitDefaultValue = false)]
+    public DateTime EndDate { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets QueryRecommendationKeys
+    /// </summary>
+    [DataMember(Name = "queryRecommendationKeys", EmitDefaultValue = true)]
+    public List<PostgresQueryPlanKeysDto> QueryRecommendationKeys { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class PostgresQueryRecommendationsRequestDto {\n");
+        sb.Append("  Cir: ").Append(Cir).Append("\n");
+        sb.Append("  StartDate: ").Append(StartDate).Append("\n");
+        sb.Append("  EndDate: ").Append(EndDate).Append("\n");
+        sb.Append("  QueryRecommendationKeys: ").Append(QueryRecommendationKeys).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

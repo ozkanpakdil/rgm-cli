@@ -8,111 +8,101 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     WebhookTestRequestCommandDto
+/// </summary>
+[DataContract(Name = "WebhookTestRequestCommandDto")]
+public class WebhookTestRequestCommandDto : IValidatableObject
 {
     /// <summary>
-    /// WebhookTestRequestCommandDto
+    ///     Initializes a new instance of the <see cref="WebhookTestRequestCommandDto" /> class.
     /// </summary>
-    [DataContract(Name = "WebhookTestRequestCommandDto")]
-    public partial class WebhookTestRequestCommandDto : IValidatableObject
+    /// <param name="url">url.</param>
+    /// <param name="integrationType">integrationType.</param>
+    /// <param name="template">template.</param>
+    /// <param name="headers">headers.</param>
+    /// <param name="ignoreSslErrors">ignoreSslErrors.</param>
+    public WebhookTestRequestCommandDto(string url = default, WebhookIntegrationTypeDto? integrationType = default,
+        string template = default, string headers = default, bool ignoreSslErrors = default)
     {
-
-        /// <summary>
-        /// Gets or Sets IntegrationType
-        /// </summary>
-        [DataMember(Name = "integrationType", EmitDefaultValue = false)]
-        public WebhookIntegrationTypeDto? IntegrationType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookTestRequestCommandDto" /> class.
-        /// </summary>
-        /// <param name="url">url.</param>
-        /// <param name="integrationType">integrationType.</param>
-        /// <param name="template">template.</param>
-        /// <param name="headers">headers.</param>
-        /// <param name="ignoreSslErrors">ignoreSslErrors.</param>
-        public WebhookTestRequestCommandDto(string url = default(string), WebhookIntegrationTypeDto? integrationType = default(WebhookIntegrationTypeDto?), string template = default(string), string headers = default(string), bool ignoreSslErrors = default(bool))
-        {
-            this.Url = url;
-            this.IntegrationType = integrationType;
-            this.Template = template;
-            this.Headers = headers;
-            this.IgnoreSslErrors = ignoreSslErrors;
-        }
-
-        /// <summary>
-        /// Gets or Sets Url
-        /// </summary>
-        [DataMember(Name = "url", EmitDefaultValue = false)]
-        public string Url { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Template
-        /// </summary>
-        [DataMember(Name = "template", EmitDefaultValue = true)]
-        public string Template { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Headers
-        /// </summary>
-        [DataMember(Name = "headers", EmitDefaultValue = true)]
-        public string Headers { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IgnoreSslErrors
-        /// </summary>
-        [DataMember(Name = "ignoreSslErrors", EmitDefaultValue = true)]
-        public bool IgnoreSslErrors { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class WebhookTestRequestCommandDto {\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  IntegrationType: ").Append(IntegrationType).Append("\n");
-            sb.Append("  Template: ").Append(Template).Append("\n");
-            sb.Append("  Headers: ").Append(Headers).Append("\n");
-            sb.Append("  IgnoreSslErrors: ").Append(IgnoreSslErrors).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Url = url;
+        IntegrationType = integrationType;
+        Template = template;
+        Headers = headers;
+        IgnoreSslErrors = ignoreSslErrors;
     }
 
+    /// <summary>
+    ///     Gets or Sets IntegrationType
+    /// </summary>
+    [DataMember(Name = "integrationType", EmitDefaultValue = false)]
+    public WebhookIntegrationTypeDto? IntegrationType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Url
+    /// </summary>
+    [DataMember(Name = "url", EmitDefaultValue = false)]
+    public string Url { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Template
+    /// </summary>
+    [DataMember(Name = "template", EmitDefaultValue = true)]
+    public string Template { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Headers
+    /// </summary>
+    [DataMember(Name = "headers", EmitDefaultValue = true)]
+    public string Headers { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IgnoreSslErrors
+    /// </summary>
+    [DataMember(Name = "ignoreSslErrors", EmitDefaultValue = true)]
+    public bool IgnoreSslErrors { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class WebhookTestRequestCommandDto {\n");
+        sb.Append("  Url: ").Append(Url).Append("\n");
+        sb.Append("  IntegrationType: ").Append(IntegrationType).Append("\n");
+        sb.Append("  Template: ").Append(Template).Append("\n");
+        sb.Append("  Headers: ").Append(Headers).Append("\n");
+        sb.Append("  IgnoreSslErrors: ").Append(IgnoreSslErrors).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

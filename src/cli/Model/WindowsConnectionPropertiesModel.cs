@@ -8,93 +8,84 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     WindowsConnectionPropertiesModel
+/// </summary>
+[DataContract(Name = "WindowsConnectionPropertiesModel")]
+public class WindowsConnectionPropertiesModel : IValidatableObject
 {
     /// <summary>
-    /// WindowsConnectionPropertiesModel
+    ///     Initializes a new instance of the <see cref="WindowsConnectionPropertiesModel" /> class.
     /// </summary>
-    [DataContract(Name = "WindowsConnectionPropertiesModel")]
-    public partial class WindowsConnectionPropertiesModel : IValidatableObject
+    /// <param name="wmiConnectionMethod">wmiConnectionMethod.</param>
+    /// <param name="autoDetectClusterName">autoDetectClusterName.</param>
+    /// <param name="encodePortInServicePrincipalNameForWinRM">encodePortInServicePrincipalNameForWinRM.</param>
+    public WindowsConnectionPropertiesModel(WmiConnectionMethod? wmiConnectionMethod = default,
+        bool autoDetectClusterName = default, bool encodePortInServicePrincipalNameForWinRM = default)
     {
-
-        /// <summary>
-        /// Gets or Sets WmiConnectionMethod
-        /// </summary>
-        [DataMember(Name = "wmiConnectionMethod", EmitDefaultValue = false)]
-        public WmiConnectionMethod? WmiConnectionMethod { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WindowsConnectionPropertiesModel" /> class.
-        /// </summary>
-        /// <param name="wmiConnectionMethod">wmiConnectionMethod.</param>
-        /// <param name="autoDetectClusterName">autoDetectClusterName.</param>
-        /// <param name="encodePortInServicePrincipalNameForWinRM">encodePortInServicePrincipalNameForWinRM.</param>
-        public WindowsConnectionPropertiesModel(WmiConnectionMethod? wmiConnectionMethod = default(WmiConnectionMethod?), bool autoDetectClusterName = default(bool), bool encodePortInServicePrincipalNameForWinRM = default(bool))
-        {
-            this.WmiConnectionMethod = wmiConnectionMethod;
-            this.AutoDetectClusterName = autoDetectClusterName;
-            this.EncodePortInServicePrincipalNameForWinRM = encodePortInServicePrincipalNameForWinRM;
-        }
-
-        /// <summary>
-        /// Gets or Sets AutoDetectClusterName
-        /// </summary>
-        [DataMember(Name = "autoDetectClusterName", EmitDefaultValue = true)]
-        public bool AutoDetectClusterName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EncodePortInServicePrincipalNameForWinRM
-        /// </summary>
-        [DataMember(Name = "encodePortInServicePrincipalNameForWinRM", EmitDefaultValue = true)]
-        public bool EncodePortInServicePrincipalNameForWinRM { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class WindowsConnectionPropertiesModel {\n");
-            sb.Append("  WmiConnectionMethod: ").Append(WmiConnectionMethod).Append("\n");
-            sb.Append("  AutoDetectClusterName: ").Append(AutoDetectClusterName).Append("\n");
-            sb.Append("  EncodePortInServicePrincipalNameForWinRM: ").Append(EncodePortInServicePrincipalNameForWinRM).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        WmiConnectionMethod = wmiConnectionMethod;
+        AutoDetectClusterName = autoDetectClusterName;
+        EncodePortInServicePrincipalNameForWinRM = encodePortInServicePrincipalNameForWinRM;
     }
 
+    /// <summary>
+    ///     Gets or Sets WmiConnectionMethod
+    /// </summary>
+    [DataMember(Name = "wmiConnectionMethod", EmitDefaultValue = false)]
+    public WmiConnectionMethod? WmiConnectionMethod { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AutoDetectClusterName
+    /// </summary>
+    [DataMember(Name = "autoDetectClusterName", EmitDefaultValue = true)]
+    public bool AutoDetectClusterName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EncodePortInServicePrincipalNameForWinRM
+    /// </summary>
+    [DataMember(Name = "encodePortInServicePrincipalNameForWinRM", EmitDefaultValue = true)]
+    public bool EncodePortInServicePrincipalNameForWinRM { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class WindowsConnectionPropertiesModel {\n");
+        sb.Append("  WmiConnectionMethod: ").Append(WmiConnectionMethod).Append("\n");
+        sb.Append("  AutoDetectClusterName: ").Append(AutoDetectClusterName).Append("\n");
+        sb.Append("  EncodePortInServicePrincipalNameForWinRM: ").Append(EncodePortInServicePrincipalNameForWinRM)
+            .Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

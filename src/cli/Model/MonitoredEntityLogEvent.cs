@@ -9,116 +9,108 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     MonitoredEntityLogEvent
+/// </summary>
+[DataContract(Name = "MonitoredEntityLogEvent")]
+public class MonitoredEntityLogEvent : IValidatableObject
 {
     /// <summary>
-    /// MonitoredEntityLogEvent
+    ///     Initializes a new instance of the <see cref="MonitoredEntityLogEvent" /> class.
     /// </summary>
-    [DataContract(Name = "MonitoredEntityLogEvent")]
-    public partial class MonitoredEntityLogEvent : IValidatableObject
+    [JsonConstructorAttribute]
+    protected MonitoredEntityLogEvent()
     {
-
-        /// <summary>
-        /// Gets or Sets Outcome
-        /// </summary>
-        [DataMember(Name = "outcome", IsRequired = true, EmitDefaultValue = true)]
-        public StatusCategoryDto Outcome { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MonitoredEntityLogEvent" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected MonitoredEntityLogEvent() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MonitoredEntityLogEvent" /> class.
-        /// </summary>
-        /// <param name="date">date (required).</param>
-        /// <param name="group">group (required).</param>
-        /// <param name="varEvent">varEvent (required).</param>
-        /// <param name="outcome">outcome (required).</param>
-        public MonitoredEntityLogEvent(DateTime date = default(DateTime), string group = default(string), string varEvent = default(string), StatusCategoryDto outcome = default(StatusCategoryDto))
-        {
-            this.Date = date;
-            // to ensure "group" is required (not null)
-            if (group == null)
-            {
-                throw new ArgumentNullException("group is a required property for MonitoredEntityLogEvent and cannot be null");
-            }
-            this.Group = group;
-            // to ensure "varEvent" is required (not null)
-            if (varEvent == null)
-            {
-                throw new ArgumentNullException("varEvent is a required property for MonitoredEntityLogEvent and cannot be null");
-            }
-            this.Event = varEvent;
-            this.Outcome = outcome;
-        }
-
-        /// <summary>
-        /// Gets or Sets Date
-        /// </summary>
-        [DataMember(Name = "date", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime Date { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Group
-        /// </summary>
-        [DataMember(Name = "group", IsRequired = true, EmitDefaultValue = true)]
-        public string Group { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Event
-        /// </summary>
-        [DataMember(Name = "event", IsRequired = true, EmitDefaultValue = true)]
-        public string Event { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class MonitoredEntityLogEvent {\n");
-            sb.Append("  Date: ").Append(Date).Append("\n");
-            sb.Append("  Group: ").Append(Group).Append("\n");
-            sb.Append("  Event: ").Append(Event).Append("\n");
-            sb.Append("  Outcome: ").Append(Outcome).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="MonitoredEntityLogEvent" /> class.
+    /// </summary>
+    /// <param name="date">date (required).</param>
+    /// <param name="group">group (required).</param>
+    /// <param name="varEvent">varEvent (required).</param>
+    /// <param name="outcome">outcome (required).</param>
+    public MonitoredEntityLogEvent(DateTime date = default, string group = default, string varEvent = default,
+        StatusCategoryDto outcome = default)
+    {
+        Date = date;
+        // to ensure "group" is required (not null)
+        if (group == null)
+            throw new ArgumentNullException(
+                "group is a required property for MonitoredEntityLogEvent and cannot be null");
+        Group = group;
+        // to ensure "varEvent" is required (not null)
+        if (varEvent == null)
+            throw new ArgumentNullException(
+                "varEvent is a required property for MonitoredEntityLogEvent and cannot be null");
+        Event = varEvent;
+        Outcome = outcome;
+    }
+
+    /// <summary>
+    ///     Gets or Sets Outcome
+    /// </summary>
+    [DataMember(Name = "outcome", IsRequired = true, EmitDefaultValue = true)]
+    public StatusCategoryDto Outcome { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Date
+    /// </summary>
+    [DataMember(Name = "date", IsRequired = true, EmitDefaultValue = true)]
+    public DateTime Date { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Group
+    /// </summary>
+    [DataMember(Name = "group", IsRequired = true, EmitDefaultValue = true)]
+    public string Group { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Event
+    /// </summary>
+    [DataMember(Name = "event", IsRequired = true, EmitDefaultValue = true)]
+    public string Event { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class MonitoredEntityLogEvent {\n");
+        sb.Append("  Date: ").Append(Date).Append("\n");
+        sb.Append("  Group: ").Append(Group).Append("\n");
+        sb.Append("  Event: ").Append(Event).Append("\n");
+        sb.Append("  Outcome: ").Append(Outcome).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

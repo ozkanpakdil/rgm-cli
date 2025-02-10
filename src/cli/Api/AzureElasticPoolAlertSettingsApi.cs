@@ -9,1439 +9,1553 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Collections;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAzureElasticPoolAlertSettingsApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAzureElasticPoolAlertSettingsApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSettingsDto</returns>
+    AlertSettingsDto
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSettingsDto</returns>
+    ApiResponse<AlertSettingsDto>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetWithHttpInfo(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAzureElasticPoolAlertSettingsApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSettingsDto</returns>
+    Task<AlertSettingsDto>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSettingsDto)</returns>
+    Task<ApiResponse<AlertSettingsDto>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAzureElasticPoolAlertSettingsApi : IAzureElasticPoolAlertSettingsApiSync,
+    IAzureElasticPoolAlertSettingsApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class AzureElasticPoolAlertSettingsApi : IAzureElasticPoolAlertSettingsApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="AzureElasticPoolAlertSettingsApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public AzureElasticPoolAlertSettingsApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSettingsDto</returns>
-        AlertSettingsDto ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSettingsDto</returns>
-        ApiResponse<AlertSettingsDto> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetWithHttpInfo(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AzureElasticPoolAlertSettingsApi" /> class.
     /// </summary>
-    public interface IAzureElasticPoolAlertSettingsApiAsync : IApiAccessor
+    /// <returns></returns>
+    public AzureElasticPoolAlertSettingsApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSettingsDto</returns>
-        System.Threading.Tasks.Task<AlertSettingsDto> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSettingsDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AlertSettingsDto>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AzureElasticPoolAlertSettingsApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IAzureElasticPoolAlertSettingsApi : IAzureElasticPoolAlertSettingsApiSync, IAzureElasticPoolAlertSettingsApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public AzureElasticPoolAlertSettingsApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AzureElasticPoolAlertSettingsApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class AzureElasticPoolAlertSettingsApi : IAzureElasticPoolAlertSettingsApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public AzureElasticPoolAlertSettingsApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureElasticPoolAlertSettingsApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AzureElasticPoolAlertSettingsApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(
+            serverName, elasticPoolName, alertTypeId, baseMonitorName, body);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'elasticPoolName' is set
+        if (elasticPoolName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("elasticPoolName",
+            ClientUtils.ParameterToString(elasticPoolName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation =
+            "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/comments",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureElasticPoolAlertSettingsApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AzureElasticPoolAlertSettingsApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(
+                    serverName, elasticPoolName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'elasticPoolName' is set
+        if (elasticPoolName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("elasticPoolName",
+            ClientUtils.ParameterToString(elasticPoolName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation =
+            "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/comments",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureElasticPoolAlertSettingsApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public AzureElasticPoolAlertSettingsApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSettingsDto</returns>
+    public AlertSettingsDto
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetWithHttpInfo(
+                serverName, elasticPoolName, alertTypeId, baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSettingsDto</returns>
+    public ApiResponse<AlertSettingsDto>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetWithHttpInfo(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'elasticPoolName' is set
+        if (elasticPoolName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("elasticPoolName",
+            ClientUtils.ParameterToString(elasticPoolName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<AlertSettingsDto>(
+            "/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureElasticPoolAlertSettingsApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public AzureElasticPoolAlertSettingsApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSettingsDto</returns>
+    public async Task<AlertSettingsDto>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await
+                ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(
+                        serverName, elasticPoolName, alertTypeId, baseMonitorName, operationIndex, cancellationToken)
+                    .ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSettingsDto)</returns>
+    public async Task<ApiResponse<AlertSettingsDto>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'elasticPoolName' is set
+        if (elasticPoolName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("elasticPoolName",
+            ClientUtils.ParameterToString(elasticPoolName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<AlertSettingsDto>(
+                "/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(
+            serverName, elasticPoolName, alertTypeId, baseMonitorName, alertNotificationSettingsDto);
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'elasticPoolName' is set
+        if (elasticPoolName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            return this.Configuration.BasePath;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("elasticPoolName",
+            ClientUtils.ParameterToString(elasticPoolName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = alertNotificationSettingsDto;
+
+        localVarRequestOptions.Operation =
+            "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/notificationsettings",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(
+                serverName, elasticPoolName, alertTypeId, baseMonitorName, alertNotificationSettingsDto, operationIndex,
+                cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'elasticPoolName' is set
+        if (elasticPoolName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("elasticPoolName",
+            ClientUtils.ParameterToString(elasticPoolName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = alertNotificationSettingsDto;
+
+        localVarRequestOptions.Operation =
+            "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/notificationsettings",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(
+            serverName, elasticPoolName, alertTypeId, baseMonitorName, requestBody);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'elasticPoolName' is set
+        if (elasticPoolName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(serverName, elasticPoolName, alertTypeId, baseMonitorName, body);
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("elasticPoolName",
+            ClientUtils.ParameterToString(elasticPoolName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = requestBody;
+
+        localVarRequestOptions.Operation =
+            "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/specificsettings",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(
+                serverName, elasticPoolName, alertTypeId, baseMonitorName, requestBody, operationIndex,
+                cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'elasticPoolName' is set
+        if (elasticPoolName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            // verify the required parameter 'elasticPoolName' is set
-            if (elasticPoolName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("elasticPoolName",
+            ClientUtils.ParameterToString(elasticPoolName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = requestBody;
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("elasticPoolName", cli.Client.ClientUtils.ParameterToString(elasticPoolName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/comments", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/specificsettings",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(
+            serverName, elasticPoolName, alertTypeId, baseMonitorName, body);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'elasticPoolName' is set
+        if (elasticPoolName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            await ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(serverName, elasticPoolName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken).ConfigureAwait(false);
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("elasticPoolName",
+            ClientUtils.ParameterToString(elasticPoolName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation =
+            "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/status",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(
+                    serverName, elasticPoolName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="elasticPoolName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(
+            string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'elasticPoolName' is set
+        if (elasticPoolName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            // verify the required parameter 'elasticPoolName' is set
-            if (elasticPoolName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("elasticPoolName",
+            ClientUtils.ParameterToString(elasticPoolName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
 
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("elasticPoolName", cli.Client.ClientUtils.ParameterToString(elasticPoolName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/comments", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/status",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdCommentsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSettingsDto</returns>
-        public AlertSettingsDto ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<AlertSettingsDto> localVarResponse = ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetWithHttpInfo(serverName, elasticPoolName, alertTypeId, baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSettingsDto</returns>
-        public cli.Client.ApiResponse<AlertSettingsDto> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetWithHttpInfo(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'elasticPoolName' is set
-            if (elasticPoolName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("elasticPoolName", cli.Client.ClientUtils.ParameterToString(elasticPoolName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<AlertSettingsDto>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSettingsDto</returns>
-        public async System.Threading.Tasks.Task<AlertSettingsDto> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<AlertSettingsDto> localVarResponse = await ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(serverName, elasticPoolName, alertTypeId, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSettingsDto)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AlertSettingsDto>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'elasticPoolName' is set
-            if (elasticPoolName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("elasticPoolName", cli.Client.ClientUtils.ParameterToString(elasticPoolName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<AlertSettingsDto>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(serverName, elasticPoolName, alertTypeId, baseMonitorName, alertNotificationSettingsDto);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'elasticPoolName' is set
-            if (elasticPoolName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("elasticPoolName", cli.Client.ClientUtils.ParameterToString(elasticPoolName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = alertNotificationSettingsDto;
-
-            localVarRequestOptions.Operation = "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/notificationsettings", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(serverName, elasticPoolName, alertTypeId, baseMonitorName, alertNotificationSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'elasticPoolName' is set
-            if (elasticPoolName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("elasticPoolName", cli.Client.ClientUtils.ParameterToString(elasticPoolName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = alertNotificationSettingsDto;
-
-            localVarRequestOptions.Operation = "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/notificationsettings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdNotificationsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(serverName, elasticPoolName, alertTypeId, baseMonitorName, requestBody);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0)
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'elasticPoolName' is set
-            if (elasticPoolName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("elasticPoolName", cli.Client.ClientUtils.ParameterToString(elasticPoolName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = requestBody;
-
-            localVarRequestOptions.Operation = "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/specificsettings", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(serverName, elasticPoolName, alertTypeId, baseMonitorName, requestBody, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'elasticPoolName' is set
-            if (elasticPoolName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("elasticPoolName", cli.Client.ClientUtils.ParameterToString(elasticPoolName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = requestBody;
-
-            localVarRequestOptions.Operation = "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/specificsettings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdSpecificsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(serverName, elasticPoolName, alertTypeId, baseMonitorName, body);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0)
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'elasticPoolName' is set
-            if (elasticPoolName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("elasticPoolName", cli.Client.ClientUtils.ParameterToString(elasticPoolName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/status", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(serverName, elasticPoolName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="elasticPoolName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(string serverName, string elasticPoolName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'elasticPoolName' is set
-            if (elasticPoolName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'elasticPoolName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureElasticPoolAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("elasticPoolName", cli.Client.ClientUtils.ParameterToString(elasticPoolName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "AzureElasticPoolAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/elasticpools/{elasticPoolName}/alertsettings/{alertTypeId}/status", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameElasticpoolsElasticPoolNameAlertsettingsAlertTypeIdStatusPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

@@ -9,679 +9,681 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IMySqlTopQueriesApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IMySqlTopQueriesApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="maxResults"> (optional)</param>
+    /// <param name="queryText"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>MySqlTopQueriesDtoJSendSuccess</returns>
+    MySqlTopQueriesDtoJSendSuccess ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet(
+        MySqlInstanceChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default,
+        DateTime? endTime = default, int? maxResults = default, string? queryText = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="maxResults"> (optional)</param>
+    /// <param name="queryText"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of MySqlTopQueriesDtoJSendSuccess</returns>
+    ApiResponse<MySqlTopQueriesDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetWithHttpInfo(MySqlInstanceChannelInstanceRef cir,
+            string baseMonitorName, DateTime? startTime = default, DateTime? endTime = default,
+            int? maxResults = default,
+            string? queryText = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess</returns>
+    MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess
+        ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet(MySqlInstanceTopQueriesChannelInstanceRef cir,
+            string baseMonitorName, DateTime? startTime = default, DateTime? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess</returns>
+    ApiResponse<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetWithHttpInfo(
+            MySqlInstanceTopQueriesChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IMySqlTopQueriesApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="maxResults"> (optional)</param>
+    /// <param name="queryText"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of MySqlTopQueriesDtoJSendSuccess</returns>
+    Task<MySqlTopQueriesDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetAsync(
+        MySqlInstanceChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default,
+        DateTime? endTime = default, int? maxResults = default, string? queryText = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="maxResults"> (optional)</param>
+    /// <param name="queryText"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (MySqlTopQueriesDtoJSendSuccess)</returns>
+    Task<ApiResponse<MySqlTopQueriesDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetWithHttpInfoAsync(
+            MySqlInstanceChannelInstanceRef cir,
+            string baseMonitorName, DateTime? startTime = default, DateTime? endTime = default,
+            int? maxResults = default,
+            string? queryText = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess</returns>
+    Task<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetAsync(
+            MySqlInstanceTopQueriesChannelInstanceRef cir,
+            string baseMonitorName, DateTime? startTime = default, DateTime? endTime = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess)</returns>
+    Task<ApiResponse<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetWithHttpInfoAsync(
+            MySqlInstanceTopQueriesChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IMySqlTopQueriesApi : IMySqlTopQueriesApiSync, IMySqlTopQueriesApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class MySqlTopQueriesApi : IMySqlTopQueriesApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="MySqlTopQueriesApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public MySqlTopQueriesApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="maxResults"> (optional)</param>
-        /// <param name="queryText"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>MySqlTopQueriesDtoJSendSuccess</returns>
-        MySqlTopQueriesDtoJSendSuccess ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet(MySqlInstanceChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int? maxResults = default(int?), string? queryText = default(string?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="maxResults"> (optional)</param>
-        /// <param name="queryText"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of MySqlTopQueriesDtoJSendSuccess</returns>
-        ApiResponse<MySqlTopQueriesDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetWithHttpInfo(MySqlInstanceChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int? maxResults = default(int?), string? queryText = default(string?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess</returns>
-        MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet(MySqlInstanceTopQueriesChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess</returns>
-        ApiResponse<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetWithHttpInfo(MySqlInstanceTopQueriesChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="MySqlTopQueriesApi" /> class.
     /// </summary>
-    public interface IMySqlTopQueriesApiAsync : IApiAccessor
+    /// <returns></returns>
+    public MySqlTopQueriesApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="maxResults"> (optional)</param>
-        /// <param name="queryText"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of MySqlTopQueriesDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<MySqlTopQueriesDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetAsync(MySqlInstanceChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int? maxResults = default(int?), string? queryText = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="maxResults"> (optional)</param>
-        /// <param name="queryText"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (MySqlTopQueriesDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MySqlTopQueriesDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetWithHttpInfoAsync(MySqlInstanceChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int? maxResults = default(int?), string? queryText = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetAsync(MySqlInstanceTopQueriesChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetWithHttpInfoAsync(MySqlInstanceTopQueriesChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="MySqlTopQueriesApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IMySqlTopQueriesApi : IMySqlTopQueriesApiSync, IMySqlTopQueriesApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public MySqlTopQueriesApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="MySqlTopQueriesApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class MySqlTopQueriesApi : IMySqlTopQueriesApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public MySqlTopQueriesApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MySqlTopQueriesApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public MySqlTopQueriesApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="maxResults"> (optional)</param>
+    /// <param name="queryText"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>MySqlTopQueriesDtoJSendSuccess</returns>
+    public MySqlTopQueriesDtoJSendSuccess ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet(
+        MySqlInstanceChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default,
+        DateTime? endTime = default, int? maxResults = default, string? queryText = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetWithHttpInfo(cir, baseMonitorName, startTime,
+                endTime, maxResults, queryText);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="maxResults"> (optional)</param>
+    /// <param name="queryText"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of MySqlTopQueriesDtoJSendSuccess</returns>
+    public ApiResponse<MySqlTopQueriesDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetWithHttpInfo(MySqlInstanceChannelInstanceRef cir,
+            string baseMonitorName, DateTime? startTime = default, DateTime? endTime = default,
+            int? maxResults = default,
+            string? queryText = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'cir' is set
+        if (cir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'cir' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("cir", ClientUtils.ParameterToString(cir)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+        if (maxResults != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "maxResults", maxResults));
+        if (queryText != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "queryText", queryText));
+
+        localVarRequestOptions.Operation =
+            "MySqlTopQueriesApi.ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<MySqlTopQueriesDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/mySqlInstances/{cir}/topqueries", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MySqlTopQueriesApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public MySqlTopQueriesApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="maxResults"> (optional)</param>
+    /// <param name="queryText"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of MySqlTopQueriesDtoJSendSuccess</returns>
+    public async Task<MySqlTopQueriesDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetAsync(
+        MySqlInstanceChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default,
+        DateTime? endTime = default, int? maxResults = default, string? queryText = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarResponse = await ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetWithHttpInfoAsync(cir,
+                baseMonitorName, startTime, endTime, maxResults, queryText, operationIndex, cancellationToken)
+            .ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="maxResults"> (optional)</param>
+    /// <param name="queryText"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (MySqlTopQueriesDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<MySqlTopQueriesDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetWithHttpInfoAsync(
+            MySqlInstanceChannelInstanceRef cir,
+            string baseMonitorName, DateTime? startTime = default, DateTime? endTime = default,
+            int? maxResults = default,
+            string? queryText = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'cir' is set
+        if (cir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'cir' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("cir", ClientUtils.ParameterToString(cir)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+        if (maxResults != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "maxResults", maxResults));
+        if (queryText != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "queryText", queryText));
+
+        localVarRequestOptions.Operation =
+            "MySqlTopQueriesApi.ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<MySqlTopQueriesDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/mySqlInstances/{cir}/topqueries", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MySqlTopQueriesApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public MySqlTopQueriesApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess</returns>
+    public MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess
+        ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet(MySqlInstanceTopQueriesChannelInstanceRef cir,
+            string baseMonitorName, DateTime? startTime = default, DateTime? endTime = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetWithHttpInfo(cir, baseMonitorName,
+                startTime, endTime);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess</returns>
+    public ApiResponse<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetWithHttpInfo(
+            MySqlInstanceTopQueriesChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'cir' is set
+        if (cir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'cir' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation =
+            "MySqlTopQueriesApi.ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/mySqlInstances/topqueries/history", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MySqlTopQueriesApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public MySqlTopQueriesApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess</returns>
+    public async Task<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetAsync(
+            MySqlInstanceTopQueriesChannelInstanceRef cir,
+            string baseMonitorName, DateTime? startTime = default, DateTime? endTime = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetWithHttpInfoAsync(cir,
+                baseMonitorName, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetWithHttpInfoAsync(
+            MySqlInstanceTopQueriesChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'cir' is set
+        if (cir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'cir' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation =
+            "MySqlTopQueriesApi.ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/mySqlInstances/topqueries/history", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
-
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
-
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
-        {
-            return this.Configuration.BasePath;
-        }
-
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
-
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
-        {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="maxResults"> (optional)</param>
-        /// <param name="queryText"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>MySqlTopQueriesDtoJSendSuccess</returns>
-        public MySqlTopQueriesDtoJSendSuccess ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet(MySqlInstanceChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int? maxResults = default(int?), string? queryText = default(string?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<MySqlTopQueriesDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetWithHttpInfo(cir, baseMonitorName, startTime, endTime, maxResults, queryText);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="maxResults"> (optional)</param>
-        /// <param name="queryText"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of MySqlTopQueriesDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<MySqlTopQueriesDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetWithHttpInfo(MySqlInstanceChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int? maxResults = default(int?), string? queryText = default(string?), int operationIndex = 0)
-        {
-            // verify the required parameter 'cir' is set
-            if (cir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'cir' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("cir", cli.Client.ClientUtils.ParameterToString(cir)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-            if (maxResults != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "maxResults", maxResults));
-            }
-            if (queryText != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "queryText", queryText));
-            }
-
-            localVarRequestOptions.Operation = "MySqlTopQueriesApi.ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<MySqlTopQueriesDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/mySqlInstances/{cir}/topqueries", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="maxResults"> (optional)</param>
-        /// <param name="queryText"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of MySqlTopQueriesDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<MySqlTopQueriesDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetAsync(MySqlInstanceChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int? maxResults = default(int?), string? queryText = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<MySqlTopQueriesDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetWithHttpInfoAsync(cir, baseMonitorName, startTime, endTime, maxResults, queryText, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="maxResults"> (optional)</param>
-        /// <param name="queryText"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (MySqlTopQueriesDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<MySqlTopQueriesDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGetWithHttpInfoAsync(MySqlInstanceChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int? maxResults = default(int?), string? queryText = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'cir' is set
-            if (cir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'cir' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("cir", cli.Client.ClientUtils.ParameterToString(cir)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-            if (maxResults != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "maxResults", maxResults));
-            }
-            if (queryText != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "queryText", queryText));
-            }
-
-            localVarRequestOptions.Operation = "MySqlTopQueriesApi.ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<MySqlTopQueriesDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/mySqlInstances/{cir}/topqueries", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameMySqlInstancesCirTopqueriesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess</returns>
-        public MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet(MySqlInstanceTopQueriesChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetWithHttpInfo(cir, baseMonitorName, startTime, endTime);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetWithHttpInfo(MySqlInstanceTopQueriesChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            // verify the required parameter 'cir' is set
-            if (cir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'cir' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "MySqlTopQueriesApi.ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/mySqlInstances/topqueries/history", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetAsync(MySqlInstanceTopQueriesChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetWithHttpInfoAsync(cir, baseMonitorName, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGetWithHttpInfoAsync(MySqlInstanceTopQueriesChannelInstanceRef cir, string baseMonitorName, DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'cir' is set
-            if (cir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'cir' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling MySqlTopQueriesApi->ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "MySqlTopQueriesApi.ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/mySqlInstances/topqueries/history", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameMySqlInstancesTopqueriesHistoryGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

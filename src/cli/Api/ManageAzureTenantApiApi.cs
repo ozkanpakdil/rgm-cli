@@ -9,973 +9,953 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IManageAzureTenantApiApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IManageAzureTenantApiApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AzureTenantDtoArrayJSendSuccess</returns>
+    AzureTenantDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsGet(string baseMonitorName,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AzureTenantDtoArrayJSendSuccess</returns>
+    ApiResponse<AzureTenantDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsGetWithHttpInfo(
+        string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>JSendSuccess</returns>
+    JSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete(Guid id, string baseMonitorName,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of JSendSuccess</returns>
+    ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteWithHttpInfo(Guid id,
+        string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>JSendSuccess</returns>
+    JSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsPost(string baseMonitorName,
+        CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of JSendSuccess</returns>
+    ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsPostWithHttpInfo(string baseMonitorName,
+        CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>CloudServiceTestConnectionResultDtoJSendSuccess</returns>
+    CloudServiceTestConnectionResultDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost(
+        string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of CloudServiceTestConnectionResultDtoJSendSuccess</returns>
+    ApiResponse<CloudServiceTestConnectionResultDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostWithHttpInfo(string baseMonitorName,
+            CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IManageAzureTenantApiApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AzureTenantDtoArrayJSendSuccess</returns>
+    Task<AzureTenantDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsGetAsync(string baseMonitorName,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AzureTenantDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<AzureTenantDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuretenantsGetWithHttpInfoAsync(
+        string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of JSendSuccess</returns>
+    Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteAsync(Guid id, string baseMonitorName,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (JSendSuccess)</returns>
+    Task<ApiResponse<JSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteWithHttpInfoAsync(Guid id,
+        string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of JSendSuccess</returns>
+    Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsPostAsync(string baseMonitorName,
+        CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (JSendSuccess)</returns>
+    Task<ApiResponse<JSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuretenantsPostWithHttpInfoAsync(
+        string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of CloudServiceTestConnectionResultDtoJSendSuccess</returns>
+    Task<CloudServiceTestConnectionResultDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostAsync(
+        string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CloudServiceTestConnectionResultDtoJSendSuccess)</returns>
+    Task<ApiResponse<CloudServiceTestConnectionResultDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostWithHttpInfoAsync(string baseMonitorName,
+            CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IManageAzureTenantApiApi : IManageAzureTenantApiApiSync, IManageAzureTenantApiApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class ManageAzureTenantApiApi : IManageAzureTenantApiApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ManageAzureTenantApiApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public ManageAzureTenantApiApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AzureTenantDtoArrayJSendSuccess</returns>
-        AzureTenantDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsGet(string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AzureTenantDtoArrayJSendSuccess</returns>
-        ApiResponse<AzureTenantDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsGetWithHttpInfo(string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>JSendSuccess</returns>
-        JSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete(Guid id, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of JSendSuccess</returns>
-        ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteWithHttpInfo(Guid id, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>JSendSuccess</returns>
-        JSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsPost(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of JSendSuccess</returns>
-        ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsPostWithHttpInfo(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>CloudServiceTestConnectionResultDtoJSendSuccess</returns>
-        CloudServiceTestConnectionResultDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of CloudServiceTestConnectionResultDtoJSendSuccess</returns>
-        ApiResponse<CloudServiceTestConnectionResultDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostWithHttpInfo(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="ManageAzureTenantApiApi" /> class.
     /// </summary>
-    public interface IManageAzureTenantApiApiAsync : IApiAccessor
+    /// <returns></returns>
+    public ManageAzureTenantApiApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AzureTenantDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<AzureTenantDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AzureTenantDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AzureTenantDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuretenantsGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of JSendSuccess</returns>
-        System.Threading.Tasks.Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteAsync(Guid id, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (JSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteWithHttpInfoAsync(Guid id, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of JSendSuccess</returns>
-        System.Threading.Tasks.Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsPostAsync(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (JSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuretenantsPostWithHttpInfoAsync(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CloudServiceTestConnectionResultDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<CloudServiceTestConnectionResultDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostAsync(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CloudServiceTestConnectionResultDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CloudServiceTestConnectionResultDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostWithHttpInfoAsync(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="ManageAzureTenantApiApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IManageAzureTenantApiApi : IManageAzureTenantApiApiSync, IManageAzureTenantApiApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public ManageAzureTenantApiApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="ManageAzureTenantApiApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class ManageAzureTenantApiApi : IManageAzureTenantApiApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public ManageAzureTenantApiApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManageAzureTenantApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public ManageAzureTenantApiApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AzureTenantDtoArrayJSendSuccess</returns>
+    public AzureTenantDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsGet(string baseMonitorName,
+        int operationIndex = 0)
+    {
+        var localVarResponse = ApiBasemonitorsBaseMonitorNameAzuretenantsGetWithHttpInfo(baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AzureTenantDtoArrayJSendSuccess</returns>
+    public ApiResponse<AzureTenantDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsGetWithHttpInfo(
+        string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<AzureTenantDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManageAzureTenantApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public ManageAzureTenantApiApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AzureTenantDtoArrayJSendSuccess</returns>
+    public async Task<AzureTenantDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsGetAsync(
+        string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAzuretenantsGetWithHttpInfoAsync(baseMonitorName, operationIndex,
+                cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AzureTenantDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<AzureTenantDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAzuretenantsGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<AzureTenantDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManageAzureTenantApiApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public ManageAzureTenantApiApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>JSendSuccess</returns>
+    public JSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete(Guid id, string baseMonitorName,
+        int operationIndex = 0)
+    {
+        var localVarResponse = ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteWithHttpInfo(id, baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of JSendSuccess</returns>
+    public ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteWithHttpInfo(Guid id,
+        string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("id", ClientUtils.ParameterToString(id)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Delete<JSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants/{id}",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManageAzureTenantApiApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public ManageAzureTenantApiApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of JSendSuccess</returns>
+    public async Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteAsync(Guid id,
+        string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteWithHttpInfoAsync(id, baseMonitorName,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (JSendSuccess)</returns>
+    public async Task<ApiResponse<JSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteWithHttpInfoAsync(
+        Guid id, string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("id", ClientUtils.ParameterToString(id)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .DeleteAsync<JSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants/{id}", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>JSendSuccess</returns>
+    public JSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsPost(string baseMonitorName,
+        CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAzuretenantsPostWithHttpInfo(baseMonitorName, createAzureTenantDto);
+        return localVarResponse.Data;
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of JSendSuccess</returns>
+    public ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsPostWithHttpInfo(string baseMonitorName,
+        CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsPost");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            return this.Configuration.BasePath;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = createAzureTenantDto;
+
+        localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<JSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsPost", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of JSendSuccess</returns>
+    public async Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsPostAsync(string baseMonitorName,
+        CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAzuretenantsPostWithHttpInfoAsync(baseMonitorName, createAzureTenantDto,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (JSendSuccess)</returns>
+    public async Task<ApiResponse<JSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuretenantsPostWithHttpInfoAsync(
+        string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsPost");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = createAzureTenantDto;
+
+        localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PostAsync<JSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsPost", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AzureTenantDtoArrayJSendSuccess</returns>
-        public AzureTenantDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsGet(string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>CloudServiceTestConnectionResultDtoJSendSuccess</returns>
+    public CloudServiceTestConnectionResultDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost(
+        string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostWithHttpInfo(baseMonitorName, createAzureTenantDto);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of CloudServiceTestConnectionResultDtoJSendSuccess</returns>
+    public ApiResponse<CloudServiceTestConnectionResultDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostWithHttpInfo(string baseMonitorName,
+            CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            cli.Client.ApiResponse<AzureTenantDtoArrayJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAzuretenantsGetWithHttpInfo(baseMonitorName);
-            return localVarResponse.Data;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = createAzureTenantDto;
+
+        localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<CloudServiceTestConnectionResultDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/azuretenants/test", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AzureTenantDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<AzureTenantDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsGetWithHttpInfo(string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of CloudServiceTestConnectionResultDtoJSendSuccess</returns>
+    public async Task<CloudServiceTestConnectionResultDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostAsync(string baseMonitorName,
+            CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostWithHttpInfoAsync(baseMonitorName,
+                createAzureTenantDto, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="createAzureTenantDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CloudServiceTestConnectionResultDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<CloudServiceTestConnectionResultDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostWithHttpInfoAsync(string baseMonitorName,
+            CreateAzureTenantDto? createAzureTenantDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsGet");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = createAzureTenantDto;
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<AzureTenantDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PostAsync<CloudServiceTestConnectionResultDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/azuretenants/test", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AzureTenantDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<AzureTenantDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<AzureTenantDtoArrayJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAzuretenantsGetWithHttpInfoAsync(baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AzureTenantDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AzureTenantDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuretenantsGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<AzureTenantDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>JSendSuccess</returns>
-        public JSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete(Guid id, string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<JSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteWithHttpInfo(id, baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of JSendSuccess</returns>
-        public cli.Client.ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteWithHttpInfo(Guid id, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("id", cli.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Delete<JSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants/{id}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of JSendSuccess</returns>
-        public async System.Threading.Tasks.Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteAsync(Guid id, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<JSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteWithHttpInfoAsync(id, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (JSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<JSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuretenantsIdDeleteWithHttpInfoAsync(Guid id, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("id", cli.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<JSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsIdDelete", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>JSendSuccess</returns>
-        public JSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsPost(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<JSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAzuretenantsPostWithHttpInfo(baseMonitorName, createAzureTenantDto);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of JSendSuccess</returns>
-        public cli.Client.ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsPostWithHttpInfo(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsPost");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = createAzureTenantDto;
-
-            localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<JSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of JSendSuccess</returns>
-        public async System.Threading.Tasks.Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsPostAsync(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<JSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAzuretenantsPostWithHttpInfoAsync(baseMonitorName, createAzureTenantDto, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (JSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<JSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuretenantsPostWithHttpInfoAsync(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsPost");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = createAzureTenantDto;
-
-            localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<JSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>CloudServiceTestConnectionResultDtoJSendSuccess</returns>
-        public CloudServiceTestConnectionResultDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<CloudServiceTestConnectionResultDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostWithHttpInfo(baseMonitorName, createAzureTenantDto);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of CloudServiceTestConnectionResultDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<CloudServiceTestConnectionResultDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostWithHttpInfo(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = createAzureTenantDto;
-
-            localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<CloudServiceTestConnectionResultDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants/test", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CloudServiceTestConnectionResultDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<CloudServiceTestConnectionResultDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostAsync(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<CloudServiceTestConnectionResultDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostWithHttpInfoAsync(baseMonitorName, createAzureTenantDto, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="createAzureTenantDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CloudServiceTestConnectionResultDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<CloudServiceTestConnectionResultDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuretenantsTestPostWithHttpInfoAsync(string baseMonitorName, CreateAzureTenantDto? createAzureTenantDto = default(CreateAzureTenantDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ManageAzureTenantApiApi->ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = createAzureTenantDto;
-
-            localVarRequestOptions.Operation = "ManageAzureTenantApiApi.ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CloudServiceTestConnectionResultDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/azuretenants/test", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuretenantsTestPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

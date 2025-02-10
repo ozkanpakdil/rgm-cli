@@ -8,177 +8,174 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Channels.Data;
+using RedGate.SqlMonitor.Common.Domain;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     JobsRowViewModel
+/// </summary>
+[DataContract(Name = "JobsRowViewModel")]
+public class JobsRowViewModel : IValidatableObject
 {
     /// <summary>
-    /// JobsRowViewModel
+    ///     Initializes a new instance of the <see cref="JobsRowViewModel" /> class.
     /// </summary>
-    [DataContract(Name = "JobsRowViewModel")]
-    public partial class JobsRowViewModel : IValidatableObject
+    /// <param name="baseMonitor">baseMonitor.</param>
+    /// <param name="job">job.</param>
+    /// <param name="clusterName">clusterName.</param>
+    /// <param name="entityType">entityType.</param>
+    public JobsRowViewModel(string baseMonitor = default, JobExecutionViewModel job = default,
+        string clusterName = default, EntityType? entityType = default)
     {
-
-        /// <summary>
-        /// Gets or Sets EntityType
-        /// </summary>
-        [DataMember(Name = "entityType", EmitDefaultValue = false)]
-        public EntityType? EntityType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JobsRowViewModel" /> class.
-        /// </summary>
-        /// <param name="baseMonitor">baseMonitor.</param>
-        /// <param name="job">job.</param>
-        /// <param name="clusterName">clusterName.</param>
-        /// <param name="entityType">entityType.</param>
-        public JobsRowViewModel(string baseMonitor = default(string), JobExecutionViewModel job = default(JobExecutionViewModel), string clusterName = default(string), EntityTypeEnum? entityType = default(EntityTypeEnum?))
-        {
-            this.BaseMonitor = baseMonitor;
-            this.Job = job;
-            this.ClusterName = clusterName;
-            this.EntityType = entityType;
-        }
-
-        /// <summary>
-        /// Gets or Sets BaseMonitor
-        /// </summary>
-        [DataMember(Name = "baseMonitor", EmitDefaultValue = true)]
-        public string BaseMonitor { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Cir
-        /// </summary>
-        [DataMember(Name = "cir", EmitDefaultValue = true)]
-        public ChannelInstanceRef Cir { get; private set; }
-
-        /// <summary>
-        /// Returns false as Cir should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeCir()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets EntityName
-        /// </summary>
-        [DataMember(Name = "entityName", EmitDefaultValue = true)]
-        public string EntityName { get; private set; }
-
-        /// <summary>
-        /// Returns false as EntityName should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeEntityName()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets Group
-        /// </summary>
-        [DataMember(Name = "group", EmitDefaultValue = true)]
-        public string Group { get; private set; }
-
-        /// <summary>
-        /// Returns false as Group should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeGroup()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets Job
-        /// </summary>
-        [DataMember(Name = "job", EmitDefaultValue = false)]
-        public JobExecutionViewModel Job { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ServerOverviewUrl
-        /// </summary>
-        [DataMember(Name = "serverOverviewUrl", EmitDefaultValue = true)]
-        public string ServerOverviewUrl { get; private set; }
-
-        /// <summary>
-        /// Returns false as ServerOverviewUrl should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeServerOverviewUrl()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets Tags
-        /// </summary>
-        [DataMember(Name = "tags", EmitDefaultValue = true)]
-        public List<TagDto> Tags { get; private set; }
-
-        /// <summary>
-        /// Returns false as Tags should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTags()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets ClusterName
-        /// </summary>
-        [DataMember(Name = "clusterName", EmitDefaultValue = true)]
-        public string ClusterName { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class JobsRowViewModel {\n");
-            sb.Append("  BaseMonitor: ").Append(BaseMonitor).Append("\n");
-            sb.Append("  Cir: ").Append(Cir).Append("\n");
-            sb.Append("  EntityName: ").Append(EntityName).Append("\n");
-            sb.Append("  Group: ").Append(Group).Append("\n");
-            sb.Append("  Job: ").Append(Job).Append("\n");
-            sb.Append("  ServerOverviewUrl: ").Append(ServerOverviewUrl).Append("\n");
-            sb.Append("  Tags: ").Append(Tags).Append("\n");
-            sb.Append("  ClusterName: ").Append(ClusterName).Append("\n");
-            sb.Append("  EntityType: ").Append(EntityType).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        BaseMonitor = baseMonitor;
+        Job = job;
+        ClusterName = clusterName;
+        EntityType = entityType;
     }
 
+    /// <summary>
+    ///     Gets or Sets EntityType
+    /// </summary>
+    [DataMember(Name = "entityType", EmitDefaultValue = false)]
+    public EntityType? EntityType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets BaseMonitor
+    /// </summary>
+    [DataMember(Name = "baseMonitor", EmitDefaultValue = true)]
+    public string BaseMonitor { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Cir
+    /// </summary>
+    [DataMember(Name = "cir", EmitDefaultValue = true)]
+    public ChannelInstanceRef Cir { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets EntityName
+    /// </summary>
+    [DataMember(Name = "entityName", EmitDefaultValue = true)]
+    public string EntityName { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets Group
+    /// </summary>
+    [DataMember(Name = "group", EmitDefaultValue = true)]
+    public string Group { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets Job
+    /// </summary>
+    [DataMember(Name = "job", EmitDefaultValue = false)]
+    public JobExecutionViewModel Job { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ServerOverviewUrl
+    /// </summary>
+    [DataMember(Name = "serverOverviewUrl", EmitDefaultValue = true)]
+    public string ServerOverviewUrl { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets Tags
+    /// </summary>
+    [DataMember(Name = "tags", EmitDefaultValue = true)]
+    public List<TagDto> Tags { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets ClusterName
+    /// </summary>
+    [DataMember(Name = "clusterName", EmitDefaultValue = true)]
+    public string ClusterName { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns false as Cir should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeCir()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as EntityName should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeEntityName()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as Group should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeGroup()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as ServerOverviewUrl should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeServerOverviewUrl()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as Tags should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeTags()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class JobsRowViewModel {\n");
+        sb.Append("  BaseMonitor: ").Append(BaseMonitor).Append("\n");
+        sb.Append("  Cir: ").Append(Cir).Append("\n");
+        sb.Append("  EntityName: ").Append(EntityName).Append("\n");
+        sb.Append("  Group: ").Append(Group).Append("\n");
+        sb.Append("  Job: ").Append(Job).Append("\n");
+        sb.Append("  ServerOverviewUrl: ").Append(ServerOverviewUrl).Append("\n");
+        sb.Append("  Tags: ").Append(Tags).Append("\n");
+        sb.Append("  ClusterName: ").Append(ClusterName).Append("\n");
+        sb.Append("  EntityType: ").Append(EntityType).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

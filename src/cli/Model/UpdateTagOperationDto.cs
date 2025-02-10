@@ -8,93 +8,84 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Channels.Data;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     UpdateTagOperationDto
+/// </summary>
+[DataContract(Name = "UpdateTagOperationDto")]
+public class UpdateTagOperationDto : IValidatableObject
 {
     /// <summary>
-    /// UpdateTagOperationDto
+    ///     Initializes a new instance of the <see cref="UpdateTagOperationDto" /> class.
     /// </summary>
-    [DataContract(Name = "UpdateTagOperationDto")]
-    public partial class UpdateTagOperationDto : IValidatableObject
+    /// <param name="targets">targets.</param>
+    /// <param name="tagsToAdd">tagsToAdd.</param>
+    /// <param name="tagsToRemove">tagsToRemove.</param>
+    public UpdateTagOperationDto(List<ChannelInstanceRef> targets = default, List<TagDto> tagsToAdd = default,
+        List<TagDto> tagsToRemove = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateTagOperationDto" /> class.
-        /// </summary>
-        /// <param name="targets">targets.</param>
-        /// <param name="tagsToAdd">tagsToAdd.</param>
-        /// <param name="tagsToRemove">tagsToRemove.</param>
-        public UpdateTagOperationDto(List<ChannelInstanceRef> targets = default(List<ChannelInstanceRef>), List<TagDto> tagsToAdd = default(List<TagDto>), List<TagDto> tagsToRemove = default(List<TagDto>))
-        {
-            this.Targets = targets;
-            this.TagsToAdd = tagsToAdd;
-            this.TagsToRemove = tagsToRemove;
-        }
-
-        /// <summary>
-        /// Gets or Sets Targets
-        /// </summary>
-        [DataMember(Name = "targets", EmitDefaultValue = false)]
-        public List<ChannelInstanceRef> Targets { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TagsToAdd
-        /// </summary>
-        [DataMember(Name = "tagsToAdd", EmitDefaultValue = false)]
-        public List<TagDto> TagsToAdd { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TagsToRemove
-        /// </summary>
-        [DataMember(Name = "tagsToRemove", EmitDefaultValue = false)]
-        public List<TagDto> TagsToRemove { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class UpdateTagOperationDto {\n");
-            sb.Append("  Targets: ").Append(Targets).Append("\n");
-            sb.Append("  TagsToAdd: ").Append(TagsToAdd).Append("\n");
-            sb.Append("  TagsToRemove: ").Append(TagsToRemove).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Targets = targets;
+        TagsToAdd = tagsToAdd;
+        TagsToRemove = tagsToRemove;
     }
 
+    /// <summary>
+    ///     Gets or Sets Targets
+    /// </summary>
+    [DataMember(Name = "targets", EmitDefaultValue = false)]
+    public List<ChannelInstanceRef> Targets { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TagsToAdd
+    /// </summary>
+    [DataMember(Name = "tagsToAdd", EmitDefaultValue = false)]
+    public List<TagDto> TagsToAdd { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TagsToRemove
+    /// </summary>
+    [DataMember(Name = "tagsToRemove", EmitDefaultValue = false)]
+    public List<TagDto> TagsToRemove { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class UpdateTagOperationDto {\n");
+        sb.Append("  Targets: ").Append(Targets).Append("\n");
+        sb.Append("  TagsToAdd: ").Append(TagsToAdd).Append("\n");
+        sb.Append("  TagsToRemove: ").Append(TagsToRemove).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

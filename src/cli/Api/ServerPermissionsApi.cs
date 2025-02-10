@@ -9,1011 +9,1006 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IServerPermissionsApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IServerPermissionsApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>OldServerPermissionsDtoJSendSuccess</returns>
+    OldServerPermissionsDtoJSendSuccess ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet(
+        SqlInstanceChannelInstanceRef cir, DateTime runDate, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of OldServerPermissionsDtoJSendSuccess</returns>
+    ApiResponse<OldServerPermissionsDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetWithHttpInfo(SqlInstanceChannelInstanceRef cir,
+            DateTime runDate, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess</returns>
+    OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess
+        ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet(DateTime runDate, string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess</returns>
+    ApiResponse<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetWithHttpInfo(DateTime runDate,
+            string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ServerRoleViewModelDtoArrayJSendSuccess</returns>
+    ServerRoleViewModelDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet(
+        SqlInstanceChannelInstanceRef cir, string baseMonitorName, long? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ServerRoleViewModelDtoArrayJSendSuccess</returns>
+    ApiResponse<ServerRoleViewModelDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetWithHttpInfo(SqlInstanceChannelInstanceRef cir,
+            string baseMonitorName, long? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiServerOverviewServerPermissionsReportGet(SqlInstanceChannelInstanceRef? cir = default,
+        long? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> ApiServerOverviewServerPermissionsReportGetWithHttpInfo(
+        SqlInstanceChannelInstanceRef? cir = default, long? endTime = default, int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IServerPermissionsApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of OldServerPermissionsDtoJSendSuccess</returns>
+    Task<OldServerPermissionsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetAsync(
+        SqlInstanceChannelInstanceRef cir, DateTime runDate, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (OldServerPermissionsDtoJSendSuccess)</returns>
+    Task<ApiResponse<OldServerPermissionsDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetWithHttpInfoAsync(
+            SqlInstanceChannelInstanceRef cir,
+            DateTime runDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess</returns>
+    Task<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetAsync(DateTime runDate, string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess)</returns>
+    Task<ApiResponse<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetWithHttpInfoAsync(DateTime runDate,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ServerRoleViewModelDtoArrayJSendSuccess</returns>
+    Task<ServerRoleViewModelDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetAsync(
+        SqlInstanceChannelInstanceRef cir, string baseMonitorName, long? endTime = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ServerRoleViewModelDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<ServerRoleViewModelDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetWithHttpInfoAsync(SqlInstanceChannelInstanceRef cir,
+            string baseMonitorName, long? endTime = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiServerOverviewServerPermissionsReportGetAsync(SqlInstanceChannelInstanceRef? cir = default,
+        long? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> ApiServerOverviewServerPermissionsReportGetWithHttpInfoAsync(
+        SqlInstanceChannelInstanceRef? cir = default, long? endTime = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IServerPermissionsApi : IServerPermissionsApiSync, IServerPermissionsApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class ServerPermissionsApi : IServerPermissionsApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ServerPermissionsApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public ServerPermissionsApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>OldServerPermissionsDtoJSendSuccess</returns>
-        OldServerPermissionsDtoJSendSuccess ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet(SqlInstanceChannelInstanceRef cir, DateTime runDate, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of OldServerPermissionsDtoJSendSuccess</returns>
-        ApiResponse<OldServerPermissionsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetWithHttpInfo(SqlInstanceChannelInstanceRef cir, DateTime runDate, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess</returns>
-        OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet(DateTime runDate, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess</returns>
-        ApiResponse<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetWithHttpInfo(DateTime runDate, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ServerRoleViewModelDtoArrayJSendSuccess</returns>
-        ServerRoleViewModelDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet(SqlInstanceChannelInstanceRef cir, string baseMonitorName, long? endTime = default(long?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ServerRoleViewModelDtoArrayJSendSuccess</returns>
-        ApiResponse<ServerRoleViewModelDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetWithHttpInfo(SqlInstanceChannelInstanceRef cir, string baseMonitorName, long? endTime = default(long?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiServerOverviewServerPermissionsReportGet(SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), long? endTime = default(long?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiServerOverviewServerPermissionsReportGetWithHttpInfo(SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), long? endTime = default(long?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="ServerPermissionsApi" /> class.
     /// </summary>
-    public interface IServerPermissionsApiAsync : IApiAccessor
+    /// <returns></returns>
+    public ServerPermissionsApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of OldServerPermissionsDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<OldServerPermissionsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetAsync(SqlInstanceChannelInstanceRef cir, DateTime runDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (OldServerPermissionsDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OldServerPermissionsDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetWithHttpInfoAsync(SqlInstanceChannelInstanceRef cir, DateTime runDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess</returns>
-        System.Threading.Tasks.Task<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetAsync(DateTime runDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetWithHttpInfoAsync(DateTime runDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ServerRoleViewModelDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<ServerRoleViewModelDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetAsync(SqlInstanceChannelInstanceRef cir, string baseMonitorName, long? endTime = default(long?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ServerRoleViewModelDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ServerRoleViewModelDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetWithHttpInfoAsync(SqlInstanceChannelInstanceRef cir, string baseMonitorName, long? endTime = default(long?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiServerOverviewServerPermissionsReportGetAsync(SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), long? endTime = default(long?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiServerOverviewServerPermissionsReportGetWithHttpInfoAsync(SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), long? endTime = default(long?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="ServerPermissionsApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IServerPermissionsApi : IServerPermissionsApiSync, IServerPermissionsApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public ServerPermissionsApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="ServerPermissionsApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class ServerPermissionsApi : IServerPermissionsApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public ServerPermissionsApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ServerPermissionsApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public ServerPermissionsApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>OldServerPermissionsDtoJSendSuccess</returns>
+    public OldServerPermissionsDtoJSendSuccess ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet(
+        SqlInstanceChannelInstanceRef cir, DateTime runDate, string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetWithHttpInfo(cir, runDate, baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of OldServerPermissionsDtoJSendSuccess</returns>
+    public ApiResponse<OldServerPermissionsDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetWithHttpInfo(SqlInstanceChannelInstanceRef cir,
+            DateTime runDate, string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'cir' is set
+        if (cir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'cir' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("cir", ClientUtils.ParameterToString(cir)); // path parameter
+        localVarRequestOptions.PathParameters.Add("runDate", ClientUtils.ParameterToString(runDate)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "ServerPermissionsApi.ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<OldServerPermissionsDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/server-permissions/v2/{cir}/{runDate}", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ServerPermissionsApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public ServerPermissionsApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of OldServerPermissionsDtoJSendSuccess</returns>
+    public async Task<OldServerPermissionsDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetAsync(SqlInstanceChannelInstanceRef cir,
+            DateTime runDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetWithHttpInfoAsync(cir, runDate,
+                baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (OldServerPermissionsDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<OldServerPermissionsDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetWithHttpInfoAsync(
+            SqlInstanceChannelInstanceRef cir,
+            DateTime runDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'cir' is set
+        if (cir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'cir' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("cir", ClientUtils.ParameterToString(cir)); // path parameter
+        localVarRequestOptions.PathParameters.Add("runDate", ClientUtils.ParameterToString(runDate)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "ServerPermissionsApi.ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<OldServerPermissionsDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/server-permissions/v2/{cir}/{runDate}", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ServerPermissionsApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public ServerPermissionsApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess</returns>
+    public OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess
+        ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet(DateTime runDate, string baseMonitorName,
+            int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetWithHttpInfo(runDate, baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess</returns>
+    public ApiResponse<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetWithHttpInfo(DateTime runDate,
+            string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("runDate", ClientUtils.ParameterToString(runDate)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "ServerPermissionsApi.ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/server-permissions/v2/{runDate}", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ServerPermissionsApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public ServerPermissionsApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess</returns>
+    public async Task<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetAsync(DateTime runDate, string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetWithHttpInfoAsync(runDate, baseMonitorName,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="runDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess)</returns>
+    public async Task<ApiResponse<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetWithHttpInfoAsync(DateTime runDate,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("runDate", ClientUtils.ParameterToString(runDate)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "ServerPermissionsApi.ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/server-permissions/v2/{runDate}", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ServerRoleViewModelDtoArrayJSendSuccess</returns>
+    public ServerRoleViewModelDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet(
+        SqlInstanceChannelInstanceRef cir, string baseMonitorName, long? endTime = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetWithHttpInfo(cir, baseMonitorName, endTime);
+        return localVarResponse.Data;
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ServerRoleViewModelDtoArrayJSendSuccess</returns>
+    public ApiResponse<ServerRoleViewModelDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetWithHttpInfo(SqlInstanceChannelInstanceRef cir,
+            string baseMonitorName, long? endTime = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'cir' is set
+        if (cir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'cir' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            return this.Configuration.BasePath;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("cir", ClientUtils.ParameterToString(cir)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation =
+            "ServerPermissionsApi.ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<ServerRoleViewModelDtoArrayJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/sqlinstances/{cir}/permissions", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ServerRoleViewModelDtoArrayJSendSuccess</returns>
+    public async Task<ServerRoleViewModelDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetAsync(SqlInstanceChannelInstanceRef cir,
+            string baseMonitorName, long? endTime = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetWithHttpInfoAsync(cir, baseMonitorName,
+                endTime, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ServerRoleViewModelDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<ServerRoleViewModelDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetWithHttpInfoAsync(SqlInstanceChannelInstanceRef cir,
+            string baseMonitorName, long? endTime = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'cir' is set
+        if (cir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'cir' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("cir", ClientUtils.ParameterToString(cir)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation =
+            "ServerPermissionsApi.ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<ServerRoleViewModelDtoArrayJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/sqlinstances/{cir}/permissions", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>OldServerPermissionsDtoJSendSuccess</returns>
-        public OldServerPermissionsDtoJSendSuccess ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet(SqlInstanceChannelInstanceRef cir, DateTime runDate, string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiServerOverviewServerPermissionsReportGet(SqlInstanceChannelInstanceRef? cir = default,
+        long? endTime = default, int operationIndex = 0)
+    {
+        ApiServerOverviewServerPermissionsReportGetWithHttpInfo(cir, endTime);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> ApiServerOverviewServerPermissionsReportGetWithHttpInfo(
+        SqlInstanceChannelInstanceRef? cir = default, long? endTime = default, int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<OldServerPermissionsDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetWithHttpInfo(cir, runDate, baseMonitorName);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation = "ServerPermissionsApi.ApiServerOverviewServerPermissionsReportGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<object>("/api/server-overview/server-permissions/report",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiServerOverviewServerPermissionsReportGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of OldServerPermissionsDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<OldServerPermissionsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetWithHttpInfo(SqlInstanceChannelInstanceRef cir, DateTime runDate, string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task ApiServerOverviewServerPermissionsReportGetAsync(SqlInstanceChannelInstanceRef? cir = default,
+        long? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await ApiServerOverviewServerPermissionsReportGetWithHttpInfoAsync(cir, endTime, operationIndex,
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>> ApiServerOverviewServerPermissionsReportGetWithHttpInfoAsync(
+        SqlInstanceChannelInstanceRef? cir = default, long? endTime = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'cir' is set
-            if (cir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'cir' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet");
-            }
+        };
 
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet");
-            }
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("cir", cli.Client.ClientUtils.ParameterToString(cir)); // path parameter
-            localVarRequestOptions.PathParameters.Add("runDate", cli.Client.ClientUtils.ParameterToString(runDate)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ServerPermissionsApi.ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation = "ServerPermissionsApi.ApiServerOverviewServerPermissionsReportGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<OldServerPermissionsDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/server-permissions/v2/{cir}/{runDate}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>("/api/server-overview/server-permissions/report", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiServerOverviewServerPermissionsReportGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of OldServerPermissionsDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<OldServerPermissionsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetAsync(SqlInstanceChannelInstanceRef cir, DateTime runDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<OldServerPermissionsDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetWithHttpInfoAsync(cir, runDate, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (OldServerPermissionsDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<OldServerPermissionsDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGetWithHttpInfoAsync(SqlInstanceChannelInstanceRef cir, DateTime runDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'cir' is set
-            if (cir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'cir' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("cir", cli.Client.ClientUtils.ParameterToString(cir)); // path parameter
-            localVarRequestOptions.PathParameters.Add("runDate", cli.Client.ClientUtils.ParameterToString(runDate)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ServerPermissionsApi.ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<OldServerPermissionsDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/server-permissions/v2/{cir}/{runDate}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameServerPermissionsV2CirRunDateGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess</returns>
-        public OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet(DateTime runDate, string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetWithHttpInfo(runDate, baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess</returns>
-        public cli.Client.ApiResponse<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetWithHttpInfo(DateTime runDate, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("runDate", cli.Client.ClientUtils.ParameterToString(runDate)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ServerPermissionsApi.ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/server-permissions/v2/{runDate}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetAsync(DateTime runDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetWithHttpInfoAsync(runDate, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="runDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGetWithHttpInfoAsync(DateTime runDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("runDate", cli.Client.ClientUtils.ParameterToString(runDate)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ServerPermissionsApi.ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<OldSummarizedServerPermissionsDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/server-permissions/v2/{runDate}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameServerPermissionsV2RunDateGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ServerRoleViewModelDtoArrayJSendSuccess</returns>
-        public ServerRoleViewModelDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet(SqlInstanceChannelInstanceRef cir, string baseMonitorName, long? endTime = default(long?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<ServerRoleViewModelDtoArrayJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetWithHttpInfo(cir, baseMonitorName, endTime);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ServerRoleViewModelDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<ServerRoleViewModelDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetWithHttpInfo(SqlInstanceChannelInstanceRef cir, string baseMonitorName, long? endTime = default(long?), int operationIndex = 0)
-        {
-            // verify the required parameter 'cir' is set
-            if (cir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'cir' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("cir", cli.Client.ClientUtils.ParameterToString(cir)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "ServerPermissionsApi.ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<ServerRoleViewModelDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/sqlinstances/{cir}/permissions", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ServerRoleViewModelDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<ServerRoleViewModelDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetAsync(SqlInstanceChannelInstanceRef cir, string baseMonitorName, long? endTime = default(long?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<ServerRoleViewModelDtoArrayJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetWithHttpInfoAsync(cir, baseMonitorName, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ServerRoleViewModelDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<ServerRoleViewModelDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGetWithHttpInfoAsync(SqlInstanceChannelInstanceRef cir, string baseMonitorName, long? endTime = default(long?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'cir' is set
-            if (cir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'cir' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ServerPermissionsApi->ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("cir", cli.Client.ClientUtils.ParameterToString(cir)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "ServerPermissionsApi.ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ServerRoleViewModelDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/sqlinstances/{cir}/permissions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameSqlinstancesCirPermissionsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiServerOverviewServerPermissionsReportGet(SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), long? endTime = default(long?), int operationIndex = 0)
-        {
-            ApiServerOverviewServerPermissionsReportGetWithHttpInfo(cir, endTime);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiServerOverviewServerPermissionsReportGetWithHttpInfo(SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), long? endTime = default(long?), int operationIndex = 0)
-        {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "ServerPermissionsApi.ApiServerOverviewServerPermissionsReportGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/server-overview/server-permissions/report", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiServerOverviewServerPermissionsReportGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiServerOverviewServerPermissionsReportGetAsync(SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), long? endTime = default(long?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiServerOverviewServerPermissionsReportGetWithHttpInfoAsync(cir, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiServerOverviewServerPermissionsReportGetWithHttpInfoAsync(SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), long? endTime = default(long?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "ServerPermissionsApi.ApiServerOverviewServerPermissionsReportGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/server-overview/server-permissions/report", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiServerOverviewServerPermissionsReportGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

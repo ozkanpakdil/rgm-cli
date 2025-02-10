@@ -8,93 +8,83 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     InternalServerError
+/// </summary>
+[DataContract(Name = "InternalServerError")]
+public class InternalServerError : IValidatableObject
 {
     /// <summary>
-    /// InternalServerError
+    ///     Initializes a new instance of the <see cref="InternalServerError" /> class.
     /// </summary>
-    [DataContract(Name = "InternalServerError")]
-    public partial class InternalServerError : IValidatableObject
+    /// <param name="exception">exception.</param>
+    /// <param name="data">data.</param>
+    /// <param name="isBaseMonitorError">isBaseMonitorError.</param>
+    public InternalServerError(string exception = default, Dictionary<string, object> data = default,
+        bool isBaseMonitorError = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InternalServerError" /> class.
-        /// </summary>
-        /// <param name="exception">exception.</param>
-        /// <param name="data">data.</param>
-        /// <param name="isBaseMonitorError">isBaseMonitorError.</param>
-        public InternalServerError(string exception = default(string), Dictionary<string, Object> data = default(Dictionary<string, Object>), bool isBaseMonitorError = default(bool))
-        {
-            this.Exception = exception;
-            this.Data = data;
-            this.IsBaseMonitorError = isBaseMonitorError;
-        }
-
-        /// <summary>
-        /// Gets or Sets Exception
-        /// </summary>
-        [DataMember(Name = "exception", EmitDefaultValue = false)]
-        public string Exception { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Data
-        /// </summary>
-        [DataMember(Name = "data", EmitDefaultValue = true)]
-        public Dictionary<string, Object> Data { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsBaseMonitorError
-        /// </summary>
-        [DataMember(Name = "isBaseMonitorError", EmitDefaultValue = true)]
-        public bool IsBaseMonitorError { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class InternalServerError {\n");
-            sb.Append("  Exception: ").Append(Exception).Append("\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  IsBaseMonitorError: ").Append(IsBaseMonitorError).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Exception = exception;
+        Data = data;
+        IsBaseMonitorError = isBaseMonitorError;
     }
 
+    /// <summary>
+    ///     Gets or Sets Exception
+    /// </summary>
+    [DataMember(Name = "exception", EmitDefaultValue = false)]
+    public string Exception { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Data
+    /// </summary>
+    [DataMember(Name = "data", EmitDefaultValue = true)]
+    public Dictionary<string, object> Data { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsBaseMonitorError
+    /// </summary>
+    [DataMember(Name = "isBaseMonitorError", EmitDefaultValue = true)]
+    public bool IsBaseMonitorError { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class InternalServerError {\n");
+        sb.Append("  Exception: ").Append(Exception).Append("\n");
+        sb.Append("  Data: ").Append(Data).Append("\n");
+        sb.Append("  IsBaseMonitorError: ").Append(IsBaseMonitorError).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -8,84 +8,73 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AlertSummaryViewModel
+/// </summary>
+[DataContract(Name = "AlertSummaryViewModel")]
+public class AlertSummaryViewModel : IValidatableObject
 {
     /// <summary>
-    /// AlertSummaryViewModel
+    ///     Initializes a new instance of the <see cref="AlertSummaryViewModel" /> class.
     /// </summary>
-    [DataContract(Name = "AlertSummaryViewModel")]
-    public partial class AlertSummaryViewModel : IValidatableObject
+    /// <param name="alertSummaries">alertSummaries.</param>
+    /// <param name="allAlertsUrl">allAlertsUrl.</param>
+    public AlertSummaryViewModel(List<AlertSummaryDto> alertSummaries = default, string allAlertsUrl = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertSummaryViewModel" /> class.
-        /// </summary>
-        /// <param name="alertSummaries">alertSummaries.</param>
-        /// <param name="allAlertsUrl">allAlertsUrl.</param>
-        public AlertSummaryViewModel(List<AlertSummaryDto> alertSummaries = default(List<AlertSummaryDto>), string allAlertsUrl = default(string))
-        {
-            this.AlertSummaries = alertSummaries;
-            this.AllAlertsUrl = allAlertsUrl;
-        }
-
-        /// <summary>
-        /// Gets or Sets AlertSummaries
-        /// </summary>
-        [DataMember(Name = "alertSummaries", EmitDefaultValue = true)]
-        public List<AlertSummaryDto> AlertSummaries { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AllAlertsUrl
-        /// </summary>
-        [DataMember(Name = "allAlertsUrl", EmitDefaultValue = true)]
-        public string AllAlertsUrl { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AlertSummaryViewModel {\n");
-            sb.Append("  AlertSummaries: ").Append(AlertSummaries).Append("\n");
-            sb.Append("  AllAlertsUrl: ").Append(AllAlertsUrl).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        AlertSummaries = alertSummaries;
+        AllAlertsUrl = allAlertsUrl;
     }
 
+    /// <summary>
+    ///     Gets or Sets AlertSummaries
+    /// </summary>
+    [DataMember(Name = "alertSummaries", EmitDefaultValue = true)]
+    public List<AlertSummaryDto> AlertSummaries { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AllAlertsUrl
+    /// </summary>
+    [DataMember(Name = "allAlertsUrl", EmitDefaultValue = true)]
+    public string AllAlertsUrl { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AlertSummaryViewModel {\n");
+        sb.Append("  AlertSummaries: ").Append(AlertSummaries).Append("\n");
+        sb.Append("  AllAlertsUrl: ").Append(AllAlertsUrl).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

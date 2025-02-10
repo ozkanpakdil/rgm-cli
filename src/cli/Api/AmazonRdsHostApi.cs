@@ -9,953 +9,937 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAmazonRdsHostApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAmazonRdsHostApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AmazonRdsHostRegionDtoArrayJSendSuccess</returns>
+    AmazonRdsHostRegionDtoArrayJSendSuccess ApiAmazonrdshostsRegionsGet(int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AmazonRdsHostRegionDtoArrayJSendSuccess</returns>
+    ApiResponse<AmazonRdsHostRegionDtoArrayJSendSuccess>
+        ApiAmazonrdshostsRegionsGetWithHttpInfo(int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet(string amazonRdsHostName,
+        string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetWithHttpInfo(
+        string amazonRdsHostName, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="amazonRdsHostDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut(string amazonRdsHostName,
+        string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="amazonRdsHostDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutWithHttpInfo(
+        string amazonRdsHostName, string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet(string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetWithHttpInfo(string baseMonitorName,
+        int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAmazonRdsHostApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AmazonRdsHostRegionDtoArrayJSendSuccess</returns>
+    Task<AmazonRdsHostRegionDtoArrayJSendSuccess> ApiAmazonrdshostsRegionsGetAsync(int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AmazonRdsHostRegionDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<AmazonRdsHostRegionDtoArrayJSendSuccess>> ApiAmazonrdshostsRegionsGetWithHttpInfoAsync(
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetAsync(
+        string amazonRdsHostName, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetWithHttpInfoAsync(
+            string amazonRdsHostName, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="amazonRdsHostDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutAsync(string amazonRdsHostName,
+        string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="amazonRdsHostDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutWithHttpInfoAsync(
+        string amazonRdsHostName, string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetAsync(string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetWithHttpInfoAsync(string baseMonitorName,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAmazonRdsHostApi : IAmazonRdsHostApiSync, IAmazonRdsHostApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class AmazonRdsHostApi : IAmazonRdsHostApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="AmazonRdsHostApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public AmazonRdsHostApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AmazonRdsHostRegionDtoArrayJSendSuccess</returns>
-        AmazonRdsHostRegionDtoArrayJSendSuccess ApiAmazonrdshostsRegionsGet(int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AmazonRdsHostRegionDtoArrayJSendSuccess</returns>
-        ApiResponse<AmazonRdsHostRegionDtoArrayJSendSuccess> ApiAmazonrdshostsRegionsGetWithHttpInfo(int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet(string amazonRdsHostName, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetWithHttpInfo(string amazonRdsHostName, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="amazonRdsHostDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut(string amazonRdsHostName, string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default(AmazonRdsHostDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="amazonRdsHostDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutWithHttpInfo(string amazonRdsHostName, string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default(AmazonRdsHostDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet(string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetWithHttpInfo(string baseMonitorName, int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AmazonRdsHostApi" /> class.
     /// </summary>
-    public interface IAmazonRdsHostApiAsync : IApiAccessor
+    /// <returns></returns>
+    public AmazonRdsHostApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AmazonRdsHostRegionDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<AmazonRdsHostRegionDtoArrayJSendSuccess> ApiAmazonrdshostsRegionsGetAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AmazonRdsHostRegionDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AmazonRdsHostRegionDtoArrayJSendSuccess>> ApiAmazonrdshostsRegionsGetWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetAsync(string amazonRdsHostName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetWithHttpInfoAsync(string amazonRdsHostName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="amazonRdsHostDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutAsync(string amazonRdsHostName, string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default(AmazonRdsHostDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="amazonRdsHostDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutWithHttpInfoAsync(string amazonRdsHostName, string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default(AmazonRdsHostDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AmazonRdsHostApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IAmazonRdsHostApi : IAmazonRdsHostApiSync, IAmazonRdsHostApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public AmazonRdsHostApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AmazonRdsHostApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class AmazonRdsHostApi : IAmazonRdsHostApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public AmazonRdsHostApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AmazonRdsHostApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AmazonRdsHostApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AmazonRdsHostRegionDtoArrayJSendSuccess</returns>
+    public AmazonRdsHostRegionDtoArrayJSendSuccess ApiAmazonrdshostsRegionsGet(int operationIndex = 0)
+    {
+        var localVarResponse = ApiAmazonrdshostsRegionsGetWithHttpInfo();
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AmazonRdsHostRegionDtoArrayJSendSuccess</returns>
+    public ApiResponse<AmazonRdsHostRegionDtoArrayJSendSuccess> ApiAmazonrdshostsRegionsGetWithHttpInfo(
+        int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+        localVarRequestOptions.Operation = "AmazonRdsHostApi.ApiAmazonrdshostsRegionsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<AmazonRdsHostRegionDtoArrayJSendSuccess>("/api/amazonrdshosts/regions",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiAmazonrdshostsRegionsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AmazonRdsHostApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AmazonRdsHostApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AmazonRdsHostRegionDtoArrayJSendSuccess</returns>
+    public async Task<AmazonRdsHostRegionDtoArrayJSendSuccess> ApiAmazonrdshostsRegionsGetAsync(int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarResponse = await ApiAmazonrdshostsRegionsGetWithHttpInfoAsync(operationIndex, cancellationToken)
+            .ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AmazonRdsHostRegionDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<AmazonRdsHostRegionDtoArrayJSendSuccess>>
+        ApiAmazonrdshostsRegionsGetWithHttpInfoAsync(int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+        localVarRequestOptions.Operation = "AmazonRdsHostApi.ApiAmazonrdshostsRegionsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<AmazonRdsHostRegionDtoArrayJSendSuccess>("/api/amazonrdshosts/regions", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiAmazonrdshostsRegionsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AmazonRdsHostApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public AmazonRdsHostApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet(
+        string amazonRdsHostName, string baseMonitorName, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetWithHttpInfo(amazonRdsHostName,
+            baseMonitorName);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetWithHttpInfo(
+            string amazonRdsHostName, string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'amazonRdsHostName' is set
+        if (amazonRdsHostName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'amazonRdsHostName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("amazonRdsHostName",
+            ClientUtils.ParameterToString(amazonRdsHostName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AmazonRdsHostApi.ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<object>(
+                "/api/basemonitors/{baseMonitorName}/amazonrdshosts/{amazonRdsHostName}/postgresinstances",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AmazonRdsHostApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public AmazonRdsHostApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetAsync(
+        string amazonRdsHostName, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        await ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetWithHttpInfoAsync(
+            amazonRdsHostName, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetWithHttpInfoAsync(
+            string amazonRdsHostName, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'amazonRdsHostName' is set
+        if (amazonRdsHostName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'amazonRdsHostName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("amazonRdsHostName",
+            ClientUtils.ParameterToString(amazonRdsHostName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AmazonRdsHostApi.ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/amazonrdshosts/{amazonRdsHostName}/postgresinstances",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="amazonRdsHostDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut(string amazonRdsHostName,
+        string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutWithHttpInfo(amazonRdsHostName, baseMonitorName,
+            amazonRdsHostDto);
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="amazonRdsHostDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutWithHttpInfo(
+        string amazonRdsHostName, string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default,
+        int operationIndex = 0)
+    {
+        // verify the required parameter 'amazonRdsHostName' is set
+        if (amazonRdsHostName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'amazonRdsHostName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            return this.Configuration.BasePath;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("amazonRdsHostName",
+            ClientUtils.ParameterToString(amazonRdsHostName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = amazonRdsHostDto;
+
+        localVarRequestOptions.Operation =
+            "AmazonRdsHostApi.ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Put<object>("/api/basemonitors/{baseMonitorName}/amazonrdshosts/{amazonRdsHostName}",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="amazonRdsHostDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutAsync(string amazonRdsHostName,
+        string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        await ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutWithHttpInfoAsync(amazonRdsHostName,
+            baseMonitorName, amazonRdsHostDto, operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="amazonRdsHostName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="amazonRdsHostDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutWithHttpInfoAsync(string amazonRdsHostName,
+            string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'amazonRdsHostName' is set
+        if (amazonRdsHostName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'amazonRdsHostName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("amazonRdsHostName",
+            ClientUtils.ParameterToString(amazonRdsHostName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = amazonRdsHostDto;
+
+        localVarRequestOptions.Operation =
+            "AmazonRdsHostApi.ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PutAsync<object>("/api/basemonitors/{baseMonitorName}/amazonrdshosts/{amazonRdsHostName}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AmazonRdsHostRegionDtoArrayJSendSuccess</returns>
-        public AmazonRdsHostRegionDtoArrayJSendSuccess ApiAmazonrdshostsRegionsGet(int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet(string baseMonitorName, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetWithHttpInfo(baseMonitorName);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetWithHttpInfo(string baseMonitorName,
+        int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<AmazonRdsHostRegionDtoArrayJSendSuccess> localVarResponse = ApiAmazonrdshostsRegionsGetWithHttpInfo();
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation = "AmazonRdsHostApi.ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<object>("/api/basemonitors/{baseMonitorName}/amazonrdshosts",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AmazonRdsHostRegionDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<AmazonRdsHostRegionDtoArrayJSendSuccess> ApiAmazonrdshostsRegionsGetWithHttpInfo(int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetAsync(string baseMonitorName,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetWithHttpInfoAsync(baseMonitorName, operationIndex,
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>> ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetWithHttpInfoAsync(
+        string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation = "AmazonRdsHostApi.ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            localVarRequestOptions.Operation = "AmazonRdsHostApi.ApiAmazonrdshostsRegionsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>("/api/basemonitors/{baseMonitorName}/amazonrdshosts", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
 
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<AmazonRdsHostRegionDtoArrayJSendSuccess>("/api/amazonrdshosts/regions", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiAmazonrdshostsRegionsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AmazonRdsHostRegionDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<AmazonRdsHostRegionDtoArrayJSendSuccess> ApiAmazonrdshostsRegionsGetAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<AmazonRdsHostRegionDtoArrayJSendSuccess> localVarResponse = await ApiAmazonrdshostsRegionsGetWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AmazonRdsHostRegionDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AmazonRdsHostRegionDtoArrayJSendSuccess>> ApiAmazonrdshostsRegionsGetWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-
-            localVarRequestOptions.Operation = "AmazonRdsHostApi.ApiAmazonrdshostsRegionsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<AmazonRdsHostRegionDtoArrayJSendSuccess>("/api/amazonrdshosts/regions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiAmazonrdshostsRegionsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet(string amazonRdsHostName, string baseMonitorName, int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetWithHttpInfo(amazonRdsHostName, baseMonitorName);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetWithHttpInfo(string amazonRdsHostName, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'amazonRdsHostName' is set
-            if (amazonRdsHostName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'amazonRdsHostName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("amazonRdsHostName", cli.Client.ClientUtils.ParameterToString(amazonRdsHostName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AmazonRdsHostApi.ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/basemonitors/{baseMonitorName}/amazonrdshosts/{amazonRdsHostName}/postgresinstances", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetAsync(string amazonRdsHostName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetWithHttpInfoAsync(amazonRdsHostName, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGetWithHttpInfoAsync(string amazonRdsHostName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'amazonRdsHostName' is set
-            if (amazonRdsHostName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'amazonRdsHostName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("amazonRdsHostName", cli.Client.ClientUtils.ParameterToString(amazonRdsHostName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AmazonRdsHostApi.ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/basemonitors/{baseMonitorName}/amazonrdshosts/{amazonRdsHostName}/postgresinstances", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePostgresinstancesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="amazonRdsHostDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut(string amazonRdsHostName, string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default(AmazonRdsHostDto?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutWithHttpInfo(amazonRdsHostName, baseMonitorName, amazonRdsHostDto);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="amazonRdsHostDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutWithHttpInfo(string amazonRdsHostName, string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default(AmazonRdsHostDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'amazonRdsHostName' is set
-            if (amazonRdsHostName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'amazonRdsHostName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("amazonRdsHostName", cli.Client.ClientUtils.ParameterToString(amazonRdsHostName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = amazonRdsHostDto;
-
-            localVarRequestOptions.Operation = "AmazonRdsHostApi.ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Put<Object>("/api/basemonitors/{baseMonitorName}/amazonrdshosts/{amazonRdsHostName}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="amazonRdsHostDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutAsync(string amazonRdsHostName, string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default(AmazonRdsHostDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutWithHttpInfoAsync(amazonRdsHostName, baseMonitorName, amazonRdsHostDto, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonRdsHostName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="amazonRdsHostDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePutWithHttpInfoAsync(string amazonRdsHostName, string baseMonitorName, AmazonRdsHostDto? amazonRdsHostDto = default(AmazonRdsHostDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'amazonRdsHostName' is set
-            if (amazonRdsHostName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'amazonRdsHostName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("amazonRdsHostName", cli.Client.ClientUtils.ParameterToString(amazonRdsHostName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = amazonRdsHostDto;
-
-            localVarRequestOptions.Operation = "AmazonRdsHostApi.ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<Object>("/api/basemonitors/{baseMonitorName}/amazonrdshosts/{amazonRdsHostName}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAmazonrdshostsAmazonRdsHostNamePut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet(string baseMonitorName, int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetWithHttpInfo(baseMonitorName);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetWithHttpInfo(string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AmazonRdsHostApi.ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/basemonitors/{baseMonitorName}/amazonrdshosts", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetWithHttpInfoAsync(baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAmazonrdshostsGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AmazonRdsHostApi->ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AmazonRdsHostApi.ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/basemonitors/{baseMonitorName}/amazonrdshosts", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAmazonrdshostsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

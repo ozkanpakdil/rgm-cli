@@ -9,110 +9,103 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     CurrentActivityTableRowDto
+/// </summary>
+[DataContract(Name = "CurrentActivityTableRowDto")]
+public class CurrentActivityTableRowDto : IValidatableObject
 {
     /// <summary>
-    /// CurrentActivityTableRowDto
+    ///     Initializes a new instance of the <see cref="CurrentActivityTableRowDto" /> class.
     /// </summary>
-    [DataContract(Name = "CurrentActivityTableRowDto")]
-    public partial class CurrentActivityTableRowDto : IValidatableObject
+    /// <param name="key">key.</param>
+    /// <param name="cells">cells.</param>
+    /// <param name="metadata">metadata.</param>
+    /// <param name="collectionDate">collectionDate.</param>
+    /// <param name="entitySpecificDetails">entitySpecificDetails.</param>
+    public CurrentActivityTableRowDto(string key = default,
+        Dictionary<string, CurrentActivityTableRowCellDto> cells = default,
+        Dictionary<string, string> metadata = default, DateTime collectionDate = default,
+        CurrentActivityQueryDetailsDto entitySpecificDetails = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CurrentActivityTableRowDto" /> class.
-        /// </summary>
-        /// <param name="key">key.</param>
-        /// <param name="cells">cells.</param>
-        /// <param name="metadata">metadata.</param>
-        /// <param name="collectionDate">collectionDate.</param>
-        /// <param name="entitySpecificDetails">entitySpecificDetails.</param>
-        public CurrentActivityTableRowDto(string key = default(string), Dictionary<string, CurrentActivityTableRowCellDto> cells = default(Dictionary<string, CurrentActivityTableRowCellDto>), Dictionary<string, string> metadata = default(Dictionary<string, string>), DateTime collectionDate = default(DateTime), CurrentActivityQueryDetailsDto entitySpecificDetails = default(CurrentActivityQueryDetailsDto))
-        {
-            this.Key = key;
-            this.Cells = cells;
-            this.Metadata = metadata;
-            this.CollectionDate = collectionDate;
-            this.EntitySpecificDetails = entitySpecificDetails;
-        }
-
-        /// <summary>
-        /// Gets or Sets Key
-        /// </summary>
-        [DataMember(Name = "key", EmitDefaultValue = false)]
-        public string Key { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Cells
-        /// </summary>
-        [DataMember(Name = "cells", EmitDefaultValue = false)]
-        public Dictionary<string, CurrentActivityTableRowCellDto> Cells { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Metadata
-        /// </summary>
-        [DataMember(Name = "metadata", EmitDefaultValue = false)]
-        public Dictionary<string, string> Metadata { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CollectionDate
-        /// </summary>
-        [DataMember(Name = "collectionDate", EmitDefaultValue = false)]
-        public DateTime CollectionDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EntitySpecificDetails
-        /// </summary>
-        [DataMember(Name = "entitySpecificDetails", EmitDefaultValue = false)]
-        public CurrentActivityQueryDetailsDto EntitySpecificDetails { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class CurrentActivityTableRowDto {\n");
-            sb.Append("  Key: ").Append(Key).Append("\n");
-            sb.Append("  Cells: ").Append(Cells).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  CollectionDate: ").Append(CollectionDate).Append("\n");
-            sb.Append("  EntitySpecificDetails: ").Append(EntitySpecificDetails).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Key = key;
+        Cells = cells;
+        Metadata = metadata;
+        CollectionDate = collectionDate;
+        EntitySpecificDetails = entitySpecificDetails;
     }
 
+    /// <summary>
+    ///     Gets or Sets Key
+    /// </summary>
+    [DataMember(Name = "key", EmitDefaultValue = false)]
+    public string Key { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Cells
+    /// </summary>
+    [DataMember(Name = "cells", EmitDefaultValue = false)]
+    public Dictionary<string, CurrentActivityTableRowCellDto> Cells { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Metadata
+    /// </summary>
+    [DataMember(Name = "metadata", EmitDefaultValue = false)]
+    public Dictionary<string, string> Metadata { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CollectionDate
+    /// </summary>
+    [DataMember(Name = "collectionDate", EmitDefaultValue = false)]
+    public DateTime CollectionDate { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EntitySpecificDetails
+    /// </summary>
+    [DataMember(Name = "entitySpecificDetails", EmitDefaultValue = false)]
+    public CurrentActivityQueryDetailsDto EntitySpecificDetails { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class CurrentActivityTableRowDto {\n");
+        sb.Append("  Key: ").Append(Key).Append("\n");
+        sb.Append("  Cells: ").Append(Cells).Append("\n");
+        sb.Append("  Metadata: ").Append(Metadata).Append("\n");
+        sb.Append("  CollectionDate: ").Append(CollectionDate).Append("\n");
+        sb.Append("  EntitySpecificDetails: ").Append(EntitySpecificDetails).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

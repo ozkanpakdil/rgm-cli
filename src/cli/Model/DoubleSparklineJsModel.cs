@@ -8,138 +8,129 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     DoubleSparklineJsModel
+/// </summary>
+[DataContract(Name = "DoubleSparklineJsModel")]
+public class DoubleSparklineJsModel : IValidatableObject
 {
     /// <summary>
-    /// DoubleSparklineJsModel
+    ///     Initializes a new instance of the <see cref="DoubleSparklineJsModel" /> class.
     /// </summary>
-    [DataContract(Name = "DoubleSparklineJsModel")]
-    public partial class DoubleSparklineJsModel : IValidatableObject
+    /// <param name="name">name.</param>
+    /// <param name="values">values.</param>
+    /// <param name="formattedLastValue">formattedLastValue.</param>
+    /// <param name="lastValueOrDefault">lastValueOrDefault.</param>
+    /// <param name="maxValue">maxValue.</param>
+    /// <param name="minDate">minDate.</param>
+    /// <param name="maxDate">maxDate.</param>
+    /// <param name="analysisLinkData">analysisLinkData.</param>
+    public DoubleSparklineJsModel(string name = default, List<object> values = default,
+        string formattedLastValue = default, double lastValueOrDefault = default, double? maxValue = default,
+        long minDate = default, long maxDate = default, AnalysisLinkData analysisLinkData = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DoubleSparklineJsModel" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="values">values.</param>
-        /// <param name="formattedLastValue">formattedLastValue.</param>
-        /// <param name="lastValueOrDefault">lastValueOrDefault.</param>
-        /// <param name="maxValue">maxValue.</param>
-        /// <param name="minDate">minDate.</param>
-        /// <param name="maxDate">maxDate.</param>
-        /// <param name="analysisLinkData">analysisLinkData.</param>
-        public DoubleSparklineJsModel(string name = default(string), List<Object> values = default(List<Object>), string formattedLastValue = default(string), double lastValueOrDefault = default(double), double? maxValue = default(double?), long minDate = default(long), long maxDate = default(long), AnalysisLinkData analysisLinkData = default(AnalysisLinkData))
-        {
-            this.Name = name;
-            this.Values = values;
-            this.FormattedLastValue = formattedLastValue;
-            this.LastValueOrDefault = lastValueOrDefault;
-            this.MaxValue = maxValue;
-            this.MinDate = minDate;
-            this.MaxDate = maxDate;
-            this.AnalysisLinkData = analysisLinkData;
-        }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Values
-        /// </summary>
-        [DataMember(Name = "values", EmitDefaultValue = true)]
-        public List<Object> Values { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FormattedLastValue
-        /// </summary>
-        [DataMember(Name = "formattedLastValue", EmitDefaultValue = true)]
-        public string FormattedLastValue { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LastValueOrDefault
-        /// </summary>
-        [DataMember(Name = "lastValueOrDefault", EmitDefaultValue = false)]
-        public double LastValueOrDefault { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MaxValue
-        /// </summary>
-        [DataMember(Name = "maxValue", EmitDefaultValue = true)]
-        public double? MaxValue { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MinDate
-        /// </summary>
-        [DataMember(Name = "minDate", EmitDefaultValue = false)]
-        public long MinDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MaxDate
-        /// </summary>
-        [DataMember(Name = "maxDate", EmitDefaultValue = false)]
-        public long MaxDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AnalysisLinkData
-        /// </summary>
-        [DataMember(Name = "analysisLinkData", EmitDefaultValue = false)]
-        public AnalysisLinkData AnalysisLinkData { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class DoubleSparklineJsModel {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Values: ").Append(Values).Append("\n");
-            sb.Append("  FormattedLastValue: ").Append(FormattedLastValue).Append("\n");
-            sb.Append("  LastValueOrDefault: ").Append(LastValueOrDefault).Append("\n");
-            sb.Append("  MaxValue: ").Append(MaxValue).Append("\n");
-            sb.Append("  MinDate: ").Append(MinDate).Append("\n");
-            sb.Append("  MaxDate: ").Append(MaxDate).Append("\n");
-            sb.Append("  AnalysisLinkData: ").Append(AnalysisLinkData).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Name = name;
+        Values = values;
+        FormattedLastValue = formattedLastValue;
+        LastValueOrDefault = lastValueOrDefault;
+        MaxValue = maxValue;
+        MinDate = minDate;
+        MaxDate = maxDate;
+        AnalysisLinkData = analysisLinkData;
     }
 
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Values
+    /// </summary>
+    [DataMember(Name = "values", EmitDefaultValue = true)]
+    public List<object> Values { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FormattedLastValue
+    /// </summary>
+    [DataMember(Name = "formattedLastValue", EmitDefaultValue = true)]
+    public string FormattedLastValue { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LastValueOrDefault
+    /// </summary>
+    [DataMember(Name = "lastValueOrDefault", EmitDefaultValue = false)]
+    public double LastValueOrDefault { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MaxValue
+    /// </summary>
+    [DataMember(Name = "maxValue", EmitDefaultValue = true)]
+    public double? MaxValue { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MinDate
+    /// </summary>
+    [DataMember(Name = "minDate", EmitDefaultValue = false)]
+    public long MinDate { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MaxDate
+    /// </summary>
+    [DataMember(Name = "maxDate", EmitDefaultValue = false)]
+    public long MaxDate { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AnalysisLinkData
+    /// </summary>
+    [DataMember(Name = "analysisLinkData", EmitDefaultValue = false)]
+    public AnalysisLinkData AnalysisLinkData { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class DoubleSparklineJsModel {\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  Values: ").Append(Values).Append("\n");
+        sb.Append("  FormattedLastValue: ").Append(FormattedLastValue).Append("\n");
+        sb.Append("  LastValueOrDefault: ").Append(LastValueOrDefault).Append("\n");
+        sb.Append("  MaxValue: ").Append(MaxValue).Append("\n");
+        sb.Append("  MinDate: ").Append(MinDate).Append("\n");
+        sb.Append("  MaxDate: ").Append(MaxDate).Append("\n");
+        sb.Append("  AnalysisLinkData: ").Append(AnalysisLinkData).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

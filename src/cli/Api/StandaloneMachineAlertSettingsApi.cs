@@ -9,1329 +9,1425 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Collections;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IStandaloneMachineAlertSettingsApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IStandaloneMachineAlertSettingsApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch(
+        string machineName, long alertTypeId, string baseMonitorName, string? body = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(
+            string machineName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSettingsDto</returns>
+    AlertSettingsDto ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet(
+        string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSettingsDto</returns>
+    ApiResponse<AlertSettingsDto>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetWithHttpInfo(
+            string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch(
+        string machineName, long alertTypeId, string baseMonitorName,
+        AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(
+            string machineName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch(
+        string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(
+            string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch(
+        string machineName, long alertTypeId, string baseMonitorName, int? body = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(
+            string machineName, long alertTypeId, string baseMonitorName, int? body = default, int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IStandaloneMachineAlertSettingsApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchAsync(
+        string machineName, long alertTypeId, string baseMonitorName, string? body = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(
+            string machineName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSettingsDto</returns>
+    Task<AlertSettingsDto> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetAsync(
+        string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSettingsDto)</returns>
+    Task<ApiResponse<AlertSettingsDto>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(
+            string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(
+            string machineName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(
+            string machineName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(
+        string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(
+            string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchAsync(
+        string machineName, long alertTypeId, string baseMonitorName, int? body = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(
+            string machineName, long alertTypeId, string baseMonitorName, int? body = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IStandaloneMachineAlertSettingsApi : IStandaloneMachineAlertSettingsApiSync,
+    IStandaloneMachineAlertSettingsApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class StandaloneMachineAlertSettingsApi : IStandaloneMachineAlertSettingsApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="StandaloneMachineAlertSettingsApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public StandaloneMachineAlertSettingsApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch(string machineName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(string machineName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSettingsDto</returns>
-        AlertSettingsDto ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet(string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSettingsDto</returns>
-        ApiResponse<AlertSettingsDto> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetWithHttpInfo(string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch(string machineName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(string machineName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch(string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch(string machineName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(string machineName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="StandaloneMachineAlertSettingsApi" /> class.
     /// </summary>
-    public interface IStandaloneMachineAlertSettingsApiAsync : IApiAccessor
+    /// <returns></returns>
+    public StandaloneMachineAlertSettingsApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchAsync(string machineName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(string machineName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSettingsDto</returns>
-        System.Threading.Tasks.Task<AlertSettingsDto> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetAsync(string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSettingsDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AlertSettingsDto>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(string machineName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(string machineName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchAsync(string machineName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(string machineName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="StandaloneMachineAlertSettingsApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IStandaloneMachineAlertSettingsApi : IStandaloneMachineAlertSettingsApiSync, IStandaloneMachineAlertSettingsApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public StandaloneMachineAlertSettingsApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="StandaloneMachineAlertSettingsApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class StandaloneMachineAlertSettingsApi : IStandaloneMachineAlertSettingsApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public StandaloneMachineAlertSettingsApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="StandaloneMachineAlertSettingsApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public StandaloneMachineAlertSettingsApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch(
+        string machineName, long alertTypeId, string baseMonitorName, string? body = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(
+            machineName, alertTypeId, baseMonitorName, body);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(
+            string machineName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation =
+            "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/comments",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="StandaloneMachineAlertSettingsApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public StandaloneMachineAlertSettingsApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchAsync(
+            string machineName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(
+                    machineName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(
+            string machineName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation =
+            "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/comments",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="StandaloneMachineAlertSettingsApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public StandaloneMachineAlertSettingsApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertSettingsDto</returns>
+    public AlertSettingsDto ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet(
+        string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetWithHttpInfo(
+                machineName, alertTypeId, baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertSettingsDto</returns>
+    public ApiResponse<AlertSettingsDto>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetWithHttpInfo(
+            string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<AlertSettingsDto>(
+            "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="StandaloneMachineAlertSettingsApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public StandaloneMachineAlertSettingsApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertSettingsDto</returns>
+    public async Task<AlertSettingsDto>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetAsync(string machineName,
+            long alertTypeId, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await
+                ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(
+                    machineName, alertTypeId, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertSettingsDto)</returns>
+    public async Task<ApiResponse<AlertSettingsDto>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(
+            string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<AlertSettingsDto>(
+                "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch(
+            string machineName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(
+            machineName, alertTypeId, baseMonitorName, alertNotificationSettingsDto);
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(
+            string machineName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            return this.Configuration.BasePath;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = alertNotificationSettingsDto;
+
+        localVarRequestOptions.Operation =
+            "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/notificationsettings",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(
+            string machineName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(
+                machineName, alertTypeId, baseMonitorName, alertNotificationSettingsDto, operationIndex,
+                cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(
+            string machineName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = alertNotificationSettingsDto;
+
+        localVarRequestOptions.Operation =
+            "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/notificationsettings",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch(string machineName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch(
+            string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default,
+            int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(
+            machineName, alertTypeId, baseMonitorName, requestBody);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(
+            string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(machineName, alertTypeId, baseMonitorName, body);
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = requestBody;
+
+        localVarRequestOptions.Operation =
+            "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/specificsettings",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(string machineName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(
+            string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(
+                    machineName, alertTypeId, baseMonitorName, requestBody, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(
+            string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = requestBody;
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/comments", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/specificsettings",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchAsync(string machineName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch(
+        string machineName, long alertTypeId, string baseMonitorName, int? body = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(
+            machineName, alertTypeId, baseMonitorName, body);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(
+            string machineName, long alertTypeId, string baseMonitorName, int? body = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            await ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(machineName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken).ConfigureAwait(false);
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation =
+            "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/status",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(string machineName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchAsync(
+            string machineName, long alertTypeId, string baseMonitorName, int? body = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(
+                    machineName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(
+            string machineName, long alertTypeId, string baseMonitorName, int? body = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/comments", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/status",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdCommentsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertSettingsDto</returns>
-        public AlertSettingsDto ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet(string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<AlertSettingsDto> localVarResponse = ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetWithHttpInfo(machineName, alertTypeId, baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertSettingsDto</returns>
-        public cli.Client.ApiResponse<AlertSettingsDto> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetWithHttpInfo(string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<AlertSettingsDto>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertSettingsDto</returns>
-        public async System.Threading.Tasks.Task<AlertSettingsDto> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetAsync(string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<AlertSettingsDto> localVarResponse = await ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(machineName, alertTypeId, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertSettingsDto)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AlertSettingsDto>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(string machineName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<AlertSettingsDto>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch(string machineName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(machineName, alertTypeId, baseMonitorName, alertNotificationSettingsDto);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(string machineName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = alertNotificationSettingsDto;
-
-            localVarRequestOptions.Operation = "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/notificationsettings", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(string machineName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(machineName, alertTypeId, baseMonitorName, alertNotificationSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(string machineName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = alertNotificationSettingsDto;
-
-            localVarRequestOptions.Operation = "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/notificationsettings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdNotificationsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch(string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(machineName, alertTypeId, baseMonitorName, requestBody);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0)
-        {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = requestBody;
-
-            localVarRequestOptions.Operation = "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/specificsettings", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(machineName, alertTypeId, baseMonitorName, requestBody, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(string machineName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = requestBody;
-
-            localVarRequestOptions.Operation = "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/specificsettings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdSpecificsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch(string machineName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(machineName, alertTypeId, baseMonitorName, body);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(string machineName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0)
-        {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/status", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchAsync(string machineName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(machineName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(string machineName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling StandaloneMachineAlertSettingsApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "StandaloneMachineAlertSettingsApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/alertsettings/{alertTypeId}/status", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameAlertsettingsAlertTypeIdStatusPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

@@ -8,129 +8,120 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     PostgresReplicationSlotDto
+/// </summary>
+[DataContract(Name = "PostgresReplicationSlotDto")]
+public class PostgresReplicationSlotDto : IValidatableObject
 {
     /// <summary>
-    /// PostgresReplicationSlotDto
+    ///     Initializes a new instance of the <see cref="PostgresReplicationSlotDto" /> class.
     /// </summary>
-    [DataContract(Name = "PostgresReplicationSlotDto")]
-    public partial class PostgresReplicationSlotDto : IValidatableObject
+    /// <param name="name">name.</param>
+    /// <param name="active">active.</param>
+    /// <param name="processId">processId.</param>
+    /// <param name="temporary">temporary.</param>
+    /// <param name="slotSize">slotSize.</param>
+    /// <param name="walStatus">walStatus.</param>
+    /// <param name="safeWalSize">safeWalSize.</param>
+    public PostgresReplicationSlotDto(string name = default, bool active = default,
+        IntegerIdentifier processId = default, bool temporary = default, long slotSize = default,
+        string walStatus = default, long? safeWalSize = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PostgresReplicationSlotDto" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="active">active.</param>
-        /// <param name="processId">processId.</param>
-        /// <param name="temporary">temporary.</param>
-        /// <param name="slotSize">slotSize.</param>
-        /// <param name="walStatus">walStatus.</param>
-        /// <param name="safeWalSize">safeWalSize.</param>
-        public PostgresReplicationSlotDto(string name = default(string), bool active = default(bool), IntegerIdentifier processId = default(IntegerIdentifier), bool temporary = default(bool), long slotSize = default(long), string walStatus = default(string), long? safeWalSize = default(long?))
-        {
-            this.Name = name;
-            this.Active = active;
-            this.ProcessId = processId;
-            this.Temporary = temporary;
-            this.SlotSize = slotSize;
-            this.WalStatus = walStatus;
-            this.SafeWalSize = safeWalSize;
-        }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Active
-        /// </summary>
-        [DataMember(Name = "active", EmitDefaultValue = true)]
-        public bool Active { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ProcessId
-        /// </summary>
-        [DataMember(Name = "processId", EmitDefaultValue = false)]
-        public IntegerIdentifier ProcessId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Temporary
-        /// </summary>
-        [DataMember(Name = "temporary", EmitDefaultValue = true)]
-        public bool Temporary { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SlotSize
-        /// </summary>
-        [DataMember(Name = "slotSize", EmitDefaultValue = false)]
-        public long SlotSize { get; set; }
-
-        /// <summary>
-        /// Gets or Sets WalStatus
-        /// </summary>
-        [DataMember(Name = "walStatus", EmitDefaultValue = true)]
-        public string WalStatus { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SafeWalSize
-        /// </summary>
-        [DataMember(Name = "safeWalSize", EmitDefaultValue = true)]
-        public long? SafeWalSize { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class PostgresReplicationSlotDto {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Active: ").Append(Active).Append("\n");
-            sb.Append("  ProcessId: ").Append(ProcessId).Append("\n");
-            sb.Append("  Temporary: ").Append(Temporary).Append("\n");
-            sb.Append("  SlotSize: ").Append(SlotSize).Append("\n");
-            sb.Append("  WalStatus: ").Append(WalStatus).Append("\n");
-            sb.Append("  SafeWalSize: ").Append(SafeWalSize).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Name = name;
+        Active = active;
+        ProcessId = processId;
+        Temporary = temporary;
+        SlotSize = slotSize;
+        WalStatus = walStatus;
+        SafeWalSize = safeWalSize;
     }
 
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Active
+    /// </summary>
+    [DataMember(Name = "active", EmitDefaultValue = true)]
+    public bool Active { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ProcessId
+    /// </summary>
+    [DataMember(Name = "processId", EmitDefaultValue = false)]
+    public IntegerIdentifier ProcessId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Temporary
+    /// </summary>
+    [DataMember(Name = "temporary", EmitDefaultValue = true)]
+    public bool Temporary { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SlotSize
+    /// </summary>
+    [DataMember(Name = "slotSize", EmitDefaultValue = false)]
+    public long SlotSize { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets WalStatus
+    /// </summary>
+    [DataMember(Name = "walStatus", EmitDefaultValue = true)]
+    public string WalStatus { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SafeWalSize
+    /// </summary>
+    [DataMember(Name = "safeWalSize", EmitDefaultValue = true)]
+    public long? SafeWalSize { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class PostgresReplicationSlotDto {\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  Active: ").Append(Active).Append("\n");
+        sb.Append("  ProcessId: ").Append(ProcessId).Append("\n");
+        sb.Append("  Temporary: ").Append(Temporary).Append("\n");
+        sb.Append("  SlotSize: ").Append(SlotSize).Append("\n");
+        sb.Append("  WalStatus: ").Append(WalStatus).Append("\n");
+        sb.Append("  SafeWalSize: ").Append(SafeWalSize).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -9,224 +9,220 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Channels.Data;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     TopQueryDto
+/// </summary>
+[DataContract(Name = "TopQueryDto")]
+public class TopQueryDto : IValidatableObject
 {
     /// <summary>
-    /// TopQueryDto
+    ///     Initializes a new instance of the <see cref="TopQueryDto" /> class.
     /// </summary>
-    [DataContract(Name = "TopQueryDto")]
-    public partial class TopQueryDto : IValidatableObject
+    /// <param name="channelInstanceRef">channelInstanceRef.</param>
+    /// <param name="queryText">queryText.</param>
+    /// <param name="planHandle">planHandle.</param>
+    /// <param name="queryHash">queryHash.</param>
+    /// <param name="createDate">createDate.</param>
+    /// <param name="objectName">objectName.</param>
+    /// <param name="database">database.</param>
+    /// <param name="duration">duration.</param>
+    /// <param name="executionCount">executionCount.</param>
+    /// <param name="cpuTime">cpuTime.</param>
+    /// <param name="physicalReads">physicalReads.</param>
+    /// <param name="logicalReads">logicalReads.</param>
+    /// <param name="logicalWrites">logicalWrites.</param>
+    /// <param name="usedMemoryGrant">usedMemoryGrant.</param>
+    /// <param name="memoryGrant">memoryGrant.</param>
+    /// <param name="impact">impact.</param>
+    public TopQueryDto(ChannelInstanceRef channelInstanceRef = default, FullQueryTextDto queryText = default,
+        string planHandle = default, string queryHash = default, DateTime createDate = default,
+        string objectName = default, string database = default, long duration = default, long executionCount = default,
+        long cpuTime = default, long physicalReads = default, long logicalReads = default, long logicalWrites = default,
+        long usedMemoryGrant = default, long memoryGrant = default, double impact = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TopQueryDto" /> class.
-        /// </summary>
-        /// <param name="channelInstanceRef">channelInstanceRef.</param>
-        /// <param name="queryText">queryText.</param>
-        /// <param name="planHandle">planHandle.</param>
-        /// <param name="queryHash">queryHash.</param>
-        /// <param name="createDate">createDate.</param>
-        /// <param name="objectName">objectName.</param>
-        /// <param name="database">database.</param>
-        /// <param name="duration">duration.</param>
-        /// <param name="executionCount">executionCount.</param>
-        /// <param name="cpuTime">cpuTime.</param>
-        /// <param name="physicalReads">physicalReads.</param>
-        /// <param name="logicalReads">logicalReads.</param>
-        /// <param name="logicalWrites">logicalWrites.</param>
-        /// <param name="usedMemoryGrant">usedMemoryGrant.</param>
-        /// <param name="memoryGrant">memoryGrant.</param>
-        /// <param name="impact">impact.</param>
-        public TopQueryDto(ChannelInstanceRef channelInstanceRef = default(ChannelInstanceRef), FullQueryTextDto queryText = default(FullQueryTextDto), string planHandle = default(string), string queryHash = default(string), DateTime createDate = default(DateTime), string objectName = default(string), string database = default(string), long duration = default(long), long executionCount = default(long), long cpuTime = default(long), long physicalReads = default(long), long logicalReads = default(long), long logicalWrites = default(long), long usedMemoryGrant = default(long), long memoryGrant = default(long), double impact = default(double))
-        {
-            this.ChannelInstanceRef = channelInstanceRef;
-            this.QueryText = queryText;
-            this.PlanHandle = planHandle;
-            this.QueryHash = queryHash;
-            this.CreateDate = createDate;
-            this.ObjectName = objectName;
-            this.Database = database;
-            this.Duration = duration;
-            this.ExecutionCount = executionCount;
-            this.CpuTime = cpuTime;
-            this.PhysicalReads = physicalReads;
-            this.LogicalReads = logicalReads;
-            this.LogicalWrites = logicalWrites;
-            this.UsedMemoryGrant = usedMemoryGrant;
-            this.MemoryGrant = memoryGrant;
-            this.Impact = impact;
-        }
-
-        /// <summary>
-        /// Gets or Sets ChannelInstanceRef
-        /// </summary>
-        [DataMember(Name = "channelInstanceRef", EmitDefaultValue = false)]
-        public ChannelInstanceRef ChannelInstanceRef { get; set; }
-
-        /// <summary>
-        /// Gets or Sets QueryText
-        /// </summary>
-        [DataMember(Name = "queryText", EmitDefaultValue = false)]
-        public FullQueryTextDto QueryText { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PlanHandle
-        /// </summary>
-        [DataMember(Name = "planHandle", EmitDefaultValue = false)]
-        public string PlanHandle { get; set; }
-
-        /// <summary>
-        /// Gets or Sets QueryHash
-        /// </summary>
-        [DataMember(Name = "queryHash", EmitDefaultValue = false)]
-        public string QueryHash { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CreateDate
-        /// </summary>
-        [DataMember(Name = "createDate", EmitDefaultValue = false)]
-        public DateTime CreateDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ObjectName
-        /// </summary>
-        [DataMember(Name = "objectName", EmitDefaultValue = false)]
-        public string ObjectName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Database
-        /// </summary>
-        [DataMember(Name = "database", EmitDefaultValue = false)]
-        public string Database { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Duration
-        /// </summary>
-        [DataMember(Name = "duration", EmitDefaultValue = false)]
-        public long Duration { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ExecutionCount
-        /// </summary>
-        [DataMember(Name = "executionCount", EmitDefaultValue = false)]
-        public long ExecutionCount { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CpuTime
-        /// </summary>
-        [DataMember(Name = "cpuTime", EmitDefaultValue = false)]
-        public long CpuTime { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PhysicalReads
-        /// </summary>
-        [DataMember(Name = "physicalReads", EmitDefaultValue = false)]
-        public long PhysicalReads { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LogicalReads
-        /// </summary>
-        [DataMember(Name = "logicalReads", EmitDefaultValue = false)]
-        public long LogicalReads { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LogicalWrites
-        /// </summary>
-        [DataMember(Name = "logicalWrites", EmitDefaultValue = false)]
-        public long LogicalWrites { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UsedMemoryGrant
-        /// </summary>
-        [DataMember(Name = "usedMemoryGrant", EmitDefaultValue = false)]
-        public long UsedMemoryGrant { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MemoryGrant
-        /// </summary>
-        [DataMember(Name = "memoryGrant", EmitDefaultValue = false)]
-        public long MemoryGrant { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Impact
-        /// </summary>
-        [DataMember(Name = "impact", EmitDefaultValue = false)]
-        public double Impact { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsTrackedAndNotInZoomRange
-        /// </summary>
-        [DataMember(Name = "isTrackedAndNotInZoomRange", EmitDefaultValue = true)]
-        public bool IsTrackedAndNotInZoomRange { get; private set; }
-
-        /// <summary>
-        /// Returns false as IsTrackedAndNotInZoomRange should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeIsTrackedAndNotInZoomRange()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class TopQueryDto {\n");
-            sb.Append("  ChannelInstanceRef: ").Append(ChannelInstanceRef).Append("\n");
-            sb.Append("  QueryText: ").Append(QueryText).Append("\n");
-            sb.Append("  PlanHandle: ").Append(PlanHandle).Append("\n");
-            sb.Append("  QueryHash: ").Append(QueryHash).Append("\n");
-            sb.Append("  CreateDate: ").Append(CreateDate).Append("\n");
-            sb.Append("  ObjectName: ").Append(ObjectName).Append("\n");
-            sb.Append("  Database: ").Append(Database).Append("\n");
-            sb.Append("  Duration: ").Append(Duration).Append("\n");
-            sb.Append("  ExecutionCount: ").Append(ExecutionCount).Append("\n");
-            sb.Append("  CpuTime: ").Append(CpuTime).Append("\n");
-            sb.Append("  PhysicalReads: ").Append(PhysicalReads).Append("\n");
-            sb.Append("  LogicalReads: ").Append(LogicalReads).Append("\n");
-            sb.Append("  LogicalWrites: ").Append(LogicalWrites).Append("\n");
-            sb.Append("  UsedMemoryGrant: ").Append(UsedMemoryGrant).Append("\n");
-            sb.Append("  MemoryGrant: ").Append(MemoryGrant).Append("\n");
-            sb.Append("  Impact: ").Append(Impact).Append("\n");
-            sb.Append("  IsTrackedAndNotInZoomRange: ").Append(IsTrackedAndNotInZoomRange).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        ChannelInstanceRef = channelInstanceRef;
+        QueryText = queryText;
+        PlanHandle = planHandle;
+        QueryHash = queryHash;
+        CreateDate = createDate;
+        ObjectName = objectName;
+        Database = database;
+        Duration = duration;
+        ExecutionCount = executionCount;
+        CpuTime = cpuTime;
+        PhysicalReads = physicalReads;
+        LogicalReads = logicalReads;
+        LogicalWrites = logicalWrites;
+        UsedMemoryGrant = usedMemoryGrant;
+        MemoryGrant = memoryGrant;
+        Impact = impact;
     }
 
+    /// <summary>
+    ///     Gets or Sets ChannelInstanceRef
+    /// </summary>
+    [DataMember(Name = "channelInstanceRef", EmitDefaultValue = false)]
+    public ChannelInstanceRef ChannelInstanceRef { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets QueryText
+    /// </summary>
+    [DataMember(Name = "queryText", EmitDefaultValue = false)]
+    public FullQueryTextDto QueryText { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets PlanHandle
+    /// </summary>
+    [DataMember(Name = "planHandle", EmitDefaultValue = false)]
+    public string PlanHandle { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets QueryHash
+    /// </summary>
+    [DataMember(Name = "queryHash", EmitDefaultValue = false)]
+    public string QueryHash { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CreateDate
+    /// </summary>
+    [DataMember(Name = "createDate", EmitDefaultValue = false)]
+    public DateTime CreateDate { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ObjectName
+    /// </summary>
+    [DataMember(Name = "objectName", EmitDefaultValue = false)]
+    public string ObjectName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Database
+    /// </summary>
+    [DataMember(Name = "database", EmitDefaultValue = false)]
+    public string Database { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Duration
+    /// </summary>
+    [DataMember(Name = "duration", EmitDefaultValue = false)]
+    public long Duration { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ExecutionCount
+    /// </summary>
+    [DataMember(Name = "executionCount", EmitDefaultValue = false)]
+    public long ExecutionCount { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CpuTime
+    /// </summary>
+    [DataMember(Name = "cpuTime", EmitDefaultValue = false)]
+    public long CpuTime { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets PhysicalReads
+    /// </summary>
+    [DataMember(Name = "physicalReads", EmitDefaultValue = false)]
+    public long PhysicalReads { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LogicalReads
+    /// </summary>
+    [DataMember(Name = "logicalReads", EmitDefaultValue = false)]
+    public long LogicalReads { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LogicalWrites
+    /// </summary>
+    [DataMember(Name = "logicalWrites", EmitDefaultValue = false)]
+    public long LogicalWrites { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UsedMemoryGrant
+    /// </summary>
+    [DataMember(Name = "usedMemoryGrant", EmitDefaultValue = false)]
+    public long UsedMemoryGrant { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MemoryGrant
+    /// </summary>
+    [DataMember(Name = "memoryGrant", EmitDefaultValue = false)]
+    public long MemoryGrant { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Impact
+    /// </summary>
+    [DataMember(Name = "impact", EmitDefaultValue = false)]
+    public double Impact { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsTrackedAndNotInZoomRange
+    /// </summary>
+    [DataMember(Name = "isTrackedAndNotInZoomRange", EmitDefaultValue = true)]
+    public bool IsTrackedAndNotInZoomRange { get; private set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns false as IsTrackedAndNotInZoomRange should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeIsTrackedAndNotInZoomRange()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class TopQueryDto {\n");
+        sb.Append("  ChannelInstanceRef: ").Append(ChannelInstanceRef).Append("\n");
+        sb.Append("  QueryText: ").Append(QueryText).Append("\n");
+        sb.Append("  PlanHandle: ").Append(PlanHandle).Append("\n");
+        sb.Append("  QueryHash: ").Append(QueryHash).Append("\n");
+        sb.Append("  CreateDate: ").Append(CreateDate).Append("\n");
+        sb.Append("  ObjectName: ").Append(ObjectName).Append("\n");
+        sb.Append("  Database: ").Append(Database).Append("\n");
+        sb.Append("  Duration: ").Append(Duration).Append("\n");
+        sb.Append("  ExecutionCount: ").Append(ExecutionCount).Append("\n");
+        sb.Append("  CpuTime: ").Append(CpuTime).Append("\n");
+        sb.Append("  PhysicalReads: ").Append(PhysicalReads).Append("\n");
+        sb.Append("  LogicalReads: ").Append(LogicalReads).Append("\n");
+        sb.Append("  LogicalWrites: ").Append(LogicalWrites).Append("\n");
+        sb.Append("  UsedMemoryGrant: ").Append(UsedMemoryGrant).Append("\n");
+        sb.Append("  MemoryGrant: ").Append(MemoryGrant).Append("\n");
+        sb.Append("  Impact: ").Append(Impact).Append("\n");
+        sb.Append("  IsTrackedAndNotInZoomRange: ").Append(IsTrackedAndNotInZoomRange).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

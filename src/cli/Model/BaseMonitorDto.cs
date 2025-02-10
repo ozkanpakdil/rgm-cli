@@ -8,123 +8,114 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     BaseMonitorDto
+/// </summary>
+[DataContract(Name = "BaseMonitorDto")]
+public class BaseMonitorDto : IValidatableObject
 {
     /// <summary>
-    /// BaseMonitorDto
+    ///     Initializes a new instance of the <see cref="BaseMonitorDto" /> class.
     /// </summary>
-    [DataContract(Name = "BaseMonitorDto")]
-    public partial class BaseMonitorDto : IValidatableObject
+    /// <param name="name">name.</param>
+    /// <param name="displayName">displayName.</param>
+    /// <param name="port">port.</param>
+    public BaseMonitorDto(string name = default, string displayName = default, int port = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BaseMonitorDto" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="displayName">displayName.</param>
-        /// <param name="port">port.</param>
-        public BaseMonitorDto(string name = default(string), string displayName = default(string), int port = default(int))
-        {
-            this.Name = name;
-            this.DisplayName = displayName;
-            this.Port = port;
-        }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = true)]
-        public string Type { get; private set; }
-
-        /// <summary>
-        /// Returns false as Type should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeType()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets DisplayName
-        /// </summary>
-        [DataMember(Name = "displayName", EmitDefaultValue = true)]
-        public string DisplayName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Port
-        /// </summary>
-        [DataMember(Name = "port", EmitDefaultValue = false)]
-        public int Port { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsDisconnected
-        /// </summary>
-        [DataMember(Name = "isDisconnected", EmitDefaultValue = true)]
-        public bool IsDisconnected { get; private set; }
-
-        /// <summary>
-        /// Returns false as IsDisconnected should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeIsDisconnected()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class BaseMonitorDto {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  Port: ").Append(Port).Append("\n");
-            sb.Append("  IsDisconnected: ").Append(IsDisconnected).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Name = name;
+        DisplayName = displayName;
+        Port = port;
     }
 
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Type
+    /// </summary>
+    [DataMember(Name = "type", EmitDefaultValue = true)]
+    public string Type { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets DisplayName
+    /// </summary>
+    [DataMember(Name = "displayName", EmitDefaultValue = true)]
+    public string DisplayName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Port
+    /// </summary>
+    [DataMember(Name = "port", EmitDefaultValue = false)]
+    public int Port { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsDisconnected
+    /// </summary>
+    [DataMember(Name = "isDisconnected", EmitDefaultValue = true)]
+    public bool IsDisconnected { get; private set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns false as Type should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeType()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as IsDisconnected should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeIsDisconnected()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class BaseMonitorDto {\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  Type: ").Append(Type).Append("\n");
+        sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+        sb.Append("  Port: ").Append(Port).Append("\n");
+        sb.Append("  IsDisconnected: ").Append(IsDisconnected).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -8,75 +8,64 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     DeleteDomainConnectionRequest
+/// </summary>
+[DataContract(Name = "DeleteDomainConnectionRequest")]
+public class DeleteDomainConnectionRequest : IValidatableObject
 {
     /// <summary>
-    /// DeleteDomainConnectionRequest
+    ///     Initializes a new instance of the <see cref="DeleteDomainConnectionRequest" /> class.
     /// </summary>
-    [DataContract(Name = "DeleteDomainConnectionRequest")]
-    public partial class DeleteDomainConnectionRequest : IValidatableObject
+    /// <param name="domain">domain.</param>
+    public DeleteDomainConnectionRequest(string domain = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DeleteDomainConnectionRequest" /> class.
-        /// </summary>
-        /// <param name="domain">domain.</param>
-        public DeleteDomainConnectionRequest(string domain = default(string))
-        {
-            this.Domain = domain;
-        }
-
-        /// <summary>
-        /// Gets or Sets Domain
-        /// </summary>
-        [DataMember(Name = "domain", EmitDefaultValue = true)]
-        public string Domain { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class DeleteDomainConnectionRequest {\n");
-            sb.Append("  Domain: ").Append(Domain).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Domain = domain;
     }
 
+    /// <summary>
+    ///     Gets or Sets Domain
+    /// </summary>
+    [DataMember(Name = "domain", EmitDefaultValue = true)]
+    public string Domain { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class DeleteDomainConnectionRequest {\n");
+        sb.Append("  Domain: ").Append(Domain).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

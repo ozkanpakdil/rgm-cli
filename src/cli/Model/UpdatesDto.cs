@@ -8,102 +8,92 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     UpdatesDto
+/// </summary>
+[DataContract(Name = "UpdatesDto")]
+public class UpdatesDto : IValidatableObject
 {
     /// <summary>
-    /// UpdatesDto
+    ///     Initializes a new instance of the <see cref="UpdatesDto" /> class.
     /// </summary>
-    [DataContract(Name = "UpdatesDto")]
-    public partial class UpdatesDto : IValidatableObject
+    /// <param name="showUpdates">showUpdates.</param>
+    /// <param name="updateText">updateText.</param>
+    /// <param name="updateLink">updateLink.</param>
+    /// <param name="updateVersion">updateVersion.</param>
+    public UpdatesDto(bool showUpdates = default, string updateText = default, string updateLink = default,
+        string updateVersion = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UpdatesDto" /> class.
-        /// </summary>
-        /// <param name="showUpdates">showUpdates.</param>
-        /// <param name="updateText">updateText.</param>
-        /// <param name="updateLink">updateLink.</param>
-        /// <param name="updateVersion">updateVersion.</param>
-        public UpdatesDto(bool showUpdates = default(bool), string updateText = default(string), string updateLink = default(string), string updateVersion = default(string))
-        {
-            this.ShowUpdates = showUpdates;
-            this.UpdateText = updateText;
-            this.UpdateLink = updateLink;
-            this.UpdateVersion = updateVersion;
-        }
-
-        /// <summary>
-        /// Gets or Sets ShowUpdates
-        /// </summary>
-        [DataMember(Name = "showUpdates", EmitDefaultValue = true)]
-        public bool ShowUpdates { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UpdateText
-        /// </summary>
-        [DataMember(Name = "updateText", EmitDefaultValue = true)]
-        public string UpdateText { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UpdateLink
-        /// </summary>
-        [DataMember(Name = "updateLink", EmitDefaultValue = true)]
-        public string UpdateLink { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UpdateVersion
-        /// </summary>
-        [DataMember(Name = "updateVersion", EmitDefaultValue = true)]
-        public string UpdateVersion { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class UpdatesDto {\n");
-            sb.Append("  ShowUpdates: ").Append(ShowUpdates).Append("\n");
-            sb.Append("  UpdateText: ").Append(UpdateText).Append("\n");
-            sb.Append("  UpdateLink: ").Append(UpdateLink).Append("\n");
-            sb.Append("  UpdateVersion: ").Append(UpdateVersion).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        ShowUpdates = showUpdates;
+        UpdateText = updateText;
+        UpdateLink = updateLink;
+        UpdateVersion = updateVersion;
     }
 
+    /// <summary>
+    ///     Gets or Sets ShowUpdates
+    /// </summary>
+    [DataMember(Name = "showUpdates", EmitDefaultValue = true)]
+    public bool ShowUpdates { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UpdateText
+    /// </summary>
+    [DataMember(Name = "updateText", EmitDefaultValue = true)]
+    public string UpdateText { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UpdateLink
+    /// </summary>
+    [DataMember(Name = "updateLink", EmitDefaultValue = true)]
+    public string UpdateLink { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UpdateVersion
+    /// </summary>
+    [DataMember(Name = "updateVersion", EmitDefaultValue = true)]
+    public string UpdateVersion { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class UpdatesDto {\n");
+        sb.Append("  ShowUpdates: ").Append(ShowUpdates).Append("\n");
+        sb.Append("  UpdateText: ").Append(UpdateText).Append("\n");
+        sb.Append("  UpdateLink: ").Append(UpdateLink).Append("\n");
+        sb.Append("  UpdateVersion: ").Append(UpdateVersion).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

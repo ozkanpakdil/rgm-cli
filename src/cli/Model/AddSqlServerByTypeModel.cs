@@ -9,245 +9,246 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AddSqlServerByTypeModel
+/// </summary>
+[DataContract(Name = "AddSqlServerByTypeModel")]
+public class AddSqlServerByTypeModel : IValidatableObject
 {
     /// <summary>
-    /// AddSqlServerByTypeModel
+    ///     Initializes a new instance of the <see cref="AddSqlServerByTypeModel" /> class.
     /// </summary>
-    [DataContract(Name = "AddSqlServerByTypeModel")]
-    public partial class AddSqlServerByTypeModel : IValidatableObject
+    /// <param name="windowsMachineCredentials">windowsMachineCredentials.</param>
+    /// <param name="linuxMachineCredentials">linuxMachineCredentials.</param>
+    /// <param name="sqlServerCredentials">sqlServerCredentials.</param>
+    /// <param name="sqlServerConnectionProperties">sqlServerConnectionProperties.</param>
+    /// <param name="windowsConnectionProperties">windowsConnectionProperties.</param>
+    /// <param name="amazonApiCredentials">amazonApiCredentials.</param>
+    /// <param name="postgresCredentials">postgresCredentials.</param>
+    /// <param name="azureCredentials">azureCredentials.</param>
+    /// <param name="oracleCredentials">oracleCredentials.</param>
+    /// <param name="mongoDbCredentials">mongoDbCredentials.</param>
+    /// <param name="mySqlCredentials">mySqlCredentials.</param>
+    /// <param name="azureApiCredentials">azureApiCredentials.</param>
+    /// <param name="group">group.</param>
+    /// <param name="groupId">groupId.</param>
+    /// <param name="agentName">agentName.</param>
+    /// <param name="sqlServers">sqlServers.</param>
+    /// <param name="alias">alias.</param>
+    /// <param name="databases">databases.</param>
+    /// <param name="autoDiscoveryEnabled">autoDiscoveryEnabled.</param>
+    /// <param name="type">type.</param>
+    public AddSqlServerByTypeModel(WindowsMachineCredentialsModel windowsMachineCredentials = default,
+        LinuxMachineCredentialsModel linuxMachineCredentials = default,
+        SqlServerCredentialsModel sqlServerCredentials = default,
+        SqlServerConnectionPropertiesModel sqlServerConnectionProperties = default,
+        WindowsConnectionPropertiesModel windowsConnectionProperties = default,
+        AmazonApiCredentialsUpdateDto amazonApiCredentials = default,
+        PostgresCredentialsModel postgresCredentials = default, AzureCredentialsModel azureCredentials = default,
+        OracleCredentialsModel oracleCredentials = default, MongoDbCredentialsModel mongoDbCredentials = default,
+        MySqlCredentialsModel mySqlCredentials = default, AzureApiCredentialsModel azureApiCredentials = default,
+        string group = default, Guid? groupId = default, string agentName = default, string sqlServers = default,
+        string alias = default, List<string> databases = default, bool autoDiscoveryEnabled = default,
+        MonitoredEntityType? type = default)
     {
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public MonitoredEntityType? Type { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AddSqlServerByTypeModel" /> class.
-        /// </summary>
-        /// <param name="windowsMachineCredentials">windowsMachineCredentials.</param>
-        /// <param name="linuxMachineCredentials">linuxMachineCredentials.</param>
-        /// <param name="sqlServerCredentials">sqlServerCredentials.</param>
-        /// <param name="sqlServerConnectionProperties">sqlServerConnectionProperties.</param>
-        /// <param name="windowsConnectionProperties">windowsConnectionProperties.</param>
-        /// <param name="amazonApiCredentials">amazonApiCredentials.</param>
-        /// <param name="postgresCredentials">postgresCredentials.</param>
-        /// <param name="azureCredentials">azureCredentials.</param>
-        /// <param name="oracleCredentials">oracleCredentials.</param>
-        /// <param name="mongoDbCredentials">mongoDbCredentials.</param>
-        /// <param name="mySqlCredentials">mySqlCredentials.</param>
-        /// <param name="azureApiCredentials">azureApiCredentials.</param>
-        /// <param name="group">group.</param>
-        /// <param name="groupId">groupId.</param>
-        /// <param name="agentName">agentName.</param>
-        /// <param name="sqlServers">sqlServers.</param>
-        /// <param name="alias">alias.</param>
-        /// <param name="databases">databases.</param>
-        /// <param name="autoDiscoveryEnabled">autoDiscoveryEnabled.</param>
-        /// <param name="type">type.</param>
-        public AddSqlServerByTypeModel(WindowsMachineCredentialsModel windowsMachineCredentials = default(WindowsMachineCredentialsModel), LinuxMachineCredentialsModel linuxMachineCredentials = default(LinuxMachineCredentialsModel), SqlServerCredentialsModel sqlServerCredentials = default(SqlServerCredentialsModel), SqlServerConnectionPropertiesModel sqlServerConnectionProperties = default(SqlServerConnectionPropertiesModel), WindowsConnectionPropertiesModel windowsConnectionProperties = default(WindowsConnectionPropertiesModel), AmazonApiCredentialsUpdateDto amazonApiCredentials = default(AmazonApiCredentialsUpdateDto), PostgresCredentialsModel postgresCredentials = default(PostgresCredentialsModel), AzureCredentialsModel azureCredentials = default(AzureCredentialsModel), OracleCredentialsModel oracleCredentials = default(OracleCredentialsModel), MongoDbCredentialsModel mongoDbCredentials = default(MongoDbCredentialsModel), MySqlCredentialsModel mySqlCredentials = default(MySqlCredentialsModel), AzureApiCredentialsModel azureApiCredentials = default(AzureApiCredentialsModel), string group = default(string), Guid? groupId = default(Guid?), string agentName = default(string), string sqlServers = default(string), string alias = default(string), List<string> databases = default(List<string>), bool autoDiscoveryEnabled = default(bool), MonitoredEntityType? type = default(MonitoredEntityType?))
-        {
-            this.WindowsMachineCredentials = windowsMachineCredentials;
-            this.LinuxMachineCredentials = linuxMachineCredentials;
-            this.SqlServerCredentials = sqlServerCredentials;
-            this.SqlServerConnectionProperties = sqlServerConnectionProperties;
-            this.WindowsConnectionProperties = windowsConnectionProperties;
-            this.AmazonApiCredentials = amazonApiCredentials;
-            this.PostgresCredentials = postgresCredentials;
-            this.AzureCredentials = azureCredentials;
-            this.OracleCredentials = oracleCredentials;
-            this.MongoDbCredentials = mongoDbCredentials;
-            this.MySqlCredentials = mySqlCredentials;
-            this.AzureApiCredentials = azureApiCredentials;
-            this.Group = group;
-            this.GroupId = groupId;
-            this.AgentName = agentName;
-            this.SqlServers = sqlServers;
-            this.Alias = alias;
-            this.Databases = databases;
-            this.AutoDiscoveryEnabled = autoDiscoveryEnabled;
-            this.Type = type;
-        }
-
-        /// <summary>
-        /// Gets or Sets WindowsMachineCredentials
-        /// </summary>
-        [DataMember(Name = "windowsMachineCredentials", EmitDefaultValue = false)]
-        public WindowsMachineCredentialsModel WindowsMachineCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LinuxMachineCredentials
-        /// </summary>
-        [DataMember(Name = "linuxMachineCredentials", EmitDefaultValue = false)]
-        public LinuxMachineCredentialsModel LinuxMachineCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlServerCredentials
-        /// </summary>
-        [DataMember(Name = "sqlServerCredentials", EmitDefaultValue = false)]
-        public SqlServerCredentialsModel SqlServerCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlServerConnectionProperties
-        /// </summary>
-        [DataMember(Name = "sqlServerConnectionProperties", EmitDefaultValue = false)]
-        public SqlServerConnectionPropertiesModel SqlServerConnectionProperties { get; set; }
-
-        /// <summary>
-        /// Gets or Sets WindowsConnectionProperties
-        /// </summary>
-        [DataMember(Name = "windowsConnectionProperties", EmitDefaultValue = false)]
-        public WindowsConnectionPropertiesModel WindowsConnectionProperties { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AmazonApiCredentials
-        /// </summary>
-        [DataMember(Name = "amazonApiCredentials", EmitDefaultValue = false)]
-        public AmazonApiCredentialsUpdateDto AmazonApiCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PostgresCredentials
-        /// </summary>
-        [DataMember(Name = "postgresCredentials", EmitDefaultValue = false)]
-        public PostgresCredentialsModel PostgresCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AzureCredentials
-        /// </summary>
-        [DataMember(Name = "azureCredentials", EmitDefaultValue = false)]
-        public AzureCredentialsModel AzureCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OracleCredentials
-        /// </summary>
-        [DataMember(Name = "oracleCredentials", EmitDefaultValue = false)]
-        public OracleCredentialsModel OracleCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MongoDbCredentials
-        /// </summary>
-        [DataMember(Name = "mongoDbCredentials", EmitDefaultValue = false)]
-        public MongoDbCredentialsModel MongoDbCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MySqlCredentials
-        /// </summary>
-        [DataMember(Name = "mySqlCredentials", EmitDefaultValue = false)]
-        public MySqlCredentialsModel MySqlCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AzureApiCredentials
-        /// </summary>
-        [DataMember(Name = "azureApiCredentials", EmitDefaultValue = false)]
-        public AzureApiCredentialsModel AzureApiCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Group
-        /// </summary>
-        [DataMember(Name = "group", EmitDefaultValue = true)]
-        public string Group { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GroupId
-        /// </summary>
-        [DataMember(Name = "groupId", EmitDefaultValue = true)]
-        public Guid? GroupId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AgentName
-        /// </summary>
-        [DataMember(Name = "agentName", EmitDefaultValue = true)]
-        public string AgentName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlServers
-        /// </summary>
-        [DataMember(Name = "sqlServers", EmitDefaultValue = true)]
-        public string SqlServers { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Alias
-        /// </summary>
-        [DataMember(Name = "alias", EmitDefaultValue = true)]
-        public string Alias { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Databases
-        /// </summary>
-        [DataMember(Name = "databases", EmitDefaultValue = true)]
-        public List<string> Databases { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AutoDiscoveryEnabled
-        /// </summary>
-        [DataMember(Name = "autoDiscoveryEnabled", EmitDefaultValue = true)]
-        public bool AutoDiscoveryEnabled { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AddSqlServerByTypeModel {\n");
-            sb.Append("  WindowsMachineCredentials: ").Append(WindowsMachineCredentials).Append("\n");
-            sb.Append("  LinuxMachineCredentials: ").Append(LinuxMachineCredentials).Append("\n");
-            sb.Append("  SqlServerCredentials: ").Append(SqlServerCredentials).Append("\n");
-            sb.Append("  SqlServerConnectionProperties: ").Append(SqlServerConnectionProperties).Append("\n");
-            sb.Append("  WindowsConnectionProperties: ").Append(WindowsConnectionProperties).Append("\n");
-            sb.Append("  AmazonApiCredentials: ").Append(AmazonApiCredentials).Append("\n");
-            sb.Append("  PostgresCredentials: ").Append(PostgresCredentials).Append("\n");
-            sb.Append("  AzureCredentials: ").Append(AzureCredentials).Append("\n");
-            sb.Append("  OracleCredentials: ").Append(OracleCredentials).Append("\n");
-            sb.Append("  MongoDbCredentials: ").Append(MongoDbCredentials).Append("\n");
-            sb.Append("  MySqlCredentials: ").Append(MySqlCredentials).Append("\n");
-            sb.Append("  AzureApiCredentials: ").Append(AzureApiCredentials).Append("\n");
-            sb.Append("  Group: ").Append(Group).Append("\n");
-            sb.Append("  GroupId: ").Append(GroupId).Append("\n");
-            sb.Append("  AgentName: ").Append(AgentName).Append("\n");
-            sb.Append("  SqlServers: ").Append(SqlServers).Append("\n");
-            sb.Append("  Alias: ").Append(Alias).Append("\n");
-            sb.Append("  Databases: ").Append(Databases).Append("\n");
-            sb.Append("  AutoDiscoveryEnabled: ").Append(AutoDiscoveryEnabled).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        WindowsMachineCredentials = windowsMachineCredentials;
+        LinuxMachineCredentials = linuxMachineCredentials;
+        SqlServerCredentials = sqlServerCredentials;
+        SqlServerConnectionProperties = sqlServerConnectionProperties;
+        WindowsConnectionProperties = windowsConnectionProperties;
+        AmazonApiCredentials = amazonApiCredentials;
+        PostgresCredentials = postgresCredentials;
+        AzureCredentials = azureCredentials;
+        OracleCredentials = oracleCredentials;
+        MongoDbCredentials = mongoDbCredentials;
+        MySqlCredentials = mySqlCredentials;
+        AzureApiCredentials = azureApiCredentials;
+        Group = group;
+        GroupId = groupId;
+        AgentName = agentName;
+        SqlServers = sqlServers;
+        Alias = alias;
+        Databases = databases;
+        AutoDiscoveryEnabled = autoDiscoveryEnabled;
+        Type = type;
     }
 
+    /// <summary>
+    ///     Gets or Sets Type
+    /// </summary>
+    [DataMember(Name = "type", EmitDefaultValue = false)]
+    public MonitoredEntityType? Type { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets WindowsMachineCredentials
+    /// </summary>
+    [DataMember(Name = "windowsMachineCredentials", EmitDefaultValue = false)]
+    public WindowsMachineCredentialsModel WindowsMachineCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LinuxMachineCredentials
+    /// </summary>
+    [DataMember(Name = "linuxMachineCredentials", EmitDefaultValue = false)]
+    public LinuxMachineCredentialsModel LinuxMachineCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlServerCredentials
+    /// </summary>
+    [DataMember(Name = "sqlServerCredentials", EmitDefaultValue = false)]
+    public SqlServerCredentialsModel SqlServerCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlServerConnectionProperties
+    /// </summary>
+    [DataMember(Name = "sqlServerConnectionProperties", EmitDefaultValue = false)]
+    public SqlServerConnectionPropertiesModel SqlServerConnectionProperties { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets WindowsConnectionProperties
+    /// </summary>
+    [DataMember(Name = "windowsConnectionProperties", EmitDefaultValue = false)]
+    public WindowsConnectionPropertiesModel WindowsConnectionProperties { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AmazonApiCredentials
+    /// </summary>
+    [DataMember(Name = "amazonApiCredentials", EmitDefaultValue = false)]
+    public AmazonApiCredentialsUpdateDto AmazonApiCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets PostgresCredentials
+    /// </summary>
+    [DataMember(Name = "postgresCredentials", EmitDefaultValue = false)]
+    public PostgresCredentialsModel PostgresCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AzureCredentials
+    /// </summary>
+    [DataMember(Name = "azureCredentials", EmitDefaultValue = false)]
+    public AzureCredentialsModel AzureCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets OracleCredentials
+    /// </summary>
+    [DataMember(Name = "oracleCredentials", EmitDefaultValue = false)]
+    public OracleCredentialsModel OracleCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MongoDbCredentials
+    /// </summary>
+    [DataMember(Name = "mongoDbCredentials", EmitDefaultValue = false)]
+    public MongoDbCredentialsModel MongoDbCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MySqlCredentials
+    /// </summary>
+    [DataMember(Name = "mySqlCredentials", EmitDefaultValue = false)]
+    public MySqlCredentialsModel MySqlCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AzureApiCredentials
+    /// </summary>
+    [DataMember(Name = "azureApiCredentials", EmitDefaultValue = false)]
+    public AzureApiCredentialsModel AzureApiCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Group
+    /// </summary>
+    [DataMember(Name = "group", EmitDefaultValue = true)]
+    public string Group { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets GroupId
+    /// </summary>
+    [DataMember(Name = "groupId", EmitDefaultValue = true)]
+    public Guid? GroupId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AgentName
+    /// </summary>
+    [DataMember(Name = "agentName", EmitDefaultValue = true)]
+    public string AgentName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlServers
+    /// </summary>
+    [DataMember(Name = "sqlServers", EmitDefaultValue = true)]
+    public string SqlServers { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Alias
+    /// </summary>
+    [DataMember(Name = "alias", EmitDefaultValue = true)]
+    public string Alias { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Databases
+    /// </summary>
+    [DataMember(Name = "databases", EmitDefaultValue = true)]
+    public List<string> Databases { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AutoDiscoveryEnabled
+    /// </summary>
+    [DataMember(Name = "autoDiscoveryEnabled", EmitDefaultValue = true)]
+    public bool AutoDiscoveryEnabled { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AddSqlServerByTypeModel {\n");
+        sb.Append("  WindowsMachineCredentials: ").Append(WindowsMachineCredentials).Append("\n");
+        sb.Append("  LinuxMachineCredentials: ").Append(LinuxMachineCredentials).Append("\n");
+        sb.Append("  SqlServerCredentials: ").Append(SqlServerCredentials).Append("\n");
+        sb.Append("  SqlServerConnectionProperties: ").Append(SqlServerConnectionProperties).Append("\n");
+        sb.Append("  WindowsConnectionProperties: ").Append(WindowsConnectionProperties).Append("\n");
+        sb.Append("  AmazonApiCredentials: ").Append(AmazonApiCredentials).Append("\n");
+        sb.Append("  PostgresCredentials: ").Append(PostgresCredentials).Append("\n");
+        sb.Append("  AzureCredentials: ").Append(AzureCredentials).Append("\n");
+        sb.Append("  OracleCredentials: ").Append(OracleCredentials).Append("\n");
+        sb.Append("  MongoDbCredentials: ").Append(MongoDbCredentials).Append("\n");
+        sb.Append("  MySqlCredentials: ").Append(MySqlCredentials).Append("\n");
+        sb.Append("  AzureApiCredentials: ").Append(AzureApiCredentials).Append("\n");
+        sb.Append("  Group: ").Append(Group).Append("\n");
+        sb.Append("  GroupId: ").Append(GroupId).Append("\n");
+        sb.Append("  AgentName: ").Append(AgentName).Append("\n");
+        sb.Append("  SqlServers: ").Append(SqlServers).Append("\n");
+        sb.Append("  Alias: ").Append(Alias).Append("\n");
+        sb.Append("  Databases: ").Append(Databases).Append("\n");
+        sb.Append("  AutoDiscoveryEnabled: ").Append(AutoDiscoveryEnabled).Append("\n");
+        sb.Append("  Type: ").Append(Type).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

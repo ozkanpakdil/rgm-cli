@@ -8,174 +8,171 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AllCredentialsModel
+/// </summary>
+[DataContract(Name = "AllCredentialsModel")]
+public class AllCredentialsModel : IValidatableObject
 {
     /// <summary>
-    /// AllCredentialsModel
+    ///     Initializes a new instance of the <see cref="AllCredentialsModel" /> class.
     /// </summary>
-    [DataContract(Name = "AllCredentialsModel")]
-    public partial class AllCredentialsModel : IValidatableObject
+    /// <param name="windowsMachineCredentials">windowsMachineCredentials.</param>
+    /// <param name="linuxMachineCredentials">linuxMachineCredentials.</param>
+    /// <param name="sqlServerCredentials">sqlServerCredentials.</param>
+    /// <param name="sqlServerConnectionProperties">sqlServerConnectionProperties.</param>
+    /// <param name="windowsConnectionProperties">windowsConnectionProperties.</param>
+    /// <param name="amazonApiCredentials">amazonApiCredentials.</param>
+    /// <param name="postgresCredentials">postgresCredentials.</param>
+    /// <param name="azureCredentials">azureCredentials.</param>
+    /// <param name="oracleCredentials">oracleCredentials.</param>
+    /// <param name="mongoDbCredentials">mongoDbCredentials.</param>
+    /// <param name="mySqlCredentials">mySqlCredentials.</param>
+    /// <param name="azureApiCredentials">azureApiCredentials.</param>
+    public AllCredentialsModel(WindowsMachineCredentialsModel windowsMachineCredentials = default,
+        LinuxMachineCredentialsModel linuxMachineCredentials = default,
+        SqlServerCredentialsModel sqlServerCredentials = default,
+        SqlServerConnectionPropertiesModel sqlServerConnectionProperties = default,
+        WindowsConnectionPropertiesModel windowsConnectionProperties = default,
+        AmazonApiCredentialsUpdateDto amazonApiCredentials = default,
+        PostgresCredentialsModel postgresCredentials = default, AzureCredentialsModel azureCredentials = default,
+        OracleCredentialsModel oracleCredentials = default, MongoDbCredentialsModel mongoDbCredentials = default,
+        MySqlCredentialsModel mySqlCredentials = default, AzureApiCredentialsModel azureApiCredentials = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AllCredentialsModel" /> class.
-        /// </summary>
-        /// <param name="windowsMachineCredentials">windowsMachineCredentials.</param>
-        /// <param name="linuxMachineCredentials">linuxMachineCredentials.</param>
-        /// <param name="sqlServerCredentials">sqlServerCredentials.</param>
-        /// <param name="sqlServerConnectionProperties">sqlServerConnectionProperties.</param>
-        /// <param name="windowsConnectionProperties">windowsConnectionProperties.</param>
-        /// <param name="amazonApiCredentials">amazonApiCredentials.</param>
-        /// <param name="postgresCredentials">postgresCredentials.</param>
-        /// <param name="azureCredentials">azureCredentials.</param>
-        /// <param name="oracleCredentials">oracleCredentials.</param>
-        /// <param name="mongoDbCredentials">mongoDbCredentials.</param>
-        /// <param name="mySqlCredentials">mySqlCredentials.</param>
-        /// <param name="azureApiCredentials">azureApiCredentials.</param>
-        public AllCredentialsModel(WindowsMachineCredentialsModel windowsMachineCredentials = default(WindowsMachineCredentialsModel), LinuxMachineCredentialsModel linuxMachineCredentials = default(LinuxMachineCredentialsModel), SqlServerCredentialsModel sqlServerCredentials = default(SqlServerCredentialsModel), SqlServerConnectionPropertiesModel sqlServerConnectionProperties = default(SqlServerConnectionPropertiesModel), WindowsConnectionPropertiesModel windowsConnectionProperties = default(WindowsConnectionPropertiesModel), AmazonApiCredentialsUpdateDto amazonApiCredentials = default(AmazonApiCredentialsUpdateDto), PostgresCredentialsModel postgresCredentials = default(PostgresCredentialsModel), AzureCredentialsModel azureCredentials = default(AzureCredentialsModel), OracleCredentialsModel oracleCredentials = default(OracleCredentialsModel), MongoDbCredentialsModel mongoDbCredentials = default(MongoDbCredentialsModel), MySqlCredentialsModel mySqlCredentials = default(MySqlCredentialsModel), AzureApiCredentialsModel azureApiCredentials = default(AzureApiCredentialsModel))
-        {
-            this.WindowsMachineCredentials = windowsMachineCredentials;
-            this.LinuxMachineCredentials = linuxMachineCredentials;
-            this.SqlServerCredentials = sqlServerCredentials;
-            this.SqlServerConnectionProperties = sqlServerConnectionProperties;
-            this.WindowsConnectionProperties = windowsConnectionProperties;
-            this.AmazonApiCredentials = amazonApiCredentials;
-            this.PostgresCredentials = postgresCredentials;
-            this.AzureCredentials = azureCredentials;
-            this.OracleCredentials = oracleCredentials;
-            this.MongoDbCredentials = mongoDbCredentials;
-            this.MySqlCredentials = mySqlCredentials;
-            this.AzureApiCredentials = azureApiCredentials;
-        }
-
-        /// <summary>
-        /// Gets or Sets WindowsMachineCredentials
-        /// </summary>
-        [DataMember(Name = "windowsMachineCredentials", EmitDefaultValue = false)]
-        public WindowsMachineCredentialsModel WindowsMachineCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LinuxMachineCredentials
-        /// </summary>
-        [DataMember(Name = "linuxMachineCredentials", EmitDefaultValue = false)]
-        public LinuxMachineCredentialsModel LinuxMachineCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlServerCredentials
-        /// </summary>
-        [DataMember(Name = "sqlServerCredentials", EmitDefaultValue = false)]
-        public SqlServerCredentialsModel SqlServerCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlServerConnectionProperties
-        /// </summary>
-        [DataMember(Name = "sqlServerConnectionProperties", EmitDefaultValue = false)]
-        public SqlServerConnectionPropertiesModel SqlServerConnectionProperties { get; set; }
-
-        /// <summary>
-        /// Gets or Sets WindowsConnectionProperties
-        /// </summary>
-        [DataMember(Name = "windowsConnectionProperties", EmitDefaultValue = false)]
-        public WindowsConnectionPropertiesModel WindowsConnectionProperties { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AmazonApiCredentials
-        /// </summary>
-        [DataMember(Name = "amazonApiCredentials", EmitDefaultValue = false)]
-        public AmazonApiCredentialsUpdateDto AmazonApiCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PostgresCredentials
-        /// </summary>
-        [DataMember(Name = "postgresCredentials", EmitDefaultValue = false)]
-        public PostgresCredentialsModel PostgresCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AzureCredentials
-        /// </summary>
-        [DataMember(Name = "azureCredentials", EmitDefaultValue = false)]
-        public AzureCredentialsModel AzureCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OracleCredentials
-        /// </summary>
-        [DataMember(Name = "oracleCredentials", EmitDefaultValue = false)]
-        public OracleCredentialsModel OracleCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MongoDbCredentials
-        /// </summary>
-        [DataMember(Name = "mongoDbCredentials", EmitDefaultValue = false)]
-        public MongoDbCredentialsModel MongoDbCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MySqlCredentials
-        /// </summary>
-        [DataMember(Name = "mySqlCredentials", EmitDefaultValue = false)]
-        public MySqlCredentialsModel MySqlCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AzureApiCredentials
-        /// </summary>
-        [DataMember(Name = "azureApiCredentials", EmitDefaultValue = false)]
-        public AzureApiCredentialsModel AzureApiCredentials { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AllCredentialsModel {\n");
-            sb.Append("  WindowsMachineCredentials: ").Append(WindowsMachineCredentials).Append("\n");
-            sb.Append("  LinuxMachineCredentials: ").Append(LinuxMachineCredentials).Append("\n");
-            sb.Append("  SqlServerCredentials: ").Append(SqlServerCredentials).Append("\n");
-            sb.Append("  SqlServerConnectionProperties: ").Append(SqlServerConnectionProperties).Append("\n");
-            sb.Append("  WindowsConnectionProperties: ").Append(WindowsConnectionProperties).Append("\n");
-            sb.Append("  AmazonApiCredentials: ").Append(AmazonApiCredentials).Append("\n");
-            sb.Append("  PostgresCredentials: ").Append(PostgresCredentials).Append("\n");
-            sb.Append("  AzureCredentials: ").Append(AzureCredentials).Append("\n");
-            sb.Append("  OracleCredentials: ").Append(OracleCredentials).Append("\n");
-            sb.Append("  MongoDbCredentials: ").Append(MongoDbCredentials).Append("\n");
-            sb.Append("  MySqlCredentials: ").Append(MySqlCredentials).Append("\n");
-            sb.Append("  AzureApiCredentials: ").Append(AzureApiCredentials).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        WindowsMachineCredentials = windowsMachineCredentials;
+        LinuxMachineCredentials = linuxMachineCredentials;
+        SqlServerCredentials = sqlServerCredentials;
+        SqlServerConnectionProperties = sqlServerConnectionProperties;
+        WindowsConnectionProperties = windowsConnectionProperties;
+        AmazonApiCredentials = amazonApiCredentials;
+        PostgresCredentials = postgresCredentials;
+        AzureCredentials = azureCredentials;
+        OracleCredentials = oracleCredentials;
+        MongoDbCredentials = mongoDbCredentials;
+        MySqlCredentials = mySqlCredentials;
+        AzureApiCredentials = azureApiCredentials;
     }
 
+    /// <summary>
+    ///     Gets or Sets WindowsMachineCredentials
+    /// </summary>
+    [DataMember(Name = "windowsMachineCredentials", EmitDefaultValue = false)]
+    public WindowsMachineCredentialsModel WindowsMachineCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LinuxMachineCredentials
+    /// </summary>
+    [DataMember(Name = "linuxMachineCredentials", EmitDefaultValue = false)]
+    public LinuxMachineCredentialsModel LinuxMachineCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlServerCredentials
+    /// </summary>
+    [DataMember(Name = "sqlServerCredentials", EmitDefaultValue = false)]
+    public SqlServerCredentialsModel SqlServerCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlServerConnectionProperties
+    /// </summary>
+    [DataMember(Name = "sqlServerConnectionProperties", EmitDefaultValue = false)]
+    public SqlServerConnectionPropertiesModel SqlServerConnectionProperties { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets WindowsConnectionProperties
+    /// </summary>
+    [DataMember(Name = "windowsConnectionProperties", EmitDefaultValue = false)]
+    public WindowsConnectionPropertiesModel WindowsConnectionProperties { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AmazonApiCredentials
+    /// </summary>
+    [DataMember(Name = "amazonApiCredentials", EmitDefaultValue = false)]
+    public AmazonApiCredentialsUpdateDto AmazonApiCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets PostgresCredentials
+    /// </summary>
+    [DataMember(Name = "postgresCredentials", EmitDefaultValue = false)]
+    public PostgresCredentialsModel PostgresCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AzureCredentials
+    /// </summary>
+    [DataMember(Name = "azureCredentials", EmitDefaultValue = false)]
+    public AzureCredentialsModel AzureCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets OracleCredentials
+    /// </summary>
+    [DataMember(Name = "oracleCredentials", EmitDefaultValue = false)]
+    public OracleCredentialsModel OracleCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MongoDbCredentials
+    /// </summary>
+    [DataMember(Name = "mongoDbCredentials", EmitDefaultValue = false)]
+    public MongoDbCredentialsModel MongoDbCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MySqlCredentials
+    /// </summary>
+    [DataMember(Name = "mySqlCredentials", EmitDefaultValue = false)]
+    public MySqlCredentialsModel MySqlCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AzureApiCredentials
+    /// </summary>
+    [DataMember(Name = "azureApiCredentials", EmitDefaultValue = false)]
+    public AzureApiCredentialsModel AzureApiCredentials { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AllCredentialsModel {\n");
+        sb.Append("  WindowsMachineCredentials: ").Append(WindowsMachineCredentials).Append("\n");
+        sb.Append("  LinuxMachineCredentials: ").Append(LinuxMachineCredentials).Append("\n");
+        sb.Append("  SqlServerCredentials: ").Append(SqlServerCredentials).Append("\n");
+        sb.Append("  SqlServerConnectionProperties: ").Append(SqlServerConnectionProperties).Append("\n");
+        sb.Append("  WindowsConnectionProperties: ").Append(WindowsConnectionProperties).Append("\n");
+        sb.Append("  AmazonApiCredentials: ").Append(AmazonApiCredentials).Append("\n");
+        sb.Append("  PostgresCredentials: ").Append(PostgresCredentials).Append("\n");
+        sb.Append("  AzureCredentials: ").Append(AzureCredentials).Append("\n");
+        sb.Append("  OracleCredentials: ").Append(OracleCredentials).Append("\n");
+        sb.Append("  MongoDbCredentials: ").Append(MongoDbCredentials).Append("\n");
+        sb.Append("  MySqlCredentials: ").Append(MySqlCredentials).Append("\n");
+        sb.Append("  AzureApiCredentials: ").Append(AzureApiCredentials).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

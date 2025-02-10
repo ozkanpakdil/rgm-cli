@@ -9,287 +9,268 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Common.Domain;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     BackupsRowDto
+/// </summary>
+[DataContract(Name = "BackupsRowDto")]
+public class BackupsRowDto : IValidatableObject
 {
     /// <summary>
-    /// BackupsRowDto
+    ///     Initializes a new instance of the <see cref="BackupsRowDto" /> class.
     /// </summary>
-    [DataContract(Name = "BackupsRowDto")]
-    public partial class BackupsRowDto : IValidatableObject
+    [JsonConstructorAttribute]
+    protected BackupsRowDto()
     {
-
-        /// <summary>
-        /// Gets or Sets SqlInstanceEntityType
-        /// </summary>
-        [DataMember(Name = "sqlInstanceEntityType", IsRequired = true, EmitDefaultValue = true)]
-        public EntityType SqlInstanceEntityType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BackupsRowDto" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected BackupsRowDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BackupsRowDto" /> class.
-        /// </summary>
-        /// <param name="servers">servers (required).</param>
-        /// <param name="group">group (required).</param>
-        /// <param name="cluster">cluster (required).</param>
-        /// <param name="database">database (required).</param>
-        /// <param name="recoveryModel">recoveryModel (required).</param>
-        /// <param name="full">full (required).</param>
-        /// <param name="log">log (required).</param>
-        /// <param name="differential">differential (required).</param>
-        /// <param name="maxRpoMinutes">maxRpoMinutes (required).</param>
-        /// <param name="rpoBucket">rpoBucket (required).</param>
-        /// <param name="allRpo">allRpo (required).</param>
-        /// <param name="sqlInstanceEntityType">sqlInstanceEntityType (required).</param>
-        /// <param name="isCopyOnly">isCopyOnly (required).</param>
-        public BackupsRowDto(List<EstateServerDto> servers = default(List<EstateServerDto>), string group = default(string), string cluster = default(string), string database = default(string), string recoveryModel = default(string), EstateBackupDto full = default(EstateBackupDto), EstateBackupDto log = default(EstateBackupDto), EstateBackupDto differential = default(EstateBackupDto), double? maxRpoMinutes = default(double?), string rpoBucket = default(string), List<double> allRpo = default(List<double>), SqlInstanceEntityTypeEnum sqlInstanceEntityType = default(SqlInstanceEntityTypeEnum), bool isCopyOnly = default(bool))
-        {
-            // to ensure "servers" is required (not null)
-            if (servers == null)
-            {
-                throw new ArgumentNullException("servers is a required property for BackupsRowDto and cannot be null");
-            }
-            this.Servers = servers;
-            // to ensure "group" is required (not null)
-            if (group == null)
-            {
-                throw new ArgumentNullException("group is a required property for BackupsRowDto and cannot be null");
-            }
-            this.Group = group;
-            // to ensure "cluster" is required (not null)
-            if (cluster == null)
-            {
-                throw new ArgumentNullException("cluster is a required property for BackupsRowDto and cannot be null");
-            }
-            this.Cluster = cluster;
-            // to ensure "database" is required (not null)
-            if (database == null)
-            {
-                throw new ArgumentNullException("database is a required property for BackupsRowDto and cannot be null");
-            }
-            this.Database = database;
-            // to ensure "recoveryModel" is required (not null)
-            if (recoveryModel == null)
-            {
-                throw new ArgumentNullException("recoveryModel is a required property for BackupsRowDto and cannot be null");
-            }
-            this.RecoveryModel = recoveryModel;
-            // to ensure "full" is required (not null)
-            if (full == null)
-            {
-                throw new ArgumentNullException("full is a required property for BackupsRowDto and cannot be null");
-            }
-            this.Full = full;
-            // to ensure "log" is required (not null)
-            if (log == null)
-            {
-                throw new ArgumentNullException("log is a required property for BackupsRowDto and cannot be null");
-            }
-            this.Log = log;
-            // to ensure "differential" is required (not null)
-            if (differential == null)
-            {
-                throw new ArgumentNullException("differential is a required property for BackupsRowDto and cannot be null");
-            }
-            this.Differential = differential;
-            // to ensure "maxRpoMinutes" is required (not null)
-            if (maxRpoMinutes == null)
-            {
-                throw new ArgumentNullException("maxRpoMinutes is a required property for BackupsRowDto and cannot be null");
-            }
-            this.MaxRpoMinutes = maxRpoMinutes;
-            // to ensure "rpoBucket" is required (not null)
-            if (rpoBucket == null)
-            {
-                throw new ArgumentNullException("rpoBucket is a required property for BackupsRowDto and cannot be null");
-            }
-            this.RpoBucket = rpoBucket;
-            // to ensure "allRpo" is required (not null)
-            if (allRpo == null)
-            {
-                throw new ArgumentNullException("allRpo is a required property for BackupsRowDto and cannot be null");
-            }
-            this.AllRpo = allRpo;
-            this.SqlInstanceEntityType = sqlInstanceEntityType;
-            this.IsCopyOnly = isCopyOnly;
-        }
-
-        /// <summary>
-        /// Gets or Sets Servers
-        /// </summary>
-        [DataMember(Name = "servers", IsRequired = true, EmitDefaultValue = true)]
-        public List<EstateServerDto> Servers { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Group
-        /// </summary>
-        [DataMember(Name = "group", IsRequired = true, EmitDefaultValue = true)]
-        public string Group { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Cluster
-        /// </summary>
-        [DataMember(Name = "cluster", IsRequired = true, EmitDefaultValue = true)]
-        public string Cluster { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Database
-        /// </summary>
-        [DataMember(Name = "database", IsRequired = true, EmitDefaultValue = true)]
-        public string Database { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RecoveryModel
-        /// </summary>
-        [DataMember(Name = "recoveryModel", IsRequired = true, EmitDefaultValue = true)]
-        public string RecoveryModel { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Full
-        /// </summary>
-        [DataMember(Name = "full", IsRequired = true, EmitDefaultValue = true)]
-        public EstateBackupDto Full { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Log
-        /// </summary>
-        [DataMember(Name = "log", IsRequired = true, EmitDefaultValue = true)]
-        public EstateBackupDto Log { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Differential
-        /// </summary>
-        [DataMember(Name = "differential", IsRequired = true, EmitDefaultValue = true)]
-        public EstateBackupDto Differential { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MaxRpoMinutes
-        /// </summary>
-        [DataMember(Name = "maxRpoMinutes", IsRequired = true, EmitDefaultValue = true)]
-        public double? MaxRpoMinutes { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RpoBucket
-        /// </summary>
-        [DataMember(Name = "rpoBucket", IsRequired = true, EmitDefaultValue = true)]
-        public string RpoBucket { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AllRpo
-        /// </summary>
-        [DataMember(Name = "allRpo", IsRequired = true, EmitDefaultValue = true)]
-        public List<double> AllRpo { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsCopyOnly
-        /// </summary>
-        [DataMember(Name = "isCopyOnly", IsRequired = true, EmitDefaultValue = true)]
-        public bool IsCopyOnly { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsSystemDatabase
-        /// </summary>
-        [DataMember(Name = "isSystemDatabase", EmitDefaultValue = true)]
-        public bool IsSystemDatabase { get; private set; }
-
-        /// <summary>
-        /// Returns false as IsSystemDatabase should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeIsSystemDatabase()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets SortableDatabaseName
-        /// </summary>
-        [DataMember(Name = "sortableDatabaseName", EmitDefaultValue = false)]
-        public string SortableDatabaseName { get; private set; }
-
-        /// <summary>
-        /// Returns false as SortableDatabaseName should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeSortableDatabaseName()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets HasLogBackupWarning
-        /// </summary>
-        [DataMember(Name = "hasLogBackupWarning", EmitDefaultValue = true)]
-        public bool HasLogBackupWarning { get; private set; }
-
-        /// <summary>
-        /// Returns false as HasLogBackupWarning should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeHasLogBackupWarning()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class BackupsRowDto {\n");
-            sb.Append("  Servers: ").Append(Servers).Append("\n");
-            sb.Append("  Group: ").Append(Group).Append("\n");
-            sb.Append("  Cluster: ").Append(Cluster).Append("\n");
-            sb.Append("  Database: ").Append(Database).Append("\n");
-            sb.Append("  RecoveryModel: ").Append(RecoveryModel).Append("\n");
-            sb.Append("  Full: ").Append(Full).Append("\n");
-            sb.Append("  Log: ").Append(Log).Append("\n");
-            sb.Append("  Differential: ").Append(Differential).Append("\n");
-            sb.Append("  MaxRpoMinutes: ").Append(MaxRpoMinutes).Append("\n");
-            sb.Append("  RpoBucket: ").Append(RpoBucket).Append("\n");
-            sb.Append("  AllRpo: ").Append(AllRpo).Append("\n");
-            sb.Append("  SqlInstanceEntityType: ").Append(SqlInstanceEntityType).Append("\n");
-            sb.Append("  IsCopyOnly: ").Append(IsCopyOnly).Append("\n");
-            sb.Append("  IsSystemDatabase: ").Append(IsSystemDatabase).Append("\n");
-            sb.Append("  SortableDatabaseName: ").Append(SortableDatabaseName).Append("\n");
-            sb.Append("  HasLogBackupWarning: ").Append(HasLogBackupWarning).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="BackupsRowDto" /> class.
+    /// </summary>
+    /// <param name="servers">servers (required).</param>
+    /// <param name="group">group (required).</param>
+    /// <param name="cluster">cluster (required).</param>
+    /// <param name="database">database (required).</param>
+    /// <param name="recoveryModel">recoveryModel (required).</param>
+    /// <param name="full">full (required).</param>
+    /// <param name="log">log (required).</param>
+    /// <param name="differential">differential (required).</param>
+    /// <param name="maxRpoMinutes">maxRpoMinutes (required).</param>
+    /// <param name="rpoBucket">rpoBucket (required).</param>
+    /// <param name="allRpo">allRpo (required).</param>
+    /// <param name="sqlInstanceEntityType">sqlInstanceEntityType (required).</param>
+    /// <param name="isCopyOnly">isCopyOnly (required).</param>
+    public BackupsRowDto(List<EstateServerDto> servers = default, string group = default, string cluster = default,
+        string database = default, string recoveryModel = default, EstateBackupDto full = default,
+        EstateBackupDto log = default, EstateBackupDto differential = default, double? maxRpoMinutes = default,
+        string rpoBucket = default, List<double> allRpo = default, EntityType sqlInstanceEntityType = default,
+        bool isCopyOnly = default)
+    {
+        // to ensure "servers" is required (not null)
+        if (servers == null)
+            throw new ArgumentNullException("servers is a required property for BackupsRowDto and cannot be null");
+        Servers = servers;
+        // to ensure "group" is required (not null)
+        if (group == null)
+            throw new ArgumentNullException("group is a required property for BackupsRowDto and cannot be null");
+        Group = group;
+        // to ensure "cluster" is required (not null)
+        if (cluster == null)
+            throw new ArgumentNullException("cluster is a required property for BackupsRowDto and cannot be null");
+        Cluster = cluster;
+        // to ensure "database" is required (not null)
+        if (database == null)
+            throw new ArgumentNullException("database is a required property for BackupsRowDto and cannot be null");
+        Database = database;
+        // to ensure "recoveryModel" is required (not null)
+        if (recoveryModel == null)
+            throw new ArgumentNullException(
+                "recoveryModel is a required property for BackupsRowDto and cannot be null");
+        RecoveryModel = recoveryModel;
+        // to ensure "full" is required (not null)
+        if (full == null)
+            throw new ArgumentNullException("full is a required property for BackupsRowDto and cannot be null");
+        Full = full;
+        // to ensure "log" is required (not null)
+        if (log == null)
+            throw new ArgumentNullException("log is a required property for BackupsRowDto and cannot be null");
+        Log = log;
+        // to ensure "differential" is required (not null)
+        if (differential == null)
+            throw new ArgumentNullException("differential is a required property for BackupsRowDto and cannot be null");
+        Differential = differential;
+        // to ensure "maxRpoMinutes" is required (not null)
+        if (maxRpoMinutes == null)
+            throw new ArgumentNullException(
+                "maxRpoMinutes is a required property for BackupsRowDto and cannot be null");
+        MaxRpoMinutes = maxRpoMinutes;
+        // to ensure "rpoBucket" is required (not null)
+        if (rpoBucket == null)
+            throw new ArgumentNullException("rpoBucket is a required property for BackupsRowDto and cannot be null");
+        RpoBucket = rpoBucket;
+        // to ensure "allRpo" is required (not null)
+        if (allRpo == null)
+            throw new ArgumentNullException("allRpo is a required property for BackupsRowDto and cannot be null");
+        AllRpo = allRpo;
+        SqlInstanceEntityType = sqlInstanceEntityType;
+        IsCopyOnly = isCopyOnly;
+    }
+
+    /// <summary>
+    ///     Gets or Sets SqlInstanceEntityType
+    /// </summary>
+    [DataMember(Name = "sqlInstanceEntityType", IsRequired = true, EmitDefaultValue = true)]
+    public EntityType SqlInstanceEntityType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Servers
+    /// </summary>
+    [DataMember(Name = "servers", IsRequired = true, EmitDefaultValue = true)]
+    public List<EstateServerDto> Servers { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Group
+    /// </summary>
+    [DataMember(Name = "group", IsRequired = true, EmitDefaultValue = true)]
+    public string Group { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Cluster
+    /// </summary>
+    [DataMember(Name = "cluster", IsRequired = true, EmitDefaultValue = true)]
+    public string Cluster { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Database
+    /// </summary>
+    [DataMember(Name = "database", IsRequired = true, EmitDefaultValue = true)]
+    public string Database { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets RecoveryModel
+    /// </summary>
+    [DataMember(Name = "recoveryModel", IsRequired = true, EmitDefaultValue = true)]
+    public string RecoveryModel { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Full
+    /// </summary>
+    [DataMember(Name = "full", IsRequired = true, EmitDefaultValue = true)]
+    public EstateBackupDto Full { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Log
+    /// </summary>
+    [DataMember(Name = "log", IsRequired = true, EmitDefaultValue = true)]
+    public EstateBackupDto Log { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Differential
+    /// </summary>
+    [DataMember(Name = "differential", IsRequired = true, EmitDefaultValue = true)]
+    public EstateBackupDto Differential { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MaxRpoMinutes
+    /// </summary>
+    [DataMember(Name = "maxRpoMinutes", IsRequired = true, EmitDefaultValue = true)]
+    public double? MaxRpoMinutes { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets RpoBucket
+    /// </summary>
+    [DataMember(Name = "rpoBucket", IsRequired = true, EmitDefaultValue = true)]
+    public string RpoBucket { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AllRpo
+    /// </summary>
+    [DataMember(Name = "allRpo", IsRequired = true, EmitDefaultValue = true)]
+    public List<double> AllRpo { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsCopyOnly
+    /// </summary>
+    [DataMember(Name = "isCopyOnly", IsRequired = true, EmitDefaultValue = true)]
+    public bool IsCopyOnly { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsSystemDatabase
+    /// </summary>
+    [DataMember(Name = "isSystemDatabase", EmitDefaultValue = true)]
+    public bool IsSystemDatabase { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets SortableDatabaseName
+    /// </summary>
+    [DataMember(Name = "sortableDatabaseName", EmitDefaultValue = false)]
+    public string SortableDatabaseName { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets HasLogBackupWarning
+    /// </summary>
+    [DataMember(Name = "hasLogBackupWarning", EmitDefaultValue = true)]
+    public bool HasLogBackupWarning { get; private set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns false as IsSystemDatabase should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeIsSystemDatabase()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as SortableDatabaseName should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeSortableDatabaseName()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as HasLogBackupWarning should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeHasLogBackupWarning()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class BackupsRowDto {\n");
+        sb.Append("  Servers: ").Append(Servers).Append("\n");
+        sb.Append("  Group: ").Append(Group).Append("\n");
+        sb.Append("  Cluster: ").Append(Cluster).Append("\n");
+        sb.Append("  Database: ").Append(Database).Append("\n");
+        sb.Append("  RecoveryModel: ").Append(RecoveryModel).Append("\n");
+        sb.Append("  Full: ").Append(Full).Append("\n");
+        sb.Append("  Log: ").Append(Log).Append("\n");
+        sb.Append("  Differential: ").Append(Differential).Append("\n");
+        sb.Append("  MaxRpoMinutes: ").Append(MaxRpoMinutes).Append("\n");
+        sb.Append("  RpoBucket: ").Append(RpoBucket).Append("\n");
+        sb.Append("  AllRpo: ").Append(AllRpo).Append("\n");
+        sb.Append("  SqlInstanceEntityType: ").Append(SqlInstanceEntityType).Append("\n");
+        sb.Append("  IsCopyOnly: ").Append(IsCopyOnly).Append("\n");
+        sb.Append("  IsSystemDatabase: ").Append(IsSystemDatabase).Append("\n");
+        sb.Append("  SortableDatabaseName: ").Append(SortableDatabaseName).Append("\n");
+        sb.Append("  HasLogBackupWarning: ").Append(HasLogBackupWarning).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

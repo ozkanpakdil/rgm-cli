@@ -8,90 +8,80 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     QueryRecommendationDto
+/// </summary>
+[DataContract(Name = "QueryRecommendationDto")]
+public class QueryRecommendationDto : IValidatableObject
 {
     /// <summary>
-    /// QueryRecommendationDto
+    ///     Initializes a new instance of the <see cref="QueryRecommendationDto" /> class.
     /// </summary>
-    [DataContract(Name = "QueryRecommendationDto")]
-    public partial class QueryRecommendationDto : IValidatableObject
+    /// <param name="queryRecommendationType">queryRecommendationType.</param>
+    public QueryRecommendationDto(QueryRecommendationType? queryRecommendationType = default)
     {
-
-        /// <summary>
-        /// Gets or Sets QueryRecommendationType
-        /// </summary>
-        [DataMember(Name = "queryRecommendationType", EmitDefaultValue = false)]
-        public QueryRecommendationType? QueryRecommendationType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="QueryRecommendationDto" /> class.
-        /// </summary>
-        /// <param name="queryRecommendationType">queryRecommendationType.</param>
-        public QueryRecommendationDto(QueryRecommendationType? queryRecommendationType = default(QueryRecommendationType?))
-        {
-            this.QueryRecommendationType = queryRecommendationType;
-        }
-
-        /// <summary>
-        /// Gets or Sets Score
-        /// </summary>
-        [DataMember(Name = "score", EmitDefaultValue = false)]
-        public int Score { get; private set; }
-
-        /// <summary>
-        /// Returns false as Score should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeScore()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class QueryRecommendationDto {\n");
-            sb.Append("  QueryRecommendationType: ").Append(QueryRecommendationType).Append("\n");
-            sb.Append("  Score: ").Append(Score).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        QueryRecommendationType = queryRecommendationType;
     }
 
+    /// <summary>
+    ///     Gets or Sets QueryRecommendationType
+    /// </summary>
+    [DataMember(Name = "queryRecommendationType", EmitDefaultValue = false)]
+    public QueryRecommendationType? QueryRecommendationType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Score
+    /// </summary>
+    [DataMember(Name = "score", EmitDefaultValue = false)]
+    public int Score { get; private set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns false as Score should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeScore()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class QueryRecommendationDto {\n");
+        sb.Append("  QueryRecommendationType: ").Append(QueryRecommendationType).Append("\n");
+        sb.Append("  Score: ").Append(Score).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

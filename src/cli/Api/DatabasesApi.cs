@@ -9,1653 +9,1743 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
-using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IDatabasesApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IDatabasesApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet(
+        string clusterName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(
+            string clusterName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet(string clusterName,
+        string instanceName, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetWithHttpInfo(
+        string clusterName, string instanceName, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet(
+            string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(
+            string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet(
+        string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfo(
+            string clusterName, string machineName, string instanceName, string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet(
+        string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(
+            string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet(
+        string machineName, string instanceName, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfo(
+            string machineName, string instanceName, string baseMonitorName, int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IDatabasesApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetAsync(
+        string clusterName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(
+            string clusterName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetAsync(string clusterName,
+        string instanceName, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(
+            string clusterName, string instanceName, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetAsync(
+            string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(
+            string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetAsync(
+        string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(
+            string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetAsync(
+        string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(
+            string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetAsync(
+        string machineName, string instanceName, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(
+            string machineName, string instanceName, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IDatabasesApi : IDatabasesApiSync, IDatabasesApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class DatabasesApi : IDatabasesApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="DatabasesApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public DatabasesApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet(string clusterName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(string clusterName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet(string clusterName, string instanceName, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetWithHttpInfo(string clusterName, string instanceName, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet(string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet(string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfo(string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet(string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet(string machineName, string instanceName, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfo(string machineName, string instanceName, string baseMonitorName, int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="DatabasesApi" /> class.
     /// </summary>
-    public interface IDatabasesApiAsync : IApiAccessor
+    /// <returns></returns>
+    public DatabasesApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetAsync(string clusterName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(string clusterName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetAsync(string clusterName, string instanceName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(string clusterName, string instanceName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetAsync(string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetAsync(string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetAsync(string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetAsync(string machineName, string instanceName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(string machineName, string instanceName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="DatabasesApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IDatabasesApi : IDatabasesApiSync, IDatabasesApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public DatabasesApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="DatabasesApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class DatabasesApi : IDatabasesApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public DatabasesApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabasesApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public DatabasesApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet(
+        string clusterName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(
+            clusterName, instanceName, databaseName, baseMonitorName);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(
+            string clusterName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/instances/{instanceName}/databases/{databaseName}",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabasesApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public DatabasesApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetAsync(
+            string clusterName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(
+                    clusterName, instanceName, databaseName, baseMonitorName, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(
+            string clusterName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/instances/{instanceName}/databases/{databaseName}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabasesApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public DatabasesApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet(string clusterName,
+        string instanceName, string baseMonitorName, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetWithHttpInfo(clusterName,
+            instanceName, baseMonitorName);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetWithHttpInfo(
+            string clusterName,
+            string instanceName, string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/instances/{instanceName}/databases",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabasesApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public DatabasesApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetAsync(
+        string clusterName, string instanceName, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        await ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(
+            clusterName, instanceName, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(
+            string clusterName, string instanceName, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/instances/{instanceName}/databases",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet(
+            string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(
+            clusterName, machineName, instanceName, databaseName, baseMonitorName);
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(
+            string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            return this.Configuration.BasePath;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/instances/{instanceName}/databases/{databaseName}",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetAsync(
+            string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(
+                clusterName, machineName, instanceName, databaseName, baseMonitorName, operationIndex,
+                cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(
+            string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/instances/{instanceName}/databases/{databaseName}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet(string clusterName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet(
+        string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfo(
+            clusterName, machineName, instanceName, baseMonitorName);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfo(
+            string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(clusterName, instanceName, databaseName, baseMonitorName);
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/instances/{instanceName}/databases",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(string clusterName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetAsync(
+            string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(
+                    clusterName, machineName, instanceName, baseMonitorName, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(
+            string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
+        };
 
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
 
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/instances/{instanceName}/databases/{databaseName}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/instances/{instanceName}/databases",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetAsync(string clusterName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet(
+            string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(
+            machineName, instanceName, databaseName, baseMonitorName);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(
+            string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            await ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(clusterName, instanceName, databaseName, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "DatabasesApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<object>(
+                "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/instances/{instanceName}/databases/{databaseName}",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(string clusterName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetAsync(
+            string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(
+                    machineName, instanceName, databaseName, baseMonitorName, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(
+            string machineName, string instanceName, string databaseName, string baseMonitorName,
+            int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
+        };
 
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "DatabasesApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/instances/{instanceName}/databases/{databaseName}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/instances/{instanceName}/databases/{databaseName}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesDatabaseNameGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet(string clusterName, string instanceName, string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet(
+        string machineName, string instanceName, string baseMonitorName, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfo(
+            machineName, instanceName, baseMonitorName);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfo(
+            string machineName, string instanceName, string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetWithHttpInfo(clusterName, instanceName, baseMonitorName);
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "DatabasesApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<object>(
+                "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/instances/{instanceName}/databases",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetWithHttpInfo(string clusterName, string instanceName, string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetAsync(
+        string machineName, string instanceName, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(
+                machineName, instanceName, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="machineName"></param>
+    /// <param name="instanceName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(
+            string machineName, string instanceName, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'instanceName' is set
+        if (instanceName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet");
-            }
+        };
 
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet");
-            }
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet");
-            }
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            string[] _contentTypes = new string[] {
-            };
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("instanceName",
+            ClientUtils.ParameterToString(instanceName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "DatabasesApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/instances/{instanceName}/databases", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/instances/{instanceName}/databases",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetAsync(string clusterName, string instanceName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(clusterName, instanceName, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(string clusterName, string instanceName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet");
-            }
-
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/instances/{instanceName}/databases", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameInstancesInstanceNameDatabasesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet(string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(clusterName, machineName, instanceName, databaseName, baseMonitorName);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/instances/{instanceName}/databases/{databaseName}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetAsync(string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(clusterName, machineName, instanceName, databaseName, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(string clusterName, string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/instances/{instanceName}/databases/{databaseName}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet(string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfo(clusterName, machineName, instanceName, baseMonitorName);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfo(string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/instances/{instanceName}/databases", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetAsync(string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(clusterName, machineName, instanceName, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(string clusterName, string machineName, string instanceName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "DatabasesApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/instances/{instanceName}/databases", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameInstancesInstanceNameDatabasesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet(string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(machineName, instanceName, databaseName, baseMonitorName);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfo(string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "DatabasesApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/instances/{instanceName}/databases/{databaseName}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetAsync(string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(machineName, instanceName, databaseName, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGetWithHttpInfoAsync(string machineName, string instanceName, string databaseName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "DatabasesApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/instances/{instanceName}/databases/{databaseName}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesDatabaseNameGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet(string machineName, string instanceName, string baseMonitorName, int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfo(machineName, instanceName, baseMonitorName);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfo(string machineName, string instanceName, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "DatabasesApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/instances/{instanceName}/databases", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetAsync(string machineName, string instanceName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(machineName, instanceName, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="machineName"></param>
-        /// <param name="instanceName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGetWithHttpInfoAsync(string machineName, string instanceName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-            // verify the required parameter 'instanceName' is set
-            if (instanceName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'instanceName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling DatabasesApi->ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("instanceName", cli.Client.ClientUtils.ParameterToString(instanceName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "DatabasesApi.ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/basemonitors/{baseMonitorName}/standalonemachines/{machineName}/instances/{instanceName}/databases", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameStandalonemachinesMachineNameInstancesInstanceNameDatabasesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

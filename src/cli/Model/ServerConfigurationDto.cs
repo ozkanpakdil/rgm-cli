@@ -8,228 +8,225 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Common.Domain;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     ServerConfigurationDto
+/// </summary>
+[DataContract(Name = "ServerConfigurationDto")]
+public class ServerConfigurationDto : IValidatableObject
 {
     /// <summary>
-    /// ServerConfigurationDto
+    ///     Initializes a new instance of the <see cref="ServerConfigurationDto" /> class.
     /// </summary>
-    [DataContract(Name = "ServerConfigurationDto")]
-    public partial class ServerConfigurationDto : IValidatableObject
+    /// <param name="name">name.</param>
+    /// <param name="group">group.</param>
+    /// <param name="clusterName">clusterName.</param>
+    /// <param name="machineName">machineName.</param>
+    /// <param name="displayName">displayName.</param>
+    /// <param name="baseMonitorName">baseMonitorName.</param>
+    /// <param name="serverCir">serverCir.</param>
+    /// <param name="overviewUrl">overviewUrl.</param>
+    /// <param name="monitoredEntityState">monitoredEntityState.</param>
+    /// <param name="entityType">entityType.</param>
+    /// <param name="configurationOptions">configurationOptions.</param>
+    /// <param name="services">services.</param>
+    /// <param name="network">network.</param>
+    /// <param name="properties">properties.</param>
+    /// <param name="mirroringEndpoints">mirroringEndpoints.</param>
+    /// <param name="traceFlags">traceFlags.</param>
+    /// <param name="machineNames">machineNames.</param>
+    /// <param name="tags">tags.</param>
+    public ServerConfigurationDto(string name = default, string group = default, string clusterName = default,
+        string machineName = default, string displayName = default, string baseMonitorName = default,
+        string serverCir = default, string overviewUrl = default,
+        MonitoredEntityStatusCategory? monitoredEntityState = default, EntityType? entityType = default,
+        ConfigurationOptionsDto configurationOptions = default, List<ServiceDto> services = default,
+        NetworkDto network = default, PropertiesDto properties = default,
+        List<MirroringEndpointDto> mirroringEndpoints = default, List<TraceFlagDto> traceFlags = default,
+        List<string> machineNames = default, List<TagDto> tags = default)
     {
-
-        /// <summary>
-        /// Gets or Sets MonitoredEntityState
-        /// </summary>
-        [DataMember(Name = "monitoredEntityState", EmitDefaultValue = false)]
-        public MonitoredEntityStatusCategory? MonitoredEntityState { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EntityType
-        /// </summary>
-        [DataMember(Name = "entityType", EmitDefaultValue = false)]
-        public EntityType? EntityType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ServerConfigurationDto" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="group">group.</param>
-        /// <param name="clusterName">clusterName.</param>
-        /// <param name="machineName">machineName.</param>
-        /// <param name="displayName">displayName.</param>
-        /// <param name="baseMonitorName">baseMonitorName.</param>
-        /// <param name="serverCir">serverCir.</param>
-        /// <param name="overviewUrl">overviewUrl.</param>
-        /// <param name="monitoredEntityState">monitoredEntityState.</param>
-        /// <param name="entityType">entityType.</param>
-        /// <param name="configurationOptions">configurationOptions.</param>
-        /// <param name="services">services.</param>
-        /// <param name="network">network.</param>
-        /// <param name="properties">properties.</param>
-        /// <param name="mirroringEndpoints">mirroringEndpoints.</param>
-        /// <param name="traceFlags">traceFlags.</param>
-        /// <param name="machineNames">machineNames.</param>
-        /// <param name="tags">tags.</param>
-        public ServerConfigurationDto(string name = default(string), string group = default(string), string clusterName = default(string), string machineName = default(string), string displayName = default(string), string baseMonitorName = default(string), string serverCir = default(string), string overviewUrl = default(string), MonitoredEntityStatusCategory? monitoredEntityState = default(MonitoredEntityStatusCategory?), EntityTypeEnum? entityType = default(EntityTypeEnum?), ConfigurationOptionsDto configurationOptions = default(ConfigurationOptionsDto), List<ServiceDto> services = default(List<ServiceDto>), NetworkDto network = default(NetworkDto), PropertiesDto properties = default(PropertiesDto), List<MirroringEndpointDto> mirroringEndpoints = default(List<MirroringEndpointDto>), List<TraceFlagDto> traceFlags = default(List<TraceFlagDto>), List<string> machineNames = default(List<string>), List<TagDto> tags = default(List<TagDto>))
-        {
-            this.Name = name;
-            this.Group = group;
-            this.ClusterName = clusterName;
-            this.MachineName = machineName;
-            this.DisplayName = displayName;
-            this.BaseMonitorName = baseMonitorName;
-            this.ServerCir = serverCir;
-            this.OverviewUrl = overviewUrl;
-            this.MonitoredEntityState = monitoredEntityState;
-            this.EntityType = entityType;
-            this.ConfigurationOptions = configurationOptions;
-            this.Services = services;
-            this.Network = network;
-            this.Properties = properties;
-            this.MirroringEndpoints = mirroringEndpoints;
-            this.TraceFlags = traceFlags;
-            this.MachineNames = machineNames;
-            this.Tags = tags;
-        }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Group
-        /// </summary>
-        [DataMember(Name = "group", EmitDefaultValue = false)]
-        public string Group { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ClusterName
-        /// </summary>
-        [DataMember(Name = "clusterName", EmitDefaultValue = false)]
-        public string ClusterName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MachineName
-        /// </summary>
-        [DataMember(Name = "machineName", EmitDefaultValue = false)]
-        public string MachineName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DisplayName
-        /// </summary>
-        [DataMember(Name = "displayName", EmitDefaultValue = false)]
-        public string DisplayName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BaseMonitorName
-        /// </summary>
-        [DataMember(Name = "baseMonitorName", EmitDefaultValue = false)]
-        public string BaseMonitorName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ServerCir
-        /// </summary>
-        [DataMember(Name = "serverCir", EmitDefaultValue = false)]
-        public string ServerCir { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OverviewUrl
-        /// </summary>
-        [DataMember(Name = "overviewUrl", EmitDefaultValue = true)]
-        public string OverviewUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ConfigurationOptions
-        /// </summary>
-        [DataMember(Name = "configurationOptions", EmitDefaultValue = false)]
-        public ConfigurationOptionsDto ConfigurationOptions { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Services
-        /// </summary>
-        [DataMember(Name = "services", EmitDefaultValue = false)]
-        public List<ServiceDto> Services { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Network
-        /// </summary>
-        [DataMember(Name = "network", EmitDefaultValue = false)]
-        public NetworkDto Network { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Properties
-        /// </summary>
-        [DataMember(Name = "properties", EmitDefaultValue = false)]
-        public PropertiesDto Properties { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MirroringEndpoints
-        /// </summary>
-        [DataMember(Name = "mirroringEndpoints", EmitDefaultValue = false)]
-        public List<MirroringEndpointDto> MirroringEndpoints { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TraceFlags
-        /// </summary>
-        [DataMember(Name = "traceFlags", EmitDefaultValue = false)]
-        public List<TraceFlagDto> TraceFlags { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MachineNames
-        /// </summary>
-        [DataMember(Name = "machineNames", EmitDefaultValue = false)]
-        public List<string> MachineNames { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Tags
-        /// </summary>
-        [DataMember(Name = "tags", EmitDefaultValue = false)]
-        public List<TagDto> Tags { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class ServerConfigurationDto {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Group: ").Append(Group).Append("\n");
-            sb.Append("  ClusterName: ").Append(ClusterName).Append("\n");
-            sb.Append("  MachineName: ").Append(MachineName).Append("\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  BaseMonitorName: ").Append(BaseMonitorName).Append("\n");
-            sb.Append("  ServerCir: ").Append(ServerCir).Append("\n");
-            sb.Append("  OverviewUrl: ").Append(OverviewUrl).Append("\n");
-            sb.Append("  MonitoredEntityState: ").Append(MonitoredEntityState).Append("\n");
-            sb.Append("  EntityType: ").Append(EntityType).Append("\n");
-            sb.Append("  ConfigurationOptions: ").Append(ConfigurationOptions).Append("\n");
-            sb.Append("  Services: ").Append(Services).Append("\n");
-            sb.Append("  Network: ").Append(Network).Append("\n");
-            sb.Append("  Properties: ").Append(Properties).Append("\n");
-            sb.Append("  MirroringEndpoints: ").Append(MirroringEndpoints).Append("\n");
-            sb.Append("  TraceFlags: ").Append(TraceFlags).Append("\n");
-            sb.Append("  MachineNames: ").Append(MachineNames).Append("\n");
-            sb.Append("  Tags: ").Append(Tags).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Name = name;
+        Group = group;
+        ClusterName = clusterName;
+        MachineName = machineName;
+        DisplayName = displayName;
+        BaseMonitorName = baseMonitorName;
+        ServerCir = serverCir;
+        OverviewUrl = overviewUrl;
+        MonitoredEntityState = monitoredEntityState;
+        EntityType = entityType;
+        ConfigurationOptions = configurationOptions;
+        Services = services;
+        Network = network;
+        Properties = properties;
+        MirroringEndpoints = mirroringEndpoints;
+        TraceFlags = traceFlags;
+        MachineNames = machineNames;
+        Tags = tags;
     }
 
+    /// <summary>
+    ///     Gets or Sets MonitoredEntityState
+    /// </summary>
+    [DataMember(Name = "monitoredEntityState", EmitDefaultValue = false)]
+    public MonitoredEntityStatusCategory? MonitoredEntityState { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EntityType
+    /// </summary>
+    [DataMember(Name = "entityType", EmitDefaultValue = false)]
+    public EntityType? EntityType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = false)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Group
+    /// </summary>
+    [DataMember(Name = "group", EmitDefaultValue = false)]
+    public string Group { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ClusterName
+    /// </summary>
+    [DataMember(Name = "clusterName", EmitDefaultValue = false)]
+    public string ClusterName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MachineName
+    /// </summary>
+    [DataMember(Name = "machineName", EmitDefaultValue = false)]
+    public string MachineName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DisplayName
+    /// </summary>
+    [DataMember(Name = "displayName", EmitDefaultValue = false)]
+    public string DisplayName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets BaseMonitorName
+    /// </summary>
+    [DataMember(Name = "baseMonitorName", EmitDefaultValue = false)]
+    public string BaseMonitorName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ServerCir
+    /// </summary>
+    [DataMember(Name = "serverCir", EmitDefaultValue = false)]
+    public string ServerCir { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets OverviewUrl
+    /// </summary>
+    [DataMember(Name = "overviewUrl", EmitDefaultValue = true)]
+    public string OverviewUrl { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ConfigurationOptions
+    /// </summary>
+    [DataMember(Name = "configurationOptions", EmitDefaultValue = false)]
+    public ConfigurationOptionsDto ConfigurationOptions { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Services
+    /// </summary>
+    [DataMember(Name = "services", EmitDefaultValue = false)]
+    public List<ServiceDto> Services { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Network
+    /// </summary>
+    [DataMember(Name = "network", EmitDefaultValue = false)]
+    public NetworkDto Network { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Properties
+    /// </summary>
+    [DataMember(Name = "properties", EmitDefaultValue = false)]
+    public PropertiesDto Properties { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MirroringEndpoints
+    /// </summary>
+    [DataMember(Name = "mirroringEndpoints", EmitDefaultValue = false)]
+    public List<MirroringEndpointDto> MirroringEndpoints { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TraceFlags
+    /// </summary>
+    [DataMember(Name = "traceFlags", EmitDefaultValue = false)]
+    public List<TraceFlagDto> TraceFlags { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MachineNames
+    /// </summary>
+    [DataMember(Name = "machineNames", EmitDefaultValue = false)]
+    public List<string> MachineNames { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Tags
+    /// </summary>
+    [DataMember(Name = "tags", EmitDefaultValue = false)]
+    public List<TagDto> Tags { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class ServerConfigurationDto {\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  Group: ").Append(Group).Append("\n");
+        sb.Append("  ClusterName: ").Append(ClusterName).Append("\n");
+        sb.Append("  MachineName: ").Append(MachineName).Append("\n");
+        sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+        sb.Append("  BaseMonitorName: ").Append(BaseMonitorName).Append("\n");
+        sb.Append("  ServerCir: ").Append(ServerCir).Append("\n");
+        sb.Append("  OverviewUrl: ").Append(OverviewUrl).Append("\n");
+        sb.Append("  MonitoredEntityState: ").Append(MonitoredEntityState).Append("\n");
+        sb.Append("  EntityType: ").Append(EntityType).Append("\n");
+        sb.Append("  ConfigurationOptions: ").Append(ConfigurationOptions).Append("\n");
+        sb.Append("  Services: ").Append(Services).Append("\n");
+        sb.Append("  Network: ").Append(Network).Append("\n");
+        sb.Append("  Properties: ").Append(Properties).Append("\n");
+        sb.Append("  MirroringEndpoints: ").Append(MirroringEndpoints).Append("\n");
+        sb.Append("  TraceFlags: ").Append(TraceFlags).Append("\n");
+        sb.Append("  MachineNames: ").Append(MachineNames).Append("\n");
+        sb.Append("  Tags: ").Append(Tags).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -8,102 +8,92 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     EncryptionKeyDto
+/// </summary>
+[DataContract(Name = "EncryptionKeyDto")]
+public class EncryptionKeyDto : IValidatableObject
 {
     /// <summary>
-    /// EncryptionKeyDto
+    ///     Initializes a new instance of the <see cref="EncryptionKeyDto" /> class.
     /// </summary>
-    [DataContract(Name = "EncryptionKeyDto")]
-    public partial class EncryptionKeyDto : IValidatableObject
+    /// <param name="algorithm">algorithm.</param>
+    /// <param name="type">type.</param>
+    /// <param name="name">name.</param>
+    /// <param name="encryptionType">encryptionType.</param>
+    public EncryptionKeyDto(string algorithm = default, string type = default, string name = default,
+        string encryptionType = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EncryptionKeyDto" /> class.
-        /// </summary>
-        /// <param name="algorithm">algorithm.</param>
-        /// <param name="type">type.</param>
-        /// <param name="name">name.</param>
-        /// <param name="encryptionType">encryptionType.</param>
-        public EncryptionKeyDto(string algorithm = default(string), string type = default(string), string name = default(string), string encryptionType = default(string))
-        {
-            this.Algorithm = algorithm;
-            this.Type = type;
-            this.Name = name;
-            this.EncryptionType = encryptionType;
-        }
-
-        /// <summary>
-        /// Gets or Sets Algorithm
-        /// </summary>
-        [DataMember(Name = "algorithm", EmitDefaultValue = false)]
-        public string Algorithm { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EncryptionType
-        /// </summary>
-        [DataMember(Name = "encryptionType", EmitDefaultValue = false)]
-        public string EncryptionType { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class EncryptionKeyDto {\n");
-            sb.Append("  Algorithm: ").Append(Algorithm).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  EncryptionType: ").Append(EncryptionType).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Algorithm = algorithm;
+        Type = type;
+        Name = name;
+        EncryptionType = encryptionType;
     }
 
+    /// <summary>
+    ///     Gets or Sets Algorithm
+    /// </summary>
+    [DataMember(Name = "algorithm", EmitDefaultValue = false)]
+    public string Algorithm { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Type
+    /// </summary>
+    [DataMember(Name = "type", EmitDefaultValue = false)]
+    public string Type { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = false)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EncryptionType
+    /// </summary>
+    [DataMember(Name = "encryptionType", EmitDefaultValue = false)]
+    public string EncryptionType { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class EncryptionKeyDto {\n");
+        sb.Append("  Algorithm: ").Append(Algorithm).Append("\n");
+        sb.Append("  Type: ").Append(Type).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  EncryptionType: ").Append(EncryptionType).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

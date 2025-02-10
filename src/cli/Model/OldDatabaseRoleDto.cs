@@ -8,120 +8,111 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     OldDatabaseRoleDto
+/// </summary>
+[DataContract(Name = "OldDatabaseRoleDto")]
+public class OldDatabaseRoleDto : IValidatableObject
 {
     /// <summary>
-    /// OldDatabaseRoleDto
+    ///     Initializes a new instance of the <see cref="OldDatabaseRoleDto" /> class.
     /// </summary>
-    [DataContract(Name = "OldDatabaseRoleDto")]
-    public partial class OldDatabaseRoleDto : IValidatableObject
+    /// <param name="sid">sid.</param>
+    /// <param name="name">name.</param>
+    /// <param name="type">type.</param>
+    /// <param name="members">members.</param>
+    /// <param name="permissions">permissions.</param>
+    /// <param name="principalPermissions">principalPermissions.</param>
+    public OldDatabaseRoleDto(string sid = default, string name = default, string type = default,
+        List<string> members = default, List<string> permissions = default,
+        List<PrincipalPermissionDto> principalPermissions = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OldDatabaseRoleDto" /> class.
-        /// </summary>
-        /// <param name="sid">sid.</param>
-        /// <param name="name">name.</param>
-        /// <param name="type">type.</param>
-        /// <param name="members">members.</param>
-        /// <param name="permissions">permissions.</param>
-        /// <param name="principalPermissions">principalPermissions.</param>
-        public OldDatabaseRoleDto(string sid = default(string), string name = default(string), string type = default(string), List<string> members = default(List<string>), List<string> permissions = default(List<string>), List<PrincipalPermissionDto> principalPermissions = default(List<PrincipalPermissionDto>))
-        {
-            this.Sid = sid;
-            this.Name = name;
-            this.Type = type;
-            this.Members = members;
-            this.Permissions = permissions;
-            this.PrincipalPermissions = principalPermissions;
-        }
-
-        /// <summary>
-        /// Gets or Sets Sid
-        /// </summary>
-        [DataMember(Name = "sid", EmitDefaultValue = true)]
-        public string Sid { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = true)]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Members
-        /// </summary>
-        [DataMember(Name = "members", EmitDefaultValue = true)]
-        public List<string> Members { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Permissions
-        /// </summary>
-        [DataMember(Name = "permissions", EmitDefaultValue = true)]
-        public List<string> Permissions { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PrincipalPermissions
-        /// </summary>
-        [DataMember(Name = "principalPermissions", EmitDefaultValue = true)]
-        public List<PrincipalPermissionDto> PrincipalPermissions { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class OldDatabaseRoleDto {\n");
-            sb.Append("  Sid: ").Append(Sid).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Members: ").Append(Members).Append("\n");
-            sb.Append("  Permissions: ").Append(Permissions).Append("\n");
-            sb.Append("  PrincipalPermissions: ").Append(PrincipalPermissions).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Sid = sid;
+        Name = name;
+        Type = type;
+        Members = members;
+        Permissions = permissions;
+        PrincipalPermissions = principalPermissions;
     }
 
+    /// <summary>
+    ///     Gets or Sets Sid
+    /// </summary>
+    [DataMember(Name = "sid", EmitDefaultValue = true)]
+    public string Sid { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Type
+    /// </summary>
+    [DataMember(Name = "type", EmitDefaultValue = true)]
+    public string Type { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Members
+    /// </summary>
+    [DataMember(Name = "members", EmitDefaultValue = true)]
+    public List<string> Members { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Permissions
+    /// </summary>
+    [DataMember(Name = "permissions", EmitDefaultValue = true)]
+    public List<string> Permissions { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets PrincipalPermissions
+    /// </summary>
+    [DataMember(Name = "principalPermissions", EmitDefaultValue = true)]
+    public List<PrincipalPermissionDto> PrincipalPermissions { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class OldDatabaseRoleDto {\n");
+        sb.Append("  Sid: ").Append(Sid).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  Type: ").Append(Type).Append("\n");
+        sb.Append("  Members: ").Append(Members).Append("\n");
+        sb.Append("  Permissions: ").Append(Permissions).Append("\n");
+        sb.Append("  PrincipalPermissions: ").Append(PrincipalPermissions).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

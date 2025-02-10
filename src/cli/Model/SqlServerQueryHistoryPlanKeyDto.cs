@@ -9,83 +9,73 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     SqlServerQueryHistoryPlanKeyDto
+/// </summary>
+[DataContract(Name = "SqlServerQueryHistoryPlanKeyDto")]
+public class SqlServerQueryHistoryPlanKeyDto : IValidatableObject
 {
     /// <summary>
-    /// SqlServerQueryHistoryPlanKeyDto
+    ///     Initializes a new instance of the <see cref="SqlServerQueryHistoryPlanKeyDto" /> class.
     /// </summary>
-    [DataContract(Name = "SqlServerQueryHistoryPlanKeyDto")]
-    public partial class SqlServerQueryHistoryPlanKeyDto : IValidatableObject
+    /// <param name="planHandle">planHandle.</param>
+    /// <param name="createDate">createDate.</param>
+    public SqlServerQueryHistoryPlanKeyDto(string planHandle = default, DateTime createDate = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SqlServerQueryHistoryPlanKeyDto" /> class.
-        /// </summary>
-        /// <param name="planHandle">planHandle.</param>
-        /// <param name="createDate">createDate.</param>
-        public SqlServerQueryHistoryPlanKeyDto(string planHandle = default(string), DateTime createDate = default(DateTime))
-        {
-            this.PlanHandle = planHandle;
-            this.CreateDate = createDate;
-        }
-
-        /// <summary>
-        /// Gets or Sets PlanHandle
-        /// </summary>
-        [DataMember(Name = "planHandle", EmitDefaultValue = false)]
-        public string PlanHandle { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CreateDate
-        /// </summary>
-        [DataMember(Name = "createDate", EmitDefaultValue = false)]
-        public DateTime CreateDate { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class SqlServerQueryHistoryPlanKeyDto {\n");
-            sb.Append("  PlanHandle: ").Append(PlanHandle).Append("\n");
-            sb.Append("  CreateDate: ").Append(CreateDate).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        PlanHandle = planHandle;
+        CreateDate = createDate;
     }
 
+    /// <summary>
+    ///     Gets or Sets PlanHandle
+    /// </summary>
+    [DataMember(Name = "planHandle", EmitDefaultValue = false)]
+    public string PlanHandle { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CreateDate
+    /// </summary>
+    [DataMember(Name = "createDate", EmitDefaultValue = false)]
+    public DateTime CreateDate { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class SqlServerQueryHistoryPlanKeyDto {\n");
+        sb.Append("  PlanHandle: ").Append(PlanHandle).Append("\n");
+        sb.Append("  CreateDate: ").Append(CreateDate).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

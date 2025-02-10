@@ -8,156 +8,148 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     CustomMetricDto
+/// </summary>
+[DataContract(Name = "CustomMetricDto")]
+public class CustomMetricDto : IValidatableObject
 {
     /// <summary>
-    /// CustomMetricDto
+    ///     Initializes a new instance of the <see cref="CustomMetricDto" /> class.
     /// </summary>
-    [DataContract(Name = "CustomMetricDto")]
-    public partial class CustomMetricDto : IValidatableObject
+    /// <param name="name">name.</param>
+    /// <param name="frequency">frequency.</param>
+    /// <param name="isActive">isActive.</param>
+    /// <param name="sql">sql.</param>
+    /// <param name="description">description.</param>
+    /// <param name="useRateOfChange">useRateOfChange.</param>
+    /// <param name="sampleTime">sampleTime.</param>
+    /// <param name="selectedObjects">selectedObjects.</param>
+    /// <param name="databaseSelectionMode">databaseSelectionMode.</param>
+    /// <param name="databaseSelectionModeDatabases">databaseSelectionModeDatabases.</param>
+    public CustomMetricDto(string name = default, string frequency = default, bool isActive = default,
+        string sql = default, string description = default, bool useRateOfChange = default, string sampleTime = default,
+        List<string> selectedObjects = default, DatabaseSelectionMode? databaseSelectionMode = default,
+        List<string> databaseSelectionModeDatabases = default)
     {
-
-        /// <summary>
-        /// Gets or Sets DatabaseSelectionMode
-        /// </summary>
-        [DataMember(Name = "databaseSelectionMode", EmitDefaultValue = false)]
-        public DatabaseSelectionMode? DatabaseSelectionMode { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CustomMetricDto" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="frequency">frequency.</param>
-        /// <param name="isActive">isActive.</param>
-        /// <param name="sql">sql.</param>
-        /// <param name="description">description.</param>
-        /// <param name="useRateOfChange">useRateOfChange.</param>
-        /// <param name="sampleTime">sampleTime.</param>
-        /// <param name="selectedObjects">selectedObjects.</param>
-        /// <param name="databaseSelectionMode">databaseSelectionMode.</param>
-        /// <param name="databaseSelectionModeDatabases">databaseSelectionModeDatabases.</param>
-        public CustomMetricDto(string name = default(string), string frequency = default(string), bool isActive = default(bool), string sql = default(string), string description = default(string), bool useRateOfChange = default(bool), string sampleTime = default(string), List<string> selectedObjects = default(List<string>), DatabaseSelectionMode? databaseSelectionMode = default(DatabaseSelectionMode?), List<string> databaseSelectionModeDatabases = default(List<string>))
-        {
-            this.Name = name;
-            this.Frequency = frequency;
-            this.IsActive = isActive;
-            this.Sql = sql;
-            this.Description = description;
-            this.UseRateOfChange = useRateOfChange;
-            this.SampleTime = sampleTime;
-            this.SelectedObjects = selectedObjects;
-            this.DatabaseSelectionMode = databaseSelectionMode;
-            this.DatabaseSelectionModeDatabases = databaseSelectionModeDatabases;
-        }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Frequency
-        /// </summary>
-        [DataMember(Name = "frequency", EmitDefaultValue = false)]
-        public string Frequency { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsActive
-        /// </summary>
-        [DataMember(Name = "isActive", EmitDefaultValue = true)]
-        public bool IsActive { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Sql
-        /// </summary>
-        [DataMember(Name = "sql", EmitDefaultValue = true)]
-        public string Sql { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Description
-        /// </summary>
-        [DataMember(Name = "description", EmitDefaultValue = true)]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UseRateOfChange
-        /// </summary>
-        [DataMember(Name = "useRateOfChange", EmitDefaultValue = true)]
-        public bool UseRateOfChange { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SampleTime
-        /// </summary>
-        [DataMember(Name = "sampleTime", EmitDefaultValue = true)]
-        public string SampleTime { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SelectedObjects
-        /// </summary>
-        [DataMember(Name = "selectedObjects", EmitDefaultValue = true)]
-        public List<string> SelectedObjects { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DatabaseSelectionModeDatabases
-        /// </summary>
-        [DataMember(Name = "databaseSelectionModeDatabases", EmitDefaultValue = true)]
-        public List<string> DatabaseSelectionModeDatabases { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class CustomMetricDto {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Frequency: ").Append(Frequency).Append("\n");
-            sb.Append("  IsActive: ").Append(IsActive).Append("\n");
-            sb.Append("  Sql: ").Append(Sql).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  UseRateOfChange: ").Append(UseRateOfChange).Append("\n");
-            sb.Append("  SampleTime: ").Append(SampleTime).Append("\n");
-            sb.Append("  SelectedObjects: ").Append(SelectedObjects).Append("\n");
-            sb.Append("  DatabaseSelectionMode: ").Append(DatabaseSelectionMode).Append("\n");
-            sb.Append("  DatabaseSelectionModeDatabases: ").Append(DatabaseSelectionModeDatabases).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Name = name;
+        Frequency = frequency;
+        IsActive = isActive;
+        Sql = sql;
+        Description = description;
+        UseRateOfChange = useRateOfChange;
+        SampleTime = sampleTime;
+        SelectedObjects = selectedObjects;
+        DatabaseSelectionMode = databaseSelectionMode;
+        DatabaseSelectionModeDatabases = databaseSelectionModeDatabases;
     }
 
+    /// <summary>
+    ///     Gets or Sets DatabaseSelectionMode
+    /// </summary>
+    [DataMember(Name = "databaseSelectionMode", EmitDefaultValue = false)]
+    public DatabaseSelectionMode? DatabaseSelectionMode { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Frequency
+    /// </summary>
+    [DataMember(Name = "frequency", EmitDefaultValue = false)]
+    public string Frequency { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsActive
+    /// </summary>
+    [DataMember(Name = "isActive", EmitDefaultValue = true)]
+    public bool IsActive { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Sql
+    /// </summary>
+    [DataMember(Name = "sql", EmitDefaultValue = true)]
+    public string Sql { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Description
+    /// </summary>
+    [DataMember(Name = "description", EmitDefaultValue = true)]
+    public string Description { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UseRateOfChange
+    /// </summary>
+    [DataMember(Name = "useRateOfChange", EmitDefaultValue = true)]
+    public bool UseRateOfChange { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SampleTime
+    /// </summary>
+    [DataMember(Name = "sampleTime", EmitDefaultValue = true)]
+    public string SampleTime { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SelectedObjects
+    /// </summary>
+    [DataMember(Name = "selectedObjects", EmitDefaultValue = true)]
+    public List<string> SelectedObjects { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DatabaseSelectionModeDatabases
+    /// </summary>
+    [DataMember(Name = "databaseSelectionModeDatabases", EmitDefaultValue = true)]
+    public List<string> DatabaseSelectionModeDatabases { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class CustomMetricDto {\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  Frequency: ").Append(Frequency).Append("\n");
+        sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+        sb.Append("  Sql: ").Append(Sql).Append("\n");
+        sb.Append("  Description: ").Append(Description).Append("\n");
+        sb.Append("  UseRateOfChange: ").Append(UseRateOfChange).Append("\n");
+        sb.Append("  SampleTime: ").Append(SampleTime).Append("\n");
+        sb.Append("  SelectedObjects: ").Append(SelectedObjects).Append("\n");
+        sb.Append("  DatabaseSelectionMode: ").Append(DatabaseSelectionMode).Append("\n");
+        sb.Append("  DatabaseSelectionModeDatabases: ").Append(DatabaseSelectionModeDatabases).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

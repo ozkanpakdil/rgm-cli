@@ -9,111 +9,104 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     DatabasePropertiesDto
+/// </summary>
+[DataContract(Name = "DatabasePropertiesDto")]
+public class DatabasePropertiesDto : IValidatableObject
 {
     /// <summary>
-    /// DatabasePropertiesDto
+    ///     Initializes a new instance of the <see cref="DatabasePropertiesDto" /> class.
     /// </summary>
-    [DataContract(Name = "DatabasePropertiesDto")]
-    public partial class DatabasePropertiesDto : IValidatableObject
+    [JsonConstructorAttribute]
+    protected DatabasePropertiesDto()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabasePropertiesDto" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected DatabasePropertiesDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabasePropertiesDto" /> class.
-        /// </summary>
-        /// <param name="encryptionState">encryptionState.</param>
-        /// <param name="encryptionKeys">encryptionKeys.</param>
-        /// <param name="owner">owner.</param>
-        /// <param name="databaseState">databaseState (required).</param>
-        public DatabasePropertiesDto(string encryptionState = default(string), List<EncryptionKeyDto> encryptionKeys = default(List<EncryptionKeyDto>), string owner = default(string), string databaseState = default(string))
-        {
-            // to ensure "databaseState" is required (not null)
-            if (databaseState == null)
-            {
-                throw new ArgumentNullException("databaseState is a required property for DatabasePropertiesDto and cannot be null");
-            }
-            this.DatabaseState = databaseState;
-            this.EncryptionState = encryptionState;
-            this.EncryptionKeys = encryptionKeys;
-            this.Owner = owner;
-        }
-
-        /// <summary>
-        /// Gets or Sets EncryptionState
-        /// </summary>
-        [DataMember(Name = "encryptionState", EmitDefaultValue = true)]
-        public string EncryptionState { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EncryptionKeys
-        /// </summary>
-        [DataMember(Name = "encryptionKeys", EmitDefaultValue = false)]
-        public List<EncryptionKeyDto> EncryptionKeys { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Owner
-        /// </summary>
-        [DataMember(Name = "owner", EmitDefaultValue = true)]
-        public string Owner { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DatabaseState
-        /// </summary>
-        [DataMember(Name = "databaseState", IsRequired = true, EmitDefaultValue = true)]
-        public string DatabaseState { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class DatabasePropertiesDto {\n");
-            sb.Append("  EncryptionState: ").Append(EncryptionState).Append("\n");
-            sb.Append("  EncryptionKeys: ").Append(EncryptionKeys).Append("\n");
-            sb.Append("  Owner: ").Append(Owner).Append("\n");
-            sb.Append("  DatabaseState: ").Append(DatabaseState).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="DatabasePropertiesDto" /> class.
+    /// </summary>
+    /// <param name="encryptionState">encryptionState.</param>
+    /// <param name="encryptionKeys">encryptionKeys.</param>
+    /// <param name="owner">owner.</param>
+    /// <param name="databaseState">databaseState (required).</param>
+    public DatabasePropertiesDto(string encryptionState = default, List<EncryptionKeyDto> encryptionKeys = default,
+        string owner = default, string databaseState = default)
+    {
+        // to ensure "databaseState" is required (not null)
+        if (databaseState == null)
+            throw new ArgumentNullException(
+                "databaseState is a required property for DatabasePropertiesDto and cannot be null");
+        DatabaseState = databaseState;
+        EncryptionState = encryptionState;
+        EncryptionKeys = encryptionKeys;
+        Owner = owner;
+    }
+
+    /// <summary>
+    ///     Gets or Sets EncryptionState
+    /// </summary>
+    [DataMember(Name = "encryptionState", EmitDefaultValue = true)]
+    public string EncryptionState { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EncryptionKeys
+    /// </summary>
+    [DataMember(Name = "encryptionKeys", EmitDefaultValue = false)]
+    public List<EncryptionKeyDto> EncryptionKeys { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Owner
+    /// </summary>
+    [DataMember(Name = "owner", EmitDefaultValue = true)]
+    public string Owner { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DatabaseState
+    /// </summary>
+    [DataMember(Name = "databaseState", IsRequired = true, EmitDefaultValue = true)]
+    public string DatabaseState { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class DatabasePropertiesDto {\n");
+        sb.Append("  EncryptionState: ").Append(EncryptionState).Append("\n");
+        sb.Append("  EncryptionKeys: ").Append(EncryptionKeys).Append("\n");
+        sb.Append("  Owner: ").Append(Owner).Append("\n");
+        sb.Append("  DatabaseState: ").Append(DatabaseState).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

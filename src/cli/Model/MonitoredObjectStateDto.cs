@@ -8,93 +8,83 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     MonitoredObjectStateDto
+/// </summary>
+[DataContract(Name = "MonitoredObjectStateDto")]
+public class MonitoredObjectStateDto : IValidatableObject
 {
     /// <summary>
-    /// MonitoredObjectStateDto
+    ///     Initializes a new instance of the <see cref="MonitoredObjectStateDto" /> class.
     /// </summary>
-    [DataContract(Name = "MonitoredObjectStateDto")]
-    public partial class MonitoredObjectStateDto : IValidatableObject
+    /// <param name="isMonitored">isMonitored.</param>
+    /// <param name="status">status.</param>
+    /// <param name="configurationState">configurationState.</param>
+    public MonitoredObjectStateDto(bool isMonitored = default, string status = default,
+        string configurationState = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MonitoredObjectStateDto" /> class.
-        /// </summary>
-        /// <param name="isMonitored">isMonitored.</param>
-        /// <param name="status">status.</param>
-        /// <param name="configurationState">configurationState.</param>
-        public MonitoredObjectStateDto(bool isMonitored = default(bool), string status = default(string), string configurationState = default(string))
-        {
-            this.IsMonitored = isMonitored;
-            this.Status = status;
-            this.ConfigurationState = configurationState;
-        }
-
-        /// <summary>
-        /// Gets or Sets IsMonitored
-        /// </summary>
-        [DataMember(Name = "isMonitored", EmitDefaultValue = true)]
-        public bool IsMonitored { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = true)]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ConfigurationState
-        /// </summary>
-        [DataMember(Name = "configurationState", EmitDefaultValue = true)]
-        public string ConfigurationState { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class MonitoredObjectStateDto {\n");
-            sb.Append("  IsMonitored: ").Append(IsMonitored).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  ConfigurationState: ").Append(ConfigurationState).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        IsMonitored = isMonitored;
+        Status = status;
+        ConfigurationState = configurationState;
     }
 
+    /// <summary>
+    ///     Gets or Sets IsMonitored
+    /// </summary>
+    [DataMember(Name = "isMonitored", EmitDefaultValue = true)]
+    public bool IsMonitored { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Status
+    /// </summary>
+    [DataMember(Name = "status", EmitDefaultValue = true)]
+    public string Status { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ConfigurationState
+    /// </summary>
+    [DataMember(Name = "configurationState", EmitDefaultValue = true)]
+    public string ConfigurationState { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class MonitoredObjectStateDto {\n");
+        sb.Append("  IsMonitored: ").Append(IsMonitored).Append("\n");
+        sb.Append("  Status: ").Append(Status).Append("\n");
+        sb.Append("  ConfigurationState: ").Append(ConfigurationState).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

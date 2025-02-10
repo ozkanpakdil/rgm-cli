@@ -8,201 +8,196 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     PropertiesDto
+/// </summary>
+[DataContract(Name = "PropertiesDto")]
+public class PropertiesDto : IValidatableObject
 {
     /// <summary>
-    /// PropertiesDto
+    ///     Initializes a new instance of the <see cref="PropertiesDto" /> class.
     /// </summary>
-    [DataContract(Name = "PropertiesDto")]
-    public partial class PropertiesDto : IValidatableObject
+    /// <param name="forceEncryption">forceEncryption.</param>
+    /// <param name="certificateThumbprint">certificateThumbprint.</param>
+    /// <param name="installationDirectory">installationDirectory.</param>
+    /// <param name="customerExperienceFeedbackEnabled">customerExperienceFeedbackEnabled.</param>
+    /// <param name="customerExperienceErrorReportingEnabled">customerExperienceErrorReportingEnabled.</param>
+    /// <param name="customerExperienceAuditDirectory">customerExperienceAuditDirectory.</param>
+    /// <param name="isClustered">isClustered.</param>
+    /// <param name="isSingleUser">isSingleUser.</param>
+    /// <param name="hideInstance">hideInstance.</param>
+    /// <param name="productLevel">productLevel.</param>
+    /// <param name="productVersion">productVersion.</param>
+    /// <param name="productVersionNumber">productVersionNumber.</param>
+    /// <param name="edition">edition.</param>
+    /// <param name="maxNumberErrorLogFiles">maxNumberErrorLogFiles.</param>
+    /// <param name="auditLevel">auditLevel.</param>
+    public PropertiesDto(bool? forceEncryption = default, string certificateThumbprint = default,
+        string installationDirectory = default, bool? customerExperienceFeedbackEnabled = default,
+        bool? customerExperienceErrorReportingEnabled = default, string customerExperienceAuditDirectory = default,
+        bool? isClustered = default, bool? isSingleUser = default, bool? hideInstance = default,
+        string productLevel = default, string productVersion = default, string productVersionNumber = default,
+        string edition = default, long? maxNumberErrorLogFiles = default, long? auditLevel = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PropertiesDto" /> class.
-        /// </summary>
-        /// <param name="forceEncryption">forceEncryption.</param>
-        /// <param name="certificateThumbprint">certificateThumbprint.</param>
-        /// <param name="installationDirectory">installationDirectory.</param>
-        /// <param name="customerExperienceFeedbackEnabled">customerExperienceFeedbackEnabled.</param>
-        /// <param name="customerExperienceErrorReportingEnabled">customerExperienceErrorReportingEnabled.</param>
-        /// <param name="customerExperienceAuditDirectory">customerExperienceAuditDirectory.</param>
-        /// <param name="isClustered">isClustered.</param>
-        /// <param name="isSingleUser">isSingleUser.</param>
-        /// <param name="hideInstance">hideInstance.</param>
-        /// <param name="productLevel">productLevel.</param>
-        /// <param name="productVersion">productVersion.</param>
-        /// <param name="productVersionNumber">productVersionNumber.</param>
-        /// <param name="edition">edition.</param>
-        /// <param name="maxNumberErrorLogFiles">maxNumberErrorLogFiles.</param>
-        /// <param name="auditLevel">auditLevel.</param>
-        public PropertiesDto(bool? forceEncryption = default(bool?), string certificateThumbprint = default(string), string installationDirectory = default(string), bool? customerExperienceFeedbackEnabled = default(bool?), bool? customerExperienceErrorReportingEnabled = default(bool?), string customerExperienceAuditDirectory = default(string), bool? isClustered = default(bool?), bool? isSingleUser = default(bool?), bool? hideInstance = default(bool?), string productLevel = default(string), string productVersion = default(string), string productVersionNumber = default(string), string edition = default(string), long? maxNumberErrorLogFiles = default(long?), long? auditLevel = default(long?))
-        {
-            this.ForceEncryption = forceEncryption;
-            this.CertificateThumbprint = certificateThumbprint;
-            this.InstallationDirectory = installationDirectory;
-            this.CustomerExperienceFeedbackEnabled = customerExperienceFeedbackEnabled;
-            this.CustomerExperienceErrorReportingEnabled = customerExperienceErrorReportingEnabled;
-            this.CustomerExperienceAuditDirectory = customerExperienceAuditDirectory;
-            this.IsClustered = isClustered;
-            this.IsSingleUser = isSingleUser;
-            this.HideInstance = hideInstance;
-            this.ProductLevel = productLevel;
-            this.ProductVersion = productVersion;
-            this.ProductVersionNumber = productVersionNumber;
-            this.Edition = edition;
-            this.MaxNumberErrorLogFiles = maxNumberErrorLogFiles;
-            this.AuditLevel = auditLevel;
-        }
-
-        /// <summary>
-        /// Gets or Sets ForceEncryption
-        /// </summary>
-        [DataMember(Name = "forceEncryption", EmitDefaultValue = true)]
-        public bool? ForceEncryption { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CertificateThumbprint
-        /// </summary>
-        [DataMember(Name = "certificateThumbprint", EmitDefaultValue = true)]
-        public string CertificateThumbprint { get; set; }
-
-        /// <summary>
-        /// Gets or Sets InstallationDirectory
-        /// </summary>
-        [DataMember(Name = "installationDirectory", EmitDefaultValue = true)]
-        public string InstallationDirectory { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CustomerExperienceFeedbackEnabled
-        /// </summary>
-        [DataMember(Name = "customerExperienceFeedbackEnabled", EmitDefaultValue = true)]
-        public bool? CustomerExperienceFeedbackEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CustomerExperienceErrorReportingEnabled
-        /// </summary>
-        [DataMember(Name = "customerExperienceErrorReportingEnabled", EmitDefaultValue = true)]
-        public bool? CustomerExperienceErrorReportingEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CustomerExperienceAuditDirectory
-        /// </summary>
-        [DataMember(Name = "customerExperienceAuditDirectory", EmitDefaultValue = true)]
-        public string CustomerExperienceAuditDirectory { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsClustered
-        /// </summary>
-        [DataMember(Name = "isClustered", EmitDefaultValue = true)]
-        public bool? IsClustered { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsSingleUser
-        /// </summary>
-        [DataMember(Name = "isSingleUser", EmitDefaultValue = true)]
-        public bool? IsSingleUser { get; set; }
-
-        /// <summary>
-        /// Gets or Sets HideInstance
-        /// </summary>
-        [DataMember(Name = "hideInstance", EmitDefaultValue = true)]
-        public bool? HideInstance { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ProductLevel
-        /// </summary>
-        [DataMember(Name = "productLevel", EmitDefaultValue = true)]
-        public string ProductLevel { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ProductVersion
-        /// </summary>
-        [DataMember(Name = "productVersion", EmitDefaultValue = true)]
-        public string ProductVersion { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ProductVersionNumber
-        /// </summary>
-        [DataMember(Name = "productVersionNumber", EmitDefaultValue = true)]
-        public string ProductVersionNumber { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Edition
-        /// </summary>
-        [DataMember(Name = "edition", EmitDefaultValue = true)]
-        public string Edition { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MaxNumberErrorLogFiles
-        /// </summary>
-        [DataMember(Name = "maxNumberErrorLogFiles", EmitDefaultValue = true)]
-        public long? MaxNumberErrorLogFiles { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AuditLevel
-        /// </summary>
-        [DataMember(Name = "auditLevel", EmitDefaultValue = true)]
-        public long? AuditLevel { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class PropertiesDto {\n");
-            sb.Append("  ForceEncryption: ").Append(ForceEncryption).Append("\n");
-            sb.Append("  CertificateThumbprint: ").Append(CertificateThumbprint).Append("\n");
-            sb.Append("  InstallationDirectory: ").Append(InstallationDirectory).Append("\n");
-            sb.Append("  CustomerExperienceFeedbackEnabled: ").Append(CustomerExperienceFeedbackEnabled).Append("\n");
-            sb.Append("  CustomerExperienceErrorReportingEnabled: ").Append(CustomerExperienceErrorReportingEnabled).Append("\n");
-            sb.Append("  CustomerExperienceAuditDirectory: ").Append(CustomerExperienceAuditDirectory).Append("\n");
-            sb.Append("  IsClustered: ").Append(IsClustered).Append("\n");
-            sb.Append("  IsSingleUser: ").Append(IsSingleUser).Append("\n");
-            sb.Append("  HideInstance: ").Append(HideInstance).Append("\n");
-            sb.Append("  ProductLevel: ").Append(ProductLevel).Append("\n");
-            sb.Append("  ProductVersion: ").Append(ProductVersion).Append("\n");
-            sb.Append("  ProductVersionNumber: ").Append(ProductVersionNumber).Append("\n");
-            sb.Append("  Edition: ").Append(Edition).Append("\n");
-            sb.Append("  MaxNumberErrorLogFiles: ").Append(MaxNumberErrorLogFiles).Append("\n");
-            sb.Append("  AuditLevel: ").Append(AuditLevel).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        ForceEncryption = forceEncryption;
+        CertificateThumbprint = certificateThumbprint;
+        InstallationDirectory = installationDirectory;
+        CustomerExperienceFeedbackEnabled = customerExperienceFeedbackEnabled;
+        CustomerExperienceErrorReportingEnabled = customerExperienceErrorReportingEnabled;
+        CustomerExperienceAuditDirectory = customerExperienceAuditDirectory;
+        IsClustered = isClustered;
+        IsSingleUser = isSingleUser;
+        HideInstance = hideInstance;
+        ProductLevel = productLevel;
+        ProductVersion = productVersion;
+        ProductVersionNumber = productVersionNumber;
+        Edition = edition;
+        MaxNumberErrorLogFiles = maxNumberErrorLogFiles;
+        AuditLevel = auditLevel;
     }
 
+    /// <summary>
+    ///     Gets or Sets ForceEncryption
+    /// </summary>
+    [DataMember(Name = "forceEncryption", EmitDefaultValue = true)]
+    public bool? ForceEncryption { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CertificateThumbprint
+    /// </summary>
+    [DataMember(Name = "certificateThumbprint", EmitDefaultValue = true)]
+    public string CertificateThumbprint { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets InstallationDirectory
+    /// </summary>
+    [DataMember(Name = "installationDirectory", EmitDefaultValue = true)]
+    public string InstallationDirectory { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CustomerExperienceFeedbackEnabled
+    /// </summary>
+    [DataMember(Name = "customerExperienceFeedbackEnabled", EmitDefaultValue = true)]
+    public bool? CustomerExperienceFeedbackEnabled { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CustomerExperienceErrorReportingEnabled
+    /// </summary>
+    [DataMember(Name = "customerExperienceErrorReportingEnabled", EmitDefaultValue = true)]
+    public bool? CustomerExperienceErrorReportingEnabled { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CustomerExperienceAuditDirectory
+    /// </summary>
+    [DataMember(Name = "customerExperienceAuditDirectory", EmitDefaultValue = true)]
+    public string CustomerExperienceAuditDirectory { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsClustered
+    /// </summary>
+    [DataMember(Name = "isClustered", EmitDefaultValue = true)]
+    public bool? IsClustered { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsSingleUser
+    /// </summary>
+    [DataMember(Name = "isSingleUser", EmitDefaultValue = true)]
+    public bool? IsSingleUser { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets HideInstance
+    /// </summary>
+    [DataMember(Name = "hideInstance", EmitDefaultValue = true)]
+    public bool? HideInstance { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ProductLevel
+    /// </summary>
+    [DataMember(Name = "productLevel", EmitDefaultValue = true)]
+    public string ProductLevel { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ProductVersion
+    /// </summary>
+    [DataMember(Name = "productVersion", EmitDefaultValue = true)]
+    public string ProductVersion { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ProductVersionNumber
+    /// </summary>
+    [DataMember(Name = "productVersionNumber", EmitDefaultValue = true)]
+    public string ProductVersionNumber { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Edition
+    /// </summary>
+    [DataMember(Name = "edition", EmitDefaultValue = true)]
+    public string Edition { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MaxNumberErrorLogFiles
+    /// </summary>
+    [DataMember(Name = "maxNumberErrorLogFiles", EmitDefaultValue = true)]
+    public long? MaxNumberErrorLogFiles { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AuditLevel
+    /// </summary>
+    [DataMember(Name = "auditLevel", EmitDefaultValue = true)]
+    public long? AuditLevel { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class PropertiesDto {\n");
+        sb.Append("  ForceEncryption: ").Append(ForceEncryption).Append("\n");
+        sb.Append("  CertificateThumbprint: ").Append(CertificateThumbprint).Append("\n");
+        sb.Append("  InstallationDirectory: ").Append(InstallationDirectory).Append("\n");
+        sb.Append("  CustomerExperienceFeedbackEnabled: ").Append(CustomerExperienceFeedbackEnabled).Append("\n");
+        sb.Append("  CustomerExperienceErrorReportingEnabled: ").Append(CustomerExperienceErrorReportingEnabled)
+            .Append("\n");
+        sb.Append("  CustomerExperienceAuditDirectory: ").Append(CustomerExperienceAuditDirectory).Append("\n");
+        sb.Append("  IsClustered: ").Append(IsClustered).Append("\n");
+        sb.Append("  IsSingleUser: ").Append(IsSingleUser).Append("\n");
+        sb.Append("  HideInstance: ").Append(HideInstance).Append("\n");
+        sb.Append("  ProductLevel: ").Append(ProductLevel).Append("\n");
+        sb.Append("  ProductVersion: ").Append(ProductVersion).Append("\n");
+        sb.Append("  ProductVersionNumber: ").Append(ProductVersionNumber).Append("\n");
+        sb.Append("  Edition: ").Append(Edition).Append("\n");
+        sb.Append("  MaxNumberErrorLogFiles: ").Append(MaxNumberErrorLogFiles).Append("\n");
+        sb.Append("  AuditLevel: ").Append(AuditLevel).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

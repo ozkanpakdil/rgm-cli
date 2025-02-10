@@ -8,84 +8,73 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AmazonRdsHostRegionDto
+/// </summary>
+[DataContract(Name = "AmazonRdsHostRegionDto")]
+public class AmazonRdsHostRegionDto : IValidatableObject
 {
     /// <summary>
-    /// AmazonRdsHostRegionDto
+    ///     Initializes a new instance of the <see cref="AmazonRdsHostRegionDto" /> class.
     /// </summary>
-    [DataContract(Name = "AmazonRdsHostRegionDto")]
-    public partial class AmazonRdsHostRegionDto : IValidatableObject
+    /// <param name="displayName">displayName.</param>
+    /// <param name="systemName">systemName.</param>
+    public AmazonRdsHostRegionDto(string displayName = default, string systemName = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AmazonRdsHostRegionDto" /> class.
-        /// </summary>
-        /// <param name="displayName">displayName.</param>
-        /// <param name="systemName">systemName.</param>
-        public AmazonRdsHostRegionDto(string displayName = default(string), string systemName = default(string))
-        {
-            this.DisplayName = displayName;
-            this.SystemName = systemName;
-        }
-
-        /// <summary>
-        /// Gets or Sets DisplayName
-        /// </summary>
-        [DataMember(Name = "displayName", EmitDefaultValue = true)]
-        public string DisplayName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SystemName
-        /// </summary>
-        [DataMember(Name = "systemName", EmitDefaultValue = true)]
-        public string SystemName { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AmazonRdsHostRegionDto {\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  SystemName: ").Append(SystemName).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        DisplayName = displayName;
+        SystemName = systemName;
     }
 
+    /// <summary>
+    ///     Gets or Sets DisplayName
+    /// </summary>
+    [DataMember(Name = "displayName", EmitDefaultValue = true)]
+    public string DisplayName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SystemName
+    /// </summary>
+    [DataMember(Name = "systemName", EmitDefaultValue = true)]
+    public string SystemName { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AmazonRdsHostRegionDto {\n");
+        sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+        sb.Append("  SystemName: ").Append(SystemName).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

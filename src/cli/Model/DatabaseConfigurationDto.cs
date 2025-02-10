@@ -9,120 +9,114 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     DatabaseConfigurationDto
+/// </summary>
+[DataContract(Name = "DatabaseConfigurationDto")]
+public class DatabaseConfigurationDto : IValidatableObject
 {
     /// <summary>
-    /// DatabaseConfigurationDto
+    ///     Initializes a new instance of the <see cref="DatabaseConfigurationDto" /> class.
     /// </summary>
-    [DataContract(Name = "DatabaseConfigurationDto")]
-    public partial class DatabaseConfigurationDto : IValidatableObject
+    [JsonConstructorAttribute]
+    protected DatabaseConfigurationDto()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabaseConfigurationDto" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected DatabaseConfigurationDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabaseConfigurationDto" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="serverInfo">serverInfo.</param>
-        /// <param name="isSystemDatabase">isSystemDatabase.</param>
-        /// <param name="properties">properties (required).</param>
-        /// <param name="options">options.</param>
-        public DatabaseConfigurationDto(string name = default(string), DatabaseConfigurationServerInfoDto serverInfo = default(DatabaseConfigurationServerInfoDto), bool isSystemDatabase = default(bool), DatabasePropertiesDto properties = default(DatabasePropertiesDto), ConfigurationOptionsDto options = default(ConfigurationOptionsDto))
-        {
-            // to ensure "properties" is required (not null)
-            if (properties == null)
-            {
-                throw new ArgumentNullException("properties is a required property for DatabaseConfigurationDto and cannot be null");
-            }
-            this.Properties = properties;
-            this.Name = name;
-            this.ServerInfo = serverInfo;
-            this.IsSystemDatabase = isSystemDatabase;
-            this.Options = options;
-        }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ServerInfo
-        /// </summary>
-        [DataMember(Name = "serverInfo", EmitDefaultValue = false)]
-        public DatabaseConfigurationServerInfoDto ServerInfo { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsSystemDatabase
-        /// </summary>
-        [DataMember(Name = "isSystemDatabase", EmitDefaultValue = true)]
-        public bool IsSystemDatabase { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Properties
-        /// </summary>
-        [DataMember(Name = "properties", IsRequired = true, EmitDefaultValue = true)]
-        public DatabasePropertiesDto Properties { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Options
-        /// </summary>
-        [DataMember(Name = "options", EmitDefaultValue = false)]
-        public ConfigurationOptionsDto Options { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class DatabaseConfigurationDto {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  ServerInfo: ").Append(ServerInfo).Append("\n");
-            sb.Append("  IsSystemDatabase: ").Append(IsSystemDatabase).Append("\n");
-            sb.Append("  Properties: ").Append(Properties).Append("\n");
-            sb.Append("  Options: ").Append(Options).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="DatabaseConfigurationDto" /> class.
+    /// </summary>
+    /// <param name="name">name.</param>
+    /// <param name="serverInfo">serverInfo.</param>
+    /// <param name="isSystemDatabase">isSystemDatabase.</param>
+    /// <param name="properties">properties (required).</param>
+    /// <param name="options">options.</param>
+    public DatabaseConfigurationDto(string name = default, DatabaseConfigurationServerInfoDto serverInfo = default,
+        bool isSystemDatabase = default, DatabasePropertiesDto properties = default,
+        ConfigurationOptionsDto options = default)
+    {
+        // to ensure "properties" is required (not null)
+        if (properties == null)
+            throw new ArgumentNullException(
+                "properties is a required property for DatabaseConfigurationDto and cannot be null");
+        Properties = properties;
+        Name = name;
+        ServerInfo = serverInfo;
+        IsSystemDatabase = isSystemDatabase;
+        Options = options;
+    }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = false)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ServerInfo
+    /// </summary>
+    [DataMember(Name = "serverInfo", EmitDefaultValue = false)]
+    public DatabaseConfigurationServerInfoDto ServerInfo { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsSystemDatabase
+    /// </summary>
+    [DataMember(Name = "isSystemDatabase", EmitDefaultValue = true)]
+    public bool IsSystemDatabase { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Properties
+    /// </summary>
+    [DataMember(Name = "properties", IsRequired = true, EmitDefaultValue = true)]
+    public DatabasePropertiesDto Properties { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Options
+    /// </summary>
+    [DataMember(Name = "options", EmitDefaultValue = false)]
+    public ConfigurationOptionsDto Options { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class DatabaseConfigurationDto {\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  ServerInfo: ").Append(ServerInfo).Append("\n");
+        sb.Append("  IsSystemDatabase: ").Append(IsSystemDatabase).Append("\n");
+        sb.Append("  Properties: ").Append(Properties).Append("\n");
+        sb.Append("  Options: ").Append(Options).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

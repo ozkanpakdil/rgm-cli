@@ -8,174 +8,168 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Channels.Data;
+using RedGate.SqlMonitor.Common.Domain;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     VolumeUsageViewModel
+/// </summary>
+[DataContract(Name = "VolumeUsageViewModel")]
+public class VolumeUsageViewModel : IValidatableObject
 {
     /// <summary>
-    /// VolumeUsageViewModel
+    ///     Initializes a new instance of the <see cref="VolumeUsageViewModel" /> class.
     /// </summary>
-    [DataContract(Name = "VolumeUsageViewModel")]
-    public partial class VolumeUsageViewModel : IValidatableObject
+    /// <param name="cir">cir.</param>
+    /// <param name="parentName">parentName.</param>
+    /// <param name="name">name.</param>
+    /// <param name="parentEntityType">parentEntityType.</param>
+    /// <param name="label">label.</param>
+    /// <param name="group">group.</param>
+    /// <param name="used">used.</param>
+    /// <param name="size">size.</param>
+    /// <param name="projectedSizeNow">projectedSizeNow.</param>
+    /// <param name="projectedSizeInOneYear">projectedSizeInOneYear.</param>
+    /// <param name="projectedFullDateTicks">projectedFullDateTicks.</param>
+    /// <param name="sqlInstances">sqlInstances.</param>
+    public VolumeUsageViewModel(ChannelInstanceRef cir = default, string parentName = default, string name = default,
+        EntityType? parentEntityType = default, string label = default, string group = default, long used = default,
+        long size = default, double? projectedSizeNow = default, double? projectedSizeInOneYear = default,
+        long? projectedFullDateTicks = default, List<SqlInstanceViewModel> sqlInstances = default)
     {
-
-        /// <summary>
-        /// Gets or Sets ParentEntityType
-        /// </summary>
-        [DataMember(Name = "parentEntityType", EmitDefaultValue = false)]
-        public EntityType? ParentEntityType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="VolumeUsageViewModel" /> class.
-        /// </summary>
-        /// <param name="cir">cir.</param>
-        /// <param name="parentName">parentName.</param>
-        /// <param name="name">name.</param>
-        /// <param name="parentEntityType">parentEntityType.</param>
-        /// <param name="label">label.</param>
-        /// <param name="group">group.</param>
-        /// <param name="used">used.</param>
-        /// <param name="size">size.</param>
-        /// <param name="projectedSizeNow">projectedSizeNow.</param>
-        /// <param name="projectedSizeInOneYear">projectedSizeInOneYear.</param>
-        /// <param name="projectedFullDateTicks">projectedFullDateTicks.</param>
-        /// <param name="sqlInstances">sqlInstances.</param>
-        public VolumeUsageViewModel(ChannelInstanceRef cir = default(ChannelInstanceRef), string parentName = default(string), string name = default(string), ParentEntityTypeEnum? parentEntityType = default(ParentEntityTypeEnum?), string label = default(string), string group = default(string), long used = default(long), long size = default(long), double? projectedSizeNow = default(double?), double? projectedSizeInOneYear = default(double?), long? projectedFullDateTicks = default(long?), List<SqlInstanceViewModel> sqlInstances = default(List<SqlInstanceViewModel>))
-        {
-            this.Cir = cir;
-            this.ParentName = parentName;
-            this.Name = name;
-            this.ParentEntityType = parentEntityType;
-            this.Label = label;
-            this.Group = group;
-            this.Used = used;
-            this.Size = size;
-            this.ProjectedSizeNow = projectedSizeNow;
-            this.ProjectedSizeInOneYear = projectedSizeInOneYear;
-            this.ProjectedFullDateTicks = projectedFullDateTicks;
-            this.SqlInstances = sqlInstances;
-        }
-
-        /// <summary>
-        /// Gets or Sets Cir
-        /// </summary>
-        [DataMember(Name = "cir", EmitDefaultValue = true)]
-        public ChannelInstanceRef Cir { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ParentName
-        /// </summary>
-        [DataMember(Name = "parentName", EmitDefaultValue = true)]
-        public string ParentName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Label
-        /// </summary>
-        [DataMember(Name = "label", EmitDefaultValue = true)]
-        public string Label { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Group
-        /// </summary>
-        [DataMember(Name = "group", EmitDefaultValue = true)]
-        public string Group { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Used
-        /// </summary>
-        [DataMember(Name = "used", EmitDefaultValue = false)]
-        public long Used { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Size
-        /// </summary>
-        [DataMember(Name = "size", EmitDefaultValue = false)]
-        public long Size { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ProjectedSizeNow
-        /// </summary>
-        [DataMember(Name = "projectedSizeNow", EmitDefaultValue = true)]
-        public double? ProjectedSizeNow { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ProjectedSizeInOneYear
-        /// </summary>
-        [DataMember(Name = "projectedSizeInOneYear", EmitDefaultValue = true)]
-        public double? ProjectedSizeInOneYear { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ProjectedFullDateTicks
-        /// </summary>
-        [DataMember(Name = "projectedFullDateTicks", EmitDefaultValue = true)]
-        public long? ProjectedFullDateTicks { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlInstances
-        /// </summary>
-        [DataMember(Name = "sqlInstances", EmitDefaultValue = true)]
-        public List<SqlInstanceViewModel> SqlInstances { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class VolumeUsageViewModel {\n");
-            sb.Append("  Cir: ").Append(Cir).Append("\n");
-            sb.Append("  ParentName: ").Append(ParentName).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  ParentEntityType: ").Append(ParentEntityType).Append("\n");
-            sb.Append("  Label: ").Append(Label).Append("\n");
-            sb.Append("  Group: ").Append(Group).Append("\n");
-            sb.Append("  Used: ").Append(Used).Append("\n");
-            sb.Append("  Size: ").Append(Size).Append("\n");
-            sb.Append("  ProjectedSizeNow: ").Append(ProjectedSizeNow).Append("\n");
-            sb.Append("  ProjectedSizeInOneYear: ").Append(ProjectedSizeInOneYear).Append("\n");
-            sb.Append("  ProjectedFullDateTicks: ").Append(ProjectedFullDateTicks).Append("\n");
-            sb.Append("  SqlInstances: ").Append(SqlInstances).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Cir = cir;
+        ParentName = parentName;
+        Name = name;
+        ParentEntityType = parentEntityType;
+        Label = label;
+        Group = group;
+        Used = used;
+        Size = size;
+        ProjectedSizeNow = projectedSizeNow;
+        ProjectedSizeInOneYear = projectedSizeInOneYear;
+        ProjectedFullDateTicks = projectedFullDateTicks;
+        SqlInstances = sqlInstances;
     }
 
+    /// <summary>
+    ///     Gets or Sets ParentEntityType
+    /// </summary>
+    [DataMember(Name = "parentEntityType", EmitDefaultValue = false)]
+    public EntityType? ParentEntityType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Cir
+    /// </summary>
+    [DataMember(Name = "cir", EmitDefaultValue = true)]
+    public ChannelInstanceRef Cir { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ParentName
+    /// </summary>
+    [DataMember(Name = "parentName", EmitDefaultValue = true)]
+    public string ParentName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Label
+    /// </summary>
+    [DataMember(Name = "label", EmitDefaultValue = true)]
+    public string Label { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Group
+    /// </summary>
+    [DataMember(Name = "group", EmitDefaultValue = true)]
+    public string Group { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Used
+    /// </summary>
+    [DataMember(Name = "used", EmitDefaultValue = false)]
+    public long Used { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Size
+    /// </summary>
+    [DataMember(Name = "size", EmitDefaultValue = false)]
+    public long Size { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ProjectedSizeNow
+    /// </summary>
+    [DataMember(Name = "projectedSizeNow", EmitDefaultValue = true)]
+    public double? ProjectedSizeNow { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ProjectedSizeInOneYear
+    /// </summary>
+    [DataMember(Name = "projectedSizeInOneYear", EmitDefaultValue = true)]
+    public double? ProjectedSizeInOneYear { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ProjectedFullDateTicks
+    /// </summary>
+    [DataMember(Name = "projectedFullDateTicks", EmitDefaultValue = true)]
+    public long? ProjectedFullDateTicks { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlInstances
+    /// </summary>
+    [DataMember(Name = "sqlInstances", EmitDefaultValue = true)]
+    public List<SqlInstanceViewModel> SqlInstances { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class VolumeUsageViewModel {\n");
+        sb.Append("  Cir: ").Append(Cir).Append("\n");
+        sb.Append("  ParentName: ").Append(ParentName).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  ParentEntityType: ").Append(ParentEntityType).Append("\n");
+        sb.Append("  Label: ").Append(Label).Append("\n");
+        sb.Append("  Group: ").Append(Group).Append("\n");
+        sb.Append("  Used: ").Append(Used).Append("\n");
+        sb.Append("  Size: ").Append(Size).Append("\n");
+        sb.Append("  ProjectedSizeNow: ").Append(ProjectedSizeNow).Append("\n");
+        sb.Append("  ProjectedSizeInOneYear: ").Append(ProjectedSizeInOneYear).Append("\n");
+        sb.Append("  ProjectedFullDateTicks: ").Append(ProjectedFullDateTicks).Append("\n");
+        sb.Append("  SqlInstances: ").Append(SqlInstances).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

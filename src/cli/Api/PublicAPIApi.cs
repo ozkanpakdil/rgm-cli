@@ -9,1763 +9,1639 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
+using RedGate.SqlMonitor.Common.Domain;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IPublicAPIApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IPublicAPIApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertDetailDtoArrayJSendSuccess</returns>
+    AlertDetailDtoArrayJSendSuccess ApiV1AlertsGet(string alertTypeId, string? monitoredEntityId = default,
+        DateTime? start = default, DateTime? end = default, int? limit = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertDetailDtoArrayJSendSuccess</returns>
+    ApiResponse<AlertDetailDtoArrayJSendSuccess> ApiV1AlertsGetWithHttpInfo(string alertTypeId,
+        string? monitoredEntityId = default, DateTime? start = default, DateTime? end = default, int? limit = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertTypeDtoArrayJSendSuccess</returns>
+    AlertTypeDtoArrayJSendSuccess ApiV1AlertsTypesGet(int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertTypeDtoArrayJSendSuccess</returns>
+    ApiResponse<AlertTypeDtoArrayJSendSuccess> ApiV1AlertsTypesGetWithHttpInfo(int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>DatabaseBackupDtoArrayJSendSuccess</returns>
+    DatabaseBackupDtoArrayJSendSuccess ApiV1BackupsGet(string? monitoredEntityId = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of DatabaseBackupDtoArrayJSendSuccess</returns>
+    ApiResponse<DatabaseBackupDtoArrayJSendSuccess> ApiV1BackupsGetWithHttpInfo(string? monitoredEntityId = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>DiskUsageDtoArrayJSendSuccess</returns>
+    DiskUsageDtoArrayJSendSuccess ApiV1DiskUsageGet(string? monitoredEntityId = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of DiskUsageDtoArrayJSendSuccess</returns>
+    ApiResponse<DiskUsageDtoArrayJSendSuccess> ApiV1DiskUsageGetWithHttpInfo(string? monitoredEntityId = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="metricTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="maxSampleCount"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>MetricDtoArrayJSendSuccess</returns>
+    MetricDtoArrayJSendSuccess ApiV1MetricsGet(string metricTypeId, string? monitoredEntityId = default,
+        DateTime? start = default, DateTime? end = default, int? maxSampleCount = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="metricTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="maxSampleCount"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of MetricDtoArrayJSendSuccess</returns>
+    ApiResponse<MetricDtoArrayJSendSuccess> ApiV1MetricsGetWithHttpInfo(string metricTypeId,
+        string? monitoredEntityId = default, DateTime? start = default, DateTime? end = default,
+        int? maxSampleCount = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>MetricTypeDtoArrayJSendSuccess</returns>
+    MetricTypeDtoArrayJSendSuccess ApiV1MetricsTypesGet(int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of MetricTypeDtoArrayJSendSuccess</returns>
+    ApiResponse<MetricTypeDtoArrayJSendSuccess> ApiV1MetricsTypesGetWithHttpInfo(int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="entityType"> (optional)</param>
+    /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>MonitoredEntityDtoArrayJSendSuccess</returns>
+    MonitoredEntityDtoArrayJSendSuccess ApiV1MonitoredEntitiesGet(EntityType? entityType = default,
+        string? filter = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="entityType"> (optional)</param>
+    /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of MonitoredEntityDtoArrayJSendSuccess</returns>
+    ApiResponse<MonitoredEntityDtoArrayJSendSuccess> ApiV1MonitoredEntitiesGetWithHttpInfo(
+        EntityType? entityType = default, string? filter = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>EntityTypeArrayJSendSuccess</returns>
+    EntityTypeArrayJSendSuccess ApiV1MonitoredEntitiesTypesGet(int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of EntityTypeArrayJSendSuccess</returns>
+    ApiResponse<EntityTypeArrayJSendSuccess> ApiV1MonitoredEntitiesTypesGetWithHttpInfo(int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IPublicAPIApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertDetailDtoArrayJSendSuccess</returns>
+    Task<AlertDetailDtoArrayJSendSuccess> ApiV1AlertsGetAsync(string alertTypeId, string? monitoredEntityId = default,
+        DateTime? start = default, DateTime? end = default, int? limit = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertDetailDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<AlertDetailDtoArrayJSendSuccess>> ApiV1AlertsGetWithHttpInfoAsync(string alertTypeId,
+        string? monitoredEntityId = default, DateTime? start = default, DateTime? end = default, int? limit = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertTypeDtoArrayJSendSuccess</returns>
+    Task<AlertTypeDtoArrayJSendSuccess> ApiV1AlertsTypesGetAsync(int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertTypeDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<AlertTypeDtoArrayJSendSuccess>> ApiV1AlertsTypesGetWithHttpInfoAsync(int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of DatabaseBackupDtoArrayJSendSuccess</returns>
+    Task<DatabaseBackupDtoArrayJSendSuccess> ApiV1BackupsGetAsync(string? monitoredEntityId = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (DatabaseBackupDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<DatabaseBackupDtoArrayJSendSuccess>> ApiV1BackupsGetWithHttpInfoAsync(
+        string? monitoredEntityId = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of DiskUsageDtoArrayJSendSuccess</returns>
+    Task<DiskUsageDtoArrayJSendSuccess> ApiV1DiskUsageGetAsync(string? monitoredEntityId = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (DiskUsageDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<DiskUsageDtoArrayJSendSuccess>> ApiV1DiskUsageGetWithHttpInfoAsync(
+        string? monitoredEntityId = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="metricTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="maxSampleCount"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of MetricDtoArrayJSendSuccess</returns>
+    Task<MetricDtoArrayJSendSuccess> ApiV1MetricsGetAsync(string metricTypeId, string? monitoredEntityId = default,
+        DateTime? start = default, DateTime? end = default, int? maxSampleCount = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="metricTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="maxSampleCount"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (MetricDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<MetricDtoArrayJSendSuccess>> ApiV1MetricsGetWithHttpInfoAsync(string metricTypeId,
+        string? monitoredEntityId = default, DateTime? start = default, DateTime? end = default,
+        int? maxSampleCount = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of MetricTypeDtoArrayJSendSuccess</returns>
+    Task<MetricTypeDtoArrayJSendSuccess> ApiV1MetricsTypesGetAsync(int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (MetricTypeDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<MetricTypeDtoArrayJSendSuccess>> ApiV1MetricsTypesGetWithHttpInfoAsync(int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="entityType"> (optional)</param>
+    /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of MonitoredEntityDtoArrayJSendSuccess</returns>
+    Task<MonitoredEntityDtoArrayJSendSuccess> ApiV1MonitoredEntitiesGetAsync(EntityType? entityType = default,
+        string? filter = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="entityType"> (optional)</param>
+    /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (MonitoredEntityDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<MonitoredEntityDtoArrayJSendSuccess>> ApiV1MonitoredEntitiesGetWithHttpInfoAsync(
+        EntityType? entityType = default, string? filter = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of EntityTypeArrayJSendSuccess</returns>
+    Task<EntityTypeArrayJSendSuccess> ApiV1MonitoredEntitiesTypesGetAsync(int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (EntityTypeArrayJSendSuccess)</returns>
+    Task<ApiResponse<EntityTypeArrayJSendSuccess>> ApiV1MonitoredEntitiesTypesGetWithHttpInfoAsync(
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IPublicAPIApi : IPublicAPIApiSync, IPublicAPIApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class PublicAPIApi : IPublicAPIApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="PublicAPIApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public PublicAPIApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertDetailDtoArrayJSendSuccess</returns>
-        AlertDetailDtoArrayJSendSuccess ApiV1AlertsGet(string alertTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? limit = default(int?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertDetailDtoArrayJSendSuccess</returns>
-        ApiResponse<AlertDetailDtoArrayJSendSuccess> ApiV1AlertsGetWithHttpInfo(string alertTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? limit = default(int?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertTypeDtoArrayJSendSuccess</returns>
-        AlertTypeDtoArrayJSendSuccess ApiV1AlertsTypesGet(int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertTypeDtoArrayJSendSuccess</returns>
-        ApiResponse<AlertTypeDtoArrayJSendSuccess> ApiV1AlertsTypesGetWithHttpInfo(int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DatabaseBackupDtoArrayJSendSuccess</returns>
-        DatabaseBackupDtoArrayJSendSuccess ApiV1BackupsGet(string? monitoredEntityId = default(string?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DatabaseBackupDtoArrayJSendSuccess</returns>
-        ApiResponse<DatabaseBackupDtoArrayJSendSuccess> ApiV1BackupsGetWithHttpInfo(string? monitoredEntityId = default(string?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DiskUsageDtoArrayJSendSuccess</returns>
-        DiskUsageDtoArrayJSendSuccess ApiV1DiskUsageGet(string? monitoredEntityId = default(string?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DiskUsageDtoArrayJSendSuccess</returns>
-        ApiResponse<DiskUsageDtoArrayJSendSuccess> ApiV1DiskUsageGetWithHttpInfo(string? monitoredEntityId = default(string?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="metricTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="maxSampleCount"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>MetricDtoArrayJSendSuccess</returns>
-        MetricDtoArrayJSendSuccess ApiV1MetricsGet(string metricTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? maxSampleCount = default(int?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="metricTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="maxSampleCount"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of MetricDtoArrayJSendSuccess</returns>
-        ApiResponse<MetricDtoArrayJSendSuccess> ApiV1MetricsGetWithHttpInfo(string metricTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? maxSampleCount = default(int?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>MetricTypeDtoArrayJSendSuccess</returns>
-        MetricTypeDtoArrayJSendSuccess ApiV1MetricsTypesGet(int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of MetricTypeDtoArrayJSendSuccess</returns>
-        ApiResponse<MetricTypeDtoArrayJSendSuccess> ApiV1MetricsTypesGetWithHttpInfo(int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityType"> (optional)</param>
-        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>MonitoredEntityDtoArrayJSendSuccess</returns>
-        MonitoredEntityDtoArrayJSendSuccess ApiV1MonitoredEntitiesGet(EntityType? entityType = default(EntityType?), string? filter = default(string?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityType"> (optional)</param>
-        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of MonitoredEntityDtoArrayJSendSuccess</returns>
-        ApiResponse<MonitoredEntityDtoArrayJSendSuccess> ApiV1MonitoredEntitiesGetWithHttpInfo(EntityType? entityType = default(EntityType?), string? filter = default(string?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>EntityTypeArrayJSendSuccess</returns>
-        EntityTypeArrayJSendSuccess ApiV1MonitoredEntitiesTypesGet(int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of EntityTypeArrayJSendSuccess</returns>
-        ApiResponse<EntityTypeArrayJSendSuccess> ApiV1MonitoredEntitiesTypesGetWithHttpInfo(int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="PublicAPIApi" /> class.
     /// </summary>
-    public interface IPublicAPIApiAsync : IApiAccessor
+    /// <returns></returns>
+    public PublicAPIApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertDetailDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<AlertDetailDtoArrayJSendSuccess> ApiV1AlertsGetAsync(string alertTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertDetailDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AlertDetailDtoArrayJSendSuccess>> ApiV1AlertsGetWithHttpInfoAsync(string alertTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertTypeDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<AlertTypeDtoArrayJSendSuccess> ApiV1AlertsTypesGetAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertTypeDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AlertTypeDtoArrayJSendSuccess>> ApiV1AlertsTypesGetWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DatabaseBackupDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<DatabaseBackupDtoArrayJSendSuccess> ApiV1BackupsGetAsync(string? monitoredEntityId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DatabaseBackupDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DatabaseBackupDtoArrayJSendSuccess>> ApiV1BackupsGetWithHttpInfoAsync(string? monitoredEntityId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DiskUsageDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<DiskUsageDtoArrayJSendSuccess> ApiV1DiskUsageGetAsync(string? monitoredEntityId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DiskUsageDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DiskUsageDtoArrayJSendSuccess>> ApiV1DiskUsageGetWithHttpInfoAsync(string? monitoredEntityId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="metricTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="maxSampleCount"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of MetricDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<MetricDtoArrayJSendSuccess> ApiV1MetricsGetAsync(string metricTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? maxSampleCount = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="metricTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="maxSampleCount"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (MetricDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MetricDtoArrayJSendSuccess>> ApiV1MetricsGetWithHttpInfoAsync(string metricTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? maxSampleCount = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of MetricTypeDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<MetricTypeDtoArrayJSendSuccess> ApiV1MetricsTypesGetAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (MetricTypeDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MetricTypeDtoArrayJSendSuccess>> ApiV1MetricsTypesGetWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityType"> (optional)</param>
-        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of MonitoredEntityDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<MonitoredEntityDtoArrayJSendSuccess> ApiV1MonitoredEntitiesGetAsync(EntityType? entityType = default(EntityType?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityType"> (optional)</param>
-        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (MonitoredEntityDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MonitoredEntityDtoArrayJSendSuccess>> ApiV1MonitoredEntitiesGetWithHttpInfoAsync(EntityType? entityType = default(EntityType?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of EntityTypeArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<EntityTypeArrayJSendSuccess> ApiV1MonitoredEntitiesTypesGetAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (EntityTypeArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EntityTypeArrayJSendSuccess>> ApiV1MonitoredEntitiesTypesGetWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="PublicAPIApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IPublicAPIApi : IPublicAPIApiSync, IPublicAPIApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public PublicAPIApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="PublicAPIApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class PublicAPIApi : IPublicAPIApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public PublicAPIApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PublicAPIApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public PublicAPIApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertDetailDtoArrayJSendSuccess</returns>
+    public AlertDetailDtoArrayJSendSuccess ApiV1AlertsGet(string alertTypeId, string? monitoredEntityId = default,
+        DateTime? start = default, DateTime? end = default, int? limit = default, int operationIndex = 0)
+    {
+        var localVarResponse = ApiV1AlertsGetWithHttpInfo(alertTypeId, monitoredEntityId, start, end, limit);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertDetailDtoArrayJSendSuccess</returns>
+    public ApiResponse<AlertDetailDtoArrayJSendSuccess> ApiV1AlertsGetWithHttpInfo(string alertTypeId,
+        string? monitoredEntityId = default, DateTime? start = default, DateTime? end = default, int? limit = default,
+        int operationIndex = 0)
+    {
+        // verify the required parameter 'alertTypeId' is set
+        if (alertTypeId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'alertTypeId' when calling PublicAPIApi->ApiV1AlertsGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "alertTypeId", alertTypeId));
+        if (monitoredEntityId != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
+        if (start != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "start", start));
+        if (end != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "end", end));
+        if (limit != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "limit", limit));
+
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1AlertsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<AlertDetailDtoArrayJSendSuccess>("/api/v1/alerts", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1AlertsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PublicAPIApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public PublicAPIApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertDetailDtoArrayJSendSuccess</returns>
+    public async Task<AlertDetailDtoArrayJSendSuccess> ApiV1AlertsGetAsync(string alertTypeId,
+        string? monitoredEntityId = default, DateTime? start = default, DateTime? end = default, int? limit = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiV1AlertsGetWithHttpInfoAsync(alertTypeId, monitoredEntityId, start, end, limit, operationIndex,
+                cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="limit"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertDetailDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<AlertDetailDtoArrayJSendSuccess>> ApiV1AlertsGetWithHttpInfoAsync(string alertTypeId,
+        string? monitoredEntityId = default, DateTime? start = default, DateTime? end = default, int? limit = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'alertTypeId' is set
+        if (alertTypeId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'alertTypeId' when calling PublicAPIApi->ApiV1AlertsGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "alertTypeId", alertTypeId));
+        if (monitoredEntityId != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
+        if (start != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "start", start));
+        if (end != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "end", end));
+        if (limit != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "limit", limit));
+
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1AlertsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<AlertDetailDtoArrayJSendSuccess>("/api/v1/alerts", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1AlertsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PublicAPIApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public PublicAPIApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertTypeDtoArrayJSendSuccess</returns>
+    public AlertTypeDtoArrayJSendSuccess ApiV1AlertsTypesGet(int operationIndex = 0)
+    {
+        var localVarResponse = ApiV1AlertsTypesGetWithHttpInfo();
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertTypeDtoArrayJSendSuccess</returns>
+    public ApiResponse<AlertTypeDtoArrayJSendSuccess> ApiV1AlertsTypesGetWithHttpInfo(int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1AlertsTypesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<AlertTypeDtoArrayJSendSuccess>("/api/v1/alerts/types", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1AlertsTypesGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PublicAPIApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public PublicAPIApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertTypeDtoArrayJSendSuccess</returns>
+    public async Task<AlertTypeDtoArrayJSendSuccess> ApiV1AlertsTypesGetAsync(int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarResponse = await ApiV1AlertsTypesGetWithHttpInfoAsync(operationIndex, cancellationToken)
+            .ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertTypeDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<AlertTypeDtoArrayJSendSuccess>> ApiV1AlertsTypesGetWithHttpInfoAsync(
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1AlertsTypesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<AlertTypeDtoArrayJSendSuccess>("/api/v1/alerts/types", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1AlertsTypesGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>DatabaseBackupDtoArrayJSendSuccess</returns>
+    public DatabaseBackupDtoArrayJSendSuccess ApiV1BackupsGet(string? monitoredEntityId = default,
+        int operationIndex = 0)
+    {
+        var localVarResponse = ApiV1BackupsGetWithHttpInfo(monitoredEntityId);
+        return localVarResponse.Data;
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of DatabaseBackupDtoArrayJSendSuccess</returns>
+    public ApiResponse<DatabaseBackupDtoArrayJSendSuccess> ApiV1BackupsGetWithHttpInfo(
+        string? monitoredEntityId = default, int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            return this.Configuration.BasePath;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (monitoredEntityId != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
+
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1BackupsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<DatabaseBackupDtoArrayJSendSuccess>("/api/v1/backups", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1BackupsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of DatabaseBackupDtoArrayJSendSuccess</returns>
+    public async Task<DatabaseBackupDtoArrayJSendSuccess> ApiV1BackupsGetAsync(string? monitoredEntityId = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiV1BackupsGetWithHttpInfoAsync(monitoredEntityId, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (DatabaseBackupDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<DatabaseBackupDtoArrayJSendSuccess>> ApiV1BackupsGetWithHttpInfoAsync(
+        string? monitoredEntityId = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (monitoredEntityId != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
+
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1BackupsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<DatabaseBackupDtoArrayJSendSuccess>("/api/v1/backups", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1BackupsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertDetailDtoArrayJSendSuccess</returns>
-        public AlertDetailDtoArrayJSendSuccess ApiV1AlertsGet(string alertTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? limit = default(int?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>DiskUsageDtoArrayJSendSuccess</returns>
+    public DiskUsageDtoArrayJSendSuccess ApiV1DiskUsageGet(string? monitoredEntityId = default, int operationIndex = 0)
+    {
+        var localVarResponse = ApiV1DiskUsageGetWithHttpInfo(monitoredEntityId);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of DiskUsageDtoArrayJSendSuccess</returns>
+    public ApiResponse<DiskUsageDtoArrayJSendSuccess> ApiV1DiskUsageGetWithHttpInfo(string? monitoredEntityId = default,
+        int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<AlertDetailDtoArrayJSendSuccess> localVarResponse = ApiV1AlertsGetWithHttpInfo(alertTypeId, monitoredEntityId, start, end, limit);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (monitoredEntityId != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
+
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1DiskUsageGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<DiskUsageDtoArrayJSendSuccess>("/api/v1/disk-usage", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1DiskUsageGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertDetailDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<AlertDetailDtoArrayJSendSuccess> ApiV1AlertsGetWithHttpInfo(string alertTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? limit = default(int?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of DiskUsageDtoArrayJSendSuccess</returns>
+    public async Task<DiskUsageDtoArrayJSendSuccess> ApiV1DiskUsageGetAsync(string? monitoredEntityId = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiV1DiskUsageGetWithHttpInfoAsync(monitoredEntityId, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (DiskUsageDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<DiskUsageDtoArrayJSendSuccess>> ApiV1DiskUsageGetWithHttpInfoAsync(
+        string? monitoredEntityId = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'alertTypeId' is set
-            if (alertTypeId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'alertTypeId' when calling PublicAPIApi->ApiV1AlertsGet");
-            }
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        if (monitoredEntityId != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "alertTypeId", alertTypeId));
-            if (monitoredEntityId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
-            }
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (end != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "end", end));
-            }
-            if (limit != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
-            }
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1AlertsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1DiskUsageGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<AlertDetailDtoArrayJSendSuccess>("/api/v1/alerts", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1AlertsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<DiskUsageDtoArrayJSendSuccess>("/api/v1/disk-usage", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1DiskUsageGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertDetailDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<AlertDetailDtoArrayJSendSuccess> ApiV1AlertsGetAsync(string alertTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="metricTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="maxSampleCount"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>MetricDtoArrayJSendSuccess</returns>
+    public MetricDtoArrayJSendSuccess ApiV1MetricsGet(string metricTypeId, string? monitoredEntityId = default,
+        DateTime? start = default, DateTime? end = default, int? maxSampleCount = default, int operationIndex = 0)
+    {
+        var localVarResponse = ApiV1MetricsGetWithHttpInfo(metricTypeId, monitoredEntityId, start, end, maxSampleCount);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="metricTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="maxSampleCount"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of MetricDtoArrayJSendSuccess</returns>
+    public ApiResponse<MetricDtoArrayJSendSuccess> ApiV1MetricsGetWithHttpInfo(string metricTypeId,
+        string? monitoredEntityId = default, DateTime? start = default, DateTime? end = default,
+        int? maxSampleCount = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'metricTypeId' is set
+        if (metricTypeId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'metricTypeId' when calling PublicAPIApi->ApiV1MetricsGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<AlertDetailDtoArrayJSendSuccess> localVarResponse = await ApiV1AlertsGetWithHttpInfoAsync(alertTypeId, monitoredEntityId, start, end, limit, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "metricTypeId", metricTypeId));
+        if (monitoredEntityId != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
+        if (start != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "start", start));
+        if (end != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "end", end));
+        if (maxSampleCount != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "maxSampleCount", maxSampleCount));
+
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MetricsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<MetricDtoArrayJSendSuccess>("/api/v1/metrics", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1MetricsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertDetailDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AlertDetailDtoArrayJSendSuccess>> ApiV1AlertsGetWithHttpInfoAsync(string alertTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? limit = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="metricTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="maxSampleCount"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of MetricDtoArrayJSendSuccess</returns>
+    public async Task<MetricDtoArrayJSendSuccess> ApiV1MetricsGetAsync(string metricTypeId,
+        string? monitoredEntityId = default, DateTime? start = default, DateTime? end = default,
+        int? maxSampleCount = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse = await ApiV1MetricsGetWithHttpInfoAsync(metricTypeId, monitoredEntityId, start, end,
+            maxSampleCount, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="metricTypeId"></param>
+    /// <param name="monitoredEntityId"> (optional)</param>
+    /// <param name="start"> (optional)</param>
+    /// <param name="end"> (optional)</param>
+    /// <param name="maxSampleCount"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (MetricDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<MetricDtoArrayJSendSuccess>> ApiV1MetricsGetWithHttpInfoAsync(string metricTypeId,
+        string? monitoredEntityId = default, DateTime? start = default, DateTime? end = default,
+        int? maxSampleCount = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'metricTypeId' is set
+        if (metricTypeId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'metricTypeId' when calling PublicAPIApi->ApiV1MetricsGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'alertTypeId' is set
-            if (alertTypeId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'alertTypeId' when calling PublicAPIApi->ApiV1AlertsGet");
-            }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "metricTypeId", metricTypeId));
+        if (monitoredEntityId != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
+        if (start != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "start", start));
+        if (end != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "end", end));
+        if (maxSampleCount != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "maxSampleCount", maxSampleCount));
+
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MetricsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<MetricDtoArrayJSendSuccess>("/api/v1/metrics", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
 
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "alertTypeId", alertTypeId));
-            if (monitoredEntityId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
-            }
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (end != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "end", end));
-            }
-            if (limit != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
-            }
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1AlertsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<AlertDetailDtoArrayJSendSuccess>("/api/v1/alerts", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1AlertsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1MetricsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertTypeDtoArrayJSendSuccess</returns>
-        public AlertTypeDtoArrayJSendSuccess ApiV1AlertsTypesGet(int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>MetricTypeDtoArrayJSendSuccess</returns>
+    public MetricTypeDtoArrayJSendSuccess ApiV1MetricsTypesGet(int operationIndex = 0)
+    {
+        var localVarResponse = ApiV1MetricsTypesGetWithHttpInfo();
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of MetricTypeDtoArrayJSendSuccess</returns>
+    public ApiResponse<MetricTypeDtoArrayJSendSuccess> ApiV1MetricsTypesGetWithHttpInfo(int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<AlertTypeDtoArrayJSendSuccess> localVarResponse = ApiV1AlertsTypesGetWithHttpInfo();
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MetricsTypesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<MetricTypeDtoArrayJSendSuccess>("/api/v1/metrics/types", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1MetricsTypesGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertTypeDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<AlertTypeDtoArrayJSendSuccess> ApiV1AlertsTypesGetWithHttpInfo(int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of MetricTypeDtoArrayJSendSuccess</returns>
+    public async Task<MetricTypeDtoArrayJSendSuccess> ApiV1MetricsTypesGetAsync(int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarResponse = await ApiV1MetricsTypesGetWithHttpInfoAsync(operationIndex, cancellationToken)
+            .ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (MetricTypeDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<MetricTypeDtoArrayJSendSuccess>> ApiV1MetricsTypesGetWithHttpInfoAsync(
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
 
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1AlertsTypesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MetricsTypesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<AlertTypeDtoArrayJSendSuccess>("/api/v1/alerts/types", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1AlertsTypesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<MetricTypeDtoArrayJSendSuccess>("/api/v1/metrics/types", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1MetricsTypesGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertTypeDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<AlertTypeDtoArrayJSendSuccess> ApiV1AlertsTypesGetAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="entityType"> (optional)</param>
+    /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>MonitoredEntityDtoArrayJSendSuccess</returns>
+    public MonitoredEntityDtoArrayJSendSuccess ApiV1MonitoredEntitiesGet(EntityType? entityType = default,
+        string? filter = default, int operationIndex = 0)
+    {
+        var localVarResponse = ApiV1MonitoredEntitiesGetWithHttpInfo(entityType, filter);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="entityType"> (optional)</param>
+    /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of MonitoredEntityDtoArrayJSendSuccess</returns>
+    public ApiResponse<MonitoredEntityDtoArrayJSendSuccess> ApiV1MonitoredEntitiesGetWithHttpInfo(
+        EntityType? entityType = default, string? filter = default, int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<AlertTypeDtoArrayJSendSuccess> localVarResponse = await ApiV1AlertsTypesGetWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (entityType != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "entityType", entityType));
+        if (filter != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "filter", filter));
+
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MonitoredEntitiesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<MonitoredEntityDtoArrayJSendSuccess>("/api/v1/monitored-entities", localVarRequestOptions,
+                Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1MonitoredEntitiesGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertTypeDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AlertTypeDtoArrayJSendSuccess>> ApiV1AlertsTypesGetWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="entityType"> (optional)</param>
+    /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of MonitoredEntityDtoArrayJSendSuccess</returns>
+    public async Task<MonitoredEntityDtoArrayJSendSuccess> ApiV1MonitoredEntitiesGetAsync(
+        EntityType? entityType = default, string? filter = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiV1MonitoredEntitiesGetWithHttpInfoAsync(entityType, filter, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="entityType"> (optional)</param>
+    /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (MonitoredEntityDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<MonitoredEntityDtoArrayJSendSuccess>> ApiV1MonitoredEntitiesGetWithHttpInfoAsync(
+        EntityType? entityType = default, string? filter = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        if (entityType != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "entityType", entityType));
+        if (filter != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "filter", filter));
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1AlertsTypesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MonitoredEntitiesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<AlertTypeDtoArrayJSendSuccess>("/api/v1/alerts/types", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<MonitoredEntityDtoArrayJSendSuccess>("/api/v1/monitored-entities", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
 
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1AlertsTypesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1MonitoredEntitiesGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DatabaseBackupDtoArrayJSendSuccess</returns>
-        public DatabaseBackupDtoArrayJSendSuccess ApiV1BackupsGet(string? monitoredEntityId = default(string?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>EntityTypeArrayJSendSuccess</returns>
+    public EntityTypeArrayJSendSuccess ApiV1MonitoredEntitiesTypesGet(int operationIndex = 0)
+    {
+        var localVarResponse = ApiV1MonitoredEntitiesTypesGetWithHttpInfo();
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of EntityTypeArrayJSendSuccess</returns>
+    public ApiResponse<EntityTypeArrayJSendSuccess> ApiV1MonitoredEntitiesTypesGetWithHttpInfo(int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<DatabaseBackupDtoArrayJSendSuccess> localVarResponse = ApiV1BackupsGetWithHttpInfo(monitoredEntityId);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MonitoredEntitiesTypesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<EntityTypeArrayJSendSuccess>("/api/v1/monitored-entities/types",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1MonitoredEntitiesTypesGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DatabaseBackupDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<DatabaseBackupDtoArrayJSendSuccess> ApiV1BackupsGetWithHttpInfo(string? monitoredEntityId = default(string?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of EntityTypeArrayJSendSuccess</returns>
+    public async Task<EntityTypeArrayJSendSuccess> ApiV1MonitoredEntitiesTypesGetAsync(int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarResponse = await ApiV1MonitoredEntitiesTypesGetWithHttpInfoAsync(operationIndex, cancellationToken)
+            .ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (EntityTypeArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<EntityTypeArrayJSendSuccess>> ApiV1MonitoredEntitiesTypesGetWithHttpInfoAsync(
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (monitoredEntityId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
-            }
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1BackupsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<DatabaseBackupDtoArrayJSendSuccess>("/api/v1/backups", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1BackupsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MonitoredEntitiesTypesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
-            return localVarResponse;
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<EntityTypeArrayJSendSuccess>("/api/v1/monitored-entities/types", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiV1MonitoredEntitiesTypesGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DatabaseBackupDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<DatabaseBackupDtoArrayJSendSuccess> ApiV1BackupsGetAsync(string? monitoredEntityId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<DatabaseBackupDtoArrayJSendSuccess> localVarResponse = await ApiV1BackupsGetWithHttpInfoAsync(monitoredEntityId, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DatabaseBackupDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<DatabaseBackupDtoArrayJSendSuccess>> ApiV1BackupsGetWithHttpInfoAsync(string? monitoredEntityId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (monitoredEntityId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
-            }
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1BackupsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<DatabaseBackupDtoArrayJSendSuccess>("/api/v1/backups", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1BackupsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DiskUsageDtoArrayJSendSuccess</returns>
-        public DiskUsageDtoArrayJSendSuccess ApiV1DiskUsageGet(string? monitoredEntityId = default(string?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<DiskUsageDtoArrayJSendSuccess> localVarResponse = ApiV1DiskUsageGetWithHttpInfo(monitoredEntityId);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DiskUsageDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<DiskUsageDtoArrayJSendSuccess> ApiV1DiskUsageGetWithHttpInfo(string? monitoredEntityId = default(string?), int operationIndex = 0)
-        {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (monitoredEntityId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
-            }
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1DiskUsageGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<DiskUsageDtoArrayJSendSuccess>("/api/v1/disk-usage", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1DiskUsageGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DiskUsageDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<DiskUsageDtoArrayJSendSuccess> ApiV1DiskUsageGetAsync(string? monitoredEntityId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<DiskUsageDtoArrayJSendSuccess> localVarResponse = await ApiV1DiskUsageGetWithHttpInfoAsync(monitoredEntityId, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DiskUsageDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<DiskUsageDtoArrayJSendSuccess>> ApiV1DiskUsageGetWithHttpInfoAsync(string? monitoredEntityId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (monitoredEntityId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
-            }
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1DiskUsageGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<DiskUsageDtoArrayJSendSuccess>("/api/v1/disk-usage", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1DiskUsageGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="metricTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="maxSampleCount"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>MetricDtoArrayJSendSuccess</returns>
-        public MetricDtoArrayJSendSuccess ApiV1MetricsGet(string metricTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? maxSampleCount = default(int?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<MetricDtoArrayJSendSuccess> localVarResponse = ApiV1MetricsGetWithHttpInfo(metricTypeId, monitoredEntityId, start, end, maxSampleCount);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="metricTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="maxSampleCount"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of MetricDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<MetricDtoArrayJSendSuccess> ApiV1MetricsGetWithHttpInfo(string metricTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? maxSampleCount = default(int?), int operationIndex = 0)
-        {
-            // verify the required parameter 'metricTypeId' is set
-            if (metricTypeId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'metricTypeId' when calling PublicAPIApi->ApiV1MetricsGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "metricTypeId", metricTypeId));
-            if (monitoredEntityId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
-            }
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (end != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "end", end));
-            }
-            if (maxSampleCount != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "maxSampleCount", maxSampleCount));
-            }
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MetricsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<MetricDtoArrayJSendSuccess>("/api/v1/metrics", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1MetricsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="metricTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="maxSampleCount"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of MetricDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<MetricDtoArrayJSendSuccess> ApiV1MetricsGetAsync(string metricTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? maxSampleCount = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<MetricDtoArrayJSendSuccess> localVarResponse = await ApiV1MetricsGetWithHttpInfoAsync(metricTypeId, monitoredEntityId, start, end, maxSampleCount, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="metricTypeId"></param>
-        /// <param name="monitoredEntityId"> (optional)</param>
-        /// <param name="start"> (optional)</param>
-        /// <param name="end"> (optional)</param>
-        /// <param name="maxSampleCount"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (MetricDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<MetricDtoArrayJSendSuccess>> ApiV1MetricsGetWithHttpInfoAsync(string metricTypeId, string? monitoredEntityId = default(string?), DateTime? start = default(DateTime?), DateTime? end = default(DateTime?), int? maxSampleCount = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'metricTypeId' is set
-            if (metricTypeId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'metricTypeId' when calling PublicAPIApi->ApiV1MetricsGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "metricTypeId", metricTypeId));
-            if (monitoredEntityId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "monitoredEntityId", monitoredEntityId));
-            }
-            if (start != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "start", start));
-            }
-            if (end != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "end", end));
-            }
-            if (maxSampleCount != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "maxSampleCount", maxSampleCount));
-            }
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MetricsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<MetricDtoArrayJSendSuccess>("/api/v1/metrics", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1MetricsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>MetricTypeDtoArrayJSendSuccess</returns>
-        public MetricTypeDtoArrayJSendSuccess ApiV1MetricsTypesGet(int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<MetricTypeDtoArrayJSendSuccess> localVarResponse = ApiV1MetricsTypesGetWithHttpInfo();
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of MetricTypeDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<MetricTypeDtoArrayJSendSuccess> ApiV1MetricsTypesGetWithHttpInfo(int operationIndex = 0)
-        {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MetricsTypesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<MetricTypeDtoArrayJSendSuccess>("/api/v1/metrics/types", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1MetricsTypesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of MetricTypeDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<MetricTypeDtoArrayJSendSuccess> ApiV1MetricsTypesGetAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<MetricTypeDtoArrayJSendSuccess> localVarResponse = await ApiV1MetricsTypesGetWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (MetricTypeDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<MetricTypeDtoArrayJSendSuccess>> ApiV1MetricsTypesGetWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MetricsTypesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<MetricTypeDtoArrayJSendSuccess>("/api/v1/metrics/types", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1MetricsTypesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityType"> (optional)</param>
-        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>MonitoredEntityDtoArrayJSendSuccess</returns>
-        public MonitoredEntityDtoArrayJSendSuccess ApiV1MonitoredEntitiesGet(EntityType? entityType = default(EntityType?), string? filter = default(string?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<MonitoredEntityDtoArrayJSendSuccess> localVarResponse = ApiV1MonitoredEntitiesGetWithHttpInfo(entityType, filter);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityType"> (optional)</param>
-        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of MonitoredEntityDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<MonitoredEntityDtoArrayJSendSuccess> ApiV1MonitoredEntitiesGetWithHttpInfo(EntityType? entityType = default(EntityType?), string? filter = default(string?), int operationIndex = 0)
-        {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (entityType != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "entityType", entityType));
-            }
-            if (filter != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
-            }
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MonitoredEntitiesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<MonitoredEntityDtoArrayJSendSuccess>("/api/v1/monitored-entities", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1MonitoredEntitiesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityType"> (optional)</param>
-        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of MonitoredEntityDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<MonitoredEntityDtoArrayJSendSuccess> ApiV1MonitoredEntitiesGetAsync(EntityType? entityType = default(EntityType?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<MonitoredEntityDtoArrayJSendSuccess> localVarResponse = await ApiV1MonitoredEntitiesGetWithHttpInfoAsync(entityType, filter, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityType"> (optional)</param>
-        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (MonitoredEntityDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<MonitoredEntityDtoArrayJSendSuccess>> ApiV1MonitoredEntitiesGetWithHttpInfoAsync(EntityType? entityType = default(EntityType?), string? filter = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (entityType != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "entityType", entityType));
-            }
-            if (filter != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
-            }
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MonitoredEntitiesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<MonitoredEntityDtoArrayJSendSuccess>("/api/v1/monitored-entities", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1MonitoredEntitiesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>EntityTypeArrayJSendSuccess</returns>
-        public EntityTypeArrayJSendSuccess ApiV1MonitoredEntitiesTypesGet(int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<EntityTypeArrayJSendSuccess> localVarResponse = ApiV1MonitoredEntitiesTypesGetWithHttpInfo();
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of EntityTypeArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<EntityTypeArrayJSendSuccess> ApiV1MonitoredEntitiesTypesGetWithHttpInfo(int operationIndex = 0)
-        {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MonitoredEntitiesTypesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<EntityTypeArrayJSendSuccess>("/api/v1/monitored-entities/types", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1MonitoredEntitiesTypesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of EntityTypeArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<EntityTypeArrayJSendSuccess> ApiV1MonitoredEntitiesTypesGetAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<EntityTypeArrayJSendSuccess> localVarResponse = await ApiV1MonitoredEntitiesTypesGetWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (EntityTypeArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<EntityTypeArrayJSendSuccess>> ApiV1MonitoredEntitiesTypesGetWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-
-            localVarRequestOptions.Operation = "PublicAPIApi.ApiV1MonitoredEntitiesTypesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<EntityTypeArrayJSendSuccess>("/api/v1/monitored-entities/types", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiV1MonitoredEntitiesTypesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

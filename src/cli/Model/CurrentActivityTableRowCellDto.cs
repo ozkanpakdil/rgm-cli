@@ -9,111 +9,104 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     CurrentActivityTableRowCellDto
+/// </summary>
+[DataContract(Name = "CurrentActivityTableRowCellDto")]
+public class CurrentActivityTableRowCellDto : IValidatableObject
 {
     /// <summary>
-    /// CurrentActivityTableRowCellDto
+    ///     Initializes a new instance of the <see cref="CurrentActivityTableRowCellDto" /> class.
     /// </summary>
-    [DataContract(Name = "CurrentActivityTableRowCellDto")]
-    public partial class CurrentActivityTableRowCellDto : IValidatableObject
+    [JsonConstructorAttribute]
+    protected CurrentActivityTableRowCellDto()
     {
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
-        public CurrentActivityCellStatusDto? Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets QueryLanguage
-        /// </summary>
-        [DataMember(Name = "queryLanguage", EmitDefaultValue = false)]
-        public CurrentActivityQueryLanguageDto? QueryLanguage { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CurrentActivityTableRowCellDto" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected CurrentActivityTableRowCellDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CurrentActivityTableRowCellDto" /> class.
-        /// </summary>
-        /// <param name="text">text (required).</param>
-        /// <param name="status">status.</param>
-        /// <param name="queryLanguage">queryLanguage.</param>
-        /// <param name="numericComparisonValue">numericComparisonValue.</param>
-        public CurrentActivityTableRowCellDto(string text = default(string), CurrentActivityCellStatusDto? status = default(CurrentActivityCellStatusDto?), CurrentActivityQueryLanguageDto? queryLanguage = default(CurrentActivityQueryLanguageDto?), long? numericComparisonValue = default(long?))
-        {
-            // to ensure "text" is required (not null)
-            if (text == null)
-            {
-                throw new ArgumentNullException("text is a required property for CurrentActivityTableRowCellDto and cannot be null");
-            }
-            this.Text = text;
-            this.Status = status;
-            this.QueryLanguage = queryLanguage;
-            this.NumericComparisonValue = numericComparisonValue;
-        }
-
-        /// <summary>
-        /// Gets or Sets Text
-        /// </summary>
-        [DataMember(Name = "text", IsRequired = true, EmitDefaultValue = true)]
-        public string Text { get; set; }
-
-        /// <summary>
-        /// Gets or Sets NumericComparisonValue
-        /// </summary>
-        [DataMember(Name = "numericComparisonValue", EmitDefaultValue = true)]
-        public long? NumericComparisonValue { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class CurrentActivityTableRowCellDto {\n");
-            sb.Append("  Text: ").Append(Text).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  QueryLanguage: ").Append(QueryLanguage).Append("\n");
-            sb.Append("  NumericComparisonValue: ").Append(NumericComparisonValue).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="CurrentActivityTableRowCellDto" /> class.
+    /// </summary>
+    /// <param name="text">text (required).</param>
+    /// <param name="status">status.</param>
+    /// <param name="queryLanguage">queryLanguage.</param>
+    /// <param name="numericComparisonValue">numericComparisonValue.</param>
+    public CurrentActivityTableRowCellDto(string text = default, CurrentActivityCellStatusDto? status = default,
+        CurrentActivityQueryLanguageDto? queryLanguage = default, long? numericComparisonValue = default)
+    {
+        // to ensure "text" is required (not null)
+        if (text == null)
+            throw new ArgumentNullException(
+                "text is a required property for CurrentActivityTableRowCellDto and cannot be null");
+        Text = text;
+        Status = status;
+        QueryLanguage = queryLanguage;
+        NumericComparisonValue = numericComparisonValue;
+    }
+
+    /// <summary>
+    ///     Gets or Sets Status
+    /// </summary>
+    [DataMember(Name = "status", EmitDefaultValue = false)]
+    public CurrentActivityCellStatusDto? Status { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets QueryLanguage
+    /// </summary>
+    [DataMember(Name = "queryLanguage", EmitDefaultValue = false)]
+    public CurrentActivityQueryLanguageDto? QueryLanguage { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Text
+    /// </summary>
+    [DataMember(Name = "text", IsRequired = true, EmitDefaultValue = true)]
+    public string Text { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets NumericComparisonValue
+    /// </summary>
+    [DataMember(Name = "numericComparisonValue", EmitDefaultValue = true)]
+    public long? NumericComparisonValue { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class CurrentActivityTableRowCellDto {\n");
+        sb.Append("  Text: ").Append(Text).Append("\n");
+        sb.Append("  Status: ").Append(Status).Append("\n");
+        sb.Append("  QueryLanguage: ").Append(QueryLanguage).Append("\n");
+        sb.Append("  NumericComparisonValue: ").Append(NumericComparisonValue).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

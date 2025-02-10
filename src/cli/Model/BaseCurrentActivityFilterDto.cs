@@ -8,150 +8,144 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     BaseCurrentActivityFilterDto
+/// </summary>
+[DataContract(Name = "BaseCurrentActivityFilterDto")]
+public class BaseCurrentActivityFilterDto : IValidatableObject
 {
     /// <summary>
-    /// BaseCurrentActivityFilterDto
+    ///     Initializes a new instance of the <see cref="BaseCurrentActivityFilterDto" /> class.
     /// </summary>
-    [DataContract(Name = "BaseCurrentActivityFilterDto")]
-    public partial class BaseCurrentActivityFilterDto : IValidatableObject
+    /// <param name="filterType">filterType.</param>
+    public BaseCurrentActivityFilterDto(CurrentActivityFilterTypeDto? filterType = default)
     {
-
-        /// <summary>
-        /// Gets or Sets FilterType
-        /// </summary>
-        [DataMember(Name = "filterType", EmitDefaultValue = false)]
-        public CurrentActivityFilterTypeDto? FilterType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BaseCurrentActivityFilterDto" /> class.
-        /// </summary>
-        /// <param name="filterType">filterType.</param>
-        public BaseCurrentActivityFilterDto(CurrentActivityFilterTypeDto? filterType = default(CurrentActivityFilterTypeDto?))
-        {
-            this.FilterType = filterType;
-        }
-
-        /// <summary>
-        /// Gets or Sets TargetIdentifier
-        /// </summary>
-        [DataMember(Name = "targetIdentifier", EmitDefaultValue = false)]
-        public string TargetIdentifier { get; private set; }
-
-        /// <summary>
-        /// Returns false as TargetIdentifier should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTargetIdentifier()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets TargetIsMetadata
-        /// </summary>
-        [DataMember(Name = "targetIsMetadata", EmitDefaultValue = true)]
-        public bool TargetIsMetadata { get; private set; }
-
-        /// <summary>
-        /// Returns false as TargetIsMetadata should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeTargetIsMetadata()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets FriendlyName
-        /// </summary>
-        [DataMember(Name = "friendlyName", EmitDefaultValue = false)]
-        public string FriendlyName { get; private set; }
-
-        /// <summary>
-        /// Returns false as FriendlyName should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeFriendlyName()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets HelpUrl
-        /// </summary>
-        [DataMember(Name = "helpUrl", EmitDefaultValue = true)]
-        public string HelpUrl { get; private set; }
-
-        /// <summary>
-        /// Returns false as HelpUrl should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeHelpUrl()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets HelpTitle
-        /// </summary>
-        [DataMember(Name = "helpTitle", EmitDefaultValue = true)]
-        public string HelpTitle { get; private set; }
-
-        /// <summary>
-        /// Returns false as HelpTitle should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeHelpTitle()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class BaseCurrentActivityFilterDto {\n");
-            sb.Append("  TargetIdentifier: ").Append(TargetIdentifier).Append("\n");
-            sb.Append("  TargetIsMetadata: ").Append(TargetIsMetadata).Append("\n");
-            sb.Append("  FriendlyName: ").Append(FriendlyName).Append("\n");
-            sb.Append("  HelpUrl: ").Append(HelpUrl).Append("\n");
-            sb.Append("  HelpTitle: ").Append(HelpTitle).Append("\n");
-            sb.Append("  FilterType: ").Append(FilterType).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        FilterType = filterType;
     }
 
+    /// <summary>
+    ///     Gets or Sets FilterType
+    /// </summary>
+    [DataMember(Name = "filterType", EmitDefaultValue = false)]
+    public CurrentActivityFilterTypeDto? FilterType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TargetIdentifier
+    /// </summary>
+    [DataMember(Name = "targetIdentifier", EmitDefaultValue = false)]
+    public string TargetIdentifier { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets TargetIsMetadata
+    /// </summary>
+    [DataMember(Name = "targetIsMetadata", EmitDefaultValue = true)]
+    public bool TargetIsMetadata { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets FriendlyName
+    /// </summary>
+    [DataMember(Name = "friendlyName", EmitDefaultValue = false)]
+    public string FriendlyName { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets HelpUrl
+    /// </summary>
+    [DataMember(Name = "helpUrl", EmitDefaultValue = true)]
+    public string HelpUrl { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets HelpTitle
+    /// </summary>
+    [DataMember(Name = "helpTitle", EmitDefaultValue = true)]
+    public string HelpTitle { get; private set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns false as TargetIdentifier should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeTargetIdentifier()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as TargetIsMetadata should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeTargetIsMetadata()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as FriendlyName should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeFriendlyName()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as HelpUrl should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeHelpUrl()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as HelpTitle should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeHelpTitle()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class BaseCurrentActivityFilterDto {\n");
+        sb.Append("  TargetIdentifier: ").Append(TargetIdentifier).Append("\n");
+        sb.Append("  TargetIsMetadata: ").Append(TargetIsMetadata).Append("\n");
+        sb.Append("  FriendlyName: ").Append(FriendlyName).Append("\n");
+        sb.Append("  HelpUrl: ").Append(HelpUrl).Append("\n");
+        sb.Append("  HelpTitle: ").Append(HelpTitle).Append("\n");
+        sb.Append("  FilterType: ").Append(FilterType).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

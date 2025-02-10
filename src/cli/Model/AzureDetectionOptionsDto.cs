@@ -8,84 +8,73 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AzureDetectionOptionsDto
+/// </summary>
+[DataContract(Name = "AzureDetectionOptionsDto")]
+public class AzureDetectionOptionsDto : IValidatableObject
 {
     /// <summary>
-    /// AzureDetectionOptionsDto
+    ///     Initializes a new instance of the <see cref="AzureDetectionOptionsDto" /> class.
     /// </summary>
-    [DataContract(Name = "AzureDetectionOptionsDto")]
-    public partial class AzureDetectionOptionsDto : IValidatableObject
+    /// <param name="subscriptionId">subscriptionId.</param>
+    /// <param name="bearerToken">bearerToken.</param>
+    public AzureDetectionOptionsDto(string subscriptionId = default, string bearerToken = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureDetectionOptionsDto" /> class.
-        /// </summary>
-        /// <param name="subscriptionId">subscriptionId.</param>
-        /// <param name="bearerToken">bearerToken.</param>
-        public AzureDetectionOptionsDto(string subscriptionId = default(string), string bearerToken = default(string))
-        {
-            this.SubscriptionId = subscriptionId;
-            this.BearerToken = bearerToken;
-        }
-
-        /// <summary>
-        /// Gets or Sets SubscriptionId
-        /// </summary>
-        [DataMember(Name = "subscriptionId", EmitDefaultValue = true)]
-        public string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BearerToken
-        /// </summary>
-        [DataMember(Name = "bearerToken", EmitDefaultValue = true)]
-        public string BearerToken { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AzureDetectionOptionsDto {\n");
-            sb.Append("  SubscriptionId: ").Append(SubscriptionId).Append("\n");
-            sb.Append("  BearerToken: ").Append(BearerToken).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        SubscriptionId = subscriptionId;
+        BearerToken = bearerToken;
     }
 
+    /// <summary>
+    ///     Gets or Sets SubscriptionId
+    /// </summary>
+    [DataMember(Name = "subscriptionId", EmitDefaultValue = true)]
+    public string SubscriptionId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets BearerToken
+    /// </summary>
+    [DataMember(Name = "bearerToken", EmitDefaultValue = true)]
+    public string BearerToken { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AzureDetectionOptionsDto {\n");
+        sb.Append("  SubscriptionId: ").Append(SubscriptionId).Append("\n");
+        sb.Append("  BearerToken: ").Append(BearerToken).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -9,112 +9,101 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     ReleaseViewModel
+/// </summary>
+[DataContract(Name = "ReleaseViewModel")]
+public class ReleaseViewModel : IValidatableObject
 {
     /// <summary>
-    /// ReleaseViewModel
+    ///     Initializes a new instance of the <see cref="ReleaseViewModel" /> class.
     /// </summary>
-    [DataContract(Name = "ReleaseViewModel")]
-    public partial class ReleaseViewModel : IValidatableObject
+    [JsonConstructorAttribute]
+    protected ReleaseViewModel()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ReleaseViewModel" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected ReleaseViewModel() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ReleaseViewModel" /> class.
-        /// </summary>
-        /// <param name="varVersion">varVersion (required).</param>
-        /// <param name="notes">notes (required).</param>
-        /// <param name="versionStatus">versionStatus (required).</param>
-        public ReleaseViewModel(string varVersion = default(string), List<string> notes = default(List<string>), string versionStatus = default(string))
-        {
-            // to ensure "varVersion" is required (not null)
-            if (varVersion == null)
-            {
-                throw new ArgumentNullException("varVersion is a required property for ReleaseViewModel and cannot be null");
-            }
-            this.VarVersion = varVersion;
-            // to ensure "notes" is required (not null)
-            if (notes == null)
-            {
-                throw new ArgumentNullException("notes is a required property for ReleaseViewModel and cannot be null");
-            }
-            this.Notes = notes;
-            // to ensure "versionStatus" is required (not null)
-            if (versionStatus == null)
-            {
-                throw new ArgumentNullException("versionStatus is a required property for ReleaseViewModel and cannot be null");
-            }
-            this.VersionStatus = versionStatus;
-        }
-
-        /// <summary>
-        /// Gets or Sets VarVersion
-        /// </summary>
-        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
-        public string VarVersion { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Notes
-        /// </summary>
-        [DataMember(Name = "notes", IsRequired = true, EmitDefaultValue = true)]
-        public List<string> Notes { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VersionStatus
-        /// </summary>
-        [DataMember(Name = "versionStatus", IsRequired = true, EmitDefaultValue = true)]
-        public string VersionStatus { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class ReleaseViewModel {\n");
-            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
-            sb.Append("  Notes: ").Append(Notes).Append("\n");
-            sb.Append("  VersionStatus: ").Append(VersionStatus).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ReleaseViewModel" /> class.
+    /// </summary>
+    /// <param name="varVersion">varVersion (required).</param>
+    /// <param name="notes">notes (required).</param>
+    /// <param name="versionStatus">versionStatus (required).</param>
+    public ReleaseViewModel(string varVersion = default, List<string> notes = default, string versionStatus = default)
+    {
+        // to ensure "varVersion" is required (not null)
+        if (varVersion == null)
+            throw new ArgumentNullException(
+                "varVersion is a required property for ReleaseViewModel and cannot be null");
+        VarVersion = varVersion;
+        // to ensure "notes" is required (not null)
+        if (notes == null)
+            throw new ArgumentNullException("notes is a required property for ReleaseViewModel and cannot be null");
+        Notes = notes;
+        // to ensure "versionStatus" is required (not null)
+        if (versionStatus == null)
+            throw new ArgumentNullException(
+                "versionStatus is a required property for ReleaseViewModel and cannot be null");
+        VersionStatus = versionStatus;
+    }
+
+    /// <summary>
+    ///     Gets or Sets VarVersion
+    /// </summary>
+    [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
+    public string VarVersion { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Notes
+    /// </summary>
+    [DataMember(Name = "notes", IsRequired = true, EmitDefaultValue = true)]
+    public List<string> Notes { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets VersionStatus
+    /// </summary>
+    [DataMember(Name = "versionStatus", IsRequired = true, EmitDefaultValue = true)]
+    public string VersionStatus { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class ReleaseViewModel {\n");
+        sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+        sb.Append("  Notes: ").Append(Notes).Append("\n");
+        sb.Append("  VersionStatus: ").Append(VersionStatus).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

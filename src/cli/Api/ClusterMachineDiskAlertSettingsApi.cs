@@ -9,1543 +9,1656 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Collections;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IClusterMachineDiskAlertSettingsApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IClusterMachineDiskAlertSettingsApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            string? body = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            string? body = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet(
+        string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetWithHttpInfo(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int? body = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int? body = default, int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IClusterMachineDiskAlertSettingsApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            string? body = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            string? body = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int? body = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int? body = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IClusterMachineDiskAlertSettingsApi : IClusterMachineDiskAlertSettingsApiSync,
+    IClusterMachineDiskAlertSettingsApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class ClusterMachineDiskAlertSettingsApi : IClusterMachineDiskAlertSettingsApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ClusterMachineDiskAlertSettingsApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public ClusterMachineDiskAlertSettingsApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetWithHttpInfo(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="ClusterMachineDiskAlertSettingsApi" /> class.
     /// </summary>
-    public interface IClusterMachineDiskAlertSettingsApiAsync : IApiAccessor
+    /// <returns></returns>
+    public ClusterMachineDiskAlertSettingsApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="ClusterMachineDiskAlertSettingsApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IClusterMachineDiskAlertSettingsApi : IClusterMachineDiskAlertSettingsApiSync, IClusterMachineDiskAlertSettingsApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public ClusterMachineDiskAlertSettingsApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="ClusterMachineDiskAlertSettingsApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class ClusterMachineDiskAlertSettingsApi : IClusterMachineDiskAlertSettingsApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public ClusterMachineDiskAlertSettingsApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ClusterMachineDiskAlertSettingsApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public ClusterMachineDiskAlertSettingsApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            string? body = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(
+            clusterName, machineName, diskName, alertTypeId, baseMonitorName, body);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            string? body = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'diskName' is set
+        if (diskName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("diskName",
+            ClientUtils.ParameterToString(diskName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation =
+            "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/comments",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ClusterMachineDiskAlertSettingsApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public ClusterMachineDiskAlertSettingsApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            string? body = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(
+                clusterName, machineName, diskName, alertTypeId, baseMonitorName, body, operationIndex,
+                cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            string? body = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'diskName' is set
+        if (diskName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("diskName",
+            ClientUtils.ParameterToString(diskName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation =
+            "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/comments",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ClusterMachineDiskAlertSettingsApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public ClusterMachineDiskAlertSettingsApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetWithHttpInfo(
+            clusterName, machineName, diskName, alertTypeId, baseMonitorName);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetWithHttpInfo(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'diskName' is set
+        if (diskName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("diskName",
+            ClientUtils.ParameterToString(diskName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ClusterMachineDiskAlertSettingsApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public ClusterMachineDiskAlertSettingsApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(
+                    clusterName, machineName, diskName, alertTypeId, baseMonitorName, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'diskName' is set
+        if (diskName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("diskName",
+            ClientUtils.ParameterToString(diskName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(
+            clusterName, machineName, diskName, alertTypeId, baseMonitorName, alertNotificationSettingsDto);
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'diskName' is set
+        if (diskName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            return this.Configuration.BasePath;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("diskName",
+            ClientUtils.ParameterToString(diskName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = alertNotificationSettingsDto;
+
+        localVarRequestOptions.Operation =
+            "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/notificationsettings",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(
+                clusterName, machineName, diskName, alertTypeId, baseMonitorName, alertNotificationSettingsDto,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'diskName' is set
+        if (diskName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("diskName",
+            ClientUtils.ParameterToString(diskName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = alertNotificationSettingsDto;
+
+        localVarRequestOptions.Operation =
+            "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient.PatchAsync<object>(
+            "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/notificationsettings",
+            localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(
+            clusterName, machineName, diskName, alertTypeId, baseMonitorName, requestBody);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'diskName' is set
+        if (diskName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(clusterName, machineName, diskName, alertTypeId, baseMonitorName, body);
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("diskName",
+            ClientUtils.ParameterToString(diskName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = requestBody;
+
+        localVarRequestOptions.Operation =
+            "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/specificsettings",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(
+                clusterName, machineName, diskName, alertTypeId, baseMonitorName, requestBody, operationIndex,
+                cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'diskName' is set
+        if (diskName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            // verify the required parameter 'diskName' is set
-            if (diskName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("diskName",
+            ClientUtils.ParameterToString(diskName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = requestBody;
 
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("diskName", cli.Client.ClientUtils.ParameterToString(diskName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/comments", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/specificsettings",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int? body = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(
+            clusterName, machineName, diskName, alertTypeId, baseMonitorName, body);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int? body = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'diskName' is set
+        if (diskName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            await ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(clusterName, machineName, diskName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken).ConfigureAwait(false);
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("diskName",
+            ClientUtils.ParameterToString(diskName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation =
+            "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/status",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int? body = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(
+                clusterName, machineName, diskName, alertTypeId, baseMonitorName, body, operationIndex,
+                cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="clusterName"></param>
+    /// <param name="machineName"></param>
+    /// <param name="diskName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(
+            string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName,
+            int? body = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'clusterName' is set
+        if (clusterName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'machineName' is set
+        if (machineName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'diskName' is set
+        if (diskName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            // verify the required parameter 'diskName' is set
-            if (diskName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+        localVarRequestOptions.PathParameters.Add("clusterName",
+            ClientUtils.ParameterToString(clusterName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("machineName",
+            ClientUtils.ParameterToString(machineName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("diskName",
+            ClientUtils.ParameterToString(diskName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("diskName", cli.Client.ClientUtils.ParameterToString(diskName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/comments", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/status",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdCommentsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetWithHttpInfo(clusterName, machineName, diskName, alertTypeId, baseMonitorName);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetWithHttpInfo(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'diskName' is set
-            if (diskName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("diskName", cli.Client.ClientUtils.ParameterToString(diskName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(clusterName, machineName, diskName, alertTypeId, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'diskName' is set
-            if (diskName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("diskName", cli.Client.ClientUtils.ParameterToString(diskName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(clusterName, machineName, diskName, alertTypeId, baseMonitorName, alertNotificationSettingsDto);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'diskName' is set
-            if (diskName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("diskName", cli.Client.ClientUtils.ParameterToString(diskName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = alertNotificationSettingsDto;
-
-            localVarRequestOptions.Operation = "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/notificationsettings", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(clusterName, machineName, diskName, alertTypeId, baseMonitorName, alertNotificationSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'diskName' is set
-            if (diskName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("diskName", cli.Client.ClientUtils.ParameterToString(diskName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = alertNotificationSettingsDto;
-
-            localVarRequestOptions.Operation = "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/notificationsettings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdNotificationsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(clusterName, machineName, diskName, alertTypeId, baseMonitorName, requestBody);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0)
-        {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'diskName' is set
-            if (diskName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("diskName", cli.Client.ClientUtils.ParameterToString(diskName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = requestBody;
-
-            localVarRequestOptions.Operation = "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/specificsettings", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(clusterName, machineName, diskName, alertTypeId, baseMonitorName, requestBody, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'diskName' is set
-            if (diskName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("diskName", cli.Client.ClientUtils.ParameterToString(diskName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = requestBody;
-
-            localVarRequestOptions.Operation = "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/specificsettings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdSpecificsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(clusterName, machineName, diskName, alertTypeId, baseMonitorName, body);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0)
-        {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'diskName' is set
-            if (diskName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("diskName", cli.Client.ClientUtils.ParameterToString(diskName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/status", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(clusterName, machineName, diskName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="clusterName"></param>
-        /// <param name="machineName"></param>
-        /// <param name="diskName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(string clusterName, string machineName, string diskName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'clusterName' is set
-            if (clusterName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'clusterName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'machineName' is set
-            if (machineName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'machineName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'diskName' is set
-            if (diskName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'diskName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ClusterMachineDiskAlertSettingsApi->ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("clusterName", cli.Client.ClientUtils.ParameterToString(clusterName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("machineName", cli.Client.ClientUtils.ParameterToString(machineName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("diskName", cli.Client.ClientUtils.ParameterToString(diskName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "ClusterMachineDiskAlertSettingsApi.ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/clusters/{clusterName}/machines/{machineName}/disks/{diskName}/alertsettings/{alertTypeId}/status", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameClustersClusterNameMachinesMachineNameDisksDiskNameAlertsettingsAlertTypeIdStatusPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

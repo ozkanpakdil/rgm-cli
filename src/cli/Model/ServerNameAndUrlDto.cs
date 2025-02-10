@@ -8,111 +8,104 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Channels.Data;
+using RedGate.SqlMonitor.Common.Domain;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     ServerNameAndUrlDto
+/// </summary>
+[DataContract(Name = "ServerNameAndUrlDto")]
+public class ServerNameAndUrlDto : IValidatableObject
 {
     /// <summary>
-    /// ServerNameAndUrlDto
+    ///     Initializes a new instance of the <see cref="ServerNameAndUrlDto" /> class.
     /// </summary>
-    [DataContract(Name = "ServerNameAndUrlDto")]
-    public partial class ServerNameAndUrlDto : IValidatableObject
+    /// <param name="fullName">fullName.</param>
+    /// <param name="displayName">displayName.</param>
+    /// <param name="cir">cir.</param>
+    /// <param name="severity">severity.</param>
+    /// <param name="entityType">entityType.</param>
+    public ServerNameAndUrlDto(string fullName = default, string displayName = default,
+        ChannelInstanceRef cir = default, MonitoredObjectSeverityDto? severity = default,
+        EntityType? entityType = default)
     {
-
-        /// <summary>
-        /// Gets or Sets Severity
-        /// </summary>
-        [DataMember(Name = "severity", EmitDefaultValue = false)]
-        public MonitoredObjectSeverityDto? Severity { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EntityType
-        /// </summary>
-        [DataMember(Name = "entityType", EmitDefaultValue = false)]
-        public EntityType? EntityType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ServerNameAndUrlDto" /> class.
-        /// </summary>
-        /// <param name="fullName">fullName.</param>
-        /// <param name="displayName">displayName.</param>
-        /// <param name="cir">cir.</param>
-        /// <param name="severity">severity.</param>
-        /// <param name="entityType">entityType.</param>
-        public ServerNameAndUrlDto(string fullName = default(string), string displayName = default(string), ChannelInstanceRef cir = default(ChannelInstanceRef), MonitoredObjectSeverityDto? severity = default(MonitoredObjectSeverityDto?), EntityTypeEnum? entityType = default(EntityTypeEnum?))
-        {
-            this.FullName = fullName;
-            this.DisplayName = displayName;
-            this.Cir = cir;
-            this.Severity = severity;
-            this.EntityType = entityType;
-        }
-
-        /// <summary>
-        /// Gets or Sets FullName
-        /// </summary>
-        [DataMember(Name = "fullName", EmitDefaultValue = true)]
-        public string FullName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DisplayName
-        /// </summary>
-        [DataMember(Name = "displayName", EmitDefaultValue = true)]
-        public string DisplayName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Cir
-        /// </summary>
-        [DataMember(Name = "cir", EmitDefaultValue = true)]
-        public ChannelInstanceRef Cir { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class ServerNameAndUrlDto {\n");
-            sb.Append("  FullName: ").Append(FullName).Append("\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  Cir: ").Append(Cir).Append("\n");
-            sb.Append("  Severity: ").Append(Severity).Append("\n");
-            sb.Append("  EntityType: ").Append(EntityType).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        FullName = fullName;
+        DisplayName = displayName;
+        Cir = cir;
+        Severity = severity;
+        EntityType = entityType;
     }
 
+    /// <summary>
+    ///     Gets or Sets Severity
+    /// </summary>
+    [DataMember(Name = "severity", EmitDefaultValue = false)]
+    public MonitoredObjectSeverityDto? Severity { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EntityType
+    /// </summary>
+    [DataMember(Name = "entityType", EmitDefaultValue = false)]
+    public EntityType? EntityType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FullName
+    /// </summary>
+    [DataMember(Name = "fullName", EmitDefaultValue = true)]
+    public string FullName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DisplayName
+    /// </summary>
+    [DataMember(Name = "displayName", EmitDefaultValue = true)]
+    public string DisplayName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Cir
+    /// </summary>
+    [DataMember(Name = "cir", EmitDefaultValue = true)]
+    public ChannelInstanceRef Cir { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class ServerNameAndUrlDto {\n");
+        sb.Append("  FullName: ").Append(FullName).Append("\n");
+        sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+        sb.Append("  Cir: ").Append(Cir).Append("\n");
+        sb.Append("  Severity: ").Append(Severity).Append("\n");
+        sb.Append("  EntityType: ").Append(EntityType).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

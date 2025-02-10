@@ -8,93 +8,83 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     RemoveUninstalledInstanceRequest
+/// </summary>
+[DataContract(Name = "RemoveUninstalledInstanceRequest")]
+public class RemoveUninstalledInstanceRequest : IValidatableObject
 {
     /// <summary>
-    /// RemoveUninstalledInstanceRequest
+    ///     Initializes a new instance of the <see cref="RemoveUninstalledInstanceRequest" /> class.
     /// </summary>
-    [DataContract(Name = "RemoveUninstalledInstanceRequest")]
-    public partial class RemoveUninstalledInstanceRequest : IValidatableObject
+    /// <param name="ids">ids.</param>
+    /// <param name="fullyQualifiedNames">fullyQualifiedNames.</param>
+    /// <param name="deleteAllAssociatedData">deleteAllAssociatedData.</param>
+    public RemoveUninstalledInstanceRequest(List<string> ids = default, List<string> fullyQualifiedNames = default,
+        bool deleteAllAssociatedData = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RemoveUninstalledInstanceRequest" /> class.
-        /// </summary>
-        /// <param name="ids">ids.</param>
-        /// <param name="fullyQualifiedNames">fullyQualifiedNames.</param>
-        /// <param name="deleteAllAssociatedData">deleteAllAssociatedData.</param>
-        public RemoveUninstalledInstanceRequest(List<string> ids = default(List<string>), List<string> fullyQualifiedNames = default(List<string>), bool deleteAllAssociatedData = default(bool))
-        {
-            this.Ids = ids;
-            this.FullyQualifiedNames = fullyQualifiedNames;
-            this.DeleteAllAssociatedData = deleteAllAssociatedData;
-        }
-
-        /// <summary>
-        /// Gets or Sets Ids
-        /// </summary>
-        [DataMember(Name = "ids", EmitDefaultValue = true)]
-        public List<string> Ids { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FullyQualifiedNames
-        /// </summary>
-        [DataMember(Name = "fullyQualifiedNames", EmitDefaultValue = true)]
-        public List<string> FullyQualifiedNames { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DeleteAllAssociatedData
-        /// </summary>
-        [DataMember(Name = "deleteAllAssociatedData", EmitDefaultValue = true)]
-        public bool DeleteAllAssociatedData { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class RemoveUninstalledInstanceRequest {\n");
-            sb.Append("  Ids: ").Append(Ids).Append("\n");
-            sb.Append("  FullyQualifiedNames: ").Append(FullyQualifiedNames).Append("\n");
-            sb.Append("  DeleteAllAssociatedData: ").Append(DeleteAllAssociatedData).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Ids = ids;
+        FullyQualifiedNames = fullyQualifiedNames;
+        DeleteAllAssociatedData = deleteAllAssociatedData;
     }
 
+    /// <summary>
+    ///     Gets or Sets Ids
+    /// </summary>
+    [DataMember(Name = "ids", EmitDefaultValue = true)]
+    public List<string> Ids { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FullyQualifiedNames
+    /// </summary>
+    [DataMember(Name = "fullyQualifiedNames", EmitDefaultValue = true)]
+    public List<string> FullyQualifiedNames { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DeleteAllAssociatedData
+    /// </summary>
+    [DataMember(Name = "deleteAllAssociatedData", EmitDefaultValue = true)]
+    public bool DeleteAllAssociatedData { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class RemoveUninstalledInstanceRequest {\n");
+        sb.Append("  Ids: ").Append(Ids).Append("\n");
+        sb.Append("  FullyQualifiedNames: ").Append(FullyQualifiedNames).Append("\n");
+        sb.Append("  DeleteAllAssociatedData: ").Append(DeleteAllAssociatedData).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -8,120 +8,111 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AlertNotificationSettingsDto
+/// </summary>
+[DataContract(Name = "AlertNotificationSettingsDto")]
+public class AlertNotificationSettingsDto : IValidatableObject
 {
     /// <summary>
-    /// AlertNotificationSettingsDto
+    ///     Initializes a new instance of the <see cref="AlertNotificationSettingsDto" /> class.
     /// </summary>
-    [DataContract(Name = "AlertNotificationSettingsDto")]
-    public partial class AlertNotificationSettingsDto : IValidatableObject
+    /// <param name="emailNotificationOption">emailNotificationOption.</param>
+    /// <param name="emailAddresses">emailAddresses.</param>
+    /// <param name="slackEnabled">slackEnabled.</param>
+    /// <param name="snmpEnabled">snmpEnabled.</param>
+    /// <param name="webhookEnabled">webhookEnabled.</param>
+    /// <param name="scriptEnabled">scriptEnabled.</param>
+    public AlertNotificationSettingsDto(EmailNotificationOptionDto? emailNotificationOption = default,
+        List<string> emailAddresses = default, bool? slackEnabled = default, bool? snmpEnabled = default,
+        bool? webhookEnabled = default, bool? scriptEnabled = default)
     {
-
-        /// <summary>
-        /// Gets or Sets EmailNotificationOption
-        /// </summary>
-        [DataMember(Name = "emailNotificationOption", EmitDefaultValue = false)]
-        public EmailNotificationOptionDto? EmailNotificationOption { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertNotificationSettingsDto" /> class.
-        /// </summary>
-        /// <param name="emailNotificationOption">emailNotificationOption.</param>
-        /// <param name="emailAddresses">emailAddresses.</param>
-        /// <param name="slackEnabled">slackEnabled.</param>
-        /// <param name="snmpEnabled">snmpEnabled.</param>
-        /// <param name="webhookEnabled">webhookEnabled.</param>
-        /// <param name="scriptEnabled">scriptEnabled.</param>
-        public AlertNotificationSettingsDto(EmailNotificationOptionDto? emailNotificationOption = default(EmailNotificationOptionDto?), List<string> emailAddresses = default(List<string>), bool? slackEnabled = default(bool?), bool? snmpEnabled = default(bool?), bool? webhookEnabled = default(bool?), bool? scriptEnabled = default(bool?))
-        {
-            this.EmailNotificationOption = emailNotificationOption;
-            this.EmailAddresses = emailAddresses;
-            this.SlackEnabled = slackEnabled;
-            this.SnmpEnabled = snmpEnabled;
-            this.WebhookEnabled = webhookEnabled;
-            this.ScriptEnabled = scriptEnabled;
-        }
-
-        /// <summary>
-        /// Gets or Sets EmailAddresses
-        /// </summary>
-        [DataMember(Name = "emailAddresses", EmitDefaultValue = true)]
-        public List<string> EmailAddresses { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SlackEnabled
-        /// </summary>
-        [DataMember(Name = "slackEnabled", EmitDefaultValue = true)]
-        public bool? SlackEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SnmpEnabled
-        /// </summary>
-        [DataMember(Name = "snmpEnabled", EmitDefaultValue = true)]
-        public bool? SnmpEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or Sets WebhookEnabled
-        /// </summary>
-        [DataMember(Name = "webhookEnabled", EmitDefaultValue = true)]
-        public bool? WebhookEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ScriptEnabled
-        /// </summary>
-        [DataMember(Name = "scriptEnabled", EmitDefaultValue = true)]
-        public bool? ScriptEnabled { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AlertNotificationSettingsDto {\n");
-            sb.Append("  EmailNotificationOption: ").Append(EmailNotificationOption).Append("\n");
-            sb.Append("  EmailAddresses: ").Append(EmailAddresses).Append("\n");
-            sb.Append("  SlackEnabled: ").Append(SlackEnabled).Append("\n");
-            sb.Append("  SnmpEnabled: ").Append(SnmpEnabled).Append("\n");
-            sb.Append("  WebhookEnabled: ").Append(WebhookEnabled).Append("\n");
-            sb.Append("  ScriptEnabled: ").Append(ScriptEnabled).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        EmailNotificationOption = emailNotificationOption;
+        EmailAddresses = emailAddresses;
+        SlackEnabled = slackEnabled;
+        SnmpEnabled = snmpEnabled;
+        WebhookEnabled = webhookEnabled;
+        ScriptEnabled = scriptEnabled;
     }
 
+    /// <summary>
+    ///     Gets or Sets EmailNotificationOption
+    /// </summary>
+    [DataMember(Name = "emailNotificationOption", EmitDefaultValue = false)]
+    public EmailNotificationOptionDto? EmailNotificationOption { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EmailAddresses
+    /// </summary>
+    [DataMember(Name = "emailAddresses", EmitDefaultValue = true)]
+    public List<string> EmailAddresses { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SlackEnabled
+    /// </summary>
+    [DataMember(Name = "slackEnabled", EmitDefaultValue = true)]
+    public bool? SlackEnabled { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SnmpEnabled
+    /// </summary>
+    [DataMember(Name = "snmpEnabled", EmitDefaultValue = true)]
+    public bool? SnmpEnabled { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets WebhookEnabled
+    /// </summary>
+    [DataMember(Name = "webhookEnabled", EmitDefaultValue = true)]
+    public bool? WebhookEnabled { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ScriptEnabled
+    /// </summary>
+    [DataMember(Name = "scriptEnabled", EmitDefaultValue = true)]
+    public bool? ScriptEnabled { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AlertNotificationSettingsDto {\n");
+        sb.Append("  EmailNotificationOption: ").Append(EmailNotificationOption).Append("\n");
+        sb.Append("  EmailAddresses: ").Append(EmailAddresses).Append("\n");
+        sb.Append("  SlackEnabled: ").Append(SlackEnabled).Append("\n");
+        sb.Append("  SnmpEnabled: ").Append(SnmpEnabled).Append("\n");
+        sb.Append("  WebhookEnabled: ").Append(WebhookEnabled).Append("\n");
+        sb.Append("  ScriptEnabled: ").Append(ScriptEnabled).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

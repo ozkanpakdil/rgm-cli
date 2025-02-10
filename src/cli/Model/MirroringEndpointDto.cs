@@ -8,102 +8,92 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     MirroringEndpointDto
+/// </summary>
+[DataContract(Name = "MirroringEndpointDto")]
+public class MirroringEndpointDto : IValidatableObject
 {
     /// <summary>
-    /// MirroringEndpointDto
+    ///     Initializes a new instance of the <see cref="MirroringEndpointDto" /> class.
     /// </summary>
-    [DataContract(Name = "MirroringEndpointDto")]
-    public partial class MirroringEndpointDto : IValidatableObject
+    /// <param name="name">name.</param>
+    /// <param name="role">role.</param>
+    /// <param name="encryptionAlgorithm">encryptionAlgorithm.</param>
+    /// <param name="encryptionEnabled">encryptionEnabled.</param>
+    public MirroringEndpointDto(string name = default, string role = default, string encryptionAlgorithm = default,
+        bool encryptionEnabled = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MirroringEndpointDto" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="role">role.</param>
-        /// <param name="encryptionAlgorithm">encryptionAlgorithm.</param>
-        /// <param name="encryptionEnabled">encryptionEnabled.</param>
-        public MirroringEndpointDto(string name = default(string), string role = default(string), string encryptionAlgorithm = default(string), bool encryptionEnabled = default(bool))
-        {
-            this.Name = name;
-            this.Role = role;
-            this.EncryptionAlgorithm = encryptionAlgorithm;
-            this.EncryptionEnabled = encryptionEnabled;
-        }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Role
-        /// </summary>
-        [DataMember(Name = "role", EmitDefaultValue = false)]
-        public string Role { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EncryptionAlgorithm
-        /// </summary>
-        [DataMember(Name = "encryptionAlgorithm", EmitDefaultValue = false)]
-        public string EncryptionAlgorithm { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EncryptionEnabled
-        /// </summary>
-        [DataMember(Name = "encryptionEnabled", EmitDefaultValue = true)]
-        public bool EncryptionEnabled { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class MirroringEndpointDto {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Role: ").Append(Role).Append("\n");
-            sb.Append("  EncryptionAlgorithm: ").Append(EncryptionAlgorithm).Append("\n");
-            sb.Append("  EncryptionEnabled: ").Append(EncryptionEnabled).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Name = name;
+        Role = role;
+        EncryptionAlgorithm = encryptionAlgorithm;
+        EncryptionEnabled = encryptionEnabled;
     }
 
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = false)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Role
+    /// </summary>
+    [DataMember(Name = "role", EmitDefaultValue = false)]
+    public string Role { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EncryptionAlgorithm
+    /// </summary>
+    [DataMember(Name = "encryptionAlgorithm", EmitDefaultValue = false)]
+    public string EncryptionAlgorithm { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EncryptionEnabled
+    /// </summary>
+    [DataMember(Name = "encryptionEnabled", EmitDefaultValue = true)]
+    public bool EncryptionEnabled { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class MirroringEndpointDto {\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  Role: ").Append(Role).Append("\n");
+        sb.Append("  EncryptionAlgorithm: ").Append(EncryptionAlgorithm).Append("\n");
+        sb.Append("  EncryptionEnabled: ").Append(EncryptionEnabled).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

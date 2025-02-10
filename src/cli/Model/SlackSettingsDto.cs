@@ -8,111 +8,101 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     SlackSettingsDto
+/// </summary>
+[DataContract(Name = "SlackSettingsDto")]
+public class SlackSettingsDto : IValidatableObject
 {
     /// <summary>
-    /// SlackSettingsDto
+    ///     Initializes a new instance of the <see cref="SlackSettingsDto" /> class.
     /// </summary>
-    [DataContract(Name = "SlackSettingsDto")]
-    public partial class SlackSettingsDto : IValidatableObject
+    /// <param name="enable">enable.</param>
+    /// <param name="webhookUrl">webhookUrl.</param>
+    /// <param name="channel">channel.</param>
+    /// <param name="username">username.</param>
+    /// <param name="alertOnEnded">alertOnEnded.</param>
+    public SlackSettingsDto(bool enable = default, string webhookUrl = default, string channel = default,
+        string username = default, bool alertOnEnded = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SlackSettingsDto" /> class.
-        /// </summary>
-        /// <param name="enable">enable.</param>
-        /// <param name="webhookUrl">webhookUrl.</param>
-        /// <param name="channel">channel.</param>
-        /// <param name="username">username.</param>
-        /// <param name="alertOnEnded">alertOnEnded.</param>
-        public SlackSettingsDto(bool enable = default(bool), string webhookUrl = default(string), string channel = default(string), string username = default(string), bool alertOnEnded = default(bool))
-        {
-            this.Enable = enable;
-            this.WebhookUrl = webhookUrl;
-            this.Channel = channel;
-            this.Username = username;
-            this.AlertOnEnded = alertOnEnded;
-        }
-
-        /// <summary>
-        /// Gets or Sets Enable
-        /// </summary>
-        [DataMember(Name = "enable", EmitDefaultValue = true)]
-        public bool Enable { get; set; }
-
-        /// <summary>
-        /// Gets or Sets WebhookUrl
-        /// </summary>
-        [DataMember(Name = "webhookUrl", EmitDefaultValue = true)]
-        public string WebhookUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Channel
-        /// </summary>
-        [DataMember(Name = "channel", EmitDefaultValue = true)]
-        public string Channel { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Username
-        /// </summary>
-        [DataMember(Name = "username", EmitDefaultValue = true)]
-        public string Username { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AlertOnEnded
-        /// </summary>
-        [DataMember(Name = "alertOnEnded", EmitDefaultValue = true)]
-        public bool AlertOnEnded { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class SlackSettingsDto {\n");
-            sb.Append("  Enable: ").Append(Enable).Append("\n");
-            sb.Append("  WebhookUrl: ").Append(WebhookUrl).Append("\n");
-            sb.Append("  Channel: ").Append(Channel).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  AlertOnEnded: ").Append(AlertOnEnded).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Enable = enable;
+        WebhookUrl = webhookUrl;
+        Channel = channel;
+        Username = username;
+        AlertOnEnded = alertOnEnded;
     }
 
+    /// <summary>
+    ///     Gets or Sets Enable
+    /// </summary>
+    [DataMember(Name = "enable", EmitDefaultValue = true)]
+    public bool Enable { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets WebhookUrl
+    /// </summary>
+    [DataMember(Name = "webhookUrl", EmitDefaultValue = true)]
+    public string WebhookUrl { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Channel
+    /// </summary>
+    [DataMember(Name = "channel", EmitDefaultValue = true)]
+    public string Channel { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Username
+    /// </summary>
+    [DataMember(Name = "username", EmitDefaultValue = true)]
+    public string Username { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AlertOnEnded
+    /// </summary>
+    [DataMember(Name = "alertOnEnded", EmitDefaultValue = true)]
+    public bool AlertOnEnded { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class SlackSettingsDto {\n");
+        sb.Append("  Enable: ").Append(Enable).Append("\n");
+        sb.Append("  WebhookUrl: ").Append(WebhookUrl).Append("\n");
+        sb.Append("  Channel: ").Append(Channel).Append("\n");
+        sb.Append("  Username: ").Append(Username).Append("\n");
+        sb.Append("  AlertOnEnded: ").Append(AlertOnEnded).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

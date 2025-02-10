@@ -9,98 +9,90 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     CurrentActivityTableDto
+/// </summary>
+[DataContract(Name = "CurrentActivityTableDto")]
+public class CurrentActivityTableDto : IValidatableObject
 {
     /// <summary>
-    /// CurrentActivityTableDto
+    ///     Initializes a new instance of the <see cref="CurrentActivityTableDto" /> class.
     /// </summary>
-    [DataContract(Name = "CurrentActivityTableDto")]
-    public partial class CurrentActivityTableDto : IValidatableObject
+    [JsonConstructorAttribute]
+    protected CurrentActivityTableDto()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CurrentActivityTableDto" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected CurrentActivityTableDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CurrentActivityTableDto" /> class.
-        /// </summary>
-        /// <param name="columns">columns (required).</param>
-        /// <param name="rows">rows (required).</param>
-        public CurrentActivityTableDto(List<CurrentActivityTableHeaderDto> columns = default(List<CurrentActivityTableHeaderDto>), List<CurrentActivityTableRowDto> rows = default(List<CurrentActivityTableRowDto>))
-        {
-            // to ensure "columns" is required (not null)
-            if (columns == null)
-            {
-                throw new ArgumentNullException("columns is a required property for CurrentActivityTableDto and cannot be null");
-            }
-            this.Columns = columns;
-            // to ensure "rows" is required (not null)
-            if (rows == null)
-            {
-                throw new ArgumentNullException("rows is a required property for CurrentActivityTableDto and cannot be null");
-            }
-            this.Rows = rows;
-        }
-
-        /// <summary>
-        /// Gets or Sets Columns
-        /// </summary>
-        [DataMember(Name = "columns", IsRequired = true, EmitDefaultValue = true)]
-        public List<CurrentActivityTableHeaderDto> Columns { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Rows
-        /// </summary>
-        [DataMember(Name = "rows", IsRequired = true, EmitDefaultValue = true)]
-        public List<CurrentActivityTableRowDto> Rows { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class CurrentActivityTableDto {\n");
-            sb.Append("  Columns: ").Append(Columns).Append("\n");
-            sb.Append("  Rows: ").Append(Rows).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="CurrentActivityTableDto" /> class.
+    /// </summary>
+    /// <param name="columns">columns (required).</param>
+    /// <param name="rows">rows (required).</param>
+    public CurrentActivityTableDto(List<CurrentActivityTableHeaderDto> columns = default,
+        List<CurrentActivityTableRowDto> rows = default)
+    {
+        // to ensure "columns" is required (not null)
+        if (columns == null)
+            throw new ArgumentNullException(
+                "columns is a required property for CurrentActivityTableDto and cannot be null");
+        Columns = columns;
+        // to ensure "rows" is required (not null)
+        if (rows == null)
+            throw new ArgumentNullException(
+                "rows is a required property for CurrentActivityTableDto and cannot be null");
+        Rows = rows;
+    }
+
+    /// <summary>
+    ///     Gets or Sets Columns
+    /// </summary>
+    [DataMember(Name = "columns", IsRequired = true, EmitDefaultValue = true)]
+    public List<CurrentActivityTableHeaderDto> Columns { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Rows
+    /// </summary>
+    [DataMember(Name = "rows", IsRequired = true, EmitDefaultValue = true)]
+    public List<CurrentActivityTableRowDto> Rows { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class CurrentActivityTableDto {\n");
+        sb.Append("  Columns: ").Append(Columns).Append("\n");
+        sb.Append("  Rows: ").Append(Rows).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

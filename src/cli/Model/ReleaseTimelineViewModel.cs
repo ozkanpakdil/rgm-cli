@@ -9,98 +9,89 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     ReleaseTimelineViewModel
+/// </summary>
+[DataContract(Name = "ReleaseTimelineViewModel")]
+public class ReleaseTimelineViewModel : IValidatableObject
 {
     /// <summary>
-    /// ReleaseTimelineViewModel
+    ///     Initializes a new instance of the <see cref="ReleaseTimelineViewModel" /> class.
     /// </summary>
-    [DataContract(Name = "ReleaseTimelineViewModel")]
-    public partial class ReleaseTimelineViewModel : IValidatableObject
+    [JsonConstructorAttribute]
+    protected ReleaseTimelineViewModel()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ReleaseTimelineViewModel" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected ReleaseTimelineViewModel() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ReleaseTimelineViewModel" /> class.
-        /// </summary>
-        /// <param name="releases">releases (required).</param>
-        /// <param name="latestUpdateDownloadUrl">latestUpdateDownloadUrl (required).</param>
-        public ReleaseTimelineViewModel(List<ReleaseViewModel> releases = default(List<ReleaseViewModel>), string latestUpdateDownloadUrl = default(string))
-        {
-            // to ensure "releases" is required (not null)
-            if (releases == null)
-            {
-                throw new ArgumentNullException("releases is a required property for ReleaseTimelineViewModel and cannot be null");
-            }
-            this.Releases = releases;
-            // to ensure "latestUpdateDownloadUrl" is required (not null)
-            if (latestUpdateDownloadUrl == null)
-            {
-                throw new ArgumentNullException("latestUpdateDownloadUrl is a required property for ReleaseTimelineViewModel and cannot be null");
-            }
-            this.LatestUpdateDownloadUrl = latestUpdateDownloadUrl;
-        }
-
-        /// <summary>
-        /// Gets or Sets Releases
-        /// </summary>
-        [DataMember(Name = "releases", IsRequired = true, EmitDefaultValue = true)]
-        public List<ReleaseViewModel> Releases { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LatestUpdateDownloadUrl
-        /// </summary>
-        [DataMember(Name = "latestUpdateDownloadUrl", IsRequired = true, EmitDefaultValue = true)]
-        public string LatestUpdateDownloadUrl { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class ReleaseTimelineViewModel {\n");
-            sb.Append("  Releases: ").Append(Releases).Append("\n");
-            sb.Append("  LatestUpdateDownloadUrl: ").Append(LatestUpdateDownloadUrl).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ReleaseTimelineViewModel" /> class.
+    /// </summary>
+    /// <param name="releases">releases (required).</param>
+    /// <param name="latestUpdateDownloadUrl">latestUpdateDownloadUrl (required).</param>
+    public ReleaseTimelineViewModel(List<ReleaseViewModel> releases = default, string latestUpdateDownloadUrl = default)
+    {
+        // to ensure "releases" is required (not null)
+        if (releases == null)
+            throw new ArgumentNullException(
+                "releases is a required property for ReleaseTimelineViewModel and cannot be null");
+        Releases = releases;
+        // to ensure "latestUpdateDownloadUrl" is required (not null)
+        if (latestUpdateDownloadUrl == null)
+            throw new ArgumentNullException(
+                "latestUpdateDownloadUrl is a required property for ReleaseTimelineViewModel and cannot be null");
+        LatestUpdateDownloadUrl = latestUpdateDownloadUrl;
+    }
+
+    /// <summary>
+    ///     Gets or Sets Releases
+    /// </summary>
+    [DataMember(Name = "releases", IsRequired = true, EmitDefaultValue = true)]
+    public List<ReleaseViewModel> Releases { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LatestUpdateDownloadUrl
+    /// </summary>
+    [DataMember(Name = "latestUpdateDownloadUrl", IsRequired = true, EmitDefaultValue = true)]
+    public string LatestUpdateDownloadUrl { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class ReleaseTimelineViewModel {\n");
+        sb.Append("  Releases: ").Append(Releases).Append("\n");
+        sb.Append("  LatestUpdateDownloadUrl: ").Append(LatestUpdateDownloadUrl).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -10,1980 +10,1932 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAlertInboxPagingApiApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAlertInboxPagingApiApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="isGrouped"> (optional)</param>
+    /// <param name="timeRange"> (optional)</param>
+    /// <param name="endDate"> (optional)</param>
+    /// <param name="timeRangeType"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="timeRangeType2"> (optional)</param>
+    /// <param name="timeRangeRelativeMinutes"> (optional)</param>
+    /// <param name="timeRangeFromDateTime"> (optional)</param>
+    /// <param name="timeRangeToDateTime"> (optional)</param>
+    /// <param name="timeRangeTimeWindowMode"> (optional)</param>
+    /// <param name="includeStatusSeverityHigh"> (optional)</param>
+    /// <param name="includeStatusSeverityMedium"> (optional)</param>
+    /// <param name="includeStatusSeverityLow"> (optional)</param>
+    /// <param name="includeStatusReadYes"> (optional)</param>
+    /// <param name="includeStatusReadNo"> (optional)</param>
+    /// <param name="includeStatusClearedYes"> (optional)</param>
+    /// <param name="includeStatusClearedNo"> (optional)</param>
+    /// <param name="includeStatusStatusEvent"> (optional)</param>
+    /// <param name="includeStatusStatusActive"> (optional)</param>
+    /// <param name="includeStatusStatusEnded"> (optional)</param>
+    /// <param name="includeStatusCommentYes"> (optional)</param>
+    /// <param name="includeStatusCommentNo"> (optional)</param>
+    /// <param name="includeAlertTypeIds"> (optional)</param>
+    /// <param name="selectedTags"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>GroupOfAlertsDto</returns>
+    GroupOfAlertsDto AlertReport(int? pageSize = default, bool? isGrouped = default, long? timeRange = default,
+        long? endDate = default, AlertReportTimeRangeType? timeRangeType = default,
+        List<string>? channelInstanceRefs = default, AlertsFilterTimeRangeTypeDto? timeRangeType2 = default,
+        int? timeRangeRelativeMinutes = default, long? timeRangeFromDateTime = default,
+        long? timeRangeToDateTime = default, AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default,
+        bool? includeStatusSeverityHigh = default, bool? includeStatusSeverityMedium = default,
+        bool? includeStatusSeverityLow = default, bool? includeStatusReadYes = default,
+        bool? includeStatusReadNo = default, bool? includeStatusClearedYes = default,
+        bool? includeStatusClearedNo = default, bool? includeStatusStatusEvent = default,
+        bool? includeStatusStatusActive = default, bool? includeStatusStatusEnded = default,
+        bool? includeStatusCommentYes = default, bool? includeStatusCommentNo = default,
+        List<string>? includeAlertTypeIds = default, List<TagDto>? selectedTags = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="isGrouped"> (optional)</param>
+    /// <param name="timeRange"> (optional)</param>
+    /// <param name="endDate"> (optional)</param>
+    /// <param name="timeRangeType"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="timeRangeType2"> (optional)</param>
+    /// <param name="timeRangeRelativeMinutes"> (optional)</param>
+    /// <param name="timeRangeFromDateTime"> (optional)</param>
+    /// <param name="timeRangeToDateTime"> (optional)</param>
+    /// <param name="timeRangeTimeWindowMode"> (optional)</param>
+    /// <param name="includeStatusSeverityHigh"> (optional)</param>
+    /// <param name="includeStatusSeverityMedium"> (optional)</param>
+    /// <param name="includeStatusSeverityLow"> (optional)</param>
+    /// <param name="includeStatusReadYes"> (optional)</param>
+    /// <param name="includeStatusReadNo"> (optional)</param>
+    /// <param name="includeStatusClearedYes"> (optional)</param>
+    /// <param name="includeStatusClearedNo"> (optional)</param>
+    /// <param name="includeStatusStatusEvent"> (optional)</param>
+    /// <param name="includeStatusStatusActive"> (optional)</param>
+    /// <param name="includeStatusStatusEnded"> (optional)</param>
+    /// <param name="includeStatusCommentYes"> (optional)</param>
+    /// <param name="includeStatusCommentNo"> (optional)</param>
+    /// <param name="includeAlertTypeIds"> (optional)</param>
+    /// <param name="selectedTags"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of GroupOfAlertsDto</returns>
+    ApiResponse<GroupOfAlertsDto> AlertReportWithHttpInfo(int? pageSize = default, bool? isGrouped = default,
+        long? timeRange = default, long? endDate = default, AlertReportTimeRangeType? timeRangeType = default,
+        List<string>? channelInstanceRefs = default, AlertsFilterTimeRangeTypeDto? timeRangeType2 = default,
+        int? timeRangeRelativeMinutes = default, long? timeRangeFromDateTime = default,
+        long? timeRangeToDateTime = default, AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default,
+        bool? includeStatusSeverityHigh = default, bool? includeStatusSeverityMedium = default,
+        bool? includeStatusSeverityLow = default, bool? includeStatusReadYes = default,
+        bool? includeStatusReadNo = default, bool? includeStatusClearedYes = default,
+        bool? includeStatusClearedNo = default, bool? includeStatusStatusEvent = default,
+        bool? includeStatusStatusActive = default, bool? includeStatusStatusEnded = default,
+        bool? includeStatusCommentYes = default, bool? includeStatusCommentNo = default,
+        List<string>? includeAlertTypeIds = default, List<TagDto>? selectedTags = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void AlertsInboxLoad(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> AlertsInboxLoadWithHttpInfo(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void AlertsInboxMoveNewer(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> AlertsInboxMoveNewerWithHttpInfo(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void AlertsInboxMoveNewest(List<string>? channelInstanceRefs = default, int? pageSize = default,
+        bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> AlertsInboxMoveNewestWithHttpInfo(List<string>? channelInstanceRefs = default,
+        int? pageSize = default, bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void AlertsInboxMoveOlder(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> AlertsInboxMoveOlderWithHttpInfo(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void AlertsInboxMoveOldest(List<string>? channelInstanceRefs = default, int? pageSize = default,
+        bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> AlertsInboxMoveOldestWithHttpInfo(List<string>? channelInstanceRefs = default,
+        int? pageSize = default, bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default,
+        int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAlertInboxPagingApiApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="isGrouped"> (optional)</param>
+    /// <param name="timeRange"> (optional)</param>
+    /// <param name="endDate"> (optional)</param>
+    /// <param name="timeRangeType"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="timeRangeType2"> (optional)</param>
+    /// <param name="timeRangeRelativeMinutes"> (optional)</param>
+    /// <param name="timeRangeFromDateTime"> (optional)</param>
+    /// <param name="timeRangeToDateTime"> (optional)</param>
+    /// <param name="timeRangeTimeWindowMode"> (optional)</param>
+    /// <param name="includeStatusSeverityHigh"> (optional)</param>
+    /// <param name="includeStatusSeverityMedium"> (optional)</param>
+    /// <param name="includeStatusSeverityLow"> (optional)</param>
+    /// <param name="includeStatusReadYes"> (optional)</param>
+    /// <param name="includeStatusReadNo"> (optional)</param>
+    /// <param name="includeStatusClearedYes"> (optional)</param>
+    /// <param name="includeStatusClearedNo"> (optional)</param>
+    /// <param name="includeStatusStatusEvent"> (optional)</param>
+    /// <param name="includeStatusStatusActive"> (optional)</param>
+    /// <param name="includeStatusStatusEnded"> (optional)</param>
+    /// <param name="includeStatusCommentYes"> (optional)</param>
+    /// <param name="includeStatusCommentNo"> (optional)</param>
+    /// <param name="includeAlertTypeIds"> (optional)</param>
+    /// <param name="selectedTags"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of GroupOfAlertsDto</returns>
+    Task<GroupOfAlertsDto> AlertReportAsync(int? pageSize = default, bool? isGrouped = default,
+        long? timeRange = default, long? endDate = default, AlertReportTimeRangeType? timeRangeType = default,
+        List<string>? channelInstanceRefs = default, AlertsFilterTimeRangeTypeDto? timeRangeType2 = default,
+        int? timeRangeRelativeMinutes = default, long? timeRangeFromDateTime = default,
+        long? timeRangeToDateTime = default, AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default,
+        bool? includeStatusSeverityHigh = default, bool? includeStatusSeverityMedium = default,
+        bool? includeStatusSeverityLow = default, bool? includeStatusReadYes = default,
+        bool? includeStatusReadNo = default, bool? includeStatusClearedYes = default,
+        bool? includeStatusClearedNo = default, bool? includeStatusStatusEvent = default,
+        bool? includeStatusStatusActive = default, bool? includeStatusStatusEnded = default,
+        bool? includeStatusCommentYes = default, bool? includeStatusCommentNo = default,
+        List<string>? includeAlertTypeIds = default, List<TagDto>? selectedTags = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="isGrouped"> (optional)</param>
+    /// <param name="timeRange"> (optional)</param>
+    /// <param name="endDate"> (optional)</param>
+    /// <param name="timeRangeType"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="timeRangeType2"> (optional)</param>
+    /// <param name="timeRangeRelativeMinutes"> (optional)</param>
+    /// <param name="timeRangeFromDateTime"> (optional)</param>
+    /// <param name="timeRangeToDateTime"> (optional)</param>
+    /// <param name="timeRangeTimeWindowMode"> (optional)</param>
+    /// <param name="includeStatusSeverityHigh"> (optional)</param>
+    /// <param name="includeStatusSeverityMedium"> (optional)</param>
+    /// <param name="includeStatusSeverityLow"> (optional)</param>
+    /// <param name="includeStatusReadYes"> (optional)</param>
+    /// <param name="includeStatusReadNo"> (optional)</param>
+    /// <param name="includeStatusClearedYes"> (optional)</param>
+    /// <param name="includeStatusClearedNo"> (optional)</param>
+    /// <param name="includeStatusStatusEvent"> (optional)</param>
+    /// <param name="includeStatusStatusActive"> (optional)</param>
+    /// <param name="includeStatusStatusEnded"> (optional)</param>
+    /// <param name="includeStatusCommentYes"> (optional)</param>
+    /// <param name="includeStatusCommentNo"> (optional)</param>
+    /// <param name="includeAlertTypeIds"> (optional)</param>
+    /// <param name="selectedTags"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (GroupOfAlertsDto)</returns>
+    Task<ApiResponse<GroupOfAlertsDto>> AlertReportWithHttpInfoAsync(int? pageSize = default, bool? isGrouped = default,
+        long? timeRange = default, long? endDate = default, AlertReportTimeRangeType? timeRangeType = default,
+        List<string>? channelInstanceRefs = default, AlertsFilterTimeRangeTypeDto? timeRangeType2 = default,
+        int? timeRangeRelativeMinutes = default, long? timeRangeFromDateTime = default,
+        long? timeRangeToDateTime = default, AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default,
+        bool? includeStatusSeverityHigh = default, bool? includeStatusSeverityMedium = default,
+        bool? includeStatusSeverityLow = default, bool? includeStatusReadYes = default,
+        bool? includeStatusReadNo = default, bool? includeStatusClearedYes = default,
+        bool? includeStatusClearedNo = default, bool? includeStatusStatusEvent = default,
+        bool? includeStatusStatusActive = default, bool? includeStatusStatusEnded = default,
+        bool? includeStatusCommentYes = default, bool? includeStatusCommentNo = default,
+        List<string>? includeAlertTypeIds = default, List<TagDto>? selectedTags = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task AlertsInboxLoadAsync(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> AlertsInboxLoadWithHttpInfoAsync(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task AlertsInboxMoveNewerAsync(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> AlertsInboxMoveNewerWithHttpInfoAsync(string? startTicks = default,
+        long? alertId = default, List<string>? channelInstanceRefs = default, int? pageSize = default,
+        bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task AlertsInboxMoveNewestAsync(List<string>? channelInstanceRefs = default, int? pageSize = default,
+        bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> AlertsInboxMoveNewestWithHttpInfoAsync(List<string>? channelInstanceRefs = default,
+        int? pageSize = default, bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task AlertsInboxMoveOlderAsync(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> AlertsInboxMoveOlderWithHttpInfoAsync(string? startTicks = default,
+        long? alertId = default, List<string>? channelInstanceRefs = default, int? pageSize = default,
+        bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task AlertsInboxMoveOldestAsync(List<string>? channelInstanceRefs = default, int? pageSize = default,
+        bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> AlertsInboxMoveOldestWithHttpInfoAsync(List<string>? channelInstanceRefs = default,
+        int? pageSize = default, bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAlertInboxPagingApiApi : IAlertInboxPagingApiApiSync, IAlertInboxPagingApiApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class AlertInboxPagingApiApi : IAlertInboxPagingApiApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="AlertInboxPagingApiApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public AlertInboxPagingApiApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageSize"> (optional)</param>
-        /// <param name="isGrouped"> (optional)</param>
-        /// <param name="timeRange"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="timeRangeType"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="timeRangeType2"> (optional)</param>
-        /// <param name="timeRangeRelativeMinutes"> (optional)</param>
-        /// <param name="timeRangeFromDateTime"> (optional)</param>
-        /// <param name="timeRangeToDateTime"> (optional)</param>
-        /// <param name="timeRangeTimeWindowMode"> (optional)</param>
-        /// <param name="includeStatusSeverityHigh"> (optional)</param>
-        /// <param name="includeStatusSeverityMedium"> (optional)</param>
-        /// <param name="includeStatusSeverityLow"> (optional)</param>
-        /// <param name="includeStatusReadYes"> (optional)</param>
-        /// <param name="includeStatusReadNo"> (optional)</param>
-        /// <param name="includeStatusClearedYes"> (optional)</param>
-        /// <param name="includeStatusClearedNo"> (optional)</param>
-        /// <param name="includeStatusStatusEvent"> (optional)</param>
-        /// <param name="includeStatusStatusActive"> (optional)</param>
-        /// <param name="includeStatusStatusEnded"> (optional)</param>
-        /// <param name="includeStatusCommentYes"> (optional)</param>
-        /// <param name="includeStatusCommentNo"> (optional)</param>
-        /// <param name="includeAlertTypeIds"> (optional)</param>
-        /// <param name="selectedTags"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>GroupOfAlertsDto</returns>
-        GroupOfAlertsDto AlertReport(int? pageSize = default(int?), bool? isGrouped = default(bool?), long? timeRange = default(long?), long? endDate = default(long?), AlertReportTimeRangeType? timeRangeType = default(AlertReportTimeRangeType?), List<string>? channelInstanceRefs = default(List<string>?), AlertsFilterTimeRangeTypeDto? timeRangeType2 = default(AlertsFilterTimeRangeTypeDto?), int? timeRangeRelativeMinutes = default(int?), long? timeRangeFromDateTime = default(long?), long? timeRangeToDateTime = default(long?), AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default(AlertsFilterTimeWindowModesDto?), bool? includeStatusSeverityHigh = default(bool?), bool? includeStatusSeverityMedium = default(bool?), bool? includeStatusSeverityLow = default(bool?), bool? includeStatusReadYes = default(bool?), bool? includeStatusReadNo = default(bool?), bool? includeStatusClearedYes = default(bool?), bool? includeStatusClearedNo = default(bool?), bool? includeStatusStatusEvent = default(bool?), bool? includeStatusStatusActive = default(bool?), bool? includeStatusStatusEnded = default(bool?), bool? includeStatusCommentYes = default(bool?), bool? includeStatusCommentNo = default(bool?), List<string>? includeAlertTypeIds = default(List<string>?), List<TagDto>? selectedTags = default(List<TagDto>?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageSize"> (optional)</param>
-        /// <param name="isGrouped"> (optional)</param>
-        /// <param name="timeRange"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="timeRangeType"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="timeRangeType2"> (optional)</param>
-        /// <param name="timeRangeRelativeMinutes"> (optional)</param>
-        /// <param name="timeRangeFromDateTime"> (optional)</param>
-        /// <param name="timeRangeToDateTime"> (optional)</param>
-        /// <param name="timeRangeTimeWindowMode"> (optional)</param>
-        /// <param name="includeStatusSeverityHigh"> (optional)</param>
-        /// <param name="includeStatusSeverityMedium"> (optional)</param>
-        /// <param name="includeStatusSeverityLow"> (optional)</param>
-        /// <param name="includeStatusReadYes"> (optional)</param>
-        /// <param name="includeStatusReadNo"> (optional)</param>
-        /// <param name="includeStatusClearedYes"> (optional)</param>
-        /// <param name="includeStatusClearedNo"> (optional)</param>
-        /// <param name="includeStatusStatusEvent"> (optional)</param>
-        /// <param name="includeStatusStatusActive"> (optional)</param>
-        /// <param name="includeStatusStatusEnded"> (optional)</param>
-        /// <param name="includeStatusCommentYes"> (optional)</param>
-        /// <param name="includeStatusCommentNo"> (optional)</param>
-        /// <param name="includeAlertTypeIds"> (optional)</param>
-        /// <param name="selectedTags"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of GroupOfAlertsDto</returns>
-        ApiResponse<GroupOfAlertsDto> AlertReportWithHttpInfo(int? pageSize = default(int?), bool? isGrouped = default(bool?), long? timeRange = default(long?), long? endDate = default(long?), AlertReportTimeRangeType? timeRangeType = default(AlertReportTimeRangeType?), List<string>? channelInstanceRefs = default(List<string>?), AlertsFilterTimeRangeTypeDto? timeRangeType2 = default(AlertsFilterTimeRangeTypeDto?), int? timeRangeRelativeMinutes = default(int?), long? timeRangeFromDateTime = default(long?), long? timeRangeToDateTime = default(long?), AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default(AlertsFilterTimeWindowModesDto?), bool? includeStatusSeverityHigh = default(bool?), bool? includeStatusSeverityMedium = default(bool?), bool? includeStatusSeverityLow = default(bool?), bool? includeStatusReadYes = default(bool?), bool? includeStatusReadNo = default(bool?), bool? includeStatusClearedYes = default(bool?), bool? includeStatusClearedNo = default(bool?), bool? includeStatusStatusEvent = default(bool?), bool? includeStatusStatusActive = default(bool?), bool? includeStatusStatusEnded = default(bool?), bool? includeStatusCommentYes = default(bool?), bool? includeStatusCommentNo = default(bool?), List<string>? includeAlertTypeIds = default(List<string>?), List<TagDto>? selectedTags = default(List<TagDto>?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void AlertsInboxLoad(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AlertsInboxLoadWithHttpInfo(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void AlertsInboxMoveNewer(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AlertsInboxMoveNewerWithHttpInfo(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void AlertsInboxMoveNewest(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AlertsInboxMoveNewestWithHttpInfo(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void AlertsInboxMoveOlder(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AlertsInboxMoveOlderWithHttpInfo(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void AlertsInboxMoveOldest(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AlertsInboxMoveOldestWithHttpInfo(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AlertInboxPagingApiApi" /> class.
     /// </summary>
-    public interface IAlertInboxPagingApiApiAsync : IApiAccessor
+    /// <returns></returns>
+    public AlertInboxPagingApiApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageSize"> (optional)</param>
-        /// <param name="isGrouped"> (optional)</param>
-        /// <param name="timeRange"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="timeRangeType"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="timeRangeType2"> (optional)</param>
-        /// <param name="timeRangeRelativeMinutes"> (optional)</param>
-        /// <param name="timeRangeFromDateTime"> (optional)</param>
-        /// <param name="timeRangeToDateTime"> (optional)</param>
-        /// <param name="timeRangeTimeWindowMode"> (optional)</param>
-        /// <param name="includeStatusSeverityHigh"> (optional)</param>
-        /// <param name="includeStatusSeverityMedium"> (optional)</param>
-        /// <param name="includeStatusSeverityLow"> (optional)</param>
-        /// <param name="includeStatusReadYes"> (optional)</param>
-        /// <param name="includeStatusReadNo"> (optional)</param>
-        /// <param name="includeStatusClearedYes"> (optional)</param>
-        /// <param name="includeStatusClearedNo"> (optional)</param>
-        /// <param name="includeStatusStatusEvent"> (optional)</param>
-        /// <param name="includeStatusStatusActive"> (optional)</param>
-        /// <param name="includeStatusStatusEnded"> (optional)</param>
-        /// <param name="includeStatusCommentYes"> (optional)</param>
-        /// <param name="includeStatusCommentNo"> (optional)</param>
-        /// <param name="includeAlertTypeIds"> (optional)</param>
-        /// <param name="selectedTags"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GroupOfAlertsDto</returns>
-        System.Threading.Tasks.Task<GroupOfAlertsDto> AlertReportAsync(int? pageSize = default(int?), bool? isGrouped = default(bool?), long? timeRange = default(long?), long? endDate = default(long?), AlertReportTimeRangeType? timeRangeType = default(AlertReportTimeRangeType?), List<string>? channelInstanceRefs = default(List<string>?), AlertsFilterTimeRangeTypeDto? timeRangeType2 = default(AlertsFilterTimeRangeTypeDto?), int? timeRangeRelativeMinutes = default(int?), long? timeRangeFromDateTime = default(long?), long? timeRangeToDateTime = default(long?), AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default(AlertsFilterTimeWindowModesDto?), bool? includeStatusSeverityHigh = default(bool?), bool? includeStatusSeverityMedium = default(bool?), bool? includeStatusSeverityLow = default(bool?), bool? includeStatusReadYes = default(bool?), bool? includeStatusReadNo = default(bool?), bool? includeStatusClearedYes = default(bool?), bool? includeStatusClearedNo = default(bool?), bool? includeStatusStatusEvent = default(bool?), bool? includeStatusStatusActive = default(bool?), bool? includeStatusStatusEnded = default(bool?), bool? includeStatusCommentYes = default(bool?), bool? includeStatusCommentNo = default(bool?), List<string>? includeAlertTypeIds = default(List<string>?), List<TagDto>? selectedTags = default(List<TagDto>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageSize"> (optional)</param>
-        /// <param name="isGrouped"> (optional)</param>
-        /// <param name="timeRange"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="timeRangeType"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="timeRangeType2"> (optional)</param>
-        /// <param name="timeRangeRelativeMinutes"> (optional)</param>
-        /// <param name="timeRangeFromDateTime"> (optional)</param>
-        /// <param name="timeRangeToDateTime"> (optional)</param>
-        /// <param name="timeRangeTimeWindowMode"> (optional)</param>
-        /// <param name="includeStatusSeverityHigh"> (optional)</param>
-        /// <param name="includeStatusSeverityMedium"> (optional)</param>
-        /// <param name="includeStatusSeverityLow"> (optional)</param>
-        /// <param name="includeStatusReadYes"> (optional)</param>
-        /// <param name="includeStatusReadNo"> (optional)</param>
-        /// <param name="includeStatusClearedYes"> (optional)</param>
-        /// <param name="includeStatusClearedNo"> (optional)</param>
-        /// <param name="includeStatusStatusEvent"> (optional)</param>
-        /// <param name="includeStatusStatusActive"> (optional)</param>
-        /// <param name="includeStatusStatusEnded"> (optional)</param>
-        /// <param name="includeStatusCommentYes"> (optional)</param>
-        /// <param name="includeStatusCommentNo"> (optional)</param>
-        /// <param name="includeAlertTypeIds"> (optional)</param>
-        /// <param name="selectedTags"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GroupOfAlertsDto)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GroupOfAlertsDto>> AlertReportWithHttpInfoAsync(int? pageSize = default(int?), bool? isGrouped = default(bool?), long? timeRange = default(long?), long? endDate = default(long?), AlertReportTimeRangeType? timeRangeType = default(AlertReportTimeRangeType?), List<string>? channelInstanceRefs = default(List<string>?), AlertsFilterTimeRangeTypeDto? timeRangeType2 = default(AlertsFilterTimeRangeTypeDto?), int? timeRangeRelativeMinutes = default(int?), long? timeRangeFromDateTime = default(long?), long? timeRangeToDateTime = default(long?), AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default(AlertsFilterTimeWindowModesDto?), bool? includeStatusSeverityHigh = default(bool?), bool? includeStatusSeverityMedium = default(bool?), bool? includeStatusSeverityLow = default(bool?), bool? includeStatusReadYes = default(bool?), bool? includeStatusReadNo = default(bool?), bool? includeStatusClearedYes = default(bool?), bool? includeStatusClearedNo = default(bool?), bool? includeStatusStatusEvent = default(bool?), bool? includeStatusStatusActive = default(bool?), bool? includeStatusStatusEnded = default(bool?), bool? includeStatusCommentYes = default(bool?), bool? includeStatusCommentNo = default(bool?), List<string>? includeAlertTypeIds = default(List<string>?), List<TagDto>? selectedTags = default(List<TagDto>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AlertsInboxLoadAsync(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AlertsInboxLoadWithHttpInfoAsync(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AlertsInboxMoveNewerAsync(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AlertsInboxMoveNewerWithHttpInfoAsync(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AlertsInboxMoveNewestAsync(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AlertsInboxMoveNewestWithHttpInfoAsync(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AlertsInboxMoveOlderAsync(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AlertsInboxMoveOlderWithHttpInfoAsync(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AlertsInboxMoveOldestAsync(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AlertsInboxMoveOldestWithHttpInfoAsync(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AlertInboxPagingApiApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IAlertInboxPagingApiApi : IAlertInboxPagingApiApiSync, IAlertInboxPagingApiApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public AlertInboxPagingApiApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AlertInboxPagingApiApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class AlertInboxPagingApiApi : IAlertInboxPagingApiApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public AlertInboxPagingApiApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertInboxPagingApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AlertInboxPagingApiApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="isGrouped"> (optional)</param>
+    /// <param name="timeRange"> (optional)</param>
+    /// <param name="endDate"> (optional)</param>
+    /// <param name="timeRangeType"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="timeRangeType2"> (optional)</param>
+    /// <param name="timeRangeRelativeMinutes"> (optional)</param>
+    /// <param name="timeRangeFromDateTime"> (optional)</param>
+    /// <param name="timeRangeToDateTime"> (optional)</param>
+    /// <param name="timeRangeTimeWindowMode"> (optional)</param>
+    /// <param name="includeStatusSeverityHigh"> (optional)</param>
+    /// <param name="includeStatusSeverityMedium"> (optional)</param>
+    /// <param name="includeStatusSeverityLow"> (optional)</param>
+    /// <param name="includeStatusReadYes"> (optional)</param>
+    /// <param name="includeStatusReadNo"> (optional)</param>
+    /// <param name="includeStatusClearedYes"> (optional)</param>
+    /// <param name="includeStatusClearedNo"> (optional)</param>
+    /// <param name="includeStatusStatusEvent"> (optional)</param>
+    /// <param name="includeStatusStatusActive"> (optional)</param>
+    /// <param name="includeStatusStatusEnded"> (optional)</param>
+    /// <param name="includeStatusCommentYes"> (optional)</param>
+    /// <param name="includeStatusCommentNo"> (optional)</param>
+    /// <param name="includeAlertTypeIds"> (optional)</param>
+    /// <param name="selectedTags"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>GroupOfAlertsDto</returns>
+    public GroupOfAlertsDto AlertReport(int? pageSize = default, bool? isGrouped = default, long? timeRange = default,
+        long? endDate = default, AlertReportTimeRangeType? timeRangeType = default,
+        List<string>? channelInstanceRefs = default, AlertsFilterTimeRangeTypeDto? timeRangeType2 = default,
+        int? timeRangeRelativeMinutes = default, long? timeRangeFromDateTime = default,
+        long? timeRangeToDateTime = default, AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default,
+        bool? includeStatusSeverityHigh = default, bool? includeStatusSeverityMedium = default,
+        bool? includeStatusSeverityLow = default, bool? includeStatusReadYes = default,
+        bool? includeStatusReadNo = default, bool? includeStatusClearedYes = default,
+        bool? includeStatusClearedNo = default, bool? includeStatusStatusEvent = default,
+        bool? includeStatusStatusActive = default, bool? includeStatusStatusEnded = default,
+        bool? includeStatusCommentYes = default, bool? includeStatusCommentNo = default,
+        List<string>? includeAlertTypeIds = default, List<TagDto>? selectedTags = default, int operationIndex = 0)
+    {
+        var localVarResponse = AlertReportWithHttpInfo(pageSize, isGrouped, timeRange, endDate, timeRangeType,
+            channelInstanceRefs, timeRangeType2, timeRangeRelativeMinutes, timeRangeFromDateTime, timeRangeToDateTime,
+            timeRangeTimeWindowMode, includeStatusSeverityHigh, includeStatusSeverityMedium, includeStatusSeverityLow,
+            includeStatusReadYes, includeStatusReadNo, includeStatusClearedYes, includeStatusClearedNo,
+            includeStatusStatusEvent, includeStatusStatusActive, includeStatusStatusEnded, includeStatusCommentYes,
+            includeStatusCommentNo, includeAlertTypeIds, selectedTags);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="isGrouped"> (optional)</param>
+    /// <param name="timeRange"> (optional)</param>
+    /// <param name="endDate"> (optional)</param>
+    /// <param name="timeRangeType"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="timeRangeType2"> (optional)</param>
+    /// <param name="timeRangeRelativeMinutes"> (optional)</param>
+    /// <param name="timeRangeFromDateTime"> (optional)</param>
+    /// <param name="timeRangeToDateTime"> (optional)</param>
+    /// <param name="timeRangeTimeWindowMode"> (optional)</param>
+    /// <param name="includeStatusSeverityHigh"> (optional)</param>
+    /// <param name="includeStatusSeverityMedium"> (optional)</param>
+    /// <param name="includeStatusSeverityLow"> (optional)</param>
+    /// <param name="includeStatusReadYes"> (optional)</param>
+    /// <param name="includeStatusReadNo"> (optional)</param>
+    /// <param name="includeStatusClearedYes"> (optional)</param>
+    /// <param name="includeStatusClearedNo"> (optional)</param>
+    /// <param name="includeStatusStatusEvent"> (optional)</param>
+    /// <param name="includeStatusStatusActive"> (optional)</param>
+    /// <param name="includeStatusStatusEnded"> (optional)</param>
+    /// <param name="includeStatusCommentYes"> (optional)</param>
+    /// <param name="includeStatusCommentNo"> (optional)</param>
+    /// <param name="includeAlertTypeIds"> (optional)</param>
+    /// <param name="selectedTags"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of GroupOfAlertsDto</returns>
+    public ApiResponse<GroupOfAlertsDto> AlertReportWithHttpInfo(int? pageSize = default, bool? isGrouped = default,
+        long? timeRange = default, long? endDate = default, AlertReportTimeRangeType? timeRangeType = default,
+        List<string>? channelInstanceRefs = default, AlertsFilterTimeRangeTypeDto? timeRangeType2 = default,
+        int? timeRangeRelativeMinutes = default, long? timeRangeFromDateTime = default,
+        long? timeRangeToDateTime = default, AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default,
+        bool? includeStatusSeverityHigh = default, bool? includeStatusSeverityMedium = default,
+        bool? includeStatusSeverityLow = default, bool? includeStatusReadYes = default,
+        bool? includeStatusReadNo = default, bool? includeStatusClearedYes = default,
+        bool? includeStatusClearedNo = default, bool? includeStatusStatusEvent = default,
+        bool? includeStatusStatusActive = default, bool? includeStatusStatusEnded = default,
+        bool? includeStatusCommentYes = default, bool? includeStatusCommentNo = default,
+        List<string>? includeAlertTypeIds = default, List<TagDto>? selectedTags = default, int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "multipart/form-data"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (pageSize != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+        if (isGrouped != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
+        if (timeRange != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "timeRange", timeRange));
+        if (endDate != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+        if (timeRangeType != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "timeRangeType", timeRangeType));
+        if (channelInstanceRefs != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
+        if (timeRangeType2 != null)
+            localVarRequestOptions.FormParameters.Add("TimeRange.Type",
+                localVarMultipartFormData
+                    ? ClientUtils.ParameterToString(timeRangeType2)
+                    : ClientUtils.Serialize(timeRangeType2)); // form parameter
+        if (timeRangeRelativeMinutes != null)
+            localVarRequestOptions.FormParameters.Add("TimeRange.RelativeMinutes",
+                ClientUtils.ParameterToString(timeRangeRelativeMinutes)); // form parameter
+        if (timeRangeFromDateTime != null)
+            localVarRequestOptions.FormParameters.Add("TimeRange.FromDateTime",
+                ClientUtils.ParameterToString(timeRangeFromDateTime)); // form parameter
+        if (timeRangeToDateTime != null)
+            localVarRequestOptions.FormParameters.Add("TimeRange.ToDateTime",
+                ClientUtils.ParameterToString(timeRangeToDateTime)); // form parameter
+        if (timeRangeTimeWindowMode != null)
+            localVarRequestOptions.FormParameters.Add("TimeRange.TimeWindowMode",
+                localVarMultipartFormData
+                    ? ClientUtils.ParameterToString(timeRangeTimeWindowMode)
+                    : ClientUtils.Serialize(timeRangeTimeWindowMode)); // form parameter
+        if (includeStatusSeverityHigh != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.SeverityHigh",
+                ClientUtils.ParameterToString(includeStatusSeverityHigh)); // form parameter
+        if (includeStatusSeverityMedium != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.SeverityMedium",
+                ClientUtils.ParameterToString(includeStatusSeverityMedium)); // form parameter
+        if (includeStatusSeverityLow != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.SeverityLow",
+                ClientUtils.ParameterToString(includeStatusSeverityLow)); // form parameter
+        if (includeStatusReadYes != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.ReadYes",
+                ClientUtils.ParameterToString(includeStatusReadYes)); // form parameter
+        if (includeStatusReadNo != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.ReadNo",
+                ClientUtils.ParameterToString(includeStatusReadNo)); // form parameter
+        if (includeStatusClearedYes != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.ClearedYes",
+                ClientUtils.ParameterToString(includeStatusClearedYes)); // form parameter
+        if (includeStatusClearedNo != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.ClearedNo",
+                ClientUtils.ParameterToString(includeStatusClearedNo)); // form parameter
+        if (includeStatusStatusEvent != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.StatusEvent",
+                ClientUtils.ParameterToString(includeStatusStatusEvent)); // form parameter
+        if (includeStatusStatusActive != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.StatusActive",
+                ClientUtils.ParameterToString(includeStatusStatusActive)); // form parameter
+        if (includeStatusStatusEnded != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.StatusEnded",
+                ClientUtils.ParameterToString(includeStatusStatusEnded)); // form parameter
+        if (includeStatusCommentYes != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.CommentYes",
+                ClientUtils.ParameterToString(includeStatusCommentYes)); // form parameter
+        if (includeStatusCommentNo != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.CommentNo",
+                ClientUtils.ParameterToString(includeStatusCommentNo)); // form parameter
+        if (includeAlertTypeIds != null)
+            localVarRequestOptions.FormParameters.Add("IncludeAlertTypeIds",
+                localVarMultipartFormData
+                    ? ClientUtils.ParameterToString(includeAlertTypeIds)
+                    : ClientUtils.Serialize(includeAlertTypeIds)); // form parameter
+        if (selectedTags != null)
+            localVarRequestOptions.FormParameters.Add("SelectedTags",
+                localVarMultipartFormData
+                    ? ClientUtils.ParameterToString(selectedTags)
+                    : ClientUtils.Serialize(selectedTags)); // form parameter
+
+        localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertReport";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<GroupOfAlertsDto>("/api/Alerts/alertsgroupinbox/alertreport",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("AlertReport", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertInboxPagingApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AlertInboxPagingApiApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="isGrouped"> (optional)</param>
+    /// <param name="timeRange"> (optional)</param>
+    /// <param name="endDate"> (optional)</param>
+    /// <param name="timeRangeType"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="timeRangeType2"> (optional)</param>
+    /// <param name="timeRangeRelativeMinutes"> (optional)</param>
+    /// <param name="timeRangeFromDateTime"> (optional)</param>
+    /// <param name="timeRangeToDateTime"> (optional)</param>
+    /// <param name="timeRangeTimeWindowMode"> (optional)</param>
+    /// <param name="includeStatusSeverityHigh"> (optional)</param>
+    /// <param name="includeStatusSeverityMedium"> (optional)</param>
+    /// <param name="includeStatusSeverityLow"> (optional)</param>
+    /// <param name="includeStatusReadYes"> (optional)</param>
+    /// <param name="includeStatusReadNo"> (optional)</param>
+    /// <param name="includeStatusClearedYes"> (optional)</param>
+    /// <param name="includeStatusClearedNo"> (optional)</param>
+    /// <param name="includeStatusStatusEvent"> (optional)</param>
+    /// <param name="includeStatusStatusActive"> (optional)</param>
+    /// <param name="includeStatusStatusEnded"> (optional)</param>
+    /// <param name="includeStatusCommentYes"> (optional)</param>
+    /// <param name="includeStatusCommentNo"> (optional)</param>
+    /// <param name="includeAlertTypeIds"> (optional)</param>
+    /// <param name="selectedTags"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of GroupOfAlertsDto</returns>
+    public async Task<GroupOfAlertsDto> AlertReportAsync(int? pageSize = default, bool? isGrouped = default,
+        long? timeRange = default, long? endDate = default, AlertReportTimeRangeType? timeRangeType = default,
+        List<string>? channelInstanceRefs = default, AlertsFilterTimeRangeTypeDto? timeRangeType2 = default,
+        int? timeRangeRelativeMinutes = default, long? timeRangeFromDateTime = default,
+        long? timeRangeToDateTime = default, AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default,
+        bool? includeStatusSeverityHigh = default, bool? includeStatusSeverityMedium = default,
+        bool? includeStatusSeverityLow = default, bool? includeStatusReadYes = default,
+        bool? includeStatusReadNo = default, bool? includeStatusClearedYes = default,
+        bool? includeStatusClearedNo = default, bool? includeStatusStatusEvent = default,
+        bool? includeStatusStatusActive = default, bool? includeStatusStatusEnded = default,
+        bool? includeStatusCommentYes = default, bool? includeStatusCommentNo = default,
+        List<string>? includeAlertTypeIds = default, List<TagDto>? selectedTags = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarResponse = await AlertReportWithHttpInfoAsync(pageSize, isGrouped, timeRange, endDate,
+            timeRangeType, channelInstanceRefs, timeRangeType2, timeRangeRelativeMinutes, timeRangeFromDateTime,
+            timeRangeToDateTime, timeRangeTimeWindowMode, includeStatusSeverityHigh, includeStatusSeverityMedium,
+            includeStatusSeverityLow, includeStatusReadYes, includeStatusReadNo, includeStatusClearedYes,
+            includeStatusClearedNo, includeStatusStatusEvent, includeStatusStatusActive, includeStatusStatusEnded,
+            includeStatusCommentYes, includeStatusCommentNo, includeAlertTypeIds, selectedTags, operationIndex,
+            cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="isGrouped"> (optional)</param>
+    /// <param name="timeRange"> (optional)</param>
+    /// <param name="endDate"> (optional)</param>
+    /// <param name="timeRangeType"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="timeRangeType2"> (optional)</param>
+    /// <param name="timeRangeRelativeMinutes"> (optional)</param>
+    /// <param name="timeRangeFromDateTime"> (optional)</param>
+    /// <param name="timeRangeToDateTime"> (optional)</param>
+    /// <param name="timeRangeTimeWindowMode"> (optional)</param>
+    /// <param name="includeStatusSeverityHigh"> (optional)</param>
+    /// <param name="includeStatusSeverityMedium"> (optional)</param>
+    /// <param name="includeStatusSeverityLow"> (optional)</param>
+    /// <param name="includeStatusReadYes"> (optional)</param>
+    /// <param name="includeStatusReadNo"> (optional)</param>
+    /// <param name="includeStatusClearedYes"> (optional)</param>
+    /// <param name="includeStatusClearedNo"> (optional)</param>
+    /// <param name="includeStatusStatusEvent"> (optional)</param>
+    /// <param name="includeStatusStatusActive"> (optional)</param>
+    /// <param name="includeStatusStatusEnded"> (optional)</param>
+    /// <param name="includeStatusCommentYes"> (optional)</param>
+    /// <param name="includeStatusCommentNo"> (optional)</param>
+    /// <param name="includeAlertTypeIds"> (optional)</param>
+    /// <param name="selectedTags"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (GroupOfAlertsDto)</returns>
+    public async Task<ApiResponse<GroupOfAlertsDto>> AlertReportWithHttpInfoAsync(int? pageSize = default,
+        bool? isGrouped = default, long? timeRange = default, long? endDate = default,
+        AlertReportTimeRangeType? timeRangeType = default, List<string>? channelInstanceRefs = default,
+        AlertsFilterTimeRangeTypeDto? timeRangeType2 = default, int? timeRangeRelativeMinutes = default,
+        long? timeRangeFromDateTime = default, long? timeRangeToDateTime = default,
+        AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default, bool? includeStatusSeverityHigh = default,
+        bool? includeStatusSeverityMedium = default, bool? includeStatusSeverityLow = default,
+        bool? includeStatusReadYes = default, bool? includeStatusReadNo = default,
+        bool? includeStatusClearedYes = default, bool? includeStatusClearedNo = default,
+        bool? includeStatusStatusEvent = default, bool? includeStatusStatusActive = default,
+        bool? includeStatusStatusEnded = default, bool? includeStatusCommentYes = default,
+        bool? includeStatusCommentNo = default, List<string>? includeAlertTypeIds = default,
+        List<TagDto>? selectedTags = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+            "multipart/form-data"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (pageSize != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+        if (isGrouped != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
+        if (timeRange != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "timeRange", timeRange));
+        if (endDate != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+        if (timeRangeType != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "timeRangeType", timeRangeType));
+        if (channelInstanceRefs != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
+        if (timeRangeType2 != null)
+            localVarRequestOptions.FormParameters.Add("TimeRange.Type",
+                ClientUtils.Serialize(timeRangeType2)); // form parameter
+        if (timeRangeRelativeMinutes != null)
+            localVarRequestOptions.FormParameters.Add("TimeRange.RelativeMinutes",
+                ClientUtils.ParameterToString(timeRangeRelativeMinutes)); // form parameter
+        if (timeRangeFromDateTime != null)
+            localVarRequestOptions.FormParameters.Add("TimeRange.FromDateTime",
+                ClientUtils.ParameterToString(timeRangeFromDateTime)); // form parameter
+        if (timeRangeToDateTime != null)
+            localVarRequestOptions.FormParameters.Add("TimeRange.ToDateTime",
+                ClientUtils.ParameterToString(timeRangeToDateTime)); // form parameter
+        if (timeRangeTimeWindowMode != null)
+            localVarRequestOptions.FormParameters.Add("TimeRange.TimeWindowMode",
+                ClientUtils.Serialize(timeRangeTimeWindowMode)); // form parameter
+        if (includeStatusSeverityHigh != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.SeverityHigh",
+                ClientUtils.ParameterToString(includeStatusSeverityHigh)); // form parameter
+        if (includeStatusSeverityMedium != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.SeverityMedium",
+                ClientUtils.ParameterToString(includeStatusSeverityMedium)); // form parameter
+        if (includeStatusSeverityLow != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.SeverityLow",
+                ClientUtils.ParameterToString(includeStatusSeverityLow)); // form parameter
+        if (includeStatusReadYes != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.ReadYes",
+                ClientUtils.ParameterToString(includeStatusReadYes)); // form parameter
+        if (includeStatusReadNo != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.ReadNo",
+                ClientUtils.ParameterToString(includeStatusReadNo)); // form parameter
+        if (includeStatusClearedYes != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.ClearedYes",
+                ClientUtils.ParameterToString(includeStatusClearedYes)); // form parameter
+        if (includeStatusClearedNo != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.ClearedNo",
+                ClientUtils.ParameterToString(includeStatusClearedNo)); // form parameter
+        if (includeStatusStatusEvent != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.StatusEvent",
+                ClientUtils.ParameterToString(includeStatusStatusEvent)); // form parameter
+        if (includeStatusStatusActive != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.StatusActive",
+                ClientUtils.ParameterToString(includeStatusStatusActive)); // form parameter
+        if (includeStatusStatusEnded != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.StatusEnded",
+                ClientUtils.ParameterToString(includeStatusStatusEnded)); // form parameter
+        if (includeStatusCommentYes != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.CommentYes",
+                ClientUtils.ParameterToString(includeStatusCommentYes)); // form parameter
+        if (includeStatusCommentNo != null)
+            localVarRequestOptions.FormParameters.Add("IncludeStatus.CommentNo",
+                ClientUtils.ParameterToString(includeStatusCommentNo)); // form parameter
+        if (includeAlertTypeIds != null)
+            localVarRequestOptions.FormParameters.Add("IncludeAlertTypeIds",
+                ClientUtils.Serialize(includeAlertTypeIds)); // form parameter
+        if (selectedTags != null)
+            localVarRequestOptions.FormParameters.Add("SelectedTags",
+                ClientUtils.Serialize(selectedTags)); // form parameter
+
+        localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertReport";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PostAsync<GroupOfAlertsDto>("/api/Alerts/alertsgroupinbox/alertreport", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("AlertReport", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertInboxPagingApiApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public AlertInboxPagingApiApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void AlertsInboxLoad(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0)
+    {
+        AlertsInboxLoadWithHttpInfo(startTicks, alertId, channelInstanceRefs, pageSize, isGrouped, filterSettingsDto);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> AlertsInboxLoadWithHttpInfo(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (startTicks != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTicks", startTicks));
+        if (alertId != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "alertId", alertId));
+        if (channelInstanceRefs != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
+        if (pageSize != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+        if (isGrouped != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
+        localVarRequestOptions.Data = filterSettingsDto;
+
+        localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxLoad";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Post<object>("/api/Alerts/alertsgroupinbox/load", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("AlertsInboxLoad", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertInboxPagingApiApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public AlertInboxPagingApiApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task AlertsInboxLoadAsync(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        await AlertsInboxLoadWithHttpInfoAsync(startTicks, alertId, channelInstanceRefs, pageSize, isGrouped,
+            filterSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>> AlertsInboxLoadWithHttpInfoAsync(string? startTicks = default,
+        long? alertId = default, List<string>? channelInstanceRefs = default, int? pageSize = default,
+        bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (startTicks != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTicks", startTicks));
+        if (alertId != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "alertId", alertId));
+        if (channelInstanceRefs != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
+        if (pageSize != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+        if (isGrouped != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
+        localVarRequestOptions.Data = filterSettingsDto;
+
+        localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxLoad";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient.PostAsync<object>("/api/Alerts/alertsgroupinbox/load",
+            localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("AlertsInboxLoad", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void AlertsInboxMoveNewer(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0)
+    {
+        AlertsInboxMoveNewerWithHttpInfo(startTicks, alertId, channelInstanceRefs, pageSize, isGrouped,
+            filterSettingsDto);
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> AlertsInboxMoveNewerWithHttpInfo(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            return this.Configuration.BasePath;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (startTicks != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTicks", startTicks));
+        if (alertId != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "alertId", alertId));
+        if (channelInstanceRefs != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
+        if (pageSize != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+        if (isGrouped != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
+        localVarRequestOptions.Data = filterSettingsDto;
+
+        localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveNewer";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<object>("/api/Alerts/alertsgroupinbox/moveNewer", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("AlertsInboxMoveNewer", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task AlertsInboxMoveNewerAsync(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        await AlertsInboxMoveNewerWithHttpInfoAsync(startTicks, alertId, channelInstanceRefs, pageSize, isGrouped,
+            filterSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>> AlertsInboxMoveNewerWithHttpInfoAsync(string? startTicks = default,
+        long? alertId = default, List<string>? channelInstanceRefs = default, int? pageSize = default,
+        bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (startTicks != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTicks", startTicks));
+        if (alertId != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "alertId", alertId));
+        if (channelInstanceRefs != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
+        if (pageSize != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+        if (isGrouped != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
+        localVarRequestOptions.Data = filterSettingsDto;
+
+        localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveNewer";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient.PostAsync<object>("/api/Alerts/alertsgroupinbox/moveNewer",
+            localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("AlertsInboxMoveNewer", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageSize"> (optional)</param>
-        /// <param name="isGrouped"> (optional)</param>
-        /// <param name="timeRange"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="timeRangeType"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="timeRangeType2"> (optional)</param>
-        /// <param name="timeRangeRelativeMinutes"> (optional)</param>
-        /// <param name="timeRangeFromDateTime"> (optional)</param>
-        /// <param name="timeRangeToDateTime"> (optional)</param>
-        /// <param name="timeRangeTimeWindowMode"> (optional)</param>
-        /// <param name="includeStatusSeverityHigh"> (optional)</param>
-        /// <param name="includeStatusSeverityMedium"> (optional)</param>
-        /// <param name="includeStatusSeverityLow"> (optional)</param>
-        /// <param name="includeStatusReadYes"> (optional)</param>
-        /// <param name="includeStatusReadNo"> (optional)</param>
-        /// <param name="includeStatusClearedYes"> (optional)</param>
-        /// <param name="includeStatusClearedNo"> (optional)</param>
-        /// <param name="includeStatusStatusEvent"> (optional)</param>
-        /// <param name="includeStatusStatusActive"> (optional)</param>
-        /// <param name="includeStatusStatusEnded"> (optional)</param>
-        /// <param name="includeStatusCommentYes"> (optional)</param>
-        /// <param name="includeStatusCommentNo"> (optional)</param>
-        /// <param name="includeAlertTypeIds"> (optional)</param>
-        /// <param name="selectedTags"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>GroupOfAlertsDto</returns>
-        public GroupOfAlertsDto AlertReport(int? pageSize = default(int?), bool? isGrouped = default(bool?), long? timeRange = default(long?), long? endDate = default(long?), AlertReportTimeRangeType? timeRangeType = default(AlertReportTimeRangeType?), List<string>? channelInstanceRefs = default(List<string>?), AlertsFilterTimeRangeTypeDto? timeRangeType2 = default(AlertsFilterTimeRangeTypeDto?), int? timeRangeRelativeMinutes = default(int?), long? timeRangeFromDateTime = default(long?), long? timeRangeToDateTime = default(long?), AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default(AlertsFilterTimeWindowModesDto?), bool? includeStatusSeverityHigh = default(bool?), bool? includeStatusSeverityMedium = default(bool?), bool? includeStatusSeverityLow = default(bool?), bool? includeStatusReadYes = default(bool?), bool? includeStatusReadNo = default(bool?), bool? includeStatusClearedYes = default(bool?), bool? includeStatusClearedNo = default(bool?), bool? includeStatusStatusEvent = default(bool?), bool? includeStatusStatusActive = default(bool?), bool? includeStatusStatusEnded = default(bool?), bool? includeStatusCommentYes = default(bool?), bool? includeStatusCommentNo = default(bool?), List<string>? includeAlertTypeIds = default(List<string>?), List<TagDto>? selectedTags = default(List<TagDto>?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void AlertsInboxMoveNewest(List<string>? channelInstanceRefs = default, int? pageSize = default,
+        bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0)
+    {
+        AlertsInboxMoveNewestWithHttpInfo(channelInstanceRefs, pageSize, isGrouped, filterSettingsDto);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> AlertsInboxMoveNewestWithHttpInfo(List<string>? channelInstanceRefs = default,
+        int? pageSize = default, bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default,
+        int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            cli.Client.ApiResponse<GroupOfAlertsDto> localVarResponse = AlertReportWithHttpInfo(pageSize, isGrouped, timeRange, endDate, timeRangeType, channelInstanceRefs, timeRangeType2, timeRangeRelativeMinutes, timeRangeFromDateTime, timeRangeToDateTime, timeRangeTimeWindowMode, includeStatusSeverityHigh, includeStatusSeverityMedium, includeStatusSeverityLow, includeStatusReadYes, includeStatusReadNo, includeStatusClearedYes, includeStatusClearedNo, includeStatusStatusEvent, includeStatusStatusActive, includeStatusStatusEnded, includeStatusCommentYes, includeStatusCommentNo, includeAlertTypeIds, selectedTags);
-            return localVarResponse.Data;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (channelInstanceRefs != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
+        if (pageSize != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+        if (isGrouped != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
+        localVarRequestOptions.Data = filterSettingsDto;
+
+        localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveNewest";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<object>("/api/Alerts/alertsgroupinbox/moveNewest", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("AlertsInboxMoveNewest", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageSize"> (optional)</param>
-        /// <param name="isGrouped"> (optional)</param>
-        /// <param name="timeRange"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="timeRangeType"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="timeRangeType2"> (optional)</param>
-        /// <param name="timeRangeRelativeMinutes"> (optional)</param>
-        /// <param name="timeRangeFromDateTime"> (optional)</param>
-        /// <param name="timeRangeToDateTime"> (optional)</param>
-        /// <param name="timeRangeTimeWindowMode"> (optional)</param>
-        /// <param name="includeStatusSeverityHigh"> (optional)</param>
-        /// <param name="includeStatusSeverityMedium"> (optional)</param>
-        /// <param name="includeStatusSeverityLow"> (optional)</param>
-        /// <param name="includeStatusReadYes"> (optional)</param>
-        /// <param name="includeStatusReadNo"> (optional)</param>
-        /// <param name="includeStatusClearedYes"> (optional)</param>
-        /// <param name="includeStatusClearedNo"> (optional)</param>
-        /// <param name="includeStatusStatusEvent"> (optional)</param>
-        /// <param name="includeStatusStatusActive"> (optional)</param>
-        /// <param name="includeStatusStatusEnded"> (optional)</param>
-        /// <param name="includeStatusCommentYes"> (optional)</param>
-        /// <param name="includeStatusCommentNo"> (optional)</param>
-        /// <param name="includeAlertTypeIds"> (optional)</param>
-        /// <param name="selectedTags"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of GroupOfAlertsDto</returns>
-        public cli.Client.ApiResponse<GroupOfAlertsDto> AlertReportWithHttpInfo(int? pageSize = default(int?), bool? isGrouped = default(bool?), long? timeRange = default(long?), long? endDate = default(long?), AlertReportTimeRangeType? timeRangeType = default(AlertReportTimeRangeType?), List<string>? channelInstanceRefs = default(List<string>?), AlertsFilterTimeRangeTypeDto? timeRangeType2 = default(AlertsFilterTimeRangeTypeDto?), int? timeRangeRelativeMinutes = default(int?), long? timeRangeFromDateTime = default(long?), long? timeRangeToDateTime = default(long?), AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default(AlertsFilterTimeWindowModesDto?), bool? includeStatusSeverityHigh = default(bool?), bool? includeStatusSeverityMedium = default(bool?), bool? includeStatusSeverityLow = default(bool?), bool? includeStatusReadYes = default(bool?), bool? includeStatusReadNo = default(bool?), bool? includeStatusClearedYes = default(bool?), bool? includeStatusClearedNo = default(bool?), bool? includeStatusStatusEvent = default(bool?), bool? includeStatusStatusActive = default(bool?), bool? includeStatusStatusEnded = default(bool?), bool? includeStatusCommentYes = default(bool?), bool? includeStatusCommentNo = default(bool?), List<string>? includeAlertTypeIds = default(List<string>?), List<TagDto>? selectedTags = default(List<TagDto>?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task AlertsInboxMoveNewestAsync(List<string>? channelInstanceRefs = default, int? pageSize = default,
+        bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        await AlertsInboxMoveNewestWithHttpInfoAsync(channelInstanceRefs, pageSize, isGrouped, filterSettingsDto,
+            operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>> AlertsInboxMoveNewestWithHttpInfoAsync(
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            string[] _contentTypes = new string[] {
-                "multipart/form-data"
-            };
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+        if (channelInstanceRefs != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
+        if (pageSize != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+        if (isGrouped != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
+        localVarRequestOptions.Data = filterSettingsDto;
 
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
-            if (isGrouped != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
-            }
-            if (timeRange != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "timeRange", timeRange));
-            }
-            if (endDate != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
-            }
-            if (timeRangeType != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "timeRangeType", timeRangeType));
-            }
-            if (channelInstanceRefs != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
-            }
-            if (timeRangeType2 != null)
-            {
-                localVarRequestOptions.FormParameters.Add("TimeRange.Type", localVarMultipartFormData ? cli.Client.ClientUtils.ParameterToString(timeRangeType2) : cli.Client.ClientUtils.Serialize(timeRangeType2)); // form parameter
-            }
-            if (timeRangeRelativeMinutes != null)
-            {
-                localVarRequestOptions.FormParameters.Add("TimeRange.RelativeMinutes", cli.Client.ClientUtils.ParameterToString(timeRangeRelativeMinutes)); // form parameter
-            }
-            if (timeRangeFromDateTime != null)
-            {
-                localVarRequestOptions.FormParameters.Add("TimeRange.FromDateTime", cli.Client.ClientUtils.ParameterToString(timeRangeFromDateTime)); // form parameter
-            }
-            if (timeRangeToDateTime != null)
-            {
-                localVarRequestOptions.FormParameters.Add("TimeRange.ToDateTime", cli.Client.ClientUtils.ParameterToString(timeRangeToDateTime)); // form parameter
-            }
-            if (timeRangeTimeWindowMode != null)
-            {
-                localVarRequestOptions.FormParameters.Add("TimeRange.TimeWindowMode", localVarMultipartFormData ? cli.Client.ClientUtils.ParameterToString(timeRangeTimeWindowMode) : cli.Client.ClientUtils.Serialize(timeRangeTimeWindowMode)); // form parameter
-            }
-            if (includeStatusSeverityHigh != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.SeverityHigh", cli.Client.ClientUtils.ParameterToString(includeStatusSeverityHigh)); // form parameter
-            }
-            if (includeStatusSeverityMedium != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.SeverityMedium", cli.Client.ClientUtils.ParameterToString(includeStatusSeverityMedium)); // form parameter
-            }
-            if (includeStatusSeverityLow != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.SeverityLow", cli.Client.ClientUtils.ParameterToString(includeStatusSeverityLow)); // form parameter
-            }
-            if (includeStatusReadYes != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.ReadYes", cli.Client.ClientUtils.ParameterToString(includeStatusReadYes)); // form parameter
-            }
-            if (includeStatusReadNo != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.ReadNo", cli.Client.ClientUtils.ParameterToString(includeStatusReadNo)); // form parameter
-            }
-            if (includeStatusClearedYes != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.ClearedYes", cli.Client.ClientUtils.ParameterToString(includeStatusClearedYes)); // form parameter
-            }
-            if (includeStatusClearedNo != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.ClearedNo", cli.Client.ClientUtils.ParameterToString(includeStatusClearedNo)); // form parameter
-            }
-            if (includeStatusStatusEvent != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.StatusEvent", cli.Client.ClientUtils.ParameterToString(includeStatusStatusEvent)); // form parameter
-            }
-            if (includeStatusStatusActive != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.StatusActive", cli.Client.ClientUtils.ParameterToString(includeStatusStatusActive)); // form parameter
-            }
-            if (includeStatusStatusEnded != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.StatusEnded", cli.Client.ClientUtils.ParameterToString(includeStatusStatusEnded)); // form parameter
-            }
-            if (includeStatusCommentYes != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.CommentYes", cli.Client.ClientUtils.ParameterToString(includeStatusCommentYes)); // form parameter
-            }
-            if (includeStatusCommentNo != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.CommentNo", cli.Client.ClientUtils.ParameterToString(includeStatusCommentNo)); // form parameter
-            }
-            if (includeAlertTypeIds != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeAlertTypeIds", localVarMultipartFormData ? cli.Client.ClientUtils.ParameterToString(includeAlertTypeIds) : cli.Client.ClientUtils.Serialize(includeAlertTypeIds)); // form parameter
-            }
-            if (selectedTags != null)
-            {
-                localVarRequestOptions.FormParameters.Add("SelectedTags", localVarMultipartFormData ? cli.Client.ClientUtils.ParameterToString(selectedTags) : cli.Client.ClientUtils.Serialize(selectedTags)); // form parameter
-            }
-
-            localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertReport";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveNewest";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<GroupOfAlertsDto>("/api/Alerts/alertsgroupinbox/alertreport", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("AlertReport", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient.PostAsync<object>("/api/Alerts/alertsgroupinbox/moveNewest",
+            localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("AlertsInboxMoveNewest", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageSize"> (optional)</param>
-        /// <param name="isGrouped"> (optional)</param>
-        /// <param name="timeRange"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="timeRangeType"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="timeRangeType2"> (optional)</param>
-        /// <param name="timeRangeRelativeMinutes"> (optional)</param>
-        /// <param name="timeRangeFromDateTime"> (optional)</param>
-        /// <param name="timeRangeToDateTime"> (optional)</param>
-        /// <param name="timeRangeTimeWindowMode"> (optional)</param>
-        /// <param name="includeStatusSeverityHigh"> (optional)</param>
-        /// <param name="includeStatusSeverityMedium"> (optional)</param>
-        /// <param name="includeStatusSeverityLow"> (optional)</param>
-        /// <param name="includeStatusReadYes"> (optional)</param>
-        /// <param name="includeStatusReadNo"> (optional)</param>
-        /// <param name="includeStatusClearedYes"> (optional)</param>
-        /// <param name="includeStatusClearedNo"> (optional)</param>
-        /// <param name="includeStatusStatusEvent"> (optional)</param>
-        /// <param name="includeStatusStatusActive"> (optional)</param>
-        /// <param name="includeStatusStatusEnded"> (optional)</param>
-        /// <param name="includeStatusCommentYes"> (optional)</param>
-        /// <param name="includeStatusCommentNo"> (optional)</param>
-        /// <param name="includeAlertTypeIds"> (optional)</param>
-        /// <param name="selectedTags"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GroupOfAlertsDto</returns>
-        public async System.Threading.Tasks.Task<GroupOfAlertsDto> AlertReportAsync(int? pageSize = default(int?), bool? isGrouped = default(bool?), long? timeRange = default(long?), long? endDate = default(long?), AlertReportTimeRangeType? timeRangeType = default(AlertReportTimeRangeType?), List<string>? channelInstanceRefs = default(List<string>?), AlertsFilterTimeRangeTypeDto? timeRangeType2 = default(AlertsFilterTimeRangeTypeDto?), int? timeRangeRelativeMinutes = default(int?), long? timeRangeFromDateTime = default(long?), long? timeRangeToDateTime = default(long?), AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default(AlertsFilterTimeWindowModesDto?), bool? includeStatusSeverityHigh = default(bool?), bool? includeStatusSeverityMedium = default(bool?), bool? includeStatusSeverityLow = default(bool?), bool? includeStatusReadYes = default(bool?), bool? includeStatusReadNo = default(bool?), bool? includeStatusClearedYes = default(bool?), bool? includeStatusClearedNo = default(bool?), bool? includeStatusStatusEvent = default(bool?), bool? includeStatusStatusActive = default(bool?), bool? includeStatusStatusEnded = default(bool?), bool? includeStatusCommentYes = default(bool?), bool? includeStatusCommentNo = default(bool?), List<string>? includeAlertTypeIds = default(List<string>?), List<TagDto>? selectedTags = default(List<TagDto>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void AlertsInboxMoveOlder(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0)
+    {
+        AlertsInboxMoveOlderWithHttpInfo(startTicks, alertId, channelInstanceRefs, pageSize, isGrouped,
+            filterSettingsDto);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> AlertsInboxMoveOlderWithHttpInfo(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            cli.Client.ApiResponse<GroupOfAlertsDto> localVarResponse = await AlertReportWithHttpInfoAsync(pageSize, isGrouped, timeRange, endDate, timeRangeType, channelInstanceRefs, timeRangeType2, timeRangeRelativeMinutes, timeRangeFromDateTime, timeRangeToDateTime, timeRangeTimeWindowMode, includeStatusSeverityHigh, includeStatusSeverityMedium, includeStatusSeverityLow, includeStatusReadYes, includeStatusReadNo, includeStatusClearedYes, includeStatusClearedNo, includeStatusStatusEvent, includeStatusStatusActive, includeStatusStatusEnded, includeStatusCommentYes, includeStatusCommentNo, includeAlertTypeIds, selectedTags, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (startTicks != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTicks", startTicks));
+        if (alertId != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "alertId", alertId));
+        if (channelInstanceRefs != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
+        if (pageSize != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+        if (isGrouped != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
+        localVarRequestOptions.Data = filterSettingsDto;
+
+        localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveOlder";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<object>("/api/Alerts/alertsgroupinbox/moveOlder", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("AlertsInboxMoveOlder", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pageSize"> (optional)</param>
-        /// <param name="isGrouped"> (optional)</param>
-        /// <param name="timeRange"> (optional)</param>
-        /// <param name="endDate"> (optional)</param>
-        /// <param name="timeRangeType"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="timeRangeType2"> (optional)</param>
-        /// <param name="timeRangeRelativeMinutes"> (optional)</param>
-        /// <param name="timeRangeFromDateTime"> (optional)</param>
-        /// <param name="timeRangeToDateTime"> (optional)</param>
-        /// <param name="timeRangeTimeWindowMode"> (optional)</param>
-        /// <param name="includeStatusSeverityHigh"> (optional)</param>
-        /// <param name="includeStatusSeverityMedium"> (optional)</param>
-        /// <param name="includeStatusSeverityLow"> (optional)</param>
-        /// <param name="includeStatusReadYes"> (optional)</param>
-        /// <param name="includeStatusReadNo"> (optional)</param>
-        /// <param name="includeStatusClearedYes"> (optional)</param>
-        /// <param name="includeStatusClearedNo"> (optional)</param>
-        /// <param name="includeStatusStatusEvent"> (optional)</param>
-        /// <param name="includeStatusStatusActive"> (optional)</param>
-        /// <param name="includeStatusStatusEnded"> (optional)</param>
-        /// <param name="includeStatusCommentYes"> (optional)</param>
-        /// <param name="includeStatusCommentNo"> (optional)</param>
-        /// <param name="includeAlertTypeIds"> (optional)</param>
-        /// <param name="selectedTags"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GroupOfAlertsDto)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<GroupOfAlertsDto>> AlertReportWithHttpInfoAsync(int? pageSize = default(int?), bool? isGrouped = default(bool?), long? timeRange = default(long?), long? endDate = default(long?), AlertReportTimeRangeType? timeRangeType = default(AlertReportTimeRangeType?), List<string>? channelInstanceRefs = default(List<string>?), AlertsFilterTimeRangeTypeDto? timeRangeType2 = default(AlertsFilterTimeRangeTypeDto?), int? timeRangeRelativeMinutes = default(int?), long? timeRangeFromDateTime = default(long?), long? timeRangeToDateTime = default(long?), AlertsFilterTimeWindowModesDto? timeRangeTimeWindowMode = default(AlertsFilterTimeWindowModesDto?), bool? includeStatusSeverityHigh = default(bool?), bool? includeStatusSeverityMedium = default(bool?), bool? includeStatusSeverityLow = default(bool?), bool? includeStatusReadYes = default(bool?), bool? includeStatusReadNo = default(bool?), bool? includeStatusClearedYes = default(bool?), bool? includeStatusClearedNo = default(bool?), bool? includeStatusStatusEvent = default(bool?), bool? includeStatusStatusActive = default(bool?), bool? includeStatusStatusEnded = default(bool?), bool? includeStatusCommentYes = default(bool?), bool? includeStatusCommentNo = default(bool?), List<string>? includeAlertTypeIds = default(List<string>?), List<TagDto>? selectedTags = default(List<TagDto>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task AlertsInboxMoveOlderAsync(string? startTicks = default, long? alertId = default,
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        await AlertsInboxMoveOlderWithHttpInfoAsync(startTicks, alertId, channelInstanceRefs, pageSize, isGrouped,
+            filterSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="startTicks"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>> AlertsInboxMoveOlderWithHttpInfoAsync(string? startTicks = default,
+        long? alertId = default, List<string>? channelInstanceRefs = default, int? pageSize = default,
+        bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            string[] _contentTypes = new string[] {
-                "multipart/form-data"
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        if (startTicks != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTicks", startTicks));
+        if (alertId != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "alertId", alertId));
+        if (channelInstanceRefs != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
+        if (pageSize != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+        if (isGrouped != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
+        localVarRequestOptions.Data = filterSettingsDto;
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
-            if (isGrouped != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
-            }
-            if (timeRange != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "timeRange", timeRange));
-            }
-            if (endDate != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
-            }
-            if (timeRangeType != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "timeRangeType", timeRangeType));
-            }
-            if (channelInstanceRefs != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
-            }
-            if (timeRangeType2 != null)
-            {
-                localVarRequestOptions.FormParameters.Add("TimeRange.Type", cli.Client.ClientUtils.Serialize(timeRangeType2)); // form parameter
-            }
-            if (timeRangeRelativeMinutes != null)
-            {
-                localVarRequestOptions.FormParameters.Add("TimeRange.RelativeMinutes", cli.Client.ClientUtils.ParameterToString(timeRangeRelativeMinutes)); // form parameter
-            }
-            if (timeRangeFromDateTime != null)
-            {
-                localVarRequestOptions.FormParameters.Add("TimeRange.FromDateTime", cli.Client.ClientUtils.ParameterToString(timeRangeFromDateTime)); // form parameter
-            }
-            if (timeRangeToDateTime != null)
-            {
-                localVarRequestOptions.FormParameters.Add("TimeRange.ToDateTime", cli.Client.ClientUtils.ParameterToString(timeRangeToDateTime)); // form parameter
-            }
-            if (timeRangeTimeWindowMode != null)
-            {
-                localVarRequestOptions.FormParameters.Add("TimeRange.TimeWindowMode", cli.Client.ClientUtils.Serialize(timeRangeTimeWindowMode)); // form parameter
-            }
-            if (includeStatusSeverityHigh != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.SeverityHigh", cli.Client.ClientUtils.ParameterToString(includeStatusSeverityHigh)); // form parameter
-            }
-            if (includeStatusSeverityMedium != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.SeverityMedium", cli.Client.ClientUtils.ParameterToString(includeStatusSeverityMedium)); // form parameter
-            }
-            if (includeStatusSeverityLow != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.SeverityLow", cli.Client.ClientUtils.ParameterToString(includeStatusSeverityLow)); // form parameter
-            }
-            if (includeStatusReadYes != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.ReadYes", cli.Client.ClientUtils.ParameterToString(includeStatusReadYes)); // form parameter
-            }
-            if (includeStatusReadNo != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.ReadNo", cli.Client.ClientUtils.ParameterToString(includeStatusReadNo)); // form parameter
-            }
-            if (includeStatusClearedYes != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.ClearedYes", cli.Client.ClientUtils.ParameterToString(includeStatusClearedYes)); // form parameter
-            }
-            if (includeStatusClearedNo != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.ClearedNo", cli.Client.ClientUtils.ParameterToString(includeStatusClearedNo)); // form parameter
-            }
-            if (includeStatusStatusEvent != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.StatusEvent", cli.Client.ClientUtils.ParameterToString(includeStatusStatusEvent)); // form parameter
-            }
-            if (includeStatusStatusActive != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.StatusActive", cli.Client.ClientUtils.ParameterToString(includeStatusStatusActive)); // form parameter
-            }
-            if (includeStatusStatusEnded != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.StatusEnded", cli.Client.ClientUtils.ParameterToString(includeStatusStatusEnded)); // form parameter
-            }
-            if (includeStatusCommentYes != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.CommentYes", cli.Client.ClientUtils.ParameterToString(includeStatusCommentYes)); // form parameter
-            }
-            if (includeStatusCommentNo != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeStatus.CommentNo", cli.Client.ClientUtils.ParameterToString(includeStatusCommentNo)); // form parameter
-            }
-            if (includeAlertTypeIds != null)
-            {
-                localVarRequestOptions.FormParameters.Add("IncludeAlertTypeIds", cli.Client.ClientUtils.Serialize(includeAlertTypeIds)); // form parameter
-            }
-            if (selectedTags != null)
-            {
-                localVarRequestOptions.FormParameters.Add("SelectedTags", cli.Client.ClientUtils.Serialize(selectedTags)); // form parameter
-            }
-
-            localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertReport";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveOlder";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<GroupOfAlertsDto>("/api/Alerts/alertsgroupinbox/alertreport", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient.PostAsync<object>("/api/Alerts/alertsgroupinbox/moveOlder",
+            localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("AlertReport", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("AlertsInboxMoveOlder", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void AlertsInboxLoad(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void AlertsInboxMoveOldest(List<string>? channelInstanceRefs = default, int? pageSize = default,
+        bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0)
+    {
+        AlertsInboxMoveOldestWithHttpInfo(channelInstanceRefs, pageSize, isGrouped, filterSettingsDto);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> AlertsInboxMoveOldestWithHttpInfo(List<string>? channelInstanceRefs = default,
+        int? pageSize = default, bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default,
+        int operationIndex = 0)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            AlertsInboxLoadWithHttpInfo(startTicks, alertId, channelInstanceRefs, pageSize, isGrouped, filterSettingsDto);
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        if (channelInstanceRefs != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
+        if (pageSize != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+        if (isGrouped != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
+        localVarRequestOptions.Data = filterSettingsDto;
+
+        localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveOldest";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<object>("/api/Alerts/alertsgroupinbox/moveOldest", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("AlertsInboxMoveOldest", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> AlertsInboxLoadWithHttpInfo(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task AlertsInboxMoveOldestAsync(List<string>? channelInstanceRefs = default, int? pageSize = default,
+        bool? isGrouped = default, FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        await AlertsInboxMoveOldestWithHttpInfoAsync(channelInstanceRefs, pageSize, isGrouped, filterSettingsDto,
+            operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="channelInstanceRefs"> (optional)</param>
+    /// <param name="pageSize"> (optional, default to 10)</param>
+    /// <param name="isGrouped"> (optional, default to true)</param>
+    /// <param name="filterSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>> AlertsInboxMoveOldestWithHttpInfoAsync(
+        List<string>? channelInstanceRefs = default, int? pageSize = default, bool? isGrouped = default,
+        FilterSettingsDto? filterSettingsDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+        if (channelInstanceRefs != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
+        if (pageSize != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+        if (isGrouped != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
+        localVarRequestOptions.Data = filterSettingsDto;
 
-            if (startTicks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTicks", startTicks));
-            }
-            if (alertId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "alertId", alertId));
-            }
-            if (channelInstanceRefs != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
-            }
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
-            if (isGrouped != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
-            }
-            localVarRequestOptions.Data = filterSettingsDto;
-
-            localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxLoad";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveOldest";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/api/Alerts/alertsgroupinbox/load", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("AlertsInboxLoad", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient.PostAsync<object>("/api/Alerts/alertsgroupinbox/moveOldest",
+            localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("AlertsInboxMoveOldest", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AlertsInboxLoadAsync(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await AlertsInboxLoadWithHttpInfoAsync(startTicks, alertId, channelInstanceRefs, pageSize, isGrouped, filterSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> AlertsInboxLoadWithHttpInfoAsync(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (startTicks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTicks", startTicks));
-            }
-            if (alertId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "alertId", alertId));
-            }
-            if (channelInstanceRefs != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
-            }
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
-            if (isGrouped != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
-            }
-            localVarRequestOptions.Data = filterSettingsDto;
-
-            localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxLoad";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/api/Alerts/alertsgroupinbox/load", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("AlertsInboxLoad", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void AlertsInboxMoveNewer(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0)
-        {
-            AlertsInboxMoveNewerWithHttpInfo(startTicks, alertId, channelInstanceRefs, pageSize, isGrouped, filterSettingsDto);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> AlertsInboxMoveNewerWithHttpInfo(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0)
-        {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (startTicks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTicks", startTicks));
-            }
-            if (alertId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "alertId", alertId));
-            }
-            if (channelInstanceRefs != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
-            }
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
-            if (isGrouped != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
-            }
-            localVarRequestOptions.Data = filterSettingsDto;
-
-            localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveNewer";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/api/Alerts/alertsgroupinbox/moveNewer", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("AlertsInboxMoveNewer", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AlertsInboxMoveNewerAsync(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await AlertsInboxMoveNewerWithHttpInfoAsync(startTicks, alertId, channelInstanceRefs, pageSize, isGrouped, filterSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> AlertsInboxMoveNewerWithHttpInfoAsync(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (startTicks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTicks", startTicks));
-            }
-            if (alertId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "alertId", alertId));
-            }
-            if (channelInstanceRefs != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
-            }
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
-            if (isGrouped != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
-            }
-            localVarRequestOptions.Data = filterSettingsDto;
-
-            localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveNewer";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/api/Alerts/alertsgroupinbox/moveNewer", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("AlertsInboxMoveNewer", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void AlertsInboxMoveNewest(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0)
-        {
-            AlertsInboxMoveNewestWithHttpInfo(channelInstanceRefs, pageSize, isGrouped, filterSettingsDto);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> AlertsInboxMoveNewestWithHttpInfo(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0)
-        {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (channelInstanceRefs != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
-            }
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
-            if (isGrouped != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
-            }
-            localVarRequestOptions.Data = filterSettingsDto;
-
-            localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveNewest";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/api/Alerts/alertsgroupinbox/moveNewest", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("AlertsInboxMoveNewest", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AlertsInboxMoveNewestAsync(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await AlertsInboxMoveNewestWithHttpInfoAsync(channelInstanceRefs, pageSize, isGrouped, filterSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> AlertsInboxMoveNewestWithHttpInfoAsync(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (channelInstanceRefs != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
-            }
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
-            if (isGrouped != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
-            }
-            localVarRequestOptions.Data = filterSettingsDto;
-
-            localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveNewest";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/api/Alerts/alertsgroupinbox/moveNewest", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("AlertsInboxMoveNewest", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void AlertsInboxMoveOlder(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0)
-        {
-            AlertsInboxMoveOlderWithHttpInfo(startTicks, alertId, channelInstanceRefs, pageSize, isGrouped, filterSettingsDto);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> AlertsInboxMoveOlderWithHttpInfo(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0)
-        {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (startTicks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTicks", startTicks));
-            }
-            if (alertId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "alertId", alertId));
-            }
-            if (channelInstanceRefs != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
-            }
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
-            if (isGrouped != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
-            }
-            localVarRequestOptions.Data = filterSettingsDto;
-
-            localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveOlder";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/api/Alerts/alertsgroupinbox/moveOlder", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("AlertsInboxMoveOlder", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AlertsInboxMoveOlderAsync(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await AlertsInboxMoveOlderWithHttpInfoAsync(startTicks, alertId, channelInstanceRefs, pageSize, isGrouped, filterSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startTicks"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> AlertsInboxMoveOlderWithHttpInfoAsync(string? startTicks = default(string?), long? alertId = default(long?), List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (startTicks != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTicks", startTicks));
-            }
-            if (alertId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "alertId", alertId));
-            }
-            if (channelInstanceRefs != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
-            }
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
-            if (isGrouped != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
-            }
-            localVarRequestOptions.Data = filterSettingsDto;
-
-            localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveOlder";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/api/Alerts/alertsgroupinbox/moveOlder", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("AlertsInboxMoveOlder", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void AlertsInboxMoveOldest(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0)
-        {
-            AlertsInboxMoveOldestWithHttpInfo(channelInstanceRefs, pageSize, isGrouped, filterSettingsDto);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> AlertsInboxMoveOldestWithHttpInfo(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0)
-        {
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (channelInstanceRefs != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
-            }
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
-            if (isGrouped != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
-            }
-            localVarRequestOptions.Data = filterSettingsDto;
-
-            localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveOldest";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/api/Alerts/alertsgroupinbox/moveOldest", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("AlertsInboxMoveOldest", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AlertsInboxMoveOldestAsync(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await AlertsInboxMoveOldestWithHttpInfoAsync(channelInstanceRefs, pageSize, isGrouped, filterSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="channelInstanceRefs"> (optional)</param>
-        /// <param name="pageSize"> (optional, default to 10)</param>
-        /// <param name="isGrouped"> (optional, default to true)</param>
-        /// <param name="filterSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> AlertsInboxMoveOldestWithHttpInfoAsync(List<string>? channelInstanceRefs = default(List<string>?), int? pageSize = default(int?), bool? isGrouped = default(bool?), FilterSettingsDto? filterSettingsDto = default(FilterSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (channelInstanceRefs != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("multi", "channelInstanceRefs", channelInstanceRefs));
-            }
-            if (pageSize != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
-            }
-            if (isGrouped != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "isGrouped", isGrouped));
-            }
-            localVarRequestOptions.Data = filterSettingsDto;
-
-            localVarRequestOptions.Operation = "AlertInboxPagingApiApi.AlertsInboxMoveOldest";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/api/Alerts/alertsgroupinbox/moveOldest", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("AlertsInboxMoveOldest", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

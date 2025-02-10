@@ -9,1459 +9,1466 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAzureSqlServersApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAzureSqlServersApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>DetectedAzureSqlDatabaseDtoArrayJSendSuccess</returns>
+    DetectedAzureSqlDatabaseDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost(
+        string baseMonitorName, SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of DetectedAzureSqlDatabaseDtoArrayJSendSuccess</returns>
+    ApiResponse<DetectedAzureSqlDatabaseDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostWithHttpInfo(string baseMonitorName,
+            SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameAzuresqlserversGet(string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> ApiBasemonitorsBaseMonitorNameAzuresqlserversGetWithHttpInfo(string baseMonitorName,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="updateSelectedDatabasesModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>JSendSuccess</returns>
+    JSendSuccess ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch(string serverName,
+        string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="updateSelectedDatabasesModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of JSendSuccess</returns>
+    ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchWithHttpInfo(
+        string serverName, string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AzureSqlDatabasesDtoJSendSuccess</returns>
+    AzureSqlDatabasesDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet(
+        string serverName, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AzureSqlDatabasesDtoJSendSuccess</returns>
+    ApiResponse<AzureSqlDatabasesDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetWithHttpInfo(string serverName,
+            string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="serverName"></param>
+    /// <param name="azureSqlServerName"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet(string baseMonitorName, string serverName,
+        string? azureSqlServerName = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="serverName"></param>
+    /// <param name="azureSqlServerName"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetWithHttpInfo(string baseMonitorName,
+        string serverName, string? azureSqlServerName = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="azureSqlServerDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut(string serverName, string baseMonitorName,
+        AzureSqlServerDto? azureSqlServerDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="azureSqlServerDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutWithHttpInfo(string serverName,
+        string baseMonitorName, AzureSqlServerDto? azureSqlServerDto = default, int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAzureSqlServersApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of DetectedAzureSqlDatabaseDtoArrayJSendSuccess</returns>
+    Task<DetectedAzureSqlDatabaseDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostAsync(
+        string baseMonitorName, SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (DetectedAzureSqlDatabaseDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<DetectedAzureSqlDatabaseDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostWithHttpInfoAsync(string baseMonitorName,
+            SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameAzuresqlserversGetAsync(string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversGetWithHttpInfoAsync(string baseMonitorName,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="updateSelectedDatabasesModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of JSendSuccess</returns>
+    Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchAsync(string serverName,
+        string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="updateSelectedDatabasesModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (JSendSuccess)</returns>
+    Task<ApiResponse<JSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchWithHttpInfoAsync(string serverName,
+            string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AzureSqlDatabasesDtoJSendSuccess</returns>
+    Task<AzureSqlDatabasesDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetAsync(string serverName,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AzureSqlDatabasesDtoJSendSuccess)</returns>
+    Task<ApiResponse<AzureSqlDatabasesDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetWithHttpInfoAsync(string serverName,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="serverName"></param>
+    /// <param name="azureSqlServerName"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetAsync(string baseMonitorName, string serverName,
+        string? azureSqlServerName = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="serverName"></param>
+    /// <param name="azureSqlServerName"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetWithHttpInfoAsync(
+        string baseMonitorName, string serverName, string? azureSqlServerName = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="azureSqlServerDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutAsync(string serverName, string baseMonitorName,
+        AzureSqlServerDto? azureSqlServerDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="azureSqlServerDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutWithHttpInfoAsync(
+        string serverName, string baseMonitorName, AzureSqlServerDto? azureSqlServerDto = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAzureSqlServersApi : IAzureSqlServersApiSync, IAzureSqlServersApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class AzureSqlServersApi : IAzureSqlServersApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="AzureSqlServersApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public AzureSqlServersApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DetectedAzureSqlDatabaseDtoArrayJSendSuccess</returns>
-        DetectedAzureSqlDatabaseDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost(string baseMonitorName, SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default(SelectDatabasesAzureSqlServerModel?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DetectedAzureSqlDatabaseDtoArrayJSendSuccess</returns>
-        ApiResponse<DetectedAzureSqlDatabaseDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostWithHttpInfo(string baseMonitorName, SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default(SelectDatabasesAzureSqlServerModel?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAzuresqlserversGet(string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversGetWithHttpInfo(string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="updateSelectedDatabasesModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>JSendSuccess</returns>
-        JSendSuccess ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch(string serverName, string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default(UpdateSelectedDatabasesModel?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="updateSelectedDatabasesModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of JSendSuccess</returns>
-        ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchWithHttpInfo(string serverName, string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default(UpdateSelectedDatabasesModel?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AzureSqlDatabasesDtoJSendSuccess</returns>
-        AzureSqlDatabasesDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet(string serverName, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AzureSqlDatabasesDtoJSendSuccess</returns>
-        ApiResponse<AzureSqlDatabasesDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetWithHttpInfo(string serverName, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="serverName"></param>
-        /// <param name="azureSqlServerName"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet(string baseMonitorName, string serverName, string? azureSqlServerName = default(string?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="serverName"></param>
-        /// <param name="azureSqlServerName"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetWithHttpInfo(string baseMonitorName, string serverName, string? azureSqlServerName = default(string?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="azureSqlServerDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut(string serverName, string baseMonitorName, AzureSqlServerDto? azureSqlServerDto = default(AzureSqlServerDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="azureSqlServerDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutWithHttpInfo(string serverName, string baseMonitorName, AzureSqlServerDto? azureSqlServerDto = default(AzureSqlServerDto?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AzureSqlServersApi" /> class.
     /// </summary>
-    public interface IAzureSqlServersApiAsync : IApiAccessor
+    /// <returns></returns>
+    public AzureSqlServersApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DetectedAzureSqlDatabaseDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<DetectedAzureSqlDatabaseDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostAsync(string baseMonitorName, SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default(SelectDatabasesAzureSqlServerModel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DetectedAzureSqlDatabaseDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DetectedAzureSqlDatabaseDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostWithHttpInfoAsync(string baseMonitorName, SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default(SelectDatabasesAzureSqlServerModel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="updateSelectedDatabasesModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of JSendSuccess</returns>
-        System.Threading.Tasks.Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchAsync(string serverName, string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default(UpdateSelectedDatabasesModel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="updateSelectedDatabasesModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (JSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchWithHttpInfoAsync(string serverName, string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default(UpdateSelectedDatabasesModel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AzureSqlDatabasesDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<AzureSqlDatabasesDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetAsync(string serverName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AzureSqlDatabasesDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AzureSqlDatabasesDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetWithHttpInfoAsync(string serverName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="serverName"></param>
-        /// <param name="azureSqlServerName"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetAsync(string baseMonitorName, string serverName, string? azureSqlServerName = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="serverName"></param>
-        /// <param name="azureSqlServerName"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetWithHttpInfoAsync(string baseMonitorName, string serverName, string? azureSqlServerName = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="azureSqlServerDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutAsync(string serverName, string baseMonitorName, AzureSqlServerDto? azureSqlServerDto = default(AzureSqlServerDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="azureSqlServerDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutWithHttpInfoAsync(string serverName, string baseMonitorName, AzureSqlServerDto? azureSqlServerDto = default(AzureSqlServerDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AzureSqlServersApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IAzureSqlServersApi : IAzureSqlServersApiSync, IAzureSqlServersApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public AzureSqlServersApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AzureSqlServersApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class AzureSqlServersApi : IAzureSqlServersApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public AzureSqlServersApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureSqlServersApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AzureSqlServersApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>DetectedAzureSqlDatabaseDtoArrayJSendSuccess</returns>
+    public DetectedAzureSqlDatabaseDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost(
+        string baseMonitorName, SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default,
+        int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostWithHttpInfo(baseMonitorName,
+                selectDatabasesAzureSqlServerModel);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of DetectedAzureSqlDatabaseDtoArrayJSendSuccess</returns>
+    public ApiResponse<DetectedAzureSqlDatabaseDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostWithHttpInfo(string baseMonitorName,
+            SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = selectDatabasesAzureSqlServerModel;
+
+        localVarRequestOptions.Operation =
+            "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<DetectedAzureSqlDatabaseDtoArrayJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/azuresqlservers/databases", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureSqlServersApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AzureSqlServersApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of DetectedAzureSqlDatabaseDtoArrayJSendSuccess</returns>
+    public async Task<DetectedAzureSqlDatabaseDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostAsync(string baseMonitorName,
+            SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostWithHttpInfoAsync(baseMonitorName,
+                selectDatabasesAzureSqlServerModel, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (DetectedAzureSqlDatabaseDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<DetectedAzureSqlDatabaseDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostWithHttpInfoAsync(string baseMonitorName,
+            SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = selectDatabasesAzureSqlServerModel;
+
+        localVarRequestOptions.Operation =
+            "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PostAsync<DetectedAzureSqlDatabaseDtoArrayJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/azuresqlservers/databases", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureSqlServersApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public AzureSqlServersApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNameAzuresqlserversGet(string baseMonitorName, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversGetWithHttpInfo(baseMonitorName);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> ApiBasemonitorsBaseMonitorNameAzuresqlserversGetWithHttpInfo(string baseMonitorName,
+        int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<object>("/api/basemonitors/{baseMonitorName}/azuresqlservers",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureSqlServersApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public AzureSqlServersApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task ApiBasemonitorsBaseMonitorNameAzuresqlserversGetAsync(string baseMonitorName,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await ApiBasemonitorsBaseMonitorNameAzuresqlserversGetWithHttpInfoAsync(baseMonitorName, operationIndex,
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversGetWithHttpInfoAsync(
+        string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>("/api/basemonitors/{baseMonitorName}/azuresqlservers", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="updateSelectedDatabasesModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>JSendSuccess</returns>
+    public JSendSuccess ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch(string serverName,
+        string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default,
+        int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchWithHttpInfo(serverName,
+                baseMonitorName, updateSelectedDatabasesModel);
+        return localVarResponse.Data;
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="updateSelectedDatabasesModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of JSendSuccess</returns>
+    public ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchWithHttpInfo(
+        string serverName, string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default,
+        int operationIndex = 0)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            return this.Configuration.BasePath;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = updateSelectedDatabasesModel;
+
+        localVarRequestOptions.Operation =
+            "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Patch<JSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/databases", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="updateSelectedDatabasesModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of JSendSuccess</returns>
+    public async Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchAsync(
+        string serverName, string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchWithHttpInfoAsync(serverName,
+                baseMonitorName, updateSelectedDatabasesModel, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="updateSelectedDatabasesModel"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (JSendSuccess)</returns>
+    public async Task<ApiResponse<JSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchWithHttpInfoAsync(string serverName,
+            string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = updateSelectedDatabasesModel;
+
+        localVarRequestOptions.Operation =
+            "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<JSendSuccess>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/databases",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DetectedAzureSqlDatabaseDtoArrayJSendSuccess</returns>
-        public DetectedAzureSqlDatabaseDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost(string baseMonitorName, SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default(SelectDatabasesAzureSqlServerModel?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AzureSqlDatabasesDtoJSendSuccess</returns>
+    public AzureSqlDatabasesDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet(
+        string serverName, string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetWithHttpInfo(serverName,
+                baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AzureSqlDatabasesDtoJSendSuccess</returns>
+    public ApiResponse<AzureSqlDatabasesDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetWithHttpInfo(string serverName,
+            string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<DetectedAzureSqlDatabaseDtoArrayJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostWithHttpInfo(baseMonitorName, selectDatabasesAzureSqlServerModel);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<AzureSqlDatabasesDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/fetchDatabases", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DetectedAzureSqlDatabaseDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<DetectedAzureSqlDatabaseDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostWithHttpInfo(string baseMonitorName, SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default(SelectDatabasesAzureSqlServerModel?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AzureSqlDatabasesDtoJSendSuccess</returns>
+    public async Task<AzureSqlDatabasesDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetAsync(string serverName,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetWithHttpInfoAsync(serverName,
+                baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AzureSqlDatabasesDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<AzureSqlDatabasesDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetWithHttpInfoAsync(string serverName,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost");
-            }
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = selectDatabasesAzureSqlServerModel;
-
-            localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<DetectedAzureSqlDatabaseDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/azuresqlservers/databases", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<AzureSqlDatabasesDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/fetchDatabases",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DetectedAzureSqlDatabaseDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<DetectedAzureSqlDatabaseDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostAsync(string baseMonitorName, SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default(SelectDatabasesAzureSqlServerModel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="serverName"></param>
+    /// <param name="azureSqlServerName"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet(string baseMonitorName, string serverName,
+        string? azureSqlServerName = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetWithHttpInfo(baseMonitorName, serverName,
+            azureSqlServerName);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="serverName"></param>
+    /// <param name="azureSqlServerName"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetWithHttpInfo(
+        string baseMonitorName, string serverName, string? azureSqlServerName = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet");
+
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<DetectedAzureSqlDatabaseDtoArrayJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostWithHttpInfoAsync(baseMonitorName, selectDatabasesAzureSqlServerModel, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        if (azureSqlServerName != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "azureSqlServerName", azureSqlServerName));
+
+        localVarRequestOptions.Operation =
+            "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="selectDatabasesAzureSqlServerModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DetectedAzureSqlDatabaseDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<DetectedAzureSqlDatabaseDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPostWithHttpInfoAsync(string baseMonitorName, SelectDatabasesAzureSqlServerModel? selectDatabasesAzureSqlServerModel = default(SelectDatabasesAzureSqlServerModel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="serverName"></param>
+    /// <param name="azureSqlServerName"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetAsync(string baseMonitorName,
+        string serverName, string? azureSqlServerName = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        await ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetWithHttpInfoAsync(baseMonitorName, serverName,
+            azureSqlServerName, operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="serverName"></param>
+    /// <param name="azureSqlServerName"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetWithHttpInfoAsync(
+        string baseMonitorName, string serverName, string? azureSqlServerName = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet");
+
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost");
-            }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        if (azureSqlServerName != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "azureSqlServerName", azureSqlServerName));
+
+        localVarRequestOptions.Operation =
+            "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = selectDatabasesAzureSqlServerModel;
-
-            localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<DetectedAzureSqlDatabaseDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/azuresqlservers/databases", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversDatabasesPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAzuresqlserversGet(string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="azureSqlServerDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut(string serverName, string baseMonitorName,
+        AzureSqlServerDto? azureSqlServerDto = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutWithHttpInfo(serverName, baseMonitorName,
+            azureSqlServerDto);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="azureSqlServerDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutWithHttpInfo(string serverName,
+        string baseMonitorName, AzureSqlServerDto? azureSqlServerDto = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            ApiBasemonitorsBaseMonitorNameAzuresqlserversGetWithHttpInfo(baseMonitorName);
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = azureSqlServerDto;
+
+        localVarRequestOptions.Operation =
+            "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Put<object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversGetWithHttpInfo(string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="azureSqlServerDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutAsync(string serverName,
+        string baseMonitorName, AzureSqlServerDto? azureSqlServerDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        await ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutWithHttpInfoAsync(serverName, baseMonitorName,
+            azureSqlServerDto, operationIndex, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="azureSqlServerDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutWithHttpInfoAsync(
+        string serverName, string baseMonitorName, AzureSqlServerDto? azureSqlServerDto = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversGet");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = azureSqlServerDto;
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PutAsync<object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameAzuresqlserversGetWithHttpInfoAsync(baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="updateSelectedDatabasesModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>JSendSuccess</returns>
-        public JSendSuccess ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch(string serverName, string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default(UpdateSelectedDatabasesModel?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<JSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchWithHttpInfo(serverName, baseMonitorName, updateSelectedDatabasesModel);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="updateSelectedDatabasesModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of JSendSuccess</returns>
-        public cli.Client.ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchWithHttpInfo(string serverName, string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default(UpdateSelectedDatabasesModel?), int operationIndex = 0)
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = updateSelectedDatabasesModel;
-
-            localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<JSendSuccess>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/databases", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="updateSelectedDatabasesModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of JSendSuccess</returns>
-        public async System.Threading.Tasks.Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchAsync(string serverName, string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default(UpdateSelectedDatabasesModel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<JSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchWithHttpInfoAsync(serverName, baseMonitorName, updateSelectedDatabasesModel, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="updateSelectedDatabasesModel"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (JSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<JSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatchWithHttpInfoAsync(string serverName, string baseMonitorName, UpdateSelectedDatabasesModel? updateSelectedDatabasesModel = default(UpdateSelectedDatabasesModel?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = updateSelectedDatabasesModel;
-
-            localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<JSendSuccess>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/databases", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameDatabasesPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AzureSqlDatabasesDtoJSendSuccess</returns>
-        public AzureSqlDatabasesDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet(string serverName, string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<AzureSqlDatabasesDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetWithHttpInfo(serverName, baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AzureSqlDatabasesDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<AzureSqlDatabasesDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetWithHttpInfo(string serverName, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<AzureSqlDatabasesDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/fetchDatabases", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AzureSqlDatabasesDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<AzureSqlDatabasesDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetAsync(string serverName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<AzureSqlDatabasesDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetWithHttpInfoAsync(serverName, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AzureSqlDatabasesDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AzureSqlDatabasesDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGetWithHttpInfoAsync(string serverName, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<AzureSqlDatabasesDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}/fetchDatabases", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameFetchDatabasesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="serverName"></param>
-        /// <param name="azureSqlServerName"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet(string baseMonitorName, string serverName, string? azureSqlServerName = default(string?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetWithHttpInfo(baseMonitorName, serverName, azureSqlServerName);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="serverName"></param>
-        /// <param name="azureSqlServerName"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetWithHttpInfo(string baseMonitorName, string serverName, string? azureSqlServerName = default(string?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet");
-            }
-
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            if (azureSqlServerName != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "azureSqlServerName", azureSqlServerName));
-            }
-
-            localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="serverName"></param>
-        /// <param name="azureSqlServerName"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetAsync(string baseMonitorName, string serverName, string? azureSqlServerName = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetWithHttpInfoAsync(baseMonitorName, serverName, azureSqlServerName, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="serverName"></param>
-        /// <param name="azureSqlServerName"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGetWithHttpInfoAsync(string baseMonitorName, string serverName, string? azureSqlServerName = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet");
-            }
-
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            if (azureSqlServerName != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "azureSqlServerName", azureSqlServerName));
-            }
-
-            localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNameGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="azureSqlServerDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut(string serverName, string baseMonitorName, AzureSqlServerDto? azureSqlServerDto = default(AzureSqlServerDto?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutWithHttpInfo(serverName, baseMonitorName, azureSqlServerDto);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="azureSqlServerDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutWithHttpInfo(string serverName, string baseMonitorName, AzureSqlServerDto? azureSqlServerDto = default(AzureSqlServerDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = azureSqlServerDto;
-
-            localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Put<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="azureSqlServerDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutAsync(string serverName, string baseMonitorName, AzureSqlServerDto? azureSqlServerDto = default(AzureSqlServerDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutWithHttpInfoAsync(serverName, baseMonitorName, azureSqlServerDto, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="azureSqlServerDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePutWithHttpInfoAsync(string serverName, string baseMonitorName, AzureSqlServerDto? azureSqlServerDto = default(AzureSqlServerDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureSqlServersApi->ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = azureSqlServerDto;
-
-            localVarRequestOptions.Operation = "AzureSqlServersApi.ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<Object>("/api/basemonitors/{baseMonitorName}/azuresqlservers/{serverName}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuresqlserversServerNamePut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

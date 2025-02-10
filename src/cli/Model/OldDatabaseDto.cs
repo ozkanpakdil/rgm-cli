@@ -9,137 +9,129 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     OldDatabaseDto
+/// </summary>
+[DataContract(Name = "OldDatabaseDto")]
+public class OldDatabaseDto : IValidatableObject
 {
     /// <summary>
-    /// OldDatabaseDto
+    ///     Initializes a new instance of the <see cref="OldDatabaseDto" /> class.
     /// </summary>
-    [DataContract(Name = "OldDatabaseDto")]
-    public partial class OldDatabaseDto : IValidatableObject
+    /// <param name="name">name.</param>
+    /// <param name="owner">owner.</param>
+    /// <param name="state">state.</param>
+    /// <param name="created">created.</param>
+    /// <param name="collectionDate">collectionDate.</param>
+    /// <param name="totalActiveUsers">totalActiveUsers.</param>
+    /// <param name="users">users.</param>
+    /// <param name="roles">roles.</param>
+    public OldDatabaseDto(string name = default, string owner = default, string state = default,
+        DateTime created = default, DateTime collectionDate = default, long totalActiveUsers = default,
+        List<OldDatabaseUserDto> users = default, List<OldDatabaseRoleDto> roles = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OldDatabaseDto" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="owner">owner.</param>
-        /// <param name="state">state.</param>
-        /// <param name="created">created.</param>
-        /// <param name="collectionDate">collectionDate.</param>
-        /// <param name="totalActiveUsers">totalActiveUsers.</param>
-        /// <param name="users">users.</param>
-        /// <param name="roles">roles.</param>
-        public OldDatabaseDto(string name = default(string), string owner = default(string), string state = default(string), DateTime created = default(DateTime), DateTime collectionDate = default(DateTime), long totalActiveUsers = default(long), List<OldDatabaseUserDto> users = default(List<OldDatabaseUserDto>), List<OldDatabaseRoleDto> roles = default(List<OldDatabaseRoleDto>))
-        {
-            this.Name = name;
-            this.Owner = owner;
-            this.State = state;
-            this.Created = created;
-            this.CollectionDate = collectionDate;
-            this.TotalActiveUsers = totalActiveUsers;
-            this.Users = users;
-            this.Roles = roles;
-        }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Owner
-        /// </summary>
-        [DataMember(Name = "owner", EmitDefaultValue = true)]
-        public string Owner { get; set; }
-
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name = "state", EmitDefaultValue = true)]
-        public string State { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Created
-        /// </summary>
-        [DataMember(Name = "created", EmitDefaultValue = false)]
-        public DateTime Created { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CollectionDate
-        /// </summary>
-        [DataMember(Name = "collectionDate", EmitDefaultValue = false)]
-        public DateTime CollectionDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TotalActiveUsers
-        /// </summary>
-        [DataMember(Name = "totalActiveUsers", EmitDefaultValue = false)]
-        public long TotalActiveUsers { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Users
-        /// </summary>
-        [DataMember(Name = "users", EmitDefaultValue = true)]
-        public List<OldDatabaseUserDto> Users { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Roles
-        /// </summary>
-        [DataMember(Name = "roles", EmitDefaultValue = true)]
-        public List<OldDatabaseRoleDto> Roles { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class OldDatabaseDto {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Owner: ").Append(Owner).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  Created: ").Append(Created).Append("\n");
-            sb.Append("  CollectionDate: ").Append(CollectionDate).Append("\n");
-            sb.Append("  TotalActiveUsers: ").Append(TotalActiveUsers).Append("\n");
-            sb.Append("  Users: ").Append(Users).Append("\n");
-            sb.Append("  Roles: ").Append(Roles).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Name = name;
+        Owner = owner;
+        State = state;
+        Created = created;
+        CollectionDate = collectionDate;
+        TotalActiveUsers = totalActiveUsers;
+        Users = users;
+        Roles = roles;
     }
 
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Owner
+    /// </summary>
+    [DataMember(Name = "owner", EmitDefaultValue = true)]
+    public string Owner { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets State
+    /// </summary>
+    [DataMember(Name = "state", EmitDefaultValue = true)]
+    public string State { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Created
+    /// </summary>
+    [DataMember(Name = "created", EmitDefaultValue = false)]
+    public DateTime Created { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CollectionDate
+    /// </summary>
+    [DataMember(Name = "collectionDate", EmitDefaultValue = false)]
+    public DateTime CollectionDate { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TotalActiveUsers
+    /// </summary>
+    [DataMember(Name = "totalActiveUsers", EmitDefaultValue = false)]
+    public long TotalActiveUsers { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Users
+    /// </summary>
+    [DataMember(Name = "users", EmitDefaultValue = true)]
+    public List<OldDatabaseUserDto> Users { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Roles
+    /// </summary>
+    [DataMember(Name = "roles", EmitDefaultValue = true)]
+    public List<OldDatabaseRoleDto> Roles { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class OldDatabaseDto {\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  Owner: ").Append(Owner).Append("\n");
+        sb.Append("  State: ").Append(State).Append("\n");
+        sb.Append("  Created: ").Append(Created).Append("\n");
+        sb.Append("  CollectionDate: ").Append(CollectionDate).Append("\n");
+        sb.Append("  TotalActiveUsers: ").Append(TotalActiveUsers).Append("\n");
+        sb.Append("  Users: ").Append(Users).Append("\n");
+        sb.Append("  Roles: ").Append(Roles).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

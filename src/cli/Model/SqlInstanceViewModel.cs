@@ -8,102 +8,93 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Common.Domain;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     SqlInstanceViewModel
+/// </summary>
+[DataContract(Name = "SqlInstanceViewModel")]
+public class SqlInstanceViewModel : IValidatableObject
 {
     /// <summary>
-    /// SqlInstanceViewModel
+    ///     Initializes a new instance of the <see cref="SqlInstanceViewModel" /> class.
     /// </summary>
-    [DataContract(Name = "SqlInstanceViewModel")]
-    public partial class SqlInstanceViewModel : IValidatableObject
+    /// <param name="instanceKey">instanceKey.</param>
+    /// <param name="entityName">entityName.</param>
+    /// <param name="entityType">entityType.</param>
+    /// <param name="tags">tags.</param>
+    public SqlInstanceViewModel(string instanceKey = default, string entityName = default,
+        EntityType? entityType = default, List<TagDto> tags = default)
     {
-
-        /// <summary>
-        /// Gets or Sets EntityType
-        /// </summary>
-        [DataMember(Name = "entityType", EmitDefaultValue = false)]
-        public EntityType? EntityType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SqlInstanceViewModel" /> class.
-        /// </summary>
-        /// <param name="instanceKey">instanceKey.</param>
-        /// <param name="entityName">entityName.</param>
-        /// <param name="entityType">entityType.</param>
-        /// <param name="tags">tags.</param>
-        public SqlInstanceViewModel(string instanceKey = default(string), string entityName = default(string), EntityTypeEnum? entityType = default(EntityTypeEnum?), List<TagDto> tags = default(List<TagDto>))
-        {
-            this.InstanceKey = instanceKey;
-            this.EntityName = entityName;
-            this.EntityType = entityType;
-            this.Tags = tags;
-        }
-
-        /// <summary>
-        /// Gets or Sets InstanceKey
-        /// </summary>
-        [DataMember(Name = "instanceKey", EmitDefaultValue = true)]
-        public string InstanceKey { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EntityName
-        /// </summary>
-        [DataMember(Name = "entityName", EmitDefaultValue = true)]
-        public string EntityName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Tags
-        /// </summary>
-        [DataMember(Name = "tags", EmitDefaultValue = true)]
-        public List<TagDto> Tags { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class SqlInstanceViewModel {\n");
-            sb.Append("  InstanceKey: ").Append(InstanceKey).Append("\n");
-            sb.Append("  EntityName: ").Append(EntityName).Append("\n");
-            sb.Append("  EntityType: ").Append(EntityType).Append("\n");
-            sb.Append("  Tags: ").Append(Tags).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        InstanceKey = instanceKey;
+        EntityName = entityName;
+        EntityType = entityType;
+        Tags = tags;
     }
 
+    /// <summary>
+    ///     Gets or Sets EntityType
+    /// </summary>
+    [DataMember(Name = "entityType", EmitDefaultValue = false)]
+    public EntityType? EntityType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets InstanceKey
+    /// </summary>
+    [DataMember(Name = "instanceKey", EmitDefaultValue = true)]
+    public string InstanceKey { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EntityName
+    /// </summary>
+    [DataMember(Name = "entityName", EmitDefaultValue = true)]
+    public string EntityName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Tags
+    /// </summary>
+    [DataMember(Name = "tags", EmitDefaultValue = true)]
+    public List<TagDto> Tags { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class SqlInstanceViewModel {\n");
+        sb.Append("  InstanceKey: ").Append(InstanceKey).Append("\n");
+        sb.Append("  EntityName: ").Append(EntityName).Append("\n");
+        sb.Append("  EntityType: ").Append(EntityType).Append("\n");
+        sb.Append("  Tags: ").Append(Tags).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -9,308 +9,301 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Channels.Data;
+using RedGate.SqlMonitor.Common.Domain;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     ManageEntityViewModel
+/// </summary>
+[DataContract(Name = "ManageEntityViewModel")]
+public class ManageEntityViewModel : IValidatableObject
 {
     /// <summary>
-    /// ManageEntityViewModel
+    ///     Initializes a new instance of the <see cref="ManageEntityViewModel" /> class.
     /// </summary>
-    [DataContract(Name = "ManageEntityViewModel")]
-    public partial class ManageEntityViewModel : IValidatableObject
+    [JsonConstructorAttribute]
+    protected ManageEntityViewModel()
     {
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
-        public MonitoredEntityStatusDto Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
-        public EntityType Type { get; set; }
-
-        /// <summary>
-        /// Gets or Sets HostType
-        /// </summary>
-        [DataMember(Name = "hostType", EmitDefaultValue = true)]
-        public EntityType? HostType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManageEntityViewModel" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected ManageEntityViewModel() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManageEntityViewModel" /> class.
-        /// </summary>
-        /// <param name="isClusterNodeInstance">isClusterNodeInstance.</param>
-        /// <param name="clusterNodeName">clusterNodeName.</param>
-        /// <param name="id">id (required).</param>
-        /// <param name="fullyQualifiedName">fullyQualifiedName (required).</param>
-        /// <param name="name">name (required).</param>
-        /// <param name="credentials">credentials (required).</param>
-        /// <param name="credentialsDescription">credentialsDescription (required).</param>
-        /// <param name="alias">alias.</param>
-        /// <param name="status">status (required).</param>
-        /// <param name="userCanRetryConnection">userCanRetryConnection.</param>
-        /// <param name="userCanSuspendAndResume">userCanSuspendAndResume.</param>
-        /// <param name="machines">machines.</param>
-        /// <param name="sqlServers">sqlServers.</param>
-        /// <param name="type">type (required).</param>
-        /// <param name="hostType">hostType.</param>
-        /// <param name="isCluster">isCluster.</param>
-        /// <param name="isRemovable">isRemovable.</param>
-        /// <param name="tags">tags.</param>
-        /// <param name="entityReference">entityReference (required).</param>
-        /// <param name="childStatuses">childStatuses.</param>
-        /// <param name="groupId">groupId (required).</param>
-        /// <param name="baseMonitorName">baseMonitorName (required).</param>
-        public ManageEntityViewModel(bool isClusterNodeInstance = default(bool), string clusterNodeName = default(string), string id = default(string), string fullyQualifiedName = default(string), string name = default(string), AllCredentialsModel credentials = default(AllCredentialsModel), string credentialsDescription = default(string), string alias = default(string), MonitoredEntityStatusDto status = default(MonitoredEntityStatusDto), bool userCanRetryConnection = default(bool), bool userCanSuspendAndResume = default(bool), List<ManageEntityViewModel> machines = default(List<ManageEntityViewModel>), List<ManageEntityViewModel> sqlServers = default(List<ManageEntityViewModel>), TypeEnum type = default(TypeEnum), HostTypeEnum? hostType = default(HostTypeEnum?), bool isCluster = default(bool), bool isRemovable = default(bool), List<TagDto> tags = default(List<TagDto>), ChannelInstanceRef entityReference = default(ChannelInstanceRef), List<ManagedEntityChildStatusViewModel> childStatuses = default(List<ManagedEntityChildStatusViewModel>), string groupId = default(string), string baseMonitorName = default(string))
-        {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new ArgumentNullException("id is a required property for ManageEntityViewModel and cannot be null");
-            }
-            this.Id = id;
-            // to ensure "fullyQualifiedName" is required (not null)
-            if (fullyQualifiedName == null)
-            {
-                throw new ArgumentNullException("fullyQualifiedName is a required property for ManageEntityViewModel and cannot be null");
-            }
-            this.FullyQualifiedName = fullyQualifiedName;
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for ManageEntityViewModel and cannot be null");
-            }
-            this.Name = name;
-            // to ensure "credentials" is required (not null)
-            if (credentials == null)
-            {
-                throw new ArgumentNullException("credentials is a required property for ManageEntityViewModel and cannot be null");
-            }
-            this.Credentials = credentials;
-            // to ensure "credentialsDescription" is required (not null)
-            if (credentialsDescription == null)
-            {
-                throw new ArgumentNullException("credentialsDescription is a required property for ManageEntityViewModel and cannot be null");
-            }
-            this.CredentialsDescription = credentialsDescription;
-            this.Status = status;
-            this.Type = type;
-            // to ensure "entityReference" is required (not null)
-            if (entityReference == null)
-            {
-                throw new ArgumentNullException("entityReference is a required property for ManageEntityViewModel and cannot be null");
-            }
-            this.EntityReference = entityReference;
-            // to ensure "groupId" is required (not null)
-            if (groupId == null)
-            {
-                throw new ArgumentNullException("groupId is a required property for ManageEntityViewModel and cannot be null");
-            }
-            this.GroupId = groupId;
-            // to ensure "baseMonitorName" is required (not null)
-            if (baseMonitorName == null)
-            {
-                throw new ArgumentNullException("baseMonitorName is a required property for ManageEntityViewModel and cannot be null");
-            }
-            this.BaseMonitorName = baseMonitorName;
-            this.IsClusterNodeInstance = isClusterNodeInstance;
-            this.ClusterNodeName = clusterNodeName;
-            this.Alias = alias;
-            this.UserCanRetryConnection = userCanRetryConnection;
-            this.UserCanSuspendAndResume = userCanSuspendAndResume;
-            this.Machines = machines;
-            this.SqlServers = sqlServers;
-            this.HostType = hostType;
-            this.IsCluster = isCluster;
-            this.IsRemovable = isRemovable;
-            this.Tags = tags;
-            this.ChildStatuses = childStatuses;
-        }
-
-        /// <summary>
-        /// Gets or Sets IsClusterNodeInstance
-        /// </summary>
-        [DataMember(Name = "isClusterNodeInstance", EmitDefaultValue = true)]
-        public bool IsClusterNodeInstance { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ClusterNodeName
-        /// </summary>
-        [DataMember(Name = "clusterNodeName", EmitDefaultValue = true)]
-        public string ClusterNodeName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FullyQualifiedName
-        /// </summary>
-        [DataMember(Name = "fullyQualifiedName", IsRequired = true, EmitDefaultValue = true)]
-        public string FullyQualifiedName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Credentials
-        /// </summary>
-        [DataMember(Name = "credentials", IsRequired = true, EmitDefaultValue = true)]
-        public AllCredentialsModel Credentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CredentialsDescription
-        /// </summary>
-        [DataMember(Name = "credentialsDescription", IsRequired = true, EmitDefaultValue = true)]
-        public string CredentialsDescription { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Alias
-        /// </summary>
-        [DataMember(Name = "alias", EmitDefaultValue = true)]
-        public string Alias { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UserCanRetryConnection
-        /// </summary>
-        [DataMember(Name = "userCanRetryConnection", EmitDefaultValue = true)]
-        public bool UserCanRetryConnection { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UserCanSuspendAndResume
-        /// </summary>
-        [DataMember(Name = "userCanSuspendAndResume", EmitDefaultValue = true)]
-        public bool UserCanSuspendAndResume { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Machines
-        /// </summary>
-        [DataMember(Name = "machines", EmitDefaultValue = false)]
-        public List<ManageEntityViewModel> Machines { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlServers
-        /// </summary>
-        [DataMember(Name = "sqlServers", EmitDefaultValue = false)]
-        public List<ManageEntityViewModel> SqlServers { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsCluster
-        /// </summary>
-        [DataMember(Name = "isCluster", EmitDefaultValue = true)]
-        public bool IsCluster { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsRemovable
-        /// </summary>
-        [DataMember(Name = "isRemovable", EmitDefaultValue = true)]
-        public bool IsRemovable { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Tags
-        /// </summary>
-        [DataMember(Name = "tags", EmitDefaultValue = false)]
-        public List<TagDto> Tags { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EntityReference
-        /// </summary>
-        [DataMember(Name = "entityReference", IsRequired = true, EmitDefaultValue = true)]
-        public ChannelInstanceRef EntityReference { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ChildStatuses
-        /// </summary>
-        [DataMember(Name = "childStatuses", EmitDefaultValue = false)]
-        public List<ManagedEntityChildStatusViewModel> ChildStatuses { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GroupId
-        /// </summary>
-        [DataMember(Name = "groupId", IsRequired = true, EmitDefaultValue = true)]
-        public string GroupId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BaseMonitorName
-        /// </summary>
-        [DataMember(Name = "baseMonitorName", IsRequired = true, EmitDefaultValue = true)]
-        public string BaseMonitorName { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class ManageEntityViewModel {\n");
-            sb.Append("  IsClusterNodeInstance: ").Append(IsClusterNodeInstance).Append("\n");
-            sb.Append("  ClusterNodeName: ").Append(ClusterNodeName).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  FullyQualifiedName: ").Append(FullyQualifiedName).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Credentials: ").Append(Credentials).Append("\n");
-            sb.Append("  CredentialsDescription: ").Append(CredentialsDescription).Append("\n");
-            sb.Append("  Alias: ").Append(Alias).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  UserCanRetryConnection: ").Append(UserCanRetryConnection).Append("\n");
-            sb.Append("  UserCanSuspendAndResume: ").Append(UserCanSuspendAndResume).Append("\n");
-            sb.Append("  Machines: ").Append(Machines).Append("\n");
-            sb.Append("  SqlServers: ").Append(SqlServers).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  HostType: ").Append(HostType).Append("\n");
-            sb.Append("  IsCluster: ").Append(IsCluster).Append("\n");
-            sb.Append("  IsRemovable: ").Append(IsRemovable).Append("\n");
-            sb.Append("  Tags: ").Append(Tags).Append("\n");
-            sb.Append("  EntityReference: ").Append(EntityReference).Append("\n");
-            sb.Append("  ChildStatuses: ").Append(ChildStatuses).Append("\n");
-            sb.Append("  GroupId: ").Append(GroupId).Append("\n");
-            sb.Append("  BaseMonitorName: ").Append(BaseMonitorName).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ManageEntityViewModel" /> class.
+    /// </summary>
+    /// <param name="isClusterNodeInstance">isClusterNodeInstance.</param>
+    /// <param name="clusterNodeName">clusterNodeName.</param>
+    /// <param name="id">id (required).</param>
+    /// <param name="fullyQualifiedName">fullyQualifiedName (required).</param>
+    /// <param name="name">name (required).</param>
+    /// <param name="credentials">credentials (required).</param>
+    /// <param name="credentialsDescription">credentialsDescription (required).</param>
+    /// <param name="alias">alias.</param>
+    /// <param name="status">status (required).</param>
+    /// <param name="userCanRetryConnection">userCanRetryConnection.</param>
+    /// <param name="userCanSuspendAndResume">userCanSuspendAndResume.</param>
+    /// <param name="machines">machines.</param>
+    /// <param name="sqlServers">sqlServers.</param>
+    /// <param name="type">type (required).</param>
+    /// <param name="hostType">hostType.</param>
+    /// <param name="isCluster">isCluster.</param>
+    /// <param name="isRemovable">isRemovable.</param>
+    /// <param name="tags">tags.</param>
+    /// <param name="entityReference">entityReference (required).</param>
+    /// <param name="childStatuses">childStatuses.</param>
+    /// <param name="groupId">groupId (required).</param>
+    /// <param name="baseMonitorName">baseMonitorName (required).</param>
+    public ManageEntityViewModel(bool isClusterNodeInstance = default, string clusterNodeName = default,
+        string id = default, string fullyQualifiedName = default, string name = default,
+        AllCredentialsModel credentials = default, string credentialsDescription = default, string alias = default,
+        MonitoredEntityStatusDto status = default, bool userCanRetryConnection = default,
+        bool userCanSuspendAndResume = default, List<ManageEntityViewModel> machines = default,
+        List<ManageEntityViewModel> sqlServers = default, EntityType type = default, EntityType? hostType = default,
+        bool isCluster = default, bool isRemovable = default, List<TagDto> tags = default,
+        ChannelInstanceRef entityReference = default, List<ManagedEntityChildStatusViewModel> childStatuses = default,
+        string groupId = default, string baseMonitorName = default)
+    {
+        // to ensure "id" is required (not null)
+        if (id == null)
+            throw new ArgumentNullException("id is a required property for ManageEntityViewModel and cannot be null");
+        Id = id;
+        // to ensure "fullyQualifiedName" is required (not null)
+        if (fullyQualifiedName == null)
+            throw new ArgumentNullException(
+                "fullyQualifiedName is a required property for ManageEntityViewModel and cannot be null");
+        FullyQualifiedName = fullyQualifiedName;
+        // to ensure "name" is required (not null)
+        if (name == null)
+            throw new ArgumentNullException("name is a required property for ManageEntityViewModel and cannot be null");
+        Name = name;
+        // to ensure "credentials" is required (not null)
+        if (credentials == null)
+            throw new ArgumentNullException(
+                "credentials is a required property for ManageEntityViewModel and cannot be null");
+        Credentials = credentials;
+        // to ensure "credentialsDescription" is required (not null)
+        if (credentialsDescription == null)
+            throw new ArgumentNullException(
+                "credentialsDescription is a required property for ManageEntityViewModel and cannot be null");
+        CredentialsDescription = credentialsDescription;
+        Status = status;
+        Type = type;
+        // to ensure "entityReference" is required (not null)
+        if (entityReference == null)
+            throw new ArgumentNullException(
+                "entityReference is a required property for ManageEntityViewModel and cannot be null");
+        EntityReference = entityReference;
+        // to ensure "groupId" is required (not null)
+        if (groupId == null)
+            throw new ArgumentNullException(
+                "groupId is a required property for ManageEntityViewModel and cannot be null");
+        GroupId = groupId;
+        // to ensure "baseMonitorName" is required (not null)
+        if (baseMonitorName == null)
+            throw new ArgumentNullException(
+                "baseMonitorName is a required property for ManageEntityViewModel and cannot be null");
+        BaseMonitorName = baseMonitorName;
+        IsClusterNodeInstance = isClusterNodeInstance;
+        ClusterNodeName = clusterNodeName;
+        Alias = alias;
+        UserCanRetryConnection = userCanRetryConnection;
+        UserCanSuspendAndResume = userCanSuspendAndResume;
+        Machines = machines;
+        SqlServers = sqlServers;
+        HostType = hostType;
+        IsCluster = isCluster;
+        IsRemovable = isRemovable;
+        Tags = tags;
+        ChildStatuses = childStatuses;
+    }
+
+    /// <summary>
+    ///     Gets or Sets Status
+    /// </summary>
+    [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
+    public MonitoredEntityStatusDto Status { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Type
+    /// </summary>
+    [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
+    public EntityType Type { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets HostType
+    /// </summary>
+    [DataMember(Name = "hostType", EmitDefaultValue = true)]
+    public EntityType? HostType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsClusterNodeInstance
+    /// </summary>
+    [DataMember(Name = "isClusterNodeInstance", EmitDefaultValue = true)]
+    public bool IsClusterNodeInstance { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ClusterNodeName
+    /// </summary>
+    [DataMember(Name = "clusterNodeName", EmitDefaultValue = true)]
+    public string ClusterNodeName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Id
+    /// </summary>
+    [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
+    public string Id { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FullyQualifiedName
+    /// </summary>
+    [DataMember(Name = "fullyQualifiedName", IsRequired = true, EmitDefaultValue = true)]
+    public string FullyQualifiedName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Credentials
+    /// </summary>
+    [DataMember(Name = "credentials", IsRequired = true, EmitDefaultValue = true)]
+    public AllCredentialsModel Credentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CredentialsDescription
+    /// </summary>
+    [DataMember(Name = "credentialsDescription", IsRequired = true, EmitDefaultValue = true)]
+    public string CredentialsDescription { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Alias
+    /// </summary>
+    [DataMember(Name = "alias", EmitDefaultValue = true)]
+    public string Alias { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UserCanRetryConnection
+    /// </summary>
+    [DataMember(Name = "userCanRetryConnection", EmitDefaultValue = true)]
+    public bool UserCanRetryConnection { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UserCanSuspendAndResume
+    /// </summary>
+    [DataMember(Name = "userCanSuspendAndResume", EmitDefaultValue = true)]
+    public bool UserCanSuspendAndResume { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Machines
+    /// </summary>
+    [DataMember(Name = "machines", EmitDefaultValue = false)]
+    public List<ManageEntityViewModel> Machines { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlServers
+    /// </summary>
+    [DataMember(Name = "sqlServers", EmitDefaultValue = false)]
+    public List<ManageEntityViewModel> SqlServers { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsCluster
+    /// </summary>
+    [DataMember(Name = "isCluster", EmitDefaultValue = true)]
+    public bool IsCluster { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsRemovable
+    /// </summary>
+    [DataMember(Name = "isRemovable", EmitDefaultValue = true)]
+    public bool IsRemovable { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Tags
+    /// </summary>
+    [DataMember(Name = "tags", EmitDefaultValue = false)]
+    public List<TagDto> Tags { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EntityReference
+    /// </summary>
+    [DataMember(Name = "entityReference", IsRequired = true, EmitDefaultValue = true)]
+    public ChannelInstanceRef EntityReference { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ChildStatuses
+    /// </summary>
+    [DataMember(Name = "childStatuses", EmitDefaultValue = false)]
+    public List<ManagedEntityChildStatusViewModel> ChildStatuses { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets GroupId
+    /// </summary>
+    [DataMember(Name = "groupId", IsRequired = true, EmitDefaultValue = true)]
+    public string GroupId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets BaseMonitorName
+    /// </summary>
+    [DataMember(Name = "baseMonitorName", IsRequired = true, EmitDefaultValue = true)]
+    public string BaseMonitorName { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class ManageEntityViewModel {\n");
+        sb.Append("  IsClusterNodeInstance: ").Append(IsClusterNodeInstance).Append("\n");
+        sb.Append("  ClusterNodeName: ").Append(ClusterNodeName).Append("\n");
+        sb.Append("  Id: ").Append(Id).Append("\n");
+        sb.Append("  FullyQualifiedName: ").Append(FullyQualifiedName).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  Credentials: ").Append(Credentials).Append("\n");
+        sb.Append("  CredentialsDescription: ").Append(CredentialsDescription).Append("\n");
+        sb.Append("  Alias: ").Append(Alias).Append("\n");
+        sb.Append("  Status: ").Append(Status).Append("\n");
+        sb.Append("  UserCanRetryConnection: ").Append(UserCanRetryConnection).Append("\n");
+        sb.Append("  UserCanSuspendAndResume: ").Append(UserCanSuspendAndResume).Append("\n");
+        sb.Append("  Machines: ").Append(Machines).Append("\n");
+        sb.Append("  SqlServers: ").Append(SqlServers).Append("\n");
+        sb.Append("  Type: ").Append(Type).Append("\n");
+        sb.Append("  HostType: ").Append(HostType).Append("\n");
+        sb.Append("  IsCluster: ").Append(IsCluster).Append("\n");
+        sb.Append("  IsRemovable: ").Append(IsRemovable).Append("\n");
+        sb.Append("  Tags: ").Append(Tags).Append("\n");
+        sb.Append("  EntityReference: ").Append(EntityReference).Append("\n");
+        sb.Append("  ChildStatuses: ").Append(ChildStatuses).Append("\n");
+        sb.Append("  GroupId: ").Append(GroupId).Append("\n");
+        sb.Append("  BaseMonitorName: ").Append(BaseMonitorName).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

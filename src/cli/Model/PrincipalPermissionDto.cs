@@ -9,152 +9,146 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     PrincipalPermissionDto
+/// </summary>
+[DataContract(Name = "PrincipalPermissionDto")]
+public class PrincipalPermissionDto : IValidatableObject
 {
     /// <summary>
-    /// PrincipalPermissionDto
+    ///     Initializes a new instance of the <see cref="PrincipalPermissionDto" /> class.
     /// </summary>
-    [DataContract(Name = "PrincipalPermissionDto")]
-    public partial class PrincipalPermissionDto : IValidatableObject
+    [JsonConstructorAttribute]
+    protected PrincipalPermissionDto()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PrincipalPermissionDto" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected PrincipalPermissionDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PrincipalPermissionDto" /> class.
-        /// </summary>
-        /// <param name="varClass">varClass.</param>
-        /// <param name="majorId">majorId.</param>
-        /// <param name="minorId">minorId.</param>
-        /// <param name="granteeId">granteeId.</param>
-        /// <param name="grantorId">grantorId.</param>
-        /// <param name="type">type (required).</param>
-        /// <param name="state">state (required).</param>
-        /// <param name="objectName">objectName.</param>
-        public PrincipalPermissionDto(IntegerIdentifier varClass = default(IntegerIdentifier), IntegerIdentifier majorId = default(IntegerIdentifier), IntegerIdentifier minorId = default(IntegerIdentifier), IntegerIdentifier granteeId = default(IntegerIdentifier), IntegerIdentifier grantorId = default(IntegerIdentifier), string type = default(string), string state = default(string), string objectName = default(string))
-        {
-            // to ensure "type" is required (not null)
-            if (type == null)
-            {
-                throw new ArgumentNullException("type is a required property for PrincipalPermissionDto and cannot be null");
-            }
-            this.Type = type;
-            // to ensure "state" is required (not null)
-            if (state == null)
-            {
-                throw new ArgumentNullException("state is a required property for PrincipalPermissionDto and cannot be null");
-            }
-            this.State = state;
-            this.Class = varClass;
-            this.MajorId = majorId;
-            this.MinorId = minorId;
-            this.GranteeId = granteeId;
-            this.GrantorId = grantorId;
-            this.ObjectName = objectName;
-        }
-
-        /// <summary>
-        /// Gets or Sets Class
-        /// </summary>
-        [DataMember(Name = "class", EmitDefaultValue = false)]
-        public IntegerIdentifier Class { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MajorId
-        /// </summary>
-        [DataMember(Name = "majorId", EmitDefaultValue = false)]
-        public IntegerIdentifier MajorId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MinorId
-        /// </summary>
-        [DataMember(Name = "minorId", EmitDefaultValue = false)]
-        public IntegerIdentifier MinorId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GranteeId
-        /// </summary>
-        [DataMember(Name = "granteeId", EmitDefaultValue = false)]
-        public IntegerIdentifier GranteeId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GrantorId
-        /// </summary>
-        [DataMember(Name = "grantorId", EmitDefaultValue = false)]
-        public IntegerIdentifier GrantorId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
-        public string State { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ObjectName
-        /// </summary>
-        [DataMember(Name = "objectName", EmitDefaultValue = true)]
-        public string ObjectName { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class PrincipalPermissionDto {\n");
-            sb.Append("  Class: ").Append(Class).Append("\n");
-            sb.Append("  MajorId: ").Append(MajorId).Append("\n");
-            sb.Append("  MinorId: ").Append(MinorId).Append("\n");
-            sb.Append("  GranteeId: ").Append(GranteeId).Append("\n");
-            sb.Append("  GrantorId: ").Append(GrantorId).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  ObjectName: ").Append(ObjectName).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="PrincipalPermissionDto" /> class.
+    /// </summary>
+    /// <param name="varClass">varClass.</param>
+    /// <param name="majorId">majorId.</param>
+    /// <param name="minorId">minorId.</param>
+    /// <param name="granteeId">granteeId.</param>
+    /// <param name="grantorId">grantorId.</param>
+    /// <param name="type">type (required).</param>
+    /// <param name="state">state (required).</param>
+    /// <param name="objectName">objectName.</param>
+    public PrincipalPermissionDto(IntegerIdentifier varClass = default, IntegerIdentifier majorId = default,
+        IntegerIdentifier minorId = default, IntegerIdentifier granteeId = default,
+        IntegerIdentifier grantorId = default, string type = default, string state = default,
+        string objectName = default)
+    {
+        // to ensure "type" is required (not null)
+        if (type == null)
+            throw new ArgumentNullException(
+                "type is a required property for PrincipalPermissionDto and cannot be null");
+        Type = type;
+        // to ensure "state" is required (not null)
+        if (state == null)
+            throw new ArgumentNullException(
+                "state is a required property for PrincipalPermissionDto and cannot be null");
+        State = state;
+        Class = varClass;
+        MajorId = majorId;
+        MinorId = minorId;
+        GranteeId = granteeId;
+        GrantorId = grantorId;
+        ObjectName = objectName;
+    }
+
+    /// <summary>
+    ///     Gets or Sets Class
+    /// </summary>
+    [DataMember(Name = "class", EmitDefaultValue = false)]
+    public IntegerIdentifier Class { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MajorId
+    /// </summary>
+    [DataMember(Name = "majorId", EmitDefaultValue = false)]
+    public IntegerIdentifier MajorId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MinorId
+    /// </summary>
+    [DataMember(Name = "minorId", EmitDefaultValue = false)]
+    public IntegerIdentifier MinorId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets GranteeId
+    /// </summary>
+    [DataMember(Name = "granteeId", EmitDefaultValue = false)]
+    public IntegerIdentifier GranteeId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets GrantorId
+    /// </summary>
+    [DataMember(Name = "grantorId", EmitDefaultValue = false)]
+    public IntegerIdentifier GrantorId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Type
+    /// </summary>
+    [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
+    public string Type { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets State
+    /// </summary>
+    [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
+    public string State { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ObjectName
+    /// </summary>
+    [DataMember(Name = "objectName", EmitDefaultValue = true)]
+    public string ObjectName { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class PrincipalPermissionDto {\n");
+        sb.Append("  Class: ").Append(Class).Append("\n");
+        sb.Append("  MajorId: ").Append(MajorId).Append("\n");
+        sb.Append("  MinorId: ").Append(MinorId).Append("\n");
+        sb.Append("  GranteeId: ").Append(GranteeId).Append("\n");
+        sb.Append("  GrantorId: ").Append(GrantorId).Append("\n");
+        sb.Append("  Type: ").Append(Type).Append("\n");
+        sb.Append("  State: ").Append(State).Append("\n");
+        sb.Append("  ObjectName: ").Append(ObjectName).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

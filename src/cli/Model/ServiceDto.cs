@@ -8,102 +8,92 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     ServiceDto
+/// </summary>
+[DataContract(Name = "ServiceDto")]
+public class ServiceDto : IValidatableObject
 {
     /// <summary>
-    /// ServiceDto
+    ///     Initializes a new instance of the <see cref="ServiceDto" /> class.
     /// </summary>
-    [DataContract(Name = "ServiceDto")]
-    public partial class ServiceDto : IValidatableObject
+    /// <param name="sqlServiceType">sqlServiceType.</param>
+    /// <param name="startUserName">startUserName.</param>
+    /// <param name="state">state.</param>
+    /// <param name="startup">startup.</param>
+    public ServiceDto(SqlServiceTypeDto? sqlServiceType = default, string startUserName = default,
+        string state = default, string startup = default)
     {
-
-        /// <summary>
-        /// Gets or Sets SqlServiceType
-        /// </summary>
-        [DataMember(Name = "sqlServiceType", EmitDefaultValue = false)]
-        public SqlServiceTypeDto? SqlServiceType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceDto" /> class.
-        /// </summary>
-        /// <param name="sqlServiceType">sqlServiceType.</param>
-        /// <param name="startUserName">startUserName.</param>
-        /// <param name="state">state.</param>
-        /// <param name="startup">startup.</param>
-        public ServiceDto(SqlServiceTypeDto? sqlServiceType = default(SqlServiceTypeDto?), string startUserName = default(string), string state = default(string), string startup = default(string))
-        {
-            this.SqlServiceType = sqlServiceType;
-            this.StartUserName = startUserName;
-            this.State = state;
-            this.Startup = startup;
-        }
-
-        /// <summary>
-        /// Gets or Sets StartUserName
-        /// </summary>
-        [DataMember(Name = "startUserName", EmitDefaultValue = false)]
-        public string StartUserName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name = "state", EmitDefaultValue = false)]
-        public string State { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Startup
-        /// </summary>
-        [DataMember(Name = "startup", EmitDefaultValue = false)]
-        public string Startup { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class ServiceDto {\n");
-            sb.Append("  SqlServiceType: ").Append(SqlServiceType).Append("\n");
-            sb.Append("  StartUserName: ").Append(StartUserName).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  Startup: ").Append(Startup).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        SqlServiceType = sqlServiceType;
+        StartUserName = startUserName;
+        State = state;
+        Startup = startup;
     }
 
+    /// <summary>
+    ///     Gets or Sets SqlServiceType
+    /// </summary>
+    [DataMember(Name = "sqlServiceType", EmitDefaultValue = false)]
+    public SqlServiceTypeDto? SqlServiceType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets StartUserName
+    /// </summary>
+    [DataMember(Name = "startUserName", EmitDefaultValue = false)]
+    public string StartUserName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets State
+    /// </summary>
+    [DataMember(Name = "state", EmitDefaultValue = false)]
+    public string State { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Startup
+    /// </summary>
+    [DataMember(Name = "startup", EmitDefaultValue = false)]
+    public string Startup { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class ServiceDto {\n");
+        sb.Append("  SqlServiceType: ").Append(SqlServiceType).Append("\n");
+        sb.Append("  StartUserName: ").Append(StartUserName).Append("\n");
+        sb.Append("  State: ").Append(State).Append("\n");
+        sb.Append("  Startup: ").Append(Startup).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

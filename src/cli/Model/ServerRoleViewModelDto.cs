@@ -8,141 +8,133 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     ServerRoleViewModelDto
+/// </summary>
+[DataContract(Name = "ServerRoleViewModelDto")]
+public class ServerRoleViewModelDto : IValidatableObject
 {
     /// <summary>
-    /// ServerRoleViewModelDto
+    ///     Initializes a new instance of the <see cref="ServerRoleViewModelDto" /> class.
     /// </summary>
-    [DataContract(Name = "ServerRoleViewModelDto")]
-    public partial class ServerRoleViewModelDto : IValidatableObject
+    /// <param name="roleName">roleName.</param>
+    /// <param name="windowsLoginCount">windowsLoginCount.</param>
+    /// <param name="sqlLoginCount">sqlLoginCount.</param>
+    /// <param name="activeDirectoryCount">activeDirectoryCount.</param>
+    /// <param name="collectionDate">collectionDate.</param>
+    public ServerRoleViewModelDto(string roleName = default, int windowsLoginCount = default,
+        int sqlLoginCount = default, int activeDirectoryCount = default, long collectionDate = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ServerRoleViewModelDto" /> class.
-        /// </summary>
-        /// <param name="roleName">roleName.</param>
-        /// <param name="windowsLoginCount">windowsLoginCount.</param>
-        /// <param name="sqlLoginCount">sqlLoginCount.</param>
-        /// <param name="activeDirectoryCount">activeDirectoryCount.</param>
-        /// <param name="collectionDate">collectionDate.</param>
-        public ServerRoleViewModelDto(string roleName = default(string), int windowsLoginCount = default(int), int sqlLoginCount = default(int), int activeDirectoryCount = default(int), long collectionDate = default(long))
-        {
-            this.RoleName = roleName;
-            this.WindowsLoginCount = windowsLoginCount;
-            this.SqlLoginCount = sqlLoginCount;
-            this.ActiveDirectoryCount = activeDirectoryCount;
-            this.CollectionDate = collectionDate;
-        }
-
-        /// <summary>
-        /// Gets or Sets RoleName
-        /// </summary>
-        [DataMember(Name = "roleName", EmitDefaultValue = true)]
-        public string RoleName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets WindowsLoginCount
-        /// </summary>
-        [DataMember(Name = "windowsLoginCount", EmitDefaultValue = false)]
-        public int WindowsLoginCount { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlLoginCount
-        /// </summary>
-        [DataMember(Name = "sqlLoginCount", EmitDefaultValue = false)]
-        public int SqlLoginCount { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ActiveDirectoryCount
-        /// </summary>
-        [DataMember(Name = "activeDirectoryCount", EmitDefaultValue = false)]
-        public int ActiveDirectoryCount { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlLoginNames
-        /// </summary>
-        [DataMember(Name = "sqlLoginNames", EmitDefaultValue = true)]
-        public List<string> SqlLoginNames { get; private set; }
-
-        /// <summary>
-        /// Returns false as SqlLoginNames should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeSqlLoginNames()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets WindowsLogins
-        /// </summary>
-        [DataMember(Name = "windowsLogins", EmitDefaultValue = true)]
-        public List<AdAccountDto> WindowsLogins { get; private set; }
-
-        /// <summary>
-        /// Returns false as WindowsLogins should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeWindowsLogins()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets CollectionDate
-        /// </summary>
-        [DataMember(Name = "collectionDate", EmitDefaultValue = false)]
-        public long CollectionDate { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class ServerRoleViewModelDto {\n");
-            sb.Append("  RoleName: ").Append(RoleName).Append("\n");
-            sb.Append("  WindowsLoginCount: ").Append(WindowsLoginCount).Append("\n");
-            sb.Append("  SqlLoginCount: ").Append(SqlLoginCount).Append("\n");
-            sb.Append("  ActiveDirectoryCount: ").Append(ActiveDirectoryCount).Append("\n");
-            sb.Append("  SqlLoginNames: ").Append(SqlLoginNames).Append("\n");
-            sb.Append("  WindowsLogins: ").Append(WindowsLogins).Append("\n");
-            sb.Append("  CollectionDate: ").Append(CollectionDate).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        RoleName = roleName;
+        WindowsLoginCount = windowsLoginCount;
+        SqlLoginCount = sqlLoginCount;
+        ActiveDirectoryCount = activeDirectoryCount;
+        CollectionDate = collectionDate;
     }
 
+    /// <summary>
+    ///     Gets or Sets RoleName
+    /// </summary>
+    [DataMember(Name = "roleName", EmitDefaultValue = true)]
+    public string RoleName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets WindowsLoginCount
+    /// </summary>
+    [DataMember(Name = "windowsLoginCount", EmitDefaultValue = false)]
+    public int WindowsLoginCount { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlLoginCount
+    /// </summary>
+    [DataMember(Name = "sqlLoginCount", EmitDefaultValue = false)]
+    public int SqlLoginCount { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ActiveDirectoryCount
+    /// </summary>
+    [DataMember(Name = "activeDirectoryCount", EmitDefaultValue = false)]
+    public int ActiveDirectoryCount { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlLoginNames
+    /// </summary>
+    [DataMember(Name = "sqlLoginNames", EmitDefaultValue = true)]
+    public List<string> SqlLoginNames { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets WindowsLogins
+    /// </summary>
+    [DataMember(Name = "windowsLogins", EmitDefaultValue = true)]
+    public List<AdAccountDto> WindowsLogins { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets CollectionDate
+    /// </summary>
+    [DataMember(Name = "collectionDate", EmitDefaultValue = false)]
+    public long CollectionDate { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns false as SqlLoginNames should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeSqlLoginNames()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as WindowsLogins should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeWindowsLogins()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class ServerRoleViewModelDto {\n");
+        sb.Append("  RoleName: ").Append(RoleName).Append("\n");
+        sb.Append("  WindowsLoginCount: ").Append(WindowsLoginCount).Append("\n");
+        sb.Append("  SqlLoginCount: ").Append(SqlLoginCount).Append("\n");
+        sb.Append("  ActiveDirectoryCount: ").Append(ActiveDirectoryCount).Append("\n");
+        sb.Append("  SqlLoginNames: ").Append(SqlLoginNames).Append("\n");
+        sb.Append("  WindowsLogins: ").Append(WindowsLogins).Append("\n");
+        sb.Append("  CollectionDate: ").Append(CollectionDate).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

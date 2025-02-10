@@ -8,84 +8,74 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AzureSqlDatabasesDto
+/// </summary>
+[DataContract(Name = "AzureSqlDatabasesDto")]
+public class AzureSqlDatabasesDto : IValidatableObject
 {
     /// <summary>
-    /// AzureSqlDatabasesDto
+    ///     Initializes a new instance of the <see cref="AzureSqlDatabasesDto" /> class.
     /// </summary>
-    [DataContract(Name = "AzureSqlDatabasesDto")]
-    public partial class AzureSqlDatabasesDto : IValidatableObject
+    /// <param name="allDatabases">allDatabases.</param>
+    /// <param name="autoDiscoveryEnabled">autoDiscoveryEnabled.</param>
+    public AzureSqlDatabasesDto(List<DetectedAzureSqlDatabaseDto> allDatabases = default,
+        bool autoDiscoveryEnabled = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureSqlDatabasesDto" /> class.
-        /// </summary>
-        /// <param name="allDatabases">allDatabases.</param>
-        /// <param name="autoDiscoveryEnabled">autoDiscoveryEnabled.</param>
-        public AzureSqlDatabasesDto(List<DetectedAzureSqlDatabaseDto> allDatabases = default(List<DetectedAzureSqlDatabaseDto>), bool autoDiscoveryEnabled = default(bool))
-        {
-            this.AllDatabases = allDatabases;
-            this.AutoDiscoveryEnabled = autoDiscoveryEnabled;
-        }
-
-        /// <summary>
-        /// Gets or Sets AllDatabases
-        /// </summary>
-        [DataMember(Name = "allDatabases", EmitDefaultValue = true)]
-        public List<DetectedAzureSqlDatabaseDto> AllDatabases { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AutoDiscoveryEnabled
-        /// </summary>
-        [DataMember(Name = "autoDiscoveryEnabled", EmitDefaultValue = true)]
-        public bool AutoDiscoveryEnabled { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AzureSqlDatabasesDto {\n");
-            sb.Append("  AllDatabases: ").Append(AllDatabases).Append("\n");
-            sb.Append("  AutoDiscoveryEnabled: ").Append(AutoDiscoveryEnabled).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        AllDatabases = allDatabases;
+        AutoDiscoveryEnabled = autoDiscoveryEnabled;
     }
 
+    /// <summary>
+    ///     Gets or Sets AllDatabases
+    /// </summary>
+    [DataMember(Name = "allDatabases", EmitDefaultValue = true)]
+    public List<DetectedAzureSqlDatabaseDto> AllDatabases { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AutoDiscoveryEnabled
+    /// </summary>
+    [DataMember(Name = "autoDiscoveryEnabled", EmitDefaultValue = true)]
+    public bool AutoDiscoveryEnabled { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AzureSqlDatabasesDto {\n");
+        sb.Append("  AllDatabases: ").Append(AllDatabases).Append("\n");
+        sb.Append("  AutoDiscoveryEnabled: ").Append(AutoDiscoveryEnabled).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

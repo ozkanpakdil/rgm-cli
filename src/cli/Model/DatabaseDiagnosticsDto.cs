@@ -9,98 +9,89 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     DatabaseDiagnosticsDto
+/// </summary>
+[DataContract(Name = "DatabaseDiagnosticsDto")]
+public class DatabaseDiagnosticsDto : IValidatableObject
 {
     /// <summary>
-    /// DatabaseDiagnosticsDto
+    ///     Initializes a new instance of the <see cref="DatabaseDiagnosticsDto" /> class.
     /// </summary>
-    [DataContract(Name = "DatabaseDiagnosticsDto")]
-    public partial class DatabaseDiagnosticsDto : IValidatableObject
+    [JsonConstructorAttribute]
+    protected DatabaseDiagnosticsDto()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabaseDiagnosticsDto" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected DatabaseDiagnosticsDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabaseDiagnosticsDto" /> class.
-        /// </summary>
-        /// <param name="baseMonitorName">baseMonitorName (required).</param>
-        /// <param name="timings">timings (required).</param>
-        public DatabaseDiagnosticsDto(string baseMonitorName = default(string), List<DatabaseTimingDto> timings = default(List<DatabaseTimingDto>))
-        {
-            // to ensure "baseMonitorName" is required (not null)
-            if (baseMonitorName == null)
-            {
-                throw new ArgumentNullException("baseMonitorName is a required property for DatabaseDiagnosticsDto and cannot be null");
-            }
-            this.BaseMonitorName = baseMonitorName;
-            // to ensure "timings" is required (not null)
-            if (timings == null)
-            {
-                throw new ArgumentNullException("timings is a required property for DatabaseDiagnosticsDto and cannot be null");
-            }
-            this.Timings = timings;
-        }
-
-        /// <summary>
-        /// Gets or Sets BaseMonitorName
-        /// </summary>
-        [DataMember(Name = "baseMonitorName", IsRequired = true, EmitDefaultValue = true)]
-        public string BaseMonitorName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Timings
-        /// </summary>
-        [DataMember(Name = "timings", IsRequired = true, EmitDefaultValue = true)]
-        public List<DatabaseTimingDto> Timings { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class DatabaseDiagnosticsDto {\n");
-            sb.Append("  BaseMonitorName: ").Append(BaseMonitorName).Append("\n");
-            sb.Append("  Timings: ").Append(Timings).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="DatabaseDiagnosticsDto" /> class.
+    /// </summary>
+    /// <param name="baseMonitorName">baseMonitorName (required).</param>
+    /// <param name="timings">timings (required).</param>
+    public DatabaseDiagnosticsDto(string baseMonitorName = default, List<DatabaseTimingDto> timings = default)
+    {
+        // to ensure "baseMonitorName" is required (not null)
+        if (baseMonitorName == null)
+            throw new ArgumentNullException(
+                "baseMonitorName is a required property for DatabaseDiagnosticsDto and cannot be null");
+        BaseMonitorName = baseMonitorName;
+        // to ensure "timings" is required (not null)
+        if (timings == null)
+            throw new ArgumentNullException(
+                "timings is a required property for DatabaseDiagnosticsDto and cannot be null");
+        Timings = timings;
+    }
+
+    /// <summary>
+    ///     Gets or Sets BaseMonitorName
+    /// </summary>
+    [DataMember(Name = "baseMonitorName", IsRequired = true, EmitDefaultValue = true)]
+    public string BaseMonitorName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Timings
+    /// </summary>
+    [DataMember(Name = "timings", IsRequired = true, EmitDefaultValue = true)]
+    public List<DatabaseTimingDto> Timings { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class DatabaseDiagnosticsDto {\n");
+        sb.Append("  BaseMonitorName: ").Append(BaseMonitorName).Append("\n");
+        sb.Append("  Timings: ").Append(Timings).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

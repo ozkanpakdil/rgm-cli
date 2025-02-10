@@ -8,129 +8,121 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Channels.Data;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     OldServerDatabasePermissionsDto
+/// </summary>
+[DataContract(Name = "OldServerDatabasePermissionsDto")]
+public class OldServerDatabasePermissionsDto : IValidatableObject
 {
     /// <summary>
-    /// OldServerDatabasePermissionsDto
+    ///     Initializes a new instance of the <see cref="OldServerDatabasePermissionsDto" /> class.
     /// </summary>
-    [DataContract(Name = "OldServerDatabasePermissionsDto")]
-    public partial class OldServerDatabasePermissionsDto : IValidatableObject
+    /// <param name="sid">sid.</param>
+    /// <param name="login">login.</param>
+    /// <param name="username">username.</param>
+    /// <param name="databaseName">databaseName.</param>
+    /// <param name="databaseOwner">databaseOwner.</param>
+    /// <param name="roles">roles.</param>
+    /// <param name="cir">cir.</param>
+    public OldServerDatabasePermissionsDto(string sid = default, string login = default, string username = default,
+        string databaseName = default, string databaseOwner = default, List<string> roles = default,
+        ChannelInstanceRef cir = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OldServerDatabasePermissionsDto" /> class.
-        /// </summary>
-        /// <param name="sid">sid.</param>
-        /// <param name="login">login.</param>
-        /// <param name="username">username.</param>
-        /// <param name="databaseName">databaseName.</param>
-        /// <param name="databaseOwner">databaseOwner.</param>
-        /// <param name="roles">roles.</param>
-        /// <param name="cir">cir.</param>
-        public OldServerDatabasePermissionsDto(string sid = default(string), string login = default(string), string username = default(string), string databaseName = default(string), string databaseOwner = default(string), List<string> roles = default(List<string>), ChannelInstanceRef cir = default(ChannelInstanceRef))
-        {
-            this.Sid = sid;
-            this.Login = login;
-            this.Username = username;
-            this.DatabaseName = databaseName;
-            this.DatabaseOwner = databaseOwner;
-            this.Roles = roles;
-            this.Cir = cir;
-        }
-
-        /// <summary>
-        /// Gets or Sets Sid
-        /// </summary>
-        [DataMember(Name = "sid", EmitDefaultValue = true)]
-        public string Sid { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Login
-        /// </summary>
-        [DataMember(Name = "login", EmitDefaultValue = true)]
-        public string Login { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Username
-        /// </summary>
-        [DataMember(Name = "username", EmitDefaultValue = true)]
-        public string Username { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DatabaseName
-        /// </summary>
-        [DataMember(Name = "databaseName", EmitDefaultValue = true)]
-        public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DatabaseOwner
-        /// </summary>
-        [DataMember(Name = "databaseOwner", EmitDefaultValue = true)]
-        public string DatabaseOwner { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Roles
-        /// </summary>
-        [DataMember(Name = "roles", EmitDefaultValue = true)]
-        public List<string> Roles { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Cir
-        /// </summary>
-        [DataMember(Name = "cir", EmitDefaultValue = true)]
-        public ChannelInstanceRef Cir { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class OldServerDatabasePermissionsDto {\n");
-            sb.Append("  Sid: ").Append(Sid).Append("\n");
-            sb.Append("  Login: ").Append(Login).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  DatabaseName: ").Append(DatabaseName).Append("\n");
-            sb.Append("  DatabaseOwner: ").Append(DatabaseOwner).Append("\n");
-            sb.Append("  Roles: ").Append(Roles).Append("\n");
-            sb.Append("  Cir: ").Append(Cir).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Sid = sid;
+        Login = login;
+        Username = username;
+        DatabaseName = databaseName;
+        DatabaseOwner = databaseOwner;
+        Roles = roles;
+        Cir = cir;
     }
 
+    /// <summary>
+    ///     Gets or Sets Sid
+    /// </summary>
+    [DataMember(Name = "sid", EmitDefaultValue = true)]
+    public string Sid { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Login
+    /// </summary>
+    [DataMember(Name = "login", EmitDefaultValue = true)]
+    public string Login { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Username
+    /// </summary>
+    [DataMember(Name = "username", EmitDefaultValue = true)]
+    public string Username { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DatabaseName
+    /// </summary>
+    [DataMember(Name = "databaseName", EmitDefaultValue = true)]
+    public string DatabaseName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DatabaseOwner
+    /// </summary>
+    [DataMember(Name = "databaseOwner", EmitDefaultValue = true)]
+    public string DatabaseOwner { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Roles
+    /// </summary>
+    [DataMember(Name = "roles", EmitDefaultValue = true)]
+    public List<string> Roles { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Cir
+    /// </summary>
+    [DataMember(Name = "cir", EmitDefaultValue = true)]
+    public ChannelInstanceRef Cir { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class OldServerDatabasePermissionsDto {\n");
+        sb.Append("  Sid: ").Append(Sid).Append("\n");
+        sb.Append("  Login: ").Append(Login).Append("\n");
+        sb.Append("  Username: ").Append(Username).Append("\n");
+        sb.Append("  DatabaseName: ").Append(DatabaseName).Append("\n");
+        sb.Append("  DatabaseOwner: ").Append(DatabaseOwner).Append("\n");
+        sb.Append("  Roles: ").Append(Roles).Append("\n");
+        sb.Append("  Cir: ").Append(Cir).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

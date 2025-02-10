@@ -9,119 +9,111 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     SystemProcessDto
+/// </summary>
+[DataContract(Name = "SystemProcessDto")]
+public class SystemProcessDto : IValidatableObject
 {
     /// <summary>
-    /// SystemProcessDto
+    ///     Initializes a new instance of the <see cref="SystemProcessDto" /> class.
     /// </summary>
-    [DataContract(Name = "SystemProcessDto")]
-    public partial class SystemProcessDto : IValidatableObject
+    /// <param name="id">id.</param>
+    /// <param name="name">name.</param>
+    /// <param name="startDate">startDate.</param>
+    /// <param name="percentProcessorTime">percentProcessorTime.</param>
+    /// <param name="workingSetMemoryInBytes">workingSetMemoryInBytes.</param>
+    /// <param name="virtualMemoryInBytes">virtualMemoryInBytes.</param>
+    public SystemProcessDto(IntegerIdentifier id = default, string name = default, DateTime startDate = default,
+        double? percentProcessorTime = default, long? workingSetMemoryInBytes = default,
+        long? virtualMemoryInBytes = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SystemProcessDto" /> class.
-        /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="name">name.</param>
-        /// <param name="startDate">startDate.</param>
-        /// <param name="percentProcessorTime">percentProcessorTime.</param>
-        /// <param name="workingSetMemoryInBytes">workingSetMemoryInBytes.</param>
-        /// <param name="virtualMemoryInBytes">virtualMemoryInBytes.</param>
-        public SystemProcessDto(IntegerIdentifier id = default(IntegerIdentifier), string name = default(string), DateTime startDate = default(DateTime), double? percentProcessorTime = default(double?), long? workingSetMemoryInBytes = default(long?), long? virtualMemoryInBytes = default(long?))
-        {
-            this.Id = id;
-            this.Name = name;
-            this.StartDate = startDate;
-            this.PercentProcessorTime = percentProcessorTime;
-            this.WorkingSetMemoryInBytes = workingSetMemoryInBytes;
-            this.VirtualMemoryInBytes = virtualMemoryInBytes;
-        }
-
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public IntegerIdentifier Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets StartDate
-        /// </summary>
-        [DataMember(Name = "startDate", EmitDefaultValue = false)]
-        public DateTime StartDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PercentProcessorTime
-        /// </summary>
-        [DataMember(Name = "percentProcessorTime", EmitDefaultValue = true)]
-        public double? PercentProcessorTime { get; set; }
-
-        /// <summary>
-        /// Gets or Sets WorkingSetMemoryInBytes
-        /// </summary>
-        [DataMember(Name = "workingSetMemoryInBytes", EmitDefaultValue = true)]
-        public long? WorkingSetMemoryInBytes { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VirtualMemoryInBytes
-        /// </summary>
-        [DataMember(Name = "virtualMemoryInBytes", EmitDefaultValue = true)]
-        public long? VirtualMemoryInBytes { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class SystemProcessDto {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  StartDate: ").Append(StartDate).Append("\n");
-            sb.Append("  PercentProcessorTime: ").Append(PercentProcessorTime).Append("\n");
-            sb.Append("  WorkingSetMemoryInBytes: ").Append(WorkingSetMemoryInBytes).Append("\n");
-            sb.Append("  VirtualMemoryInBytes: ").Append(VirtualMemoryInBytes).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Id = id;
+        Name = name;
+        StartDate = startDate;
+        PercentProcessorTime = percentProcessorTime;
+        WorkingSetMemoryInBytes = workingSetMemoryInBytes;
+        VirtualMemoryInBytes = virtualMemoryInBytes;
     }
 
+    /// <summary>
+    ///     Gets or Sets Id
+    /// </summary>
+    [DataMember(Name = "id", EmitDefaultValue = false)]
+    public IntegerIdentifier Id { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = false)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets StartDate
+    /// </summary>
+    [DataMember(Name = "startDate", EmitDefaultValue = false)]
+    public DateTime StartDate { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets PercentProcessorTime
+    /// </summary>
+    [DataMember(Name = "percentProcessorTime", EmitDefaultValue = true)]
+    public double? PercentProcessorTime { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets WorkingSetMemoryInBytes
+    /// </summary>
+    [DataMember(Name = "workingSetMemoryInBytes", EmitDefaultValue = true)]
+    public long? WorkingSetMemoryInBytes { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets VirtualMemoryInBytes
+    /// </summary>
+    [DataMember(Name = "virtualMemoryInBytes", EmitDefaultValue = true)]
+    public long? VirtualMemoryInBytes { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class SystemProcessDto {\n");
+        sb.Append("  Id: ").Append(Id).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  StartDate: ").Append(StartDate).Append("\n");
+        sb.Append("  PercentProcessorTime: ").Append(PercentProcessorTime).Append("\n");
+        sb.Append("  WorkingSetMemoryInBytes: ").Append(WorkingSetMemoryInBytes).Append("\n");
+        sb.Append("  VirtualMemoryInBytes: ").Append(VirtualMemoryInBytes).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

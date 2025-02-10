@@ -8,102 +8,93 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Common.Domain;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     SentEditCredentialsRequest
+/// </summary>
+[DataContract(Name = "SentEditCredentialsRequest")]
+public class SentEditCredentialsRequest : IValidatableObject
 {
     /// <summary>
-    /// SentEditCredentialsRequest
+    ///     Initializes a new instance of the <see cref="SentEditCredentialsRequest" /> class.
     /// </summary>
-    [DataContract(Name = "SentEditCredentialsRequest")]
-    public partial class SentEditCredentialsRequest : IValidatableObject
+    /// <param name="entityIds">entityIds.</param>
+    /// <param name="sqlServerIds">sqlServerIds.</param>
+    /// <param name="editEntityType">editEntityType.</param>
+    /// <param name="credentials">credentials.</param>
+    public SentEditCredentialsRequest(List<string> entityIds = default, List<string> sqlServerIds = default,
+        EntityType? editEntityType = default, AllCredentialsModel credentials = default)
     {
-
-        /// <summary>
-        /// Gets or Sets EditEntityType
-        /// </summary>
-        [DataMember(Name = "editEntityType", EmitDefaultValue = false)]
-        public EntityType? EditEntityType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SentEditCredentialsRequest" /> class.
-        /// </summary>
-        /// <param name="entityIds">entityIds.</param>
-        /// <param name="sqlServerIds">sqlServerIds.</param>
-        /// <param name="editEntityType">editEntityType.</param>
-        /// <param name="credentials">credentials.</param>
-        public SentEditCredentialsRequest(List<string> entityIds = default(List<string>), List<string> sqlServerIds = default(List<string>), EditEntityTypeEnum? editEntityType = default(EditEntityTypeEnum?), AllCredentialsModel credentials = default(AllCredentialsModel))
-        {
-            this.EntityIds = entityIds;
-            this.SqlServerIds = sqlServerIds;
-            this.EditEntityType = editEntityType;
-            this.Credentials = credentials;
-        }
-
-        /// <summary>
-        /// Gets or Sets EntityIds
-        /// </summary>
-        [DataMember(Name = "entityIds", EmitDefaultValue = true)]
-        public List<string> EntityIds { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlServerIds
-        /// </summary>
-        [DataMember(Name = "sqlServerIds", EmitDefaultValue = true)]
-        public List<string> SqlServerIds { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Credentials
-        /// </summary>
-        [DataMember(Name = "credentials", EmitDefaultValue = false)]
-        public AllCredentialsModel Credentials { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class SentEditCredentialsRequest {\n");
-            sb.Append("  EntityIds: ").Append(EntityIds).Append("\n");
-            sb.Append("  SqlServerIds: ").Append(SqlServerIds).Append("\n");
-            sb.Append("  EditEntityType: ").Append(EditEntityType).Append("\n");
-            sb.Append("  Credentials: ").Append(Credentials).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        EntityIds = entityIds;
+        SqlServerIds = sqlServerIds;
+        EditEntityType = editEntityType;
+        Credentials = credentials;
     }
 
+    /// <summary>
+    ///     Gets or Sets EditEntityType
+    /// </summary>
+    [DataMember(Name = "editEntityType", EmitDefaultValue = false)]
+    public EntityType? EditEntityType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EntityIds
+    /// </summary>
+    [DataMember(Name = "entityIds", EmitDefaultValue = true)]
+    public List<string> EntityIds { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlServerIds
+    /// </summary>
+    [DataMember(Name = "sqlServerIds", EmitDefaultValue = true)]
+    public List<string> SqlServerIds { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Credentials
+    /// </summary>
+    [DataMember(Name = "credentials", EmitDefaultValue = false)]
+    public AllCredentialsModel Credentials { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class SentEditCredentialsRequest {\n");
+        sb.Append("  EntityIds: ").Append(EntityIds).Append("\n");
+        sb.Append("  SqlServerIds: ").Append(SqlServerIds).Append("\n");
+        sb.Append("  EditEntityType: ").Append(EditEntityType).Append("\n");
+        sb.Append("  Credentials: ").Append(Credentials).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

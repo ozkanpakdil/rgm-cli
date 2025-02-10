@@ -8,84 +8,74 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     ServerRecommendationsDto
+/// </summary>
+[DataContract(Name = "ServerRecommendationsDto")]
+public class ServerRecommendationsDto : IValidatableObject
 {
     /// <summary>
-    /// ServerRecommendationsDto
+    ///     Initializes a new instance of the <see cref="ServerRecommendationsDto" /> class.
     /// </summary>
-    [DataContract(Name = "ServerRecommendationsDto")]
-    public partial class ServerRecommendationsDto : IValidatableObject
+    /// <param name="isSaEnabled">isSaEnabled.</param>
+    /// <param name="orphanedUserRecommendations">orphanedUserRecommendations.</param>
+    public ServerRecommendationsDto(bool isSaEnabled = default,
+        List<OrphanedUserRecommendationDto> orphanedUserRecommendations = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ServerRecommendationsDto" /> class.
-        /// </summary>
-        /// <param name="isSaEnabled">isSaEnabled.</param>
-        /// <param name="orphanedUserRecommendations">orphanedUserRecommendations.</param>
-        public ServerRecommendationsDto(bool isSaEnabled = default(bool), List<OrphanedUserRecommendationDto> orphanedUserRecommendations = default(List<OrphanedUserRecommendationDto>))
-        {
-            this.IsSaEnabled = isSaEnabled;
-            this.OrphanedUserRecommendations = orphanedUserRecommendations;
-        }
-
-        /// <summary>
-        /// Gets or Sets IsSaEnabled
-        /// </summary>
-        [DataMember(Name = "isSaEnabled", EmitDefaultValue = true)]
-        public bool IsSaEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OrphanedUserRecommendations
-        /// </summary>
-        [DataMember(Name = "orphanedUserRecommendations", EmitDefaultValue = true)]
-        public List<OrphanedUserRecommendationDto> OrphanedUserRecommendations { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class ServerRecommendationsDto {\n");
-            sb.Append("  IsSaEnabled: ").Append(IsSaEnabled).Append("\n");
-            sb.Append("  OrphanedUserRecommendations: ").Append(OrphanedUserRecommendations).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        IsSaEnabled = isSaEnabled;
+        OrphanedUserRecommendations = orphanedUserRecommendations;
     }
 
+    /// <summary>
+    ///     Gets or Sets IsSaEnabled
+    /// </summary>
+    [DataMember(Name = "isSaEnabled", EmitDefaultValue = true)]
+    public bool IsSaEnabled { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets OrphanedUserRecommendations
+    /// </summary>
+    [DataMember(Name = "orphanedUserRecommendations", EmitDefaultValue = true)]
+    public List<OrphanedUserRecommendationDto> OrphanedUserRecommendations { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class ServerRecommendationsDto {\n");
+        sb.Append("  IsSaEnabled: ").Append(IsSaEnabled).Append("\n");
+        sb.Append("  OrphanedUserRecommendations: ").Append(OrphanedUserRecommendations).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

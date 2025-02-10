@@ -9,92 +9,83 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDto
+/// </summary>
+[DataContract(Name = "MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDto")]
+public class MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDto : IValidatableObject
 {
     /// <summary>
-    /// MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDto
+    ///     Initializes a new instance of the <see cref="MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDto" /> class.
     /// </summary>
-    [DataContract(Name = "MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDto")]
-    public partial class MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDto : IValidatableObject
+    /// <param name="minTime">minTime.</param>
+    /// <param name="maxTime">maxTime.</param>
+    /// <param name="queryHistorySeries">queryHistorySeries.</param>
+    public MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDto(DateTime minTime = default, DateTime maxTime = default,
+        List<MySqlTopQueryPropertyQueryHistorySeriesDto> queryHistorySeries = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDto" /> class.
-        /// </summary>
-        /// <param name="minTime">minTime.</param>
-        /// <param name="maxTime">maxTime.</param>
-        /// <param name="queryHistorySeries">queryHistorySeries.</param>
-        public MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDto(DateTime minTime = default(DateTime), DateTime maxTime = default(DateTime), List<MySqlTopQueryPropertyQueryHistorySeriesDto> queryHistorySeries = default(List<MySqlTopQueryPropertyQueryHistorySeriesDto>))
-        {
-            this.MinTime = minTime;
-            this.MaxTime = maxTime;
-            this.QueryHistorySeries = queryHistorySeries;
-        }
-
-        /// <summary>
-        /// Gets or Sets MinTime
-        /// </summary>
-        [DataMember(Name = "minTime", EmitDefaultValue = false)]
-        public DateTime MinTime { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MaxTime
-        /// </summary>
-        [DataMember(Name = "maxTime", EmitDefaultValue = false)]
-        public DateTime MaxTime { get; set; }
-
-        /// <summary>
-        /// Gets or Sets QueryHistorySeries
-        /// </summary>
-        [DataMember(Name = "queryHistorySeries", EmitDefaultValue = false)]
-        public List<MySqlTopQueryPropertyQueryHistorySeriesDto> QueryHistorySeries { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDto {\n");
-            sb.Append("  MinTime: ").Append(MinTime).Append("\n");
-            sb.Append("  MaxTime: ").Append(MaxTime).Append("\n");
-            sb.Append("  QueryHistorySeries: ").Append(QueryHistorySeries).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        MinTime = minTime;
+        MaxTime = maxTime;
+        QueryHistorySeries = queryHistorySeries;
     }
 
+    /// <summary>
+    ///     Gets or Sets MinTime
+    /// </summary>
+    [DataMember(Name = "minTime", EmitDefaultValue = false)]
+    public DateTime MinTime { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MaxTime
+    /// </summary>
+    [DataMember(Name = "maxTime", EmitDefaultValue = false)]
+    public DateTime MaxTime { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets QueryHistorySeries
+    /// </summary>
+    [DataMember(Name = "queryHistorySeries", EmitDefaultValue = false)]
+    public List<MySqlTopQueryPropertyQueryHistorySeriesDto> QueryHistorySeries { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class MySqlTopQueryPropertyQueryHistoryWithoutPlanKeyDto {\n");
+        sb.Append("  MinTime: ").Append(MinTime).Append("\n");
+        sb.Append("  MaxTime: ").Append(MaxTime).Append("\n");
+        sb.Append("  QueryHistorySeries: ").Append(QueryHistorySeries).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

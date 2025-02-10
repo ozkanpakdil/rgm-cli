@@ -8,111 +8,101 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     PostgresMetricPresentationDto
+/// </summary>
+[DataContract(Name = "PostgresMetricPresentationDto")]
+public class PostgresMetricPresentationDto : IValidatableObject
 {
     /// <summary>
-    /// PostgresMetricPresentationDto
+    ///     Initializes a new instance of the <see cref="PostgresMetricPresentationDto" /> class.
     /// </summary>
-    [DataContract(Name = "PostgresMetricPresentationDto")]
-    public partial class PostgresMetricPresentationDto : IValidatableObject
+    /// <param name="property">property.</param>
+    /// <param name="name">name.</param>
+    /// <param name="color">color.</param>
+    /// <param name="units">units.</param>
+    /// <param name="style">style.</param>
+    public PostgresMetricPresentationDto(string property = default, string name = default, string color = default,
+        string units = default, string style = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PostgresMetricPresentationDto" /> class.
-        /// </summary>
-        /// <param name="property">property.</param>
-        /// <param name="name">name.</param>
-        /// <param name="color">color.</param>
-        /// <param name="units">units.</param>
-        /// <param name="style">style.</param>
-        public PostgresMetricPresentationDto(string property = default(string), string name = default(string), string color = default(string), string units = default(string), string style = default(string))
-        {
-            this.Property = property;
-            this.Name = name;
-            this.Color = color;
-            this.Units = units;
-            this.Style = style;
-        }
-
-        /// <summary>
-        /// Gets or Sets Property
-        /// </summary>
-        [DataMember(Name = "property", EmitDefaultValue = false)]
-        public string Property { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Color
-        /// </summary>
-        [DataMember(Name = "color", EmitDefaultValue = false)]
-        public string Color { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Units
-        /// </summary>
-        [DataMember(Name = "units", EmitDefaultValue = false)]
-        public string Units { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Style
-        /// </summary>
-        [DataMember(Name = "style", EmitDefaultValue = false)]
-        public string Style { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class PostgresMetricPresentationDto {\n");
-            sb.Append("  Property: ").Append(Property).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Color: ").Append(Color).Append("\n");
-            sb.Append("  Units: ").Append(Units).Append("\n");
-            sb.Append("  Style: ").Append(Style).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Property = property;
+        Name = name;
+        Color = color;
+        Units = units;
+        Style = style;
     }
 
+    /// <summary>
+    ///     Gets or Sets Property
+    /// </summary>
+    [DataMember(Name = "property", EmitDefaultValue = false)]
+    public string Property { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = false)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Color
+    /// </summary>
+    [DataMember(Name = "color", EmitDefaultValue = false)]
+    public string Color { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Units
+    /// </summary>
+    [DataMember(Name = "units", EmitDefaultValue = false)]
+    public string Units { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Style
+    /// </summary>
+    [DataMember(Name = "style", EmitDefaultValue = false)]
+    public string Style { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class PostgresMetricPresentationDto {\n");
+        sb.Append("  Property: ").Append(Property).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  Color: ").Append(Color).Append("\n");
+        sb.Append("  Units: ").Append(Units).Append("\n");
+        sb.Append("  Style: ").Append(Style).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

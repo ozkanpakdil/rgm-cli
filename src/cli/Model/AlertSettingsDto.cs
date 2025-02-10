@@ -8,108 +8,99 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AlertSettingsDto
+/// </summary>
+[DataContract(Name = "AlertSettingsDto")]
+public class AlertSettingsDto : IValidatableObject
 {
     /// <summary>
-    /// AlertSettingsDto
+    ///     Initializes a new instance of the <see cref="AlertSettingsDto" /> class.
     /// </summary>
-    [DataContract(Name = "AlertSettingsDto")]
-    public partial class AlertSettingsDto : IValidatableObject
+    /// <param name="status">status.</param>
+    /// <param name="notificationSettings">notificationSettings.</param>
+    /// <param name="specificSettings">specificSettings.</param>
+    public AlertSettingsDto(AlertStatusDto? status = default,
+        AlertNotificationSettingsDto notificationSettings = default, object specificSettings = default)
     {
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
-        public AlertStatusDto? Status { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertSettingsDto" /> class.
-        /// </summary>
-        /// <param name="status">status.</param>
-        /// <param name="notificationSettings">notificationSettings.</param>
-        /// <param name="specificSettings">specificSettings.</param>
-        public AlertSettingsDto(AlertStatusDto? status = default(AlertStatusDto?), AlertNotificationSettingsDto notificationSettings = default(AlertNotificationSettingsDto), Object specificSettings = default(Object))
-        {
-            this.Status = status;
-            this.NotificationSettings = notificationSettings;
-            this.SpecificSettings = specificSettings;
-        }
-
-        /// <summary>
-        /// Gets or Sets Comments
-        /// </summary>
-        [DataMember(Name = "comments", EmitDefaultValue = true)]
-        public string Comments { get; private set; }
-
-        /// <summary>
-        /// Returns false as Comments should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeComments()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets NotificationSettings
-        /// </summary>
-        [DataMember(Name = "notificationSettings", EmitDefaultValue = false)]
-        public AlertNotificationSettingsDto NotificationSettings { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SpecificSettings
-        /// </summary>
-        [DataMember(Name = "specificSettings", EmitDefaultValue = false)]
-        public Object SpecificSettings { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AlertSettingsDto {\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Comments: ").Append(Comments).Append("\n");
-            sb.Append("  NotificationSettings: ").Append(NotificationSettings).Append("\n");
-            sb.Append("  SpecificSettings: ").Append(SpecificSettings).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Status = status;
+        NotificationSettings = notificationSettings;
+        SpecificSettings = specificSettings;
     }
 
+    /// <summary>
+    ///     Gets or Sets Status
+    /// </summary>
+    [DataMember(Name = "status", EmitDefaultValue = false)]
+    public AlertStatusDto? Status { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Comments
+    /// </summary>
+    [DataMember(Name = "comments", EmitDefaultValue = true)]
+    public string Comments { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets NotificationSettings
+    /// </summary>
+    [DataMember(Name = "notificationSettings", EmitDefaultValue = false)]
+    public AlertNotificationSettingsDto NotificationSettings { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SpecificSettings
+    /// </summary>
+    [DataMember(Name = "specificSettings", EmitDefaultValue = false)]
+    public object SpecificSettings { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns false as Comments should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeComments()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AlertSettingsDto {\n");
+        sb.Append("  Status: ").Append(Status).Append("\n");
+        sb.Append("  Comments: ").Append(Comments).Append("\n");
+        sb.Append("  NotificationSettings: ").Append(NotificationSettings).Append("\n");
+        sb.Append("  SpecificSettings: ").Append(SpecificSettings).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

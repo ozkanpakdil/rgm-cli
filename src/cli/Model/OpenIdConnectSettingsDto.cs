@@ -9,200 +9,186 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     OpenIdConnectSettingsDto
+/// </summary>
+[DataContract(Name = "OpenIdConnectSettingsDto")]
+public class OpenIdConnectSettingsDto : IValidatableObject
 {
     /// <summary>
-    /// OpenIdConnectSettingsDto
+    ///     Initializes a new instance of the <see cref="OpenIdConnectSettingsDto" /> class.
     /// </summary>
-    [DataContract(Name = "OpenIdConnectSettingsDto")]
-    public partial class OpenIdConnectSettingsDto : IValidatableObject
+    [JsonConstructorAttribute]
+    protected OpenIdConnectSettingsDto()
     {
-
-        /// <summary>
-        /// Gets or Sets FlowType
-        /// </summary>
-        [DataMember(Name = "flowType", IsRequired = true, EmitDefaultValue = true)]
-        public FlowType FlowType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AdminPrincipalType
-        /// </summary>
-        [DataMember(Name = "adminPrincipalType", IsRequired = true, EmitDefaultValue = true)]
-        public PrincipalTypeDto AdminPrincipalType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OpenIdConnectSettingsDto" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected OpenIdConnectSettingsDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OpenIdConnectSettingsDto" /> class.
-        /// </summary>
-        /// <param name="authority">authority (required).</param>
-        /// <param name="clientId">clientId (required).</param>
-        /// <param name="flowType">flowType (required).</param>
-        /// <param name="clientSecret">clientSecret.</param>
-        /// <param name="usernameClaimName">usernameClaimName (required).</param>
-        /// <param name="groupClaimName">groupClaimName (required).</param>
-        /// <param name="adminUser">adminUser (required).</param>
-        /// <param name="adminPrincipalType">adminPrincipalType (required).</param>
-        /// <param name="sendIdTokenOnLogout">sendIdTokenOnLogout (required).</param>
-        public OpenIdConnectSettingsDto(string authority = default(string), string clientId = default(string), FlowType flowType = default(FlowType), string clientSecret = default(string), string usernameClaimName = default(string), string groupClaimName = default(string), string adminUser = default(string), PrincipalTypeDto adminPrincipalType = default(PrincipalTypeDto), bool sendIdTokenOnLogout = default(bool))
-        {
-            // to ensure "authority" is required (not null)
-            if (authority == null)
-            {
-                throw new ArgumentNullException("authority is a required property for OpenIdConnectSettingsDto and cannot be null");
-            }
-            this.Authority = authority;
-            // to ensure "clientId" is required (not null)
-            if (clientId == null)
-            {
-                throw new ArgumentNullException("clientId is a required property for OpenIdConnectSettingsDto and cannot be null");
-            }
-            this.ClientId = clientId;
-            this.FlowType = flowType;
-            // to ensure "usernameClaimName" is required (not null)
-            if (usernameClaimName == null)
-            {
-                throw new ArgumentNullException("usernameClaimName is a required property for OpenIdConnectSettingsDto and cannot be null");
-            }
-            this.UsernameClaimName = usernameClaimName;
-            // to ensure "groupClaimName" is required (not null)
-            if (groupClaimName == null)
-            {
-                throw new ArgumentNullException("groupClaimName is a required property for OpenIdConnectSettingsDto and cannot be null");
-            }
-            this.GroupClaimName = groupClaimName;
-            // to ensure "adminUser" is required (not null)
-            if (adminUser == null)
-            {
-                throw new ArgumentNullException("adminUser is a required property for OpenIdConnectSettingsDto and cannot be null");
-            }
-            this.AdminUser = adminUser;
-            this.AdminPrincipalType = adminPrincipalType;
-            this.SendIdTokenOnLogout = sendIdTokenOnLogout;
-            this.ClientSecret = clientSecret;
-        }
-
-        /// <summary>
-        /// Gets or Sets Authority
-        /// </summary>
-        [DataMember(Name = "authority", IsRequired = true, EmitDefaultValue = true)]
-        public string Authority { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ClientId
-        /// </summary>
-        [DataMember(Name = "clientId", IsRequired = true, EmitDefaultValue = true)]
-        public string ClientId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ClientSecret
-        /// </summary>
-        [DataMember(Name = "clientSecret", EmitDefaultValue = true)]
-        public string ClientSecret { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UsernameClaimName
-        /// </summary>
-        [DataMember(Name = "usernameClaimName", IsRequired = true, EmitDefaultValue = true)]
-        public string UsernameClaimName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GroupClaimName
-        /// </summary>
-        [DataMember(Name = "groupClaimName", IsRequired = true, EmitDefaultValue = true)]
-        public string GroupClaimName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AdminUser
-        /// </summary>
-        [DataMember(Name = "adminUser", IsRequired = true, EmitDefaultValue = true)]
-        public string AdminUser { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SendIdTokenOnLogout
-        /// </summary>
-        [DataMember(Name = "sendIdTokenOnLogout", IsRequired = true, EmitDefaultValue = true)]
-        public bool SendIdTokenOnLogout { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class OpenIdConnectSettingsDto {\n");
-            sb.Append("  Authority: ").Append(Authority).Append("\n");
-            sb.Append("  ClientId: ").Append(ClientId).Append("\n");
-            sb.Append("  FlowType: ").Append(FlowType).Append("\n");
-            sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
-            sb.Append("  UsernameClaimName: ").Append(UsernameClaimName).Append("\n");
-            sb.Append("  GroupClaimName: ").Append(GroupClaimName).Append("\n");
-            sb.Append("  AdminUser: ").Append(AdminUser).Append("\n");
-            sb.Append("  AdminPrincipalType: ").Append(AdminPrincipalType).Append("\n");
-            sb.Append("  SendIdTokenOnLogout: ").Append(SendIdTokenOnLogout).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // Authority (string) minLength
-            if (this.Authority != null && this.Authority.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for Authority, length must be greater than 1.", new [] { "Authority" });
-            }
-
-            // ClientId (string) minLength
-            if (this.ClientId != null && this.ClientId.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for ClientId, length must be greater than 1.", new [] { "ClientId" });
-            }
-
-            // UsernameClaimName (string) minLength
-            if (this.UsernameClaimName != null && this.UsernameClaimName.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for UsernameClaimName, length must be greater than 1.", new [] { "UsernameClaimName" });
-            }
-
-            // GroupClaimName (string) minLength
-            if (this.GroupClaimName != null && this.GroupClaimName.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for GroupClaimName, length must be greater than 1.", new [] { "GroupClaimName" });
-            }
-
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="OpenIdConnectSettingsDto" /> class.
+    /// </summary>
+    /// <param name="authority">authority (required).</param>
+    /// <param name="clientId">clientId (required).</param>
+    /// <param name="flowType">flowType (required).</param>
+    /// <param name="clientSecret">clientSecret.</param>
+    /// <param name="usernameClaimName">usernameClaimName (required).</param>
+    /// <param name="groupClaimName">groupClaimName (required).</param>
+    /// <param name="adminUser">adminUser (required).</param>
+    /// <param name="adminPrincipalType">adminPrincipalType (required).</param>
+    /// <param name="sendIdTokenOnLogout">sendIdTokenOnLogout (required).</param>
+    public OpenIdConnectSettingsDto(string authority = default, string clientId = default, FlowType flowType = default,
+        string clientSecret = default, string usernameClaimName = default, string groupClaimName = default,
+        string adminUser = default, PrincipalTypeDto adminPrincipalType = default, bool sendIdTokenOnLogout = default)
+    {
+        // to ensure "authority" is required (not null)
+        if (authority == null)
+            throw new ArgumentNullException(
+                "authority is a required property for OpenIdConnectSettingsDto and cannot be null");
+        Authority = authority;
+        // to ensure "clientId" is required (not null)
+        if (clientId == null)
+            throw new ArgumentNullException(
+                "clientId is a required property for OpenIdConnectSettingsDto and cannot be null");
+        ClientId = clientId;
+        FlowType = flowType;
+        // to ensure "usernameClaimName" is required (not null)
+        if (usernameClaimName == null)
+            throw new ArgumentNullException(
+                "usernameClaimName is a required property for OpenIdConnectSettingsDto and cannot be null");
+        UsernameClaimName = usernameClaimName;
+        // to ensure "groupClaimName" is required (not null)
+        if (groupClaimName == null)
+            throw new ArgumentNullException(
+                "groupClaimName is a required property for OpenIdConnectSettingsDto and cannot be null");
+        GroupClaimName = groupClaimName;
+        // to ensure "adminUser" is required (not null)
+        if (adminUser == null)
+            throw new ArgumentNullException(
+                "adminUser is a required property for OpenIdConnectSettingsDto and cannot be null");
+        AdminUser = adminUser;
+        AdminPrincipalType = adminPrincipalType;
+        SendIdTokenOnLogout = sendIdTokenOnLogout;
+        ClientSecret = clientSecret;
+    }
+
+    /// <summary>
+    ///     Gets or Sets FlowType
+    /// </summary>
+    [DataMember(Name = "flowType", IsRequired = true, EmitDefaultValue = true)]
+    public FlowType FlowType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AdminPrincipalType
+    /// </summary>
+    [DataMember(Name = "adminPrincipalType", IsRequired = true, EmitDefaultValue = true)]
+    public PrincipalTypeDto AdminPrincipalType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Authority
+    /// </summary>
+    [DataMember(Name = "authority", IsRequired = true, EmitDefaultValue = true)]
+    public string Authority { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ClientId
+    /// </summary>
+    [DataMember(Name = "clientId", IsRequired = true, EmitDefaultValue = true)]
+    public string ClientId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ClientSecret
+    /// </summary>
+    [DataMember(Name = "clientSecret", EmitDefaultValue = true)]
+    public string ClientSecret { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UsernameClaimName
+    /// </summary>
+    [DataMember(Name = "usernameClaimName", IsRequired = true, EmitDefaultValue = true)]
+    public string UsernameClaimName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets GroupClaimName
+    /// </summary>
+    [DataMember(Name = "groupClaimName", IsRequired = true, EmitDefaultValue = true)]
+    public string GroupClaimName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AdminUser
+    /// </summary>
+    [DataMember(Name = "adminUser", IsRequired = true, EmitDefaultValue = true)]
+    public string AdminUser { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SendIdTokenOnLogout
+    /// </summary>
+    [DataMember(Name = "sendIdTokenOnLogout", IsRequired = true, EmitDefaultValue = true)]
+    public bool SendIdTokenOnLogout { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        // Authority (string) minLength
+        if (Authority != null && Authority.Length < 1)
+            yield return new ValidationResult("Invalid value for Authority, length must be greater than 1.",
+                new[] { "Authority" });
+
+        // ClientId (string) minLength
+        if (ClientId != null && ClientId.Length < 1)
+            yield return new ValidationResult("Invalid value for ClientId, length must be greater than 1.",
+                new[] { "ClientId" });
+
+        // UsernameClaimName (string) minLength
+        if (UsernameClaimName != null && UsernameClaimName.Length < 1)
+            yield return new ValidationResult("Invalid value for UsernameClaimName, length must be greater than 1.",
+                new[] { "UsernameClaimName" });
+
+        // GroupClaimName (string) minLength
+        if (GroupClaimName != null && GroupClaimName.Length < 1)
+            yield return new ValidationResult("Invalid value for GroupClaimName, length must be greater than 1.",
+                new[] { "GroupClaimName" });
+
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class OpenIdConnectSettingsDto {\n");
+        sb.Append("  Authority: ").Append(Authority).Append("\n");
+        sb.Append("  ClientId: ").Append(ClientId).Append("\n");
+        sb.Append("  FlowType: ").Append(FlowType).Append("\n");
+        sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
+        sb.Append("  UsernameClaimName: ").Append(UsernameClaimName).Append("\n");
+        sb.Append("  GroupClaimName: ").Append(GroupClaimName).Append("\n");
+        sb.Append("  AdminUser: ").Append(AdminUser).Append("\n");
+        sb.Append("  AdminPrincipalType: ").Append(AdminPrincipalType).Append("\n");
+        sb.Append("  SendIdTokenOnLogout: ").Append(SendIdTokenOnLogout).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

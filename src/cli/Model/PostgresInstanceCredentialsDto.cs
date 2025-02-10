@@ -9,147 +9,142 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     PostgresInstanceCredentialsDto
+/// </summary>
+[DataContract(Name = "PostgresInstanceCredentialsDto")]
+public class PostgresInstanceCredentialsDto : IValidatableObject
 {
     /// <summary>
-    /// PostgresInstanceCredentialsDto
+    ///     Initializes a new instance of the <see cref="PostgresInstanceCredentialsDto" /> class.
     /// </summary>
-    [DataContract(Name = "PostgresInstanceCredentialsDto")]
-    public partial class PostgresInstanceCredentialsDto : IValidatableObject
+    [JsonConstructorAttribute]
+    protected PostgresInstanceCredentialsDto()
     {
-
-        /// <summary>
-        /// Gets or Sets AuthenticationMode
-        /// </summary>
-        [DataMember(Name = "authenticationMode", IsRequired = true, EmitDefaultValue = true)]
-        public SimplifiedPostgresAuthenticationMode AuthenticationMode { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PostgresInstanceCredentialsDto" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected PostgresInstanceCredentialsDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PostgresInstanceCredentialsDto" /> class.
-        /// </summary>
-        /// <param name="authenticationMode">authenticationMode (required).</param>
-        /// <param name="username">username (required).</param>
-        /// <param name="password">password.</param>
-        /// <param name="iamAccessKey">iamAccessKey.</param>
-        /// <param name="iamSecretKey">iamSecretKey.</param>
-        /// <param name="iamRegion">iamRegion.</param>
-        /// <param name="iamRoleArn">iamRoleArn.</param>
-        /// <param name="entraServicePrincipalCredentialId">entraServicePrincipalCredentialId.</param>
-        public PostgresInstanceCredentialsDto(SimplifiedPostgresAuthenticationMode authenticationMode = default(SimplifiedPostgresAuthenticationMode), string username = default(string), string password = default(string), string iamAccessKey = default(string), string iamSecretKey = default(string), string iamRegion = default(string), string iamRoleArn = default(string), Guid? entraServicePrincipalCredentialId = default(Guid?))
-        {
-            this.AuthenticationMode = authenticationMode;
-            // to ensure "username" is required (not null)
-            if (username == null)
-            {
-                throw new ArgumentNullException("username is a required property for PostgresInstanceCredentialsDto and cannot be null");
-            }
-            this.Username = username;
-            this.Password = password;
-            this.IamAccessKey = iamAccessKey;
-            this.IamSecretKey = iamSecretKey;
-            this.IamRegion = iamRegion;
-            this.IamRoleArn = iamRoleArn;
-            this.EntraServicePrincipalCredentialId = entraServicePrincipalCredentialId;
-        }
-
-        /// <summary>
-        /// Gets or Sets Username
-        /// </summary>
-        [DataMember(Name = "username", IsRequired = true, EmitDefaultValue = true)]
-        public string Username { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Password
-        /// </summary>
-        [DataMember(Name = "password", EmitDefaultValue = false)]
-        public string Password { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IamAccessKey
-        /// </summary>
-        [DataMember(Name = "iamAccessKey", EmitDefaultValue = false)]
-        public string IamAccessKey { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IamSecretKey
-        /// </summary>
-        [DataMember(Name = "iamSecretKey", EmitDefaultValue = false)]
-        public string IamSecretKey { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IamRegion
-        /// </summary>
-        [DataMember(Name = "iamRegion", EmitDefaultValue = true)]
-        public string IamRegion { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IamRoleArn
-        /// </summary>
-        [DataMember(Name = "iamRoleArn", EmitDefaultValue = true)]
-        public string IamRoleArn { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EntraServicePrincipalCredentialId
-        /// </summary>
-        [DataMember(Name = "entraServicePrincipalCredentialId", EmitDefaultValue = true)]
-        public Guid? EntraServicePrincipalCredentialId { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class PostgresInstanceCredentialsDto {\n");
-            sb.Append("  AuthenticationMode: ").Append(AuthenticationMode).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
-            sb.Append("  IamAccessKey: ").Append(IamAccessKey).Append("\n");
-            sb.Append("  IamSecretKey: ").Append(IamSecretKey).Append("\n");
-            sb.Append("  IamRegion: ").Append(IamRegion).Append("\n");
-            sb.Append("  IamRoleArn: ").Append(IamRoleArn).Append("\n");
-            sb.Append("  EntraServicePrincipalCredentialId: ").Append(EntraServicePrincipalCredentialId).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="PostgresInstanceCredentialsDto" /> class.
+    /// </summary>
+    /// <param name="authenticationMode">authenticationMode (required).</param>
+    /// <param name="username">username (required).</param>
+    /// <param name="password">password.</param>
+    /// <param name="iamAccessKey">iamAccessKey.</param>
+    /// <param name="iamSecretKey">iamSecretKey.</param>
+    /// <param name="iamRegion">iamRegion.</param>
+    /// <param name="iamRoleArn">iamRoleArn.</param>
+    /// <param name="entraServicePrincipalCredentialId">entraServicePrincipalCredentialId.</param>
+    public PostgresInstanceCredentialsDto(SimplifiedPostgresAuthenticationMode authenticationMode = default,
+        string username = default, string password = default, string iamAccessKey = default,
+        string iamSecretKey = default, string iamRegion = default, string iamRoleArn = default,
+        Guid? entraServicePrincipalCredentialId = default)
+    {
+        AuthenticationMode = authenticationMode;
+        // to ensure "username" is required (not null)
+        if (username == null)
+            throw new ArgumentNullException(
+                "username is a required property for PostgresInstanceCredentialsDto and cannot be null");
+        Username = username;
+        Password = password;
+        IamAccessKey = iamAccessKey;
+        IamSecretKey = iamSecretKey;
+        IamRegion = iamRegion;
+        IamRoleArn = iamRoleArn;
+        EntraServicePrincipalCredentialId = entraServicePrincipalCredentialId;
+    }
+
+    /// <summary>
+    ///     Gets or Sets AuthenticationMode
+    /// </summary>
+    [DataMember(Name = "authenticationMode", IsRequired = true, EmitDefaultValue = true)]
+    public SimplifiedPostgresAuthenticationMode AuthenticationMode { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Username
+    /// </summary>
+    [DataMember(Name = "username", IsRequired = true, EmitDefaultValue = true)]
+    public string Username { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Password
+    /// </summary>
+    [DataMember(Name = "password", EmitDefaultValue = false)]
+    public string Password { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IamAccessKey
+    /// </summary>
+    [DataMember(Name = "iamAccessKey", EmitDefaultValue = false)]
+    public string IamAccessKey { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IamSecretKey
+    /// </summary>
+    [DataMember(Name = "iamSecretKey", EmitDefaultValue = false)]
+    public string IamSecretKey { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IamRegion
+    /// </summary>
+    [DataMember(Name = "iamRegion", EmitDefaultValue = true)]
+    public string IamRegion { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IamRoleArn
+    /// </summary>
+    [DataMember(Name = "iamRoleArn", EmitDefaultValue = true)]
+    public string IamRoleArn { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EntraServicePrincipalCredentialId
+    /// </summary>
+    [DataMember(Name = "entraServicePrincipalCredentialId", EmitDefaultValue = true)]
+    public Guid? EntraServicePrincipalCredentialId { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class PostgresInstanceCredentialsDto {\n");
+        sb.Append("  AuthenticationMode: ").Append(AuthenticationMode).Append("\n");
+        sb.Append("  Username: ").Append(Username).Append("\n");
+        sb.Append("  Password: ").Append(Password).Append("\n");
+        sb.Append("  IamAccessKey: ").Append(IamAccessKey).Append("\n");
+        sb.Append("  IamSecretKey: ").Append(IamSecretKey).Append("\n");
+        sb.Append("  IamRegion: ").Append(IamRegion).Append("\n");
+        sb.Append("  IamRoleArn: ").Append(IamRoleArn).Append("\n");
+        sb.Append("  EntraServicePrincipalCredentialId: ").Append(EntraServicePrincipalCredentialId).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

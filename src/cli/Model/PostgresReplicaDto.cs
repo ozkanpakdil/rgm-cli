@@ -9,200 +9,195 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Channels.Data;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     PostgresReplicaDto
+/// </summary>
+[DataContract(Name = "PostgresReplicaDto")]
+public class PostgresReplicaDto : IValidatableObject
 {
     /// <summary>
-    /// PostgresReplicaDto
+    ///     Initializes a new instance of the <see cref="PostgresReplicaDto" /> class.
     /// </summary>
-    [DataContract(Name = "PostgresReplicaDto")]
-    public partial class PostgresReplicaDto : IValidatableObject
+    /// <param name="walSenderPid">walSenderPid.</param>
+    /// <param name="address">address.</param>
+    /// <param name="applicationName">applicationName.</param>
+    /// <param name="slotName">slotName.</param>
+    /// <param name="startedAt">startedAt.</param>
+    /// <param name="status">status.</param>
+    /// <param name="syncState">syncState.</param>
+    /// <param name="pendingLag">pendingLag.</param>
+    /// <param name="writeLag">writeLag.</param>
+    /// <param name="flushLag">flushLag.</param>
+    /// <param name="replayLag">replayLag.</param>
+    /// <param name="isMonitored">isMonitored.</param>
+    /// <param name="channelInstanceRef">channelInstanceRef.</param>
+    /// <param name="baseMonitorName">baseMonitorName.</param>
+    /// <param name="overviewUrl">overviewUrl.</param>
+    public PostgresReplicaDto(IntegerIdentifier walSenderPid = default, string address = default,
+        string applicationName = default, string slotName = default, DateTime startedAt = default,
+        string status = default, string syncState = default, long pendingLag = default, long writeLag = default,
+        long flushLag = default, long replayLag = default, bool isMonitored = default,
+        ChannelInstanceRef channelInstanceRef = default, string baseMonitorName = default, string overviewUrl = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PostgresReplicaDto" /> class.
-        /// </summary>
-        /// <param name="walSenderPid">walSenderPid.</param>
-        /// <param name="address">address.</param>
-        /// <param name="applicationName">applicationName.</param>
-        /// <param name="slotName">slotName.</param>
-        /// <param name="startedAt">startedAt.</param>
-        /// <param name="status">status.</param>
-        /// <param name="syncState">syncState.</param>
-        /// <param name="pendingLag">pendingLag.</param>
-        /// <param name="writeLag">writeLag.</param>
-        /// <param name="flushLag">flushLag.</param>
-        /// <param name="replayLag">replayLag.</param>
-        /// <param name="isMonitored">isMonitored.</param>
-        /// <param name="channelInstanceRef">channelInstanceRef.</param>
-        /// <param name="baseMonitorName">baseMonitorName.</param>
-        /// <param name="overviewUrl">overviewUrl.</param>
-        public PostgresReplicaDto(IntegerIdentifier walSenderPid = default(IntegerIdentifier), string address = default(string), string applicationName = default(string), string slotName = default(string), DateTime startedAt = default(DateTime), string status = default(string), string syncState = default(string), long pendingLag = default(long), long writeLag = default(long), long flushLag = default(long), long replayLag = default(long), bool isMonitored = default(bool), ChannelInstanceRef channelInstanceRef = default(ChannelInstanceRef), string baseMonitorName = default(string), string overviewUrl = default(string))
-        {
-            this.WalSenderPid = walSenderPid;
-            this.Address = address;
-            this.ApplicationName = applicationName;
-            this.SlotName = slotName;
-            this.StartedAt = startedAt;
-            this.Status = status;
-            this.SyncState = syncState;
-            this.PendingLag = pendingLag;
-            this.WriteLag = writeLag;
-            this.FlushLag = flushLag;
-            this.ReplayLag = replayLag;
-            this.IsMonitored = isMonitored;
-            this.ChannelInstanceRef = channelInstanceRef;
-            this.BaseMonitorName = baseMonitorName;
-            this.OverviewUrl = overviewUrl;
-        }
-
-        /// <summary>
-        /// Gets or Sets WalSenderPid
-        /// </summary>
-        [DataMember(Name = "walSenderPid", EmitDefaultValue = false)]
-        public IntegerIdentifier WalSenderPid { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Address
-        /// </summary>
-        [DataMember(Name = "address", EmitDefaultValue = false)]
-        public string Address { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ApplicationName
-        /// </summary>
-        [DataMember(Name = "applicationName", EmitDefaultValue = false)]
-        public string ApplicationName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SlotName
-        /// </summary>
-        [DataMember(Name = "slotName", EmitDefaultValue = false)]
-        public string SlotName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets StartedAt
-        /// </summary>
-        [DataMember(Name = "startedAt", EmitDefaultValue = false)]
-        public DateTime StartedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SyncState
-        /// </summary>
-        [DataMember(Name = "syncState", EmitDefaultValue = false)]
-        public string SyncState { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PendingLag
-        /// </summary>
-        [DataMember(Name = "pendingLag", EmitDefaultValue = false)]
-        public long PendingLag { get; set; }
-
-        /// <summary>
-        /// Gets or Sets WriteLag
-        /// </summary>
-        [DataMember(Name = "writeLag", EmitDefaultValue = false)]
-        public long WriteLag { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FlushLag
-        /// </summary>
-        [DataMember(Name = "flushLag", EmitDefaultValue = false)]
-        public long FlushLag { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ReplayLag
-        /// </summary>
-        [DataMember(Name = "replayLag", EmitDefaultValue = false)]
-        public long ReplayLag { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsMonitored
-        /// </summary>
-        [DataMember(Name = "isMonitored", EmitDefaultValue = true)]
-        public bool IsMonitored { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ChannelInstanceRef
-        /// </summary>
-        [DataMember(Name = "channelInstanceRef", EmitDefaultValue = false)]
-        public ChannelInstanceRef ChannelInstanceRef { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BaseMonitorName
-        /// </summary>
-        [DataMember(Name = "baseMonitorName", EmitDefaultValue = false)]
-        public string BaseMonitorName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OverviewUrl
-        /// </summary>
-        [DataMember(Name = "overviewUrl", EmitDefaultValue = false)]
-        public string OverviewUrl { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class PostgresReplicaDto {\n");
-            sb.Append("  WalSenderPid: ").Append(WalSenderPid).Append("\n");
-            sb.Append("  Address: ").Append(Address).Append("\n");
-            sb.Append("  ApplicationName: ").Append(ApplicationName).Append("\n");
-            sb.Append("  SlotName: ").Append(SlotName).Append("\n");
-            sb.Append("  StartedAt: ").Append(StartedAt).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  SyncState: ").Append(SyncState).Append("\n");
-            sb.Append("  PendingLag: ").Append(PendingLag).Append("\n");
-            sb.Append("  WriteLag: ").Append(WriteLag).Append("\n");
-            sb.Append("  FlushLag: ").Append(FlushLag).Append("\n");
-            sb.Append("  ReplayLag: ").Append(ReplayLag).Append("\n");
-            sb.Append("  IsMonitored: ").Append(IsMonitored).Append("\n");
-            sb.Append("  ChannelInstanceRef: ").Append(ChannelInstanceRef).Append("\n");
-            sb.Append("  BaseMonitorName: ").Append(BaseMonitorName).Append("\n");
-            sb.Append("  OverviewUrl: ").Append(OverviewUrl).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        WalSenderPid = walSenderPid;
+        Address = address;
+        ApplicationName = applicationName;
+        SlotName = slotName;
+        StartedAt = startedAt;
+        Status = status;
+        SyncState = syncState;
+        PendingLag = pendingLag;
+        WriteLag = writeLag;
+        FlushLag = flushLag;
+        ReplayLag = replayLag;
+        IsMonitored = isMonitored;
+        ChannelInstanceRef = channelInstanceRef;
+        BaseMonitorName = baseMonitorName;
+        OverviewUrl = overviewUrl;
     }
 
+    /// <summary>
+    ///     Gets or Sets WalSenderPid
+    /// </summary>
+    [DataMember(Name = "walSenderPid", EmitDefaultValue = false)]
+    public IntegerIdentifier WalSenderPid { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Address
+    /// </summary>
+    [DataMember(Name = "address", EmitDefaultValue = false)]
+    public string Address { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ApplicationName
+    /// </summary>
+    [DataMember(Name = "applicationName", EmitDefaultValue = false)]
+    public string ApplicationName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SlotName
+    /// </summary>
+    [DataMember(Name = "slotName", EmitDefaultValue = false)]
+    public string SlotName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets StartedAt
+    /// </summary>
+    [DataMember(Name = "startedAt", EmitDefaultValue = false)]
+    public DateTime StartedAt { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Status
+    /// </summary>
+    [DataMember(Name = "status", EmitDefaultValue = false)]
+    public string Status { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SyncState
+    /// </summary>
+    [DataMember(Name = "syncState", EmitDefaultValue = false)]
+    public string SyncState { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets PendingLag
+    /// </summary>
+    [DataMember(Name = "pendingLag", EmitDefaultValue = false)]
+    public long PendingLag { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets WriteLag
+    /// </summary>
+    [DataMember(Name = "writeLag", EmitDefaultValue = false)]
+    public long WriteLag { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FlushLag
+    /// </summary>
+    [DataMember(Name = "flushLag", EmitDefaultValue = false)]
+    public long FlushLag { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ReplayLag
+    /// </summary>
+    [DataMember(Name = "replayLag", EmitDefaultValue = false)]
+    public long ReplayLag { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsMonitored
+    /// </summary>
+    [DataMember(Name = "isMonitored", EmitDefaultValue = true)]
+    public bool IsMonitored { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ChannelInstanceRef
+    /// </summary>
+    [DataMember(Name = "channelInstanceRef", EmitDefaultValue = false)]
+    public ChannelInstanceRef ChannelInstanceRef { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets BaseMonitorName
+    /// </summary>
+    [DataMember(Name = "baseMonitorName", EmitDefaultValue = false)]
+    public string BaseMonitorName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets OverviewUrl
+    /// </summary>
+    [DataMember(Name = "overviewUrl", EmitDefaultValue = false)]
+    public string OverviewUrl { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class PostgresReplicaDto {\n");
+        sb.Append("  WalSenderPid: ").Append(WalSenderPid).Append("\n");
+        sb.Append("  Address: ").Append(Address).Append("\n");
+        sb.Append("  ApplicationName: ").Append(ApplicationName).Append("\n");
+        sb.Append("  SlotName: ").Append(SlotName).Append("\n");
+        sb.Append("  StartedAt: ").Append(StartedAt).Append("\n");
+        sb.Append("  Status: ").Append(Status).Append("\n");
+        sb.Append("  SyncState: ").Append(SyncState).Append("\n");
+        sb.Append("  PendingLag: ").Append(PendingLag).Append("\n");
+        sb.Append("  WriteLag: ").Append(WriteLag).Append("\n");
+        sb.Append("  FlushLag: ").Append(FlushLag).Append("\n");
+        sb.Append("  ReplayLag: ").Append(ReplayLag).Append("\n");
+        sb.Append("  IsMonitored: ").Append(IsMonitored).Append("\n");
+        sb.Append("  ChannelInstanceRef: ").Append(ChannelInstanceRef).Append("\n");
+        sb.Append("  BaseMonitorName: ").Append(BaseMonitorName).Append("\n");
+        sb.Append("  OverviewUrl: ").Append(OverviewUrl).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

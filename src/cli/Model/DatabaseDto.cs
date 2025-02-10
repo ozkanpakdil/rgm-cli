@@ -8,93 +8,83 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Channels.Data;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     DatabaseDto
+/// </summary>
+[DataContract(Name = "DatabaseDto")]
+public class DatabaseDto : IValidatableObject
 {
     /// <summary>
-    /// DatabaseDto
+    ///     Initializes a new instance of the <see cref="DatabaseDto" /> class.
     /// </summary>
-    [DataContract(Name = "DatabaseDto")]
-    public partial class DatabaseDto : IValidatableObject
+    /// <param name="cir">cir.</param>
+    /// <param name="displayName">displayName.</param>
+    /// <param name="databaseName">databaseName.</param>
+    public DatabaseDto(ChannelInstanceRef cir = default, string displayName = default, string databaseName = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabaseDto" /> class.
-        /// </summary>
-        /// <param name="cir">cir.</param>
-        /// <param name="displayName">displayName.</param>
-        /// <param name="databaseName">databaseName.</param>
-        public DatabaseDto(ChannelInstanceRef cir = default(ChannelInstanceRef), string displayName = default(string), string databaseName = default(string))
-        {
-            this.Cir = cir;
-            this.DisplayName = displayName;
-            this.DatabaseName = databaseName;
-        }
-
-        /// <summary>
-        /// Gets or Sets Cir
-        /// </summary>
-        [DataMember(Name = "cir", EmitDefaultValue = true)]
-        public ChannelInstanceRef Cir { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DisplayName
-        /// </summary>
-        [DataMember(Name = "displayName", EmitDefaultValue = true)]
-        public string DisplayName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DatabaseName
-        /// </summary>
-        [DataMember(Name = "databaseName", EmitDefaultValue = true)]
-        public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class DatabaseDto {\n");
-            sb.Append("  Cir: ").Append(Cir).Append("\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  DatabaseName: ").Append(DatabaseName).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Cir = cir;
+        DisplayName = displayName;
+        DatabaseName = databaseName;
     }
 
+    /// <summary>
+    ///     Gets or Sets Cir
+    /// </summary>
+    [DataMember(Name = "cir", EmitDefaultValue = true)]
+    public ChannelInstanceRef Cir { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DisplayName
+    /// </summary>
+    [DataMember(Name = "displayName", EmitDefaultValue = true)]
+    public string DisplayName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DatabaseName
+    /// </summary>
+    [DataMember(Name = "databaseName", EmitDefaultValue = true)]
+    public string DatabaseName { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class DatabaseDto {\n");
+        sb.Append("  Cir: ").Append(Cir).Append("\n");
+        sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+        sb.Append("  DatabaseName: ").Append(DatabaseName).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

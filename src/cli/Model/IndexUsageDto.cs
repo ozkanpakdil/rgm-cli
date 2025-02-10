@@ -9,101 +9,92 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     IndexUsageDto
+/// </summary>
+[DataContract(Name = "IndexUsageDto")]
+public class IndexUsageDto : IValidatableObject
 {
     /// <summary>
-    /// IndexUsageDto
+    ///     Initializes a new instance of the <see cref="IndexUsageDto" /> class.
     /// </summary>
-    [DataContract(Name = "IndexUsageDto")]
-    public partial class IndexUsageDto : IValidatableObject
+    /// <param name="collectionDate">collectionDate.</param>
+    /// <param name="seeks">seeks.</param>
+    /// <param name="scans">scans.</param>
+    /// <param name="lookups">lookups.</param>
+    public IndexUsageDto(DateTime collectionDate = default, long seeks = default, long scans = default,
+        long lookups = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IndexUsageDto" /> class.
-        /// </summary>
-        /// <param name="collectionDate">collectionDate.</param>
-        /// <param name="seeks">seeks.</param>
-        /// <param name="scans">scans.</param>
-        /// <param name="lookups">lookups.</param>
-        public IndexUsageDto(DateTime collectionDate = default(DateTime), long seeks = default(long), long scans = default(long), long lookups = default(long))
-        {
-            this.CollectionDate = collectionDate;
-            this.Seeks = seeks;
-            this.Scans = scans;
-            this.Lookups = lookups;
-        }
-
-        /// <summary>
-        /// Gets or Sets CollectionDate
-        /// </summary>
-        [DataMember(Name = "collectionDate", EmitDefaultValue = false)]
-        public DateTime CollectionDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Seeks
-        /// </summary>
-        [DataMember(Name = "seeks", EmitDefaultValue = false)]
-        public long Seeks { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Scans
-        /// </summary>
-        [DataMember(Name = "scans", EmitDefaultValue = false)]
-        public long Scans { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Lookups
-        /// </summary>
-        [DataMember(Name = "lookups", EmitDefaultValue = false)]
-        public long Lookups { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class IndexUsageDto {\n");
-            sb.Append("  CollectionDate: ").Append(CollectionDate).Append("\n");
-            sb.Append("  Seeks: ").Append(Seeks).Append("\n");
-            sb.Append("  Scans: ").Append(Scans).Append("\n");
-            sb.Append("  Lookups: ").Append(Lookups).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        CollectionDate = collectionDate;
+        Seeks = seeks;
+        Scans = scans;
+        Lookups = lookups;
     }
 
+    /// <summary>
+    ///     Gets or Sets CollectionDate
+    /// </summary>
+    [DataMember(Name = "collectionDate", EmitDefaultValue = false)]
+    public DateTime CollectionDate { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Seeks
+    /// </summary>
+    [DataMember(Name = "seeks", EmitDefaultValue = false)]
+    public long Seeks { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Scans
+    /// </summary>
+    [DataMember(Name = "scans", EmitDefaultValue = false)]
+    public long Scans { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Lookups
+    /// </summary>
+    [DataMember(Name = "lookups", EmitDefaultValue = false)]
+    public long Lookups { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class IndexUsageDto {\n");
+        sb.Append("  CollectionDate: ").Append(CollectionDate).Append("\n");
+        sb.Append("  Seeks: ").Append(Seeks).Append("\n");
+        sb.Append("  Scans: ").Append(Scans).Append("\n");
+        sb.Append("  Lookups: ").Append(Lookups).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

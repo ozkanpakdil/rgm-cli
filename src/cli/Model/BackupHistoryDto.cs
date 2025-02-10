@@ -9,200 +9,194 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     BackupHistoryDto
+/// </summary>
+[DataContract(Name = "BackupHistoryDto")]
+public class BackupHistoryDto : IValidatableObject
 {
     /// <summary>
-    /// BackupHistoryDto
+    ///     Initializes a new instance of the <see cref="BackupHistoryDto" /> class.
     /// </summary>
-    [DataContract(Name = "BackupHistoryDto")]
-    public partial class BackupHistoryDto : IValidatableObject
+    /// <param name="serverOverviewUrl">serverOverviewUrl.</param>
+    /// <param name="serverName">serverName.</param>
+    /// <param name="serverAlias">serverAlias.</param>
+    /// <param name="dateRun">dateRun.</param>
+    /// <param name="duration">duration.</param>
+    /// <param name="type">type.</param>
+    /// <param name="size">size.</param>
+    /// <param name="copyOnly">copyOnly.</param>
+    /// <param name="compressed">compressed.</param>
+    /// <param name="passwordProtected">passwordProtected.</param>
+    /// <param name="encrypted">encrypted.</param>
+    /// <param name="location">location.</param>
+    /// <param name="nativeBackup">nativeBackup.</param>
+    /// <param name="backedUpByRedgateSqlBackup">backedUpByRedgateSqlBackup.</param>
+    /// <param name="backedUpBy">backedUpBy.</param>
+    public BackupHistoryDto(string serverOverviewUrl = default, string serverName = default,
+        string serverAlias = default, DateTime? dateRun = default, double? duration = default,
+        BackupType? type = default, long? size = default, bool copyOnly = default, bool compressed = default,
+        bool passwordProtected = default, bool encrypted = default, string location = default,
+        bool nativeBackup = default, bool backedUpByRedgateSqlBackup = default, string backedUpBy = default)
     {
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public BackupType? Type { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BackupHistoryDto" /> class.
-        /// </summary>
-        /// <param name="serverOverviewUrl">serverOverviewUrl.</param>
-        /// <param name="serverName">serverName.</param>
-        /// <param name="serverAlias">serverAlias.</param>
-        /// <param name="dateRun">dateRun.</param>
-        /// <param name="duration">duration.</param>
-        /// <param name="type">type.</param>
-        /// <param name="size">size.</param>
-        /// <param name="copyOnly">copyOnly.</param>
-        /// <param name="compressed">compressed.</param>
-        /// <param name="passwordProtected">passwordProtected.</param>
-        /// <param name="encrypted">encrypted.</param>
-        /// <param name="location">location.</param>
-        /// <param name="nativeBackup">nativeBackup.</param>
-        /// <param name="backedUpByRedgateSqlBackup">backedUpByRedgateSqlBackup.</param>
-        /// <param name="backedUpBy">backedUpBy.</param>
-        public BackupHistoryDto(string serverOverviewUrl = default(string), string serverName = default(string), string serverAlias = default(string), DateTime? dateRun = default(DateTime?), double? duration = default(double?), BackupType? type = default(BackupType?), long? size = default(long?), bool copyOnly = default(bool), bool compressed = default(bool), bool passwordProtected = default(bool), bool encrypted = default(bool), string location = default(string), bool nativeBackup = default(bool), bool backedUpByRedgateSqlBackup = default(bool), string backedUpBy = default(string))
-        {
-            this.ServerOverviewUrl = serverOverviewUrl;
-            this.ServerName = serverName;
-            this.ServerAlias = serverAlias;
-            this.DateRun = dateRun;
-            this.Duration = duration;
-            this.Type = type;
-            this.Size = size;
-            this.CopyOnly = copyOnly;
-            this.Compressed = compressed;
-            this.PasswordProtected = passwordProtected;
-            this.Encrypted = encrypted;
-            this.Location = location;
-            this.NativeBackup = nativeBackup;
-            this.BackedUpByRedgateSqlBackup = backedUpByRedgateSqlBackup;
-            this.BackedUpBy = backedUpBy;
-        }
-
-        /// <summary>
-        /// Gets or Sets ServerOverviewUrl
-        /// </summary>
-        [DataMember(Name = "serverOverviewUrl", EmitDefaultValue = true)]
-        public string ServerOverviewUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ServerName
-        /// </summary>
-        [DataMember(Name = "serverName", EmitDefaultValue = true)]
-        public string ServerName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ServerAlias
-        /// </summary>
-        [DataMember(Name = "serverAlias", EmitDefaultValue = true)]
-        public string ServerAlias { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DateRun
-        /// </summary>
-        [DataMember(Name = "dateRun", EmitDefaultValue = true)]
-        public DateTime? DateRun { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Duration
-        /// </summary>
-        [DataMember(Name = "duration", EmitDefaultValue = true)]
-        public double? Duration { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Size
-        /// </summary>
-        [DataMember(Name = "size", EmitDefaultValue = true)]
-        public long? Size { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CopyOnly
-        /// </summary>
-        [DataMember(Name = "copyOnly", EmitDefaultValue = true)]
-        public bool CopyOnly { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Compressed
-        /// </summary>
-        [DataMember(Name = "compressed", EmitDefaultValue = true)]
-        public bool Compressed { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PasswordProtected
-        /// </summary>
-        [DataMember(Name = "passwordProtected", EmitDefaultValue = true)]
-        public bool PasswordProtected { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Encrypted
-        /// </summary>
-        [DataMember(Name = "encrypted", EmitDefaultValue = true)]
-        public bool Encrypted { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Location
-        /// </summary>
-        [DataMember(Name = "location", EmitDefaultValue = true)]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or Sets NativeBackup
-        /// </summary>
-        [DataMember(Name = "nativeBackup", EmitDefaultValue = true)]
-        public bool NativeBackup { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BackedUpByRedgateSqlBackup
-        /// </summary>
-        [DataMember(Name = "backedUpByRedgateSqlBackup", EmitDefaultValue = true)]
-        public bool BackedUpByRedgateSqlBackup { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BackedUpBy
-        /// </summary>
-        [DataMember(Name = "backedUpBy", EmitDefaultValue = true)]
-        public string BackedUpBy { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class BackupHistoryDto {\n");
-            sb.Append("  ServerOverviewUrl: ").Append(ServerOverviewUrl).Append("\n");
-            sb.Append("  ServerName: ").Append(ServerName).Append("\n");
-            sb.Append("  ServerAlias: ").Append(ServerAlias).Append("\n");
-            sb.Append("  DateRun: ").Append(DateRun).Append("\n");
-            sb.Append("  Duration: ").Append(Duration).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Size: ").Append(Size).Append("\n");
-            sb.Append("  CopyOnly: ").Append(CopyOnly).Append("\n");
-            sb.Append("  Compressed: ").Append(Compressed).Append("\n");
-            sb.Append("  PasswordProtected: ").Append(PasswordProtected).Append("\n");
-            sb.Append("  Encrypted: ").Append(Encrypted).Append("\n");
-            sb.Append("  Location: ").Append(Location).Append("\n");
-            sb.Append("  NativeBackup: ").Append(NativeBackup).Append("\n");
-            sb.Append("  BackedUpByRedgateSqlBackup: ").Append(BackedUpByRedgateSqlBackup).Append("\n");
-            sb.Append("  BackedUpBy: ").Append(BackedUpBy).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        ServerOverviewUrl = serverOverviewUrl;
+        ServerName = serverName;
+        ServerAlias = serverAlias;
+        DateRun = dateRun;
+        Duration = duration;
+        Type = type;
+        Size = size;
+        CopyOnly = copyOnly;
+        Compressed = compressed;
+        PasswordProtected = passwordProtected;
+        Encrypted = encrypted;
+        Location = location;
+        NativeBackup = nativeBackup;
+        BackedUpByRedgateSqlBackup = backedUpByRedgateSqlBackup;
+        BackedUpBy = backedUpBy;
     }
 
+    /// <summary>
+    ///     Gets or Sets Type
+    /// </summary>
+    [DataMember(Name = "type", EmitDefaultValue = false)]
+    public BackupType? Type { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ServerOverviewUrl
+    /// </summary>
+    [DataMember(Name = "serverOverviewUrl", EmitDefaultValue = true)]
+    public string ServerOverviewUrl { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ServerName
+    /// </summary>
+    [DataMember(Name = "serverName", EmitDefaultValue = true)]
+    public string ServerName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ServerAlias
+    /// </summary>
+    [DataMember(Name = "serverAlias", EmitDefaultValue = true)]
+    public string ServerAlias { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DateRun
+    /// </summary>
+    [DataMember(Name = "dateRun", EmitDefaultValue = true)]
+    public DateTime? DateRun { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Duration
+    /// </summary>
+    [DataMember(Name = "duration", EmitDefaultValue = true)]
+    public double? Duration { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Size
+    /// </summary>
+    [DataMember(Name = "size", EmitDefaultValue = true)]
+    public long? Size { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CopyOnly
+    /// </summary>
+    [DataMember(Name = "copyOnly", EmitDefaultValue = true)]
+    public bool CopyOnly { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Compressed
+    /// </summary>
+    [DataMember(Name = "compressed", EmitDefaultValue = true)]
+    public bool Compressed { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets PasswordProtected
+    /// </summary>
+    [DataMember(Name = "passwordProtected", EmitDefaultValue = true)]
+    public bool PasswordProtected { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Encrypted
+    /// </summary>
+    [DataMember(Name = "encrypted", EmitDefaultValue = true)]
+    public bool Encrypted { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Location
+    /// </summary>
+    [DataMember(Name = "location", EmitDefaultValue = true)]
+    public string Location { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets NativeBackup
+    /// </summary>
+    [DataMember(Name = "nativeBackup", EmitDefaultValue = true)]
+    public bool NativeBackup { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets BackedUpByRedgateSqlBackup
+    /// </summary>
+    [DataMember(Name = "backedUpByRedgateSqlBackup", EmitDefaultValue = true)]
+    public bool BackedUpByRedgateSqlBackup { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets BackedUpBy
+    /// </summary>
+    [DataMember(Name = "backedUpBy", EmitDefaultValue = true)]
+    public string BackedUpBy { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class BackupHistoryDto {\n");
+        sb.Append("  ServerOverviewUrl: ").Append(ServerOverviewUrl).Append("\n");
+        sb.Append("  ServerName: ").Append(ServerName).Append("\n");
+        sb.Append("  ServerAlias: ").Append(ServerAlias).Append("\n");
+        sb.Append("  DateRun: ").Append(DateRun).Append("\n");
+        sb.Append("  Duration: ").Append(Duration).Append("\n");
+        sb.Append("  Type: ").Append(Type).Append("\n");
+        sb.Append("  Size: ").Append(Size).Append("\n");
+        sb.Append("  CopyOnly: ").Append(CopyOnly).Append("\n");
+        sb.Append("  Compressed: ").Append(Compressed).Append("\n");
+        sb.Append("  PasswordProtected: ").Append(PasswordProtected).Append("\n");
+        sb.Append("  Encrypted: ").Append(Encrypted).Append("\n");
+        sb.Append("  Location: ").Append(Location).Append("\n");
+        sb.Append("  NativeBackup: ").Append(NativeBackup).Append("\n");
+        sb.Append("  BackedUpByRedgateSqlBackup: ").Append(BackedUpByRedgateSqlBackup).Append("\n");
+        sb.Append("  BackedUpBy: ").Append(BackedUpBy).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

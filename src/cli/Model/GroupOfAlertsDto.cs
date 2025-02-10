@@ -8,156 +8,148 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     GroupOfAlertsDto
+/// </summary>
+[DataContract(Name = "GroupOfAlertsDto")]
+public class GroupOfAlertsDto : IValidatableObject
 {
     /// <summary>
-    /// GroupOfAlertsDto
+    ///     Initializes a new instance of the <see cref="GroupOfAlertsDto" /> class.
     /// </summary>
-    [DataContract(Name = "GroupOfAlertsDto")]
-    public partial class GroupOfAlertsDto : IValidatableObject
+    /// <param name="items">items.</param>
+    /// <param name="totalItemCount">totalItemCount.</param>
+    /// <param name="totalGroupCount">totalGroupCount.</param>
+    /// <param name="asOfTicks">asOfTicks.</param>
+    /// <param name="minTimestamp">minTimestamp.</param>
+    /// <param name="maxTimestamp">maxTimestamp.</param>
+    /// <param name="hasMoreItems">hasMoreItems.</param>
+    /// <param name="firstAlertId">firstAlertId.</param>
+    /// <param name="maxAlertId">maxAlertId.</param>
+    /// <param name="timeRangeText">timeRangeText.</param>
+    public GroupOfAlertsDto(List<GroupedAlertDto> items = default, int totalItemCount = default,
+        int totalGroupCount = default, long asOfTicks = default, string minTimestamp = default,
+        string maxTimestamp = default, bool hasMoreItems = default, IntegerIdentifier firstAlertId = default,
+        IntegerIdentifier maxAlertId = default, string timeRangeText = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GroupOfAlertsDto" /> class.
-        /// </summary>
-        /// <param name="items">items.</param>
-        /// <param name="totalItemCount">totalItemCount.</param>
-        /// <param name="totalGroupCount">totalGroupCount.</param>
-        /// <param name="asOfTicks">asOfTicks.</param>
-        /// <param name="minTimestamp">minTimestamp.</param>
-        /// <param name="maxTimestamp">maxTimestamp.</param>
-        /// <param name="hasMoreItems">hasMoreItems.</param>
-        /// <param name="firstAlertId">firstAlertId.</param>
-        /// <param name="maxAlertId">maxAlertId.</param>
-        /// <param name="timeRangeText">timeRangeText.</param>
-        public GroupOfAlertsDto(List<GroupedAlertDto> items = default(List<GroupedAlertDto>), int totalItemCount = default(int), int totalGroupCount = default(int), long asOfTicks = default(long), string minTimestamp = default(string), string maxTimestamp = default(string), bool hasMoreItems = default(bool), IntegerIdentifier firstAlertId = default(IntegerIdentifier), IntegerIdentifier maxAlertId = default(IntegerIdentifier), string timeRangeText = default(string))
-        {
-            this.Items = items;
-            this.TotalItemCount = totalItemCount;
-            this.TotalGroupCount = totalGroupCount;
-            this.AsOfTicks = asOfTicks;
-            this.MinTimestamp = minTimestamp;
-            this.MaxTimestamp = maxTimestamp;
-            this.HasMoreItems = hasMoreItems;
-            this.FirstAlertId = firstAlertId;
-            this.MaxAlertId = maxAlertId;
-            this.TimeRangeText = timeRangeText;
-        }
-
-        /// <summary>
-        /// Gets or Sets Items
-        /// </summary>
-        [DataMember(Name = "items", EmitDefaultValue = true)]
-        public List<GroupedAlertDto> Items { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TotalItemCount
-        /// </summary>
-        [DataMember(Name = "totalItemCount", EmitDefaultValue = false)]
-        public int TotalItemCount { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TotalGroupCount
-        /// </summary>
-        [DataMember(Name = "totalGroupCount", EmitDefaultValue = false)]
-        public int TotalGroupCount { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AsOfTicks
-        /// </summary>
-        [DataMember(Name = "asOfTicks", EmitDefaultValue = false)]
-        public long AsOfTicks { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MinTimestamp
-        /// </summary>
-        [DataMember(Name = "minTimestamp", EmitDefaultValue = true)]
-        public string MinTimestamp { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MaxTimestamp
-        /// </summary>
-        [DataMember(Name = "maxTimestamp", EmitDefaultValue = true)]
-        public string MaxTimestamp { get; set; }
-
-        /// <summary>
-        /// Gets or Sets HasMoreItems
-        /// </summary>
-        [DataMember(Name = "hasMoreItems", EmitDefaultValue = true)]
-        public bool HasMoreItems { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FirstAlertId
-        /// </summary>
-        [DataMember(Name = "firstAlertId", EmitDefaultValue = false)]
-        public IntegerIdentifier FirstAlertId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MaxAlertId
-        /// </summary>
-        [DataMember(Name = "maxAlertId", EmitDefaultValue = false)]
-        public IntegerIdentifier MaxAlertId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TimeRangeText
-        /// </summary>
-        [DataMember(Name = "timeRangeText", EmitDefaultValue = true)]
-        public string TimeRangeText { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class GroupOfAlertsDto {\n");
-            sb.Append("  Items: ").Append(Items).Append("\n");
-            sb.Append("  TotalItemCount: ").Append(TotalItemCount).Append("\n");
-            sb.Append("  TotalGroupCount: ").Append(TotalGroupCount).Append("\n");
-            sb.Append("  AsOfTicks: ").Append(AsOfTicks).Append("\n");
-            sb.Append("  MinTimestamp: ").Append(MinTimestamp).Append("\n");
-            sb.Append("  MaxTimestamp: ").Append(MaxTimestamp).Append("\n");
-            sb.Append("  HasMoreItems: ").Append(HasMoreItems).Append("\n");
-            sb.Append("  FirstAlertId: ").Append(FirstAlertId).Append("\n");
-            sb.Append("  MaxAlertId: ").Append(MaxAlertId).Append("\n");
-            sb.Append("  TimeRangeText: ").Append(TimeRangeText).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Items = items;
+        TotalItemCount = totalItemCount;
+        TotalGroupCount = totalGroupCount;
+        AsOfTicks = asOfTicks;
+        MinTimestamp = minTimestamp;
+        MaxTimestamp = maxTimestamp;
+        HasMoreItems = hasMoreItems;
+        FirstAlertId = firstAlertId;
+        MaxAlertId = maxAlertId;
+        TimeRangeText = timeRangeText;
     }
 
+    /// <summary>
+    ///     Gets or Sets Items
+    /// </summary>
+    [DataMember(Name = "items", EmitDefaultValue = true)]
+    public List<GroupedAlertDto> Items { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TotalItemCount
+    /// </summary>
+    [DataMember(Name = "totalItemCount", EmitDefaultValue = false)]
+    public int TotalItemCount { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TotalGroupCount
+    /// </summary>
+    [DataMember(Name = "totalGroupCount", EmitDefaultValue = false)]
+    public int TotalGroupCount { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AsOfTicks
+    /// </summary>
+    [DataMember(Name = "asOfTicks", EmitDefaultValue = false)]
+    public long AsOfTicks { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MinTimestamp
+    /// </summary>
+    [DataMember(Name = "minTimestamp", EmitDefaultValue = true)]
+    public string MinTimestamp { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MaxTimestamp
+    /// </summary>
+    [DataMember(Name = "maxTimestamp", EmitDefaultValue = true)]
+    public string MaxTimestamp { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets HasMoreItems
+    /// </summary>
+    [DataMember(Name = "hasMoreItems", EmitDefaultValue = true)]
+    public bool HasMoreItems { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FirstAlertId
+    /// </summary>
+    [DataMember(Name = "firstAlertId", EmitDefaultValue = false)]
+    public IntegerIdentifier FirstAlertId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MaxAlertId
+    /// </summary>
+    [DataMember(Name = "maxAlertId", EmitDefaultValue = false)]
+    public IntegerIdentifier MaxAlertId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TimeRangeText
+    /// </summary>
+    [DataMember(Name = "timeRangeText", EmitDefaultValue = true)]
+    public string TimeRangeText { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class GroupOfAlertsDto {\n");
+        sb.Append("  Items: ").Append(Items).Append("\n");
+        sb.Append("  TotalItemCount: ").Append(TotalItemCount).Append("\n");
+        sb.Append("  TotalGroupCount: ").Append(TotalGroupCount).Append("\n");
+        sb.Append("  AsOfTicks: ").Append(AsOfTicks).Append("\n");
+        sb.Append("  MinTimestamp: ").Append(MinTimestamp).Append("\n");
+        sb.Append("  MaxTimestamp: ").Append(MaxTimestamp).Append("\n");
+        sb.Append("  HasMoreItems: ").Append(HasMoreItems).Append("\n");
+        sb.Append("  FirstAlertId: ").Append(FirstAlertId).Append("\n");
+        sb.Append("  MaxAlertId: ").Append(MaxAlertId).Append("\n");
+        sb.Append("  TimeRangeText: ").Append(TimeRangeText).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

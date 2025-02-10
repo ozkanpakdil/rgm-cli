@@ -8,156 +8,148 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     OldDatabaseUserDto
+/// </summary>
+[DataContract(Name = "OldDatabaseUserDto")]
+public class OldDatabaseUserDto : IValidatableObject
 {
     /// <summary>
-    /// OldDatabaseUserDto
+    ///     Initializes a new instance of the <see cref="OldDatabaseUserDto" /> class.
     /// </summary>
-    [DataContract(Name = "OldDatabaseUserDto")]
-    public partial class OldDatabaseUserDto : IValidatableObject
+    /// <param name="serverPrincipalId">serverPrincipalId.</param>
+    /// <param name="name">name.</param>
+    /// <param name="sid">sid.</param>
+    /// <param name="principalId">principalId.</param>
+    /// <param name="owningPrincipalId">owningPrincipalId.</param>
+    /// <param name="defaultSchemaName">defaultSchemaName.</param>
+    /// <param name="type">type.</param>
+    /// <param name="login">login.</param>
+    /// <param name="adAccount">adAccount.</param>
+    /// <param name="roles">roles.</param>
+    public OldDatabaseUserDto(IntegerIdentifier serverPrincipalId = default, string name = default,
+        string sid = default, IntegerIdentifier principalId = default, IntegerIdentifier owningPrincipalId = default,
+        string defaultSchemaName = default, DatabasePrincipalType? type = default, string login = default,
+        string adAccount = default, List<string> roles = default)
     {
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public DatabasePrincipalType? Type { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OldDatabaseUserDto" /> class.
-        /// </summary>
-        /// <param name="serverPrincipalId">serverPrincipalId.</param>
-        /// <param name="name">name.</param>
-        /// <param name="sid">sid.</param>
-        /// <param name="principalId">principalId.</param>
-        /// <param name="owningPrincipalId">owningPrincipalId.</param>
-        /// <param name="defaultSchemaName">defaultSchemaName.</param>
-        /// <param name="type">type.</param>
-        /// <param name="login">login.</param>
-        /// <param name="adAccount">adAccount.</param>
-        /// <param name="roles">roles.</param>
-        public OldDatabaseUserDto(IntegerIdentifier serverPrincipalId = default(IntegerIdentifier), string name = default(string), string sid = default(string), IntegerIdentifier principalId = default(IntegerIdentifier), IntegerIdentifier owningPrincipalId = default(IntegerIdentifier), string defaultSchemaName = default(string), DatabasePrincipalType? type = default(DatabasePrincipalType?), string login = default(string), string adAccount = default(string), List<string> roles = default(List<string>))
-        {
-            this.ServerPrincipalId = serverPrincipalId;
-            this.Name = name;
-            this.Sid = sid;
-            this.PrincipalId = principalId;
-            this.OwningPrincipalId = owningPrincipalId;
-            this.DefaultSchemaName = defaultSchemaName;
-            this.Type = type;
-            this.Login = login;
-            this.AdAccount = adAccount;
-            this.Roles = roles;
-        }
-
-        /// <summary>
-        /// Gets or Sets ServerPrincipalId
-        /// </summary>
-        [DataMember(Name = "serverPrincipalId", EmitDefaultValue = false)]
-        public IntegerIdentifier ServerPrincipalId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Sid
-        /// </summary>
-        [DataMember(Name = "sid", EmitDefaultValue = true)]
-        public string Sid { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PrincipalId
-        /// </summary>
-        [DataMember(Name = "principalId", EmitDefaultValue = false)]
-        public IntegerIdentifier PrincipalId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OwningPrincipalId
-        /// </summary>
-        [DataMember(Name = "owningPrincipalId", EmitDefaultValue = false)]
-        public IntegerIdentifier OwningPrincipalId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DefaultSchemaName
-        /// </summary>
-        [DataMember(Name = "defaultSchemaName", EmitDefaultValue = true)]
-        public string DefaultSchemaName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Login
-        /// </summary>
-        [DataMember(Name = "login", EmitDefaultValue = true)]
-        public string Login { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AdAccount
-        /// </summary>
-        [DataMember(Name = "adAccount", EmitDefaultValue = true)]
-        public string AdAccount { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Roles
-        /// </summary>
-        [DataMember(Name = "roles", EmitDefaultValue = true)]
-        public List<string> Roles { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class OldDatabaseUserDto {\n");
-            sb.Append("  ServerPrincipalId: ").Append(ServerPrincipalId).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Sid: ").Append(Sid).Append("\n");
-            sb.Append("  PrincipalId: ").Append(PrincipalId).Append("\n");
-            sb.Append("  OwningPrincipalId: ").Append(OwningPrincipalId).Append("\n");
-            sb.Append("  DefaultSchemaName: ").Append(DefaultSchemaName).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Login: ").Append(Login).Append("\n");
-            sb.Append("  AdAccount: ").Append(AdAccount).Append("\n");
-            sb.Append("  Roles: ").Append(Roles).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        ServerPrincipalId = serverPrincipalId;
+        Name = name;
+        Sid = sid;
+        PrincipalId = principalId;
+        OwningPrincipalId = owningPrincipalId;
+        DefaultSchemaName = defaultSchemaName;
+        Type = type;
+        Login = login;
+        AdAccount = adAccount;
+        Roles = roles;
     }
 
+    /// <summary>
+    ///     Gets or Sets Type
+    /// </summary>
+    [DataMember(Name = "type", EmitDefaultValue = false)]
+    public DatabasePrincipalType? Type { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ServerPrincipalId
+    /// </summary>
+    [DataMember(Name = "serverPrincipalId", EmitDefaultValue = false)]
+    public IntegerIdentifier ServerPrincipalId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Sid
+    /// </summary>
+    [DataMember(Name = "sid", EmitDefaultValue = true)]
+    public string Sid { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets PrincipalId
+    /// </summary>
+    [DataMember(Name = "principalId", EmitDefaultValue = false)]
+    public IntegerIdentifier PrincipalId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets OwningPrincipalId
+    /// </summary>
+    [DataMember(Name = "owningPrincipalId", EmitDefaultValue = false)]
+    public IntegerIdentifier OwningPrincipalId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DefaultSchemaName
+    /// </summary>
+    [DataMember(Name = "defaultSchemaName", EmitDefaultValue = true)]
+    public string DefaultSchemaName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Login
+    /// </summary>
+    [DataMember(Name = "login", EmitDefaultValue = true)]
+    public string Login { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AdAccount
+    /// </summary>
+    [DataMember(Name = "adAccount", EmitDefaultValue = true)]
+    public string AdAccount { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Roles
+    /// </summary>
+    [DataMember(Name = "roles", EmitDefaultValue = true)]
+    public List<string> Roles { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class OldDatabaseUserDto {\n");
+        sb.Append("  ServerPrincipalId: ").Append(ServerPrincipalId).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  Sid: ").Append(Sid).Append("\n");
+        sb.Append("  PrincipalId: ").Append(PrincipalId).Append("\n");
+        sb.Append("  OwningPrincipalId: ").Append(OwningPrincipalId).Append("\n");
+        sb.Append("  DefaultSchemaName: ").Append(DefaultSchemaName).Append("\n");
+        sb.Append("  Type: ").Append(Type).Append("\n");
+        sb.Append("  Login: ").Append(Login).Append("\n");
+        sb.Append("  AdAccount: ").Append(AdAccount).Append("\n");
+        sb.Append("  Roles: ").Append(Roles).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

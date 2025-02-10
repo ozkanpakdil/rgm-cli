@@ -8,84 +8,73 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     SkewedClocksDto
+/// </summary>
+[DataContract(Name = "SkewedClocksDto")]
+public class SkewedClocksDto : IValidatableObject
 {
     /// <summary>
-    /// SkewedClocksDto
+    ///     Initializes a new instance of the <see cref="SkewedClocksDto" /> class.
     /// </summary>
-    [DataContract(Name = "SkewedClocksDto")]
-    public partial class SkewedClocksDto : IValidatableObject
+    /// <param name="areSkewedBmClocks">areSkewedBmClocks.</param>
+    /// <param name="listOfSkewedClocks">listOfSkewedClocks.</param>
+    public SkewedClocksDto(bool areSkewedBmClocks = default, string listOfSkewedClocks = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SkewedClocksDto" /> class.
-        /// </summary>
-        /// <param name="areSkewedBmClocks">areSkewedBmClocks.</param>
-        /// <param name="listOfSkewedClocks">listOfSkewedClocks.</param>
-        public SkewedClocksDto(bool areSkewedBmClocks = default(bool), string listOfSkewedClocks = default(string))
-        {
-            this.AreSkewedBmClocks = areSkewedBmClocks;
-            this.ListOfSkewedClocks = listOfSkewedClocks;
-        }
-
-        /// <summary>
-        /// Gets or Sets AreSkewedBmClocks
-        /// </summary>
-        [DataMember(Name = "areSkewedBmClocks", EmitDefaultValue = true)]
-        public bool AreSkewedBmClocks { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ListOfSkewedClocks
-        /// </summary>
-        [DataMember(Name = "listOfSkewedClocks", EmitDefaultValue = true)]
-        public string ListOfSkewedClocks { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class SkewedClocksDto {\n");
-            sb.Append("  AreSkewedBmClocks: ").Append(AreSkewedBmClocks).Append("\n");
-            sb.Append("  ListOfSkewedClocks: ").Append(ListOfSkewedClocks).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        AreSkewedBmClocks = areSkewedBmClocks;
+        ListOfSkewedClocks = listOfSkewedClocks;
     }
 
+    /// <summary>
+    ///     Gets or Sets AreSkewedBmClocks
+    /// </summary>
+    [DataMember(Name = "areSkewedBmClocks", EmitDefaultValue = true)]
+    public bool AreSkewedBmClocks { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ListOfSkewedClocks
+    /// </summary>
+    [DataMember(Name = "listOfSkewedClocks", EmitDefaultValue = true)]
+    public string ListOfSkewedClocks { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class SkewedClocksDto {\n");
+        sb.Append("  AreSkewedBmClocks: ").Append(AreSkewedBmClocks).Append("\n");
+        sb.Append("  ListOfSkewedClocks: ").Append(ListOfSkewedClocks).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

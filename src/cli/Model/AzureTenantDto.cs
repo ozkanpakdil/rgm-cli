@@ -9,143 +9,136 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AzureTenantDto
+/// </summary>
+[DataContract(Name = "AzureTenantDto")]
+public class AzureTenantDto : IValidatableObject
 {
     /// <summary>
-    /// AzureTenantDto
+    ///     Initializes a new instance of the <see cref="AzureTenantDto" /> class.
     /// </summary>
-    [DataContract(Name = "AzureTenantDto")]
-    public partial class AzureTenantDto : IValidatableObject
+    /// <param name="id">id.</param>
+    /// <param name="name">name.</param>
+    /// <param name="tenantId">tenantId.</param>
+    /// <param name="clientId">clientId.</param>
+    /// <param name="partiallyRedactedClientSecret">partiallyRedactedClientSecret.</param>
+    /// <param name="createdDate">createdDate.</param>
+    /// <param name="usages">usages.</param>
+    public AzureTenantDto(Guid id = default, string name = default, string tenantId = default,
+        string clientId = default, string partiallyRedactedClientSecret = default, DateTime createdDate = default,
+        int usages = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureTenantDto" /> class.
-        /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="name">name.</param>
-        /// <param name="tenantId">tenantId.</param>
-        /// <param name="clientId">clientId.</param>
-        /// <param name="partiallyRedactedClientSecret">partiallyRedactedClientSecret.</param>
-        /// <param name="createdDate">createdDate.</param>
-        /// <param name="usages">usages.</param>
-        public AzureTenantDto(Guid id = default(Guid), string name = default(string), string tenantId = default(string), string clientId = default(string), string partiallyRedactedClientSecret = default(string), DateTime createdDate = default(DateTime), int usages = default(int))
-        {
-            this.Id = id;
-            this.Name = name;
-            this.TenantId = tenantId;
-            this.ClientId = clientId;
-            this.PartiallyRedactedClientSecret = partiallyRedactedClientSecret;
-            this.CreatedDate = createdDate;
-            this.Usages = usages;
-        }
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = true)]
-        public string Type { get; private set; }
-
-        /// <summary>
-        /// Returns false as Type should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeType()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public Guid Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TenantId
-        /// </summary>
-        [DataMember(Name = "tenantId", EmitDefaultValue = true)]
-        public string TenantId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ClientId
-        /// </summary>
-        [DataMember(Name = "clientId", EmitDefaultValue = true)]
-        public string ClientId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PartiallyRedactedClientSecret
-        /// </summary>
-        [DataMember(Name = "partiallyRedactedClientSecret", EmitDefaultValue = true)]
-        public string PartiallyRedactedClientSecret { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CreatedDate
-        /// </summary>
-        [DataMember(Name = "createdDate", EmitDefaultValue = false)]
-        public DateTime CreatedDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Usages
-        /// </summary>
-        [DataMember(Name = "usages", EmitDefaultValue = false)]
-        public int Usages { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AzureTenantDto {\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  TenantId: ").Append(TenantId).Append("\n");
-            sb.Append("  ClientId: ").Append(ClientId).Append("\n");
-            sb.Append("  PartiallyRedactedClientSecret: ").Append(PartiallyRedactedClientSecret).Append("\n");
-            sb.Append("  CreatedDate: ").Append(CreatedDate).Append("\n");
-            sb.Append("  Usages: ").Append(Usages).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Id = id;
+        Name = name;
+        TenantId = tenantId;
+        ClientId = clientId;
+        PartiallyRedactedClientSecret = partiallyRedactedClientSecret;
+        CreatedDate = createdDate;
+        Usages = usages;
     }
 
+    /// <summary>
+    ///     Gets or Sets Type
+    /// </summary>
+    [DataMember(Name = "type", EmitDefaultValue = true)]
+    public string Type { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets Id
+    /// </summary>
+    [DataMember(Name = "id", EmitDefaultValue = false)]
+    public Guid Id { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TenantId
+    /// </summary>
+    [DataMember(Name = "tenantId", EmitDefaultValue = true)]
+    public string TenantId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ClientId
+    /// </summary>
+    [DataMember(Name = "clientId", EmitDefaultValue = true)]
+    public string ClientId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets PartiallyRedactedClientSecret
+    /// </summary>
+    [DataMember(Name = "partiallyRedactedClientSecret", EmitDefaultValue = true)]
+    public string PartiallyRedactedClientSecret { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CreatedDate
+    /// </summary>
+    [DataMember(Name = "createdDate", EmitDefaultValue = false)]
+    public DateTime CreatedDate { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Usages
+    /// </summary>
+    [DataMember(Name = "usages", EmitDefaultValue = false)]
+    public int Usages { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns false as Type should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeType()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AzureTenantDto {\n");
+        sb.Append("  Type: ").Append(Type).Append("\n");
+        sb.Append("  Id: ").Append(Id).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  TenantId: ").Append(TenantId).Append("\n");
+        sb.Append("  ClientId: ").Append(ClientId).Append("\n");
+        sb.Append("  PartiallyRedactedClientSecret: ").Append(PartiallyRedactedClientSecret).Append("\n");
+        sb.Append("  CreatedDate: ").Append(CreatedDate).Append("\n");
+        sb.Append("  Usages: ").Append(Usages).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -8,129 +8,120 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     PostgresQueryPlanKeysDto
+/// </summary>
+[DataContract(Name = "PostgresQueryPlanKeysDto")]
+public class PostgresQueryPlanKeysDto : IValidatableObject
 {
     /// <summary>
-    /// PostgresQueryPlanKeysDto
+    ///     Initializes a new instance of the <see cref="PostgresQueryPlanKeysDto" /> class.
     /// </summary>
-    [DataContract(Name = "PostgresQueryPlanKeysDto")]
-    public partial class PostgresQueryPlanKeysDto : IValidatableObject
+    /// <param name="queryHash">queryHash.</param>
+    /// <param name="databaseName">databaseName.</param>
+    /// <param name="queryId">queryId.</param>
+    /// <param name="userId">userId.</param>
+    /// <param name="databaseId">databaseId.</param>
+    /// <param name="topLevel">topLevel.</param>
+    /// <param name="planHash">planHash.</param>
+    public PostgresQueryPlanKeysDto(string queryHash = default, string databaseName = default,
+        IntegerIdentifier queryId = default, IntegerIdentifier userId = default, IntegerIdentifier databaseId = default,
+        bool topLevel = default, string planHash = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PostgresQueryPlanKeysDto" /> class.
-        /// </summary>
-        /// <param name="queryHash">queryHash.</param>
-        /// <param name="databaseName">databaseName.</param>
-        /// <param name="queryId">queryId.</param>
-        /// <param name="userId">userId.</param>
-        /// <param name="databaseId">databaseId.</param>
-        /// <param name="topLevel">topLevel.</param>
-        /// <param name="planHash">planHash.</param>
-        public PostgresQueryPlanKeysDto(string queryHash = default(string), string databaseName = default(string), IntegerIdentifier queryId = default(IntegerIdentifier), IntegerIdentifier userId = default(IntegerIdentifier), IntegerIdentifier databaseId = default(IntegerIdentifier), bool topLevel = default(bool), string planHash = default(string))
-        {
-            this.QueryHash = queryHash;
-            this.DatabaseName = databaseName;
-            this.QueryId = queryId;
-            this.UserId = userId;
-            this.DatabaseId = databaseId;
-            this.TopLevel = topLevel;
-            this.PlanHash = planHash;
-        }
-
-        /// <summary>
-        /// Gets or Sets QueryHash
-        /// </summary>
-        [DataMember(Name = "queryHash", EmitDefaultValue = true)]
-        public string QueryHash { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DatabaseName
-        /// </summary>
-        [DataMember(Name = "databaseName", EmitDefaultValue = true)]
-        public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets QueryId
-        /// </summary>
-        [DataMember(Name = "queryId", EmitDefaultValue = false)]
-        public IntegerIdentifier QueryId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UserId
-        /// </summary>
-        [DataMember(Name = "userId", EmitDefaultValue = false)]
-        public IntegerIdentifier UserId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DatabaseId
-        /// </summary>
-        [DataMember(Name = "databaseId", EmitDefaultValue = false)]
-        public IntegerIdentifier DatabaseId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TopLevel
-        /// </summary>
-        [DataMember(Name = "topLevel", EmitDefaultValue = true)]
-        public bool TopLevel { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PlanHash
-        /// </summary>
-        [DataMember(Name = "planHash", EmitDefaultValue = true)]
-        public string PlanHash { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class PostgresQueryPlanKeysDto {\n");
-            sb.Append("  QueryHash: ").Append(QueryHash).Append("\n");
-            sb.Append("  DatabaseName: ").Append(DatabaseName).Append("\n");
-            sb.Append("  QueryId: ").Append(QueryId).Append("\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  DatabaseId: ").Append(DatabaseId).Append("\n");
-            sb.Append("  TopLevel: ").Append(TopLevel).Append("\n");
-            sb.Append("  PlanHash: ").Append(PlanHash).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        QueryHash = queryHash;
+        DatabaseName = databaseName;
+        QueryId = queryId;
+        UserId = userId;
+        DatabaseId = databaseId;
+        TopLevel = topLevel;
+        PlanHash = planHash;
     }
 
+    /// <summary>
+    ///     Gets or Sets QueryHash
+    /// </summary>
+    [DataMember(Name = "queryHash", EmitDefaultValue = true)]
+    public string QueryHash { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DatabaseName
+    /// </summary>
+    [DataMember(Name = "databaseName", EmitDefaultValue = true)]
+    public string DatabaseName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets QueryId
+    /// </summary>
+    [DataMember(Name = "queryId", EmitDefaultValue = false)]
+    public IntegerIdentifier QueryId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UserId
+    /// </summary>
+    [DataMember(Name = "userId", EmitDefaultValue = false)]
+    public IntegerIdentifier UserId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DatabaseId
+    /// </summary>
+    [DataMember(Name = "databaseId", EmitDefaultValue = false)]
+    public IntegerIdentifier DatabaseId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TopLevel
+    /// </summary>
+    [DataMember(Name = "topLevel", EmitDefaultValue = true)]
+    public bool TopLevel { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets PlanHash
+    /// </summary>
+    [DataMember(Name = "planHash", EmitDefaultValue = true)]
+    public string PlanHash { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class PostgresQueryPlanKeysDto {\n");
+        sb.Append("  QueryHash: ").Append(QueryHash).Append("\n");
+        sb.Append("  DatabaseName: ").Append(DatabaseName).Append("\n");
+        sb.Append("  QueryId: ").Append(QueryId).Append("\n");
+        sb.Append("  UserId: ").Append(UserId).Append("\n");
+        sb.Append("  DatabaseId: ").Append(DatabaseId).Append("\n");
+        sb.Append("  TopLevel: ").Append(TopLevel).Append("\n");
+        sb.Append("  PlanHash: ").Append(PlanHash).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

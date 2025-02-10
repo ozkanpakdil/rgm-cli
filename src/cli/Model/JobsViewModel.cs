@@ -8,129 +8,120 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     JobsViewModel
+/// </summary>
+[DataContract(Name = "JobsViewModel")]
+public class JobsViewModel : IValidatableObject
 {
     /// <summary>
-    /// JobsViewModel
+    ///     Initializes a new instance of the <see cref="JobsViewModel" /> class.
     /// </summary>
-    [DataContract(Name = "JobsViewModel")]
-    public partial class JobsViewModel : IValidatableObject
+    /// <param name="summary">summary.</param>
+    /// <param name="jobs">jobs.</param>
+    /// <param name="groups">groups.</param>
+    /// <param name="categories">categories.</param>
+    /// <param name="timeFormatString">timeFormatString.</param>
+    /// <param name="showShortPurgeSettingWarning">showShortPurgeSettingWarning.</param>
+    /// <param name="jobHistoryDataPurgeLifetime">jobHistoryDataPurgeLifetime.</param>
+    public JobsViewModel(List<JobsBucketViewModel> summary = default, List<JobsRowViewModel> jobs = default,
+        List<string> groups = default, List<string> categories = default, string timeFormatString = default,
+        bool showShortPurgeSettingWarning = default, string jobHistoryDataPurgeLifetime = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JobsViewModel" /> class.
-        /// </summary>
-        /// <param name="summary">summary.</param>
-        /// <param name="jobs">jobs.</param>
-        /// <param name="groups">groups.</param>
-        /// <param name="categories">categories.</param>
-        /// <param name="timeFormatString">timeFormatString.</param>
-        /// <param name="showShortPurgeSettingWarning">showShortPurgeSettingWarning.</param>
-        /// <param name="jobHistoryDataPurgeLifetime">jobHistoryDataPurgeLifetime.</param>
-        public JobsViewModel(List<JobsBucketViewModel> summary = default(List<JobsBucketViewModel>), List<JobsRowViewModel> jobs = default(List<JobsRowViewModel>), List<string> groups = default(List<string>), List<string> categories = default(List<string>), string timeFormatString = default(string), bool showShortPurgeSettingWarning = default(bool), string jobHistoryDataPurgeLifetime = default(string))
-        {
-            this.Summary = summary;
-            this.Jobs = jobs;
-            this.Groups = groups;
-            this.Categories = categories;
-            this.TimeFormatString = timeFormatString;
-            this.ShowShortPurgeSettingWarning = showShortPurgeSettingWarning;
-            this.JobHistoryDataPurgeLifetime = jobHistoryDataPurgeLifetime;
-        }
-
-        /// <summary>
-        /// Gets or Sets Summary
-        /// </summary>
-        [DataMember(Name = "summary", EmitDefaultValue = true)]
-        public List<JobsBucketViewModel> Summary { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Jobs
-        /// </summary>
-        [DataMember(Name = "jobs", EmitDefaultValue = true)]
-        public List<JobsRowViewModel> Jobs { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Groups
-        /// </summary>
-        [DataMember(Name = "groups", EmitDefaultValue = true)]
-        public List<string> Groups { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Categories
-        /// </summary>
-        [DataMember(Name = "categories", EmitDefaultValue = true)]
-        public List<string> Categories { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TimeFormatString
-        /// </summary>
-        [DataMember(Name = "timeFormatString", EmitDefaultValue = true)]
-        public string TimeFormatString { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ShowShortPurgeSettingWarning
-        /// </summary>
-        [DataMember(Name = "showShortPurgeSettingWarning", EmitDefaultValue = true)]
-        public bool ShowShortPurgeSettingWarning { get; set; }
-
-        /// <summary>
-        /// Gets or Sets JobHistoryDataPurgeLifetime
-        /// </summary>
-        [DataMember(Name = "jobHistoryDataPurgeLifetime", EmitDefaultValue = true)]
-        public string JobHistoryDataPurgeLifetime { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class JobsViewModel {\n");
-            sb.Append("  Summary: ").Append(Summary).Append("\n");
-            sb.Append("  Jobs: ").Append(Jobs).Append("\n");
-            sb.Append("  Groups: ").Append(Groups).Append("\n");
-            sb.Append("  Categories: ").Append(Categories).Append("\n");
-            sb.Append("  TimeFormatString: ").Append(TimeFormatString).Append("\n");
-            sb.Append("  ShowShortPurgeSettingWarning: ").Append(ShowShortPurgeSettingWarning).Append("\n");
-            sb.Append("  JobHistoryDataPurgeLifetime: ").Append(JobHistoryDataPurgeLifetime).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Summary = summary;
+        Jobs = jobs;
+        Groups = groups;
+        Categories = categories;
+        TimeFormatString = timeFormatString;
+        ShowShortPurgeSettingWarning = showShortPurgeSettingWarning;
+        JobHistoryDataPurgeLifetime = jobHistoryDataPurgeLifetime;
     }
 
+    /// <summary>
+    ///     Gets or Sets Summary
+    /// </summary>
+    [DataMember(Name = "summary", EmitDefaultValue = true)]
+    public List<JobsBucketViewModel> Summary { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Jobs
+    /// </summary>
+    [DataMember(Name = "jobs", EmitDefaultValue = true)]
+    public List<JobsRowViewModel> Jobs { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Groups
+    /// </summary>
+    [DataMember(Name = "groups", EmitDefaultValue = true)]
+    public List<string> Groups { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Categories
+    /// </summary>
+    [DataMember(Name = "categories", EmitDefaultValue = true)]
+    public List<string> Categories { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TimeFormatString
+    /// </summary>
+    [DataMember(Name = "timeFormatString", EmitDefaultValue = true)]
+    public string TimeFormatString { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ShowShortPurgeSettingWarning
+    /// </summary>
+    [DataMember(Name = "showShortPurgeSettingWarning", EmitDefaultValue = true)]
+    public bool ShowShortPurgeSettingWarning { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets JobHistoryDataPurgeLifetime
+    /// </summary>
+    [DataMember(Name = "jobHistoryDataPurgeLifetime", EmitDefaultValue = true)]
+    public string JobHistoryDataPurgeLifetime { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class JobsViewModel {\n");
+        sb.Append("  Summary: ").Append(Summary).Append("\n");
+        sb.Append("  Jobs: ").Append(Jobs).Append("\n");
+        sb.Append("  Groups: ").Append(Groups).Append("\n");
+        sb.Append("  Categories: ").Append(Categories).Append("\n");
+        sb.Append("  TimeFormatString: ").Append(TimeFormatString).Append("\n");
+        sb.Append("  ShowShortPurgeSettingWarning: ").Append(ShowShortPurgeSettingWarning).Append("\n");
+        sb.Append("  JobHistoryDataPurgeLifetime: ").Append(JobHistoryDataPurgeLifetime).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

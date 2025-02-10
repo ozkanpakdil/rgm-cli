@@ -8,129 +8,120 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     FullQueryTextDto
+/// </summary>
+[DataContract(Name = "FullQueryTextDto")]
+public class FullQueryTextDto : IValidatableObject
 {
     /// <summary>
-    /// FullQueryTextDto
+    ///     Initializes a new instance of the <see cref="FullQueryTextDto" /> class.
     /// </summary>
-    [DataContract(Name = "FullQueryTextDto")]
-    public partial class FullQueryTextDto : IValidatableObject
+    /// <param name="before">before.</param>
+    /// <param name="after">after.</param>
+    /// <param name="fragment">fragment.</param>
+    /// <param name="isTruncated">isTruncated.</param>
+    /// <param name="fullQuery">fullQuery.</param>
+    /// <param name="fragmentLineOffset">fragmentLineOffset.</param>
+    /// <param name="fragmentCharacterOffset">fragmentCharacterOffset.</param>
+    public FullQueryTextDto(string before = default, string after = default, string fragment = default,
+        bool isTruncated = default, string fullQuery = default, int fragmentLineOffset = default,
+        int fragmentCharacterOffset = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FullQueryTextDto" /> class.
-        /// </summary>
-        /// <param name="before">before.</param>
-        /// <param name="after">after.</param>
-        /// <param name="fragment">fragment.</param>
-        /// <param name="isTruncated">isTruncated.</param>
-        /// <param name="fullQuery">fullQuery.</param>
-        /// <param name="fragmentLineOffset">fragmentLineOffset.</param>
-        /// <param name="fragmentCharacterOffset">fragmentCharacterOffset.</param>
-        public FullQueryTextDto(string before = default(string), string after = default(string), string fragment = default(string), bool isTruncated = default(bool), string fullQuery = default(string), int fragmentLineOffset = default(int), int fragmentCharacterOffset = default(int))
-        {
-            this.Before = before;
-            this.After = after;
-            this.Fragment = fragment;
-            this.IsTruncated = isTruncated;
-            this.FullQuery = fullQuery;
-            this.FragmentLineOffset = fragmentLineOffset;
-            this.FragmentCharacterOffset = fragmentCharacterOffset;
-        }
-
-        /// <summary>
-        /// Gets or Sets Before
-        /// </summary>
-        [DataMember(Name = "before", EmitDefaultValue = true)]
-        public string Before { get; set; }
-
-        /// <summary>
-        /// Gets or Sets After
-        /// </summary>
-        [DataMember(Name = "after", EmitDefaultValue = true)]
-        public string After { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Fragment
-        /// </summary>
-        [DataMember(Name = "fragment", EmitDefaultValue = true)]
-        public string Fragment { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsTruncated
-        /// </summary>
-        [DataMember(Name = "isTruncated", EmitDefaultValue = true)]
-        public bool IsTruncated { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FullQuery
-        /// </summary>
-        [DataMember(Name = "fullQuery", EmitDefaultValue = true)]
-        public string FullQuery { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FragmentLineOffset
-        /// </summary>
-        [DataMember(Name = "fragmentLineOffset", EmitDefaultValue = false)]
-        public int FragmentLineOffset { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FragmentCharacterOffset
-        /// </summary>
-        [DataMember(Name = "fragmentCharacterOffset", EmitDefaultValue = false)]
-        public int FragmentCharacterOffset { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class FullQueryTextDto {\n");
-            sb.Append("  Before: ").Append(Before).Append("\n");
-            sb.Append("  After: ").Append(After).Append("\n");
-            sb.Append("  Fragment: ").Append(Fragment).Append("\n");
-            sb.Append("  IsTruncated: ").Append(IsTruncated).Append("\n");
-            sb.Append("  FullQuery: ").Append(FullQuery).Append("\n");
-            sb.Append("  FragmentLineOffset: ").Append(FragmentLineOffset).Append("\n");
-            sb.Append("  FragmentCharacterOffset: ").Append(FragmentCharacterOffset).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Before = before;
+        After = after;
+        Fragment = fragment;
+        IsTruncated = isTruncated;
+        FullQuery = fullQuery;
+        FragmentLineOffset = fragmentLineOffset;
+        FragmentCharacterOffset = fragmentCharacterOffset;
     }
 
+    /// <summary>
+    ///     Gets or Sets Before
+    /// </summary>
+    [DataMember(Name = "before", EmitDefaultValue = true)]
+    public string Before { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets After
+    /// </summary>
+    [DataMember(Name = "after", EmitDefaultValue = true)]
+    public string After { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Fragment
+    /// </summary>
+    [DataMember(Name = "fragment", EmitDefaultValue = true)]
+    public string Fragment { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsTruncated
+    /// </summary>
+    [DataMember(Name = "isTruncated", EmitDefaultValue = true)]
+    public bool IsTruncated { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FullQuery
+    /// </summary>
+    [DataMember(Name = "fullQuery", EmitDefaultValue = true)]
+    public string FullQuery { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FragmentLineOffset
+    /// </summary>
+    [DataMember(Name = "fragmentLineOffset", EmitDefaultValue = false)]
+    public int FragmentLineOffset { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FragmentCharacterOffset
+    /// </summary>
+    [DataMember(Name = "fragmentCharacterOffset", EmitDefaultValue = false)]
+    public int FragmentCharacterOffset { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class FullQueryTextDto {\n");
+        sb.Append("  Before: ").Append(Before).Append("\n");
+        sb.Append("  After: ").Append(After).Append("\n");
+        sb.Append("  Fragment: ").Append(Fragment).Append("\n");
+        sb.Append("  IsTruncated: ").Append(IsTruncated).Append("\n");
+        sb.Append("  FullQuery: ").Append(FullQuery).Append("\n");
+        sb.Append("  FragmentLineOffset: ").Append(FragmentLineOffset).Append("\n");
+        sb.Append("  FragmentCharacterOffset: ").Append(FragmentCharacterOffset).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

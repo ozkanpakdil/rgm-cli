@@ -8,75 +8,65 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     GroupedPostgresConfigurationOptionsDto
+/// </summary>
+[DataContract(Name = "GroupedPostgresConfigurationOptionsDto")]
+public class GroupedPostgresConfigurationOptionsDto : IValidatableObject
 {
     /// <summary>
-    /// GroupedPostgresConfigurationOptionsDto
+    ///     Initializes a new instance of the <see cref="GroupedPostgresConfigurationOptionsDto" /> class.
     /// </summary>
-    [DataContract(Name = "GroupedPostgresConfigurationOptionsDto")]
-    public partial class GroupedPostgresConfigurationOptionsDto : IValidatableObject
+    /// <param name="groupedOptions">groupedOptions.</param>
+    public GroupedPostgresConfigurationOptionsDto(
+        Dictionary<string, PostgresConfigurationOptionsDto> groupedOptions = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GroupedPostgresConfigurationOptionsDto" /> class.
-        /// </summary>
-        /// <param name="groupedOptions">groupedOptions.</param>
-        public GroupedPostgresConfigurationOptionsDto(Dictionary<string, PostgresConfigurationOptionsDto> groupedOptions = default(Dictionary<string, PostgresConfigurationOptionsDto>))
-        {
-            this.GroupedOptions = groupedOptions;
-        }
-
-        /// <summary>
-        /// Gets or Sets GroupedOptions
-        /// </summary>
-        [DataMember(Name = "groupedOptions", EmitDefaultValue = true)]
-        public Dictionary<string, PostgresConfigurationOptionsDto> GroupedOptions { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class GroupedPostgresConfigurationOptionsDto {\n");
-            sb.Append("  GroupedOptions: ").Append(GroupedOptions).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        GroupedOptions = groupedOptions;
     }
 
+    /// <summary>
+    ///     Gets or Sets GroupedOptions
+    /// </summary>
+    [DataMember(Name = "groupedOptions", EmitDefaultValue = true)]
+    public Dictionary<string, PostgresConfigurationOptionsDto> GroupedOptions { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class GroupedPostgresConfigurationOptionsDto {\n");
+        sb.Append("  GroupedOptions: ").Append(GroupedOptions).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

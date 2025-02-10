@@ -9,1391 +9,1474 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IConfigurationComplianceApiApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IConfigurationComplianceApiApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>DatabaseConfigurationDtoIEnumerableJSendSuccess</returns>
+    DatabaseConfigurationDtoIEnumerableJSendSuccess
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of DatabaseConfigurationDtoIEnumerableJSendSuccess</returns>
+    ApiResponse<DatabaseConfigurationDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetWithHttpInfo(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ConfigurationComplianceDtoJSendSuccess</returns>
+    ConfigurationComplianceDtoJSendSuccess
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ConfigurationComplianceDtoJSendSuccess</returns>
+    ApiResponse<ConfigurationComplianceDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetWithHttpInfo(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess</returns>
+    ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet(string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess</returns>
+    ApiResponse<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetWithHttpInfo(string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ConfigurationComplianceTemplateDtoJSendSuccess</returns>
+    ConfigurationComplianceTemplateDtoJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut(
+        Guid id, string baseMonitorName,
+        ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
+    ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutWithHttpInfo(Guid id, string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ConfigurationComplianceTemplateDtoJSendSuccess</returns>
+    ConfigurationComplianceTemplateDtoJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost(
+        string baseMonitorName,
+        ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
+    ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostWithHttpInfo(string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="templateId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>JSendSuccess</returns>
+    JSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete(Guid templateId,
+        string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="templateId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of JSendSuccess</returns>
+    ApiResponse<JSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteWithHttpInfo(Guid templateId,
+            string baseMonitorName, int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IConfigurationComplianceApiApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of DatabaseConfigurationDtoIEnumerableJSendSuccess</returns>
+    Task<DatabaseConfigurationDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetAsync(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (DatabaseConfigurationDtoIEnumerableJSendSuccess)</returns>
+    Task<ApiResponse<DatabaseConfigurationDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetWithHttpInfoAsync(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ConfigurationComplianceDtoJSendSuccess</returns>
+    Task<ConfigurationComplianceDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetAsync(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ConfigurationComplianceDtoJSendSuccess)</returns>
+    Task<ApiResponse<ConfigurationComplianceDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetWithHttpInfoAsync(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess</returns>
+    Task<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess)</returns>
+    Task<ApiResponse<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetWithHttpInfoAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
+    Task<ConfigurationComplianceTemplateDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutAsync(Guid id, string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ConfigurationComplianceTemplateDtoJSendSuccess)</returns>
+    Task<ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutWithHttpInfoAsync(Guid id,
+            string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
+    Task<ConfigurationComplianceTemplateDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostAsync(string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ConfigurationComplianceTemplateDtoJSendSuccess)</returns>
+    Task<ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostWithHttpInfoAsync(string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="templateId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of JSendSuccess</returns>
+    Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteAsync(
+        Guid templateId, string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="templateId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (JSendSuccess)</returns>
+    Task<ApiResponse<JSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteWithHttpInfoAsync(Guid templateId,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IConfigurationComplianceApiApi : IConfigurationComplianceApiApiSync,
+    IConfigurationComplianceApiApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class ConfigurationComplianceApiApi : IConfigurationComplianceApiApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ConfigurationComplianceApiApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public ConfigurationComplianceApiApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DatabaseConfigurationDtoIEnumerableJSendSuccess</returns>
-        DatabaseConfigurationDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet(DateTime collectionDate, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DatabaseConfigurationDtoIEnumerableJSendSuccess</returns>
-        ApiResponse<DatabaseConfigurationDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetWithHttpInfo(DateTime collectionDate, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ConfigurationComplianceDtoJSendSuccess</returns>
-        ConfigurationComplianceDtoJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet(DateTime collectionDate, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ConfigurationComplianceDtoJSendSuccess</returns>
-        ApiResponse<ConfigurationComplianceDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetWithHttpInfo(DateTime collectionDate, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess</returns>
-        ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet(string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess</returns>
-        ApiResponse<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetWithHttpInfo(string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ConfigurationComplianceTemplateDtoJSendSuccess</returns>
-        ConfigurationComplianceTemplateDtoJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut(Guid id, string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
-        ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutWithHttpInfo(Guid id, string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ConfigurationComplianceTemplateDtoJSendSuccess</returns>
-        ConfigurationComplianceTemplateDtoJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost(string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
-        ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostWithHttpInfo(string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>JSendSuccess</returns>
-        JSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete(Guid templateId, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of JSendSuccess</returns>
-        ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteWithHttpInfo(Guid templateId, string baseMonitorName, int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="ConfigurationComplianceApiApi" /> class.
     /// </summary>
-    public interface IConfigurationComplianceApiApiAsync : IApiAccessor
+    /// <returns></returns>
+    public ConfigurationComplianceApiApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DatabaseConfigurationDtoIEnumerableJSendSuccess</returns>
-        System.Threading.Tasks.Task<DatabaseConfigurationDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetAsync(DateTime collectionDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DatabaseConfigurationDtoIEnumerableJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DatabaseConfigurationDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetWithHttpInfoAsync(DateTime collectionDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConfigurationComplianceDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<ConfigurationComplianceDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetAsync(DateTime collectionDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConfigurationComplianceDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ConfigurationComplianceDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetWithHttpInfoAsync(DateTime collectionDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess</returns>
-        System.Threading.Tasks.Task<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<ConfigurationComplianceTemplateDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutAsync(Guid id, string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConfigurationComplianceTemplateDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutWithHttpInfoAsync(Guid id, string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<ConfigurationComplianceTemplateDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostAsync(string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConfigurationComplianceTemplateDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostWithHttpInfoAsync(string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of JSendSuccess</returns>
-        System.Threading.Tasks.Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteAsync(Guid templateId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (JSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteWithHttpInfoAsync(Guid templateId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="ConfigurationComplianceApiApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IConfigurationComplianceApiApi : IConfigurationComplianceApiApiSync, IConfigurationComplianceApiApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public ConfigurationComplianceApiApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="ConfigurationComplianceApiApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class ConfigurationComplianceApiApi : IConfigurationComplianceApiApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public ConfigurationComplianceApiApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigurationComplianceApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public ConfigurationComplianceApiApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>DatabaseConfigurationDtoIEnumerableJSendSuccess</returns>
+    public DatabaseConfigurationDtoIEnumerableJSendSuccess
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetWithHttpInfo(
+                collectionDate, baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of DatabaseConfigurationDtoIEnumerableJSendSuccess</returns>
+    public ApiResponse<DatabaseConfigurationDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetWithHttpInfo(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("collectionDate",
+            ClientUtils.ParameterToString(collectionDate)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<DatabaseConfigurationDtoIEnumerableJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configurationcompliance/databaseconfigurationoptions/{collectionDate}",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigurationComplianceApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public ConfigurationComplianceApiApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of DatabaseConfigurationDtoIEnumerableJSendSuccess</returns>
+    public async Task<DatabaseConfigurationDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetAsync(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await
+                ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetWithHttpInfoAsync(
+                    collectionDate, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (DatabaseConfigurationDtoIEnumerableJSendSuccess)</returns>
+    public async Task<ApiResponse<DatabaseConfigurationDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetWithHttpInfoAsync(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("collectionDate",
+            ClientUtils.ParameterToString(collectionDate)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<DatabaseConfigurationDtoIEnumerableJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/configurationcompliance/databaseconfigurationoptions/{collectionDate}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigurationComplianceApiApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public ConfigurationComplianceApiApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ConfigurationComplianceDtoJSendSuccess</returns>
+    public ConfigurationComplianceDtoJSendSuccess
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetWithHttpInfo(
+                collectionDate, baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ConfigurationComplianceDtoJSendSuccess</returns>
+    public ApiResponse<ConfigurationComplianceDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetWithHttpInfo(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("collectionDate",
+            ClientUtils.ParameterToString(collectionDate)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<ConfigurationComplianceDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configurationcompliance/serverconfigurationoptions/{collectionDate}",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigurationComplianceApiApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public ConfigurationComplianceApiApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ConfigurationComplianceDtoJSendSuccess</returns>
+    public async Task<ConfigurationComplianceDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetAsync(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await
+                ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetWithHttpInfoAsync(
+                    collectionDate, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="collectionDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ConfigurationComplianceDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<ConfigurationComplianceDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetWithHttpInfoAsync(
+            DateTime collectionDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("collectionDate",
+            ClientUtils.ParameterToString(collectionDate)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<ConfigurationComplianceDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/configurationcompliance/serverconfigurationoptions/{collectionDate}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess</returns>
+    public ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet(string baseMonitorName,
+            int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetWithHttpInfo(baseMonitorName);
+        return localVarResponse.Data;
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess</returns>
+    public ApiResponse<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetWithHttpInfo(string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            return this.Configuration.BasePath;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configurationcompliance/templates", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess</returns>
+    public async Task<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetWithHttpInfoAsync(baseMonitorName,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess)</returns>
+    public async Task<ApiResponse<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetWithHttpInfoAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/configurationcompliance/templates", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DatabaseConfigurationDtoIEnumerableJSendSuccess</returns>
-        public DatabaseConfigurationDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet(DateTime collectionDate, string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ConfigurationComplianceTemplateDtoJSendSuccess</returns>
+    public ConfigurationComplianceTemplateDtoJSendSuccess
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut(Guid id, string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutWithHttpInfo(id, baseMonitorName,
+                configurationComplianceTemplateCreateDto);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
+    public ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutWithHttpInfo(Guid id, string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            cli.Client.ApiResponse<DatabaseConfigurationDtoIEnumerableJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetWithHttpInfo(collectionDate, baseMonitorName);
-            return localVarResponse.Data;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("id", ClientUtils.ParameterToString(id)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = configurationComplianceTemplateCreateDto;
+
+        localVarRequestOptions.Operation =
+            "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Put<ConfigurationComplianceTemplateDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configurationcompliance/templates/{id}", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DatabaseConfigurationDtoIEnumerableJSendSuccess</returns>
-        public cli.Client.ApiResponse<DatabaseConfigurationDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetWithHttpInfo(DateTime collectionDate, string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
+    public async Task<ConfigurationComplianceTemplateDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutAsync(Guid id, string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutWithHttpInfoAsync(id,
+                    baseMonitorName, configurationComplianceTemplateCreateDto, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="id"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ConfigurationComplianceTemplateDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutWithHttpInfoAsync(Guid id,
+            string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        localVarRequestOptions.PathParameters.Add("id", ClientUtils.ParameterToString(id)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = configurationComplianceTemplateCreateDto;
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("collectionDate", cli.Client.ClientUtils.ParameterToString(collectionDate)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<DatabaseConfigurationDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/configurationcompliance/databaseconfigurationoptions/{collectionDate}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PutAsync<ConfigurationComplianceTemplateDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/configurationcompliance/templates/{id}", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DatabaseConfigurationDtoIEnumerableJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<DatabaseConfigurationDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetAsync(DateTime collectionDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ConfigurationComplianceTemplateDtoJSendSuccess</returns>
+    public ConfigurationComplianceTemplateDtoJSendSuccess
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost(string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostWithHttpInfo(baseMonitorName,
+                configurationComplianceTemplateCreateDto);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
+    public ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostWithHttpInfo(string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            cli.Client.ApiResponse<DatabaseConfigurationDtoIEnumerableJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetWithHttpInfoAsync(collectionDate, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = configurationComplianceTemplateCreateDto;
+
+        localVarRequestOptions.Operation =
+            "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<ConfigurationComplianceTemplateDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configurationcompliance/templates", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DatabaseConfigurationDtoIEnumerableJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<DatabaseConfigurationDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGetWithHttpInfoAsync(DateTime collectionDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
+    public async Task<ConfigurationComplianceTemplateDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostAsync(string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostWithHttpInfoAsync(baseMonitorName,
+                configurationComplianceTemplateCreateDto, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ConfigurationComplianceTemplateDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostWithHttpInfoAsync(string baseMonitorName,
+            ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = configurationComplianceTemplateCreateDto;
+
+        localVarRequestOptions.Operation =
+            "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PostAsync<ConfigurationComplianceTemplateDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/configurationcompliance/templates", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
 
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("collectionDate", cli.Client.ClientUtils.ParameterToString(collectionDate)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<DatabaseConfigurationDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/configurationcompliance/databaseconfigurationoptions/{collectionDate}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceDatabaseconfigurationoptionsCollectionDateGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ConfigurationComplianceDtoJSendSuccess</returns>
-        public ConfigurationComplianceDtoJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet(DateTime collectionDate, string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="templateId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>JSendSuccess</returns>
+    public JSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete(Guid templateId,
+        string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteWithHttpInfo(templateId,
+                baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="templateId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of JSendSuccess</returns>
+    public ApiResponse<JSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteWithHttpInfo(Guid templateId,
+            string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<ConfigurationComplianceDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetWithHttpInfo(collectionDate, baseMonitorName);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("templateId",
+            ClientUtils.ParameterToString(templateId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Delete<JSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configurationcompliance/templates/{templateId}",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ConfigurationComplianceDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<ConfigurationComplianceDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetWithHttpInfo(DateTime collectionDate, string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="templateId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of JSendSuccess</returns>
+    public async Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteAsync(
+        Guid templateId, string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteWithHttpInfoAsync(
+                templateId, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="templateId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (JSendSuccess)</returns>
+    public async Task<ApiResponse<JSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteWithHttpInfoAsync(Guid templateId,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet");
-            }
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        localVarRequestOptions.PathParameters.Add("templateId",
+            ClientUtils.ParameterToString(templateId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("collectionDate", cli.Client.ClientUtils.ParameterToString(collectionDate)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<ConfigurationComplianceDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/configurationcompliance/serverconfigurationoptions/{collectionDate}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .DeleteAsync<JSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/configurationcompliance/templates/{templateId}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConfigurationComplianceDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<ConfigurationComplianceDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetAsync(DateTime collectionDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<ConfigurationComplianceDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetWithHttpInfoAsync(collectionDate, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="collectionDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConfigurationComplianceDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<ConfigurationComplianceDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGetWithHttpInfoAsync(DateTime collectionDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("collectionDate", cli.Client.ClientUtils.ParameterToString(collectionDate)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ConfigurationComplianceDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/configurationcompliance/serverconfigurationoptions/{collectionDate}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceServerconfigurationoptionsCollectionDateGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess</returns>
-        public ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet(string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetWithHttpInfo(baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess</returns>
-        public cli.Client.ApiResponse<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetWithHttpInfo(string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/configurationcompliance/templates", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetWithHttpInfoAsync(baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ConfigurationComplianceTemplateDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/configurationcompliance/templates", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ConfigurationComplianceTemplateDtoJSendSuccess</returns>
-        public ConfigurationComplianceTemplateDtoJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut(Guid id, string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutWithHttpInfo(id, baseMonitorName, configurationComplianceTemplateCreateDto);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutWithHttpInfo(Guid id, string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("id", cli.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = configurationComplianceTemplateCreateDto;
-
-            localVarRequestOptions.Operation = "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Put<ConfigurationComplianceTemplateDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/configurationcompliance/templates/{id}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<ConfigurationComplianceTemplateDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutAsync(Guid id, string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutWithHttpInfoAsync(id, baseMonitorName, configurationComplianceTemplateCreateDto, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConfigurationComplianceTemplateDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPutWithHttpInfoAsync(Guid id, string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("id", cli.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = configurationComplianceTemplateCreateDto;
-
-            localVarRequestOptions.Operation = "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<ConfigurationComplianceTemplateDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/configurationcompliance/templates/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesIdPut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ConfigurationComplianceTemplateDtoJSendSuccess</returns>
-        public ConfigurationComplianceTemplateDtoJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost(string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostWithHttpInfo(baseMonitorName, configurationComplianceTemplateCreateDto);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostWithHttpInfo(string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = configurationComplianceTemplateCreateDto;
-
-            localVarRequestOptions.Operation = "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<ConfigurationComplianceTemplateDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/configurationcompliance/templates", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConfigurationComplianceTemplateDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<ConfigurationComplianceTemplateDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostAsync(string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostWithHttpInfoAsync(baseMonitorName, configurationComplianceTemplateCreateDto, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="configurationComplianceTemplateCreateDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConfigurationComplianceTemplateDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<ConfigurationComplianceTemplateDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPostWithHttpInfoAsync(string baseMonitorName, ConfigurationComplianceTemplateCreateDto? configurationComplianceTemplateCreateDto = default(ConfigurationComplianceTemplateCreateDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = configurationComplianceTemplateCreateDto;
-
-            localVarRequestOptions.Operation = "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<ConfigurationComplianceTemplateDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/configurationcompliance/templates", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>JSendSuccess</returns>
-        public JSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete(Guid templateId, string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<JSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteWithHttpInfo(templateId, baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of JSendSuccess</returns>
-        public cli.Client.ApiResponse<JSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteWithHttpInfo(Guid templateId, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("templateId", cli.Client.ClientUtils.ParameterToString(templateId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Delete<JSendSuccess>("/api/basemonitors/{baseMonitorName}/configurationcompliance/templates/{templateId}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of JSendSuccess</returns>
-        public async System.Threading.Tasks.Task<JSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteAsync(Guid templateId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<JSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteWithHttpInfoAsync(templateId, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="templateId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (JSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<JSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDeleteWithHttpInfoAsync(Guid templateId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling ConfigurationComplianceApiApi->ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("templateId", cli.Client.ClientUtils.ParameterToString(templateId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "ConfigurationComplianceApiApi.ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<JSendSuccess>("/api/basemonitors/{baseMonitorName}/configurationcompliance/templates/{templateId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationcomplianceTemplatesTemplateIdDelete", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

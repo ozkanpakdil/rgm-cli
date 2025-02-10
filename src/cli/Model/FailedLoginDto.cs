@@ -8,93 +8,83 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     FailedLoginDto
+/// </summary>
+[DataContract(Name = "FailedLoginDto")]
+public class FailedLoginDto : IValidatableObject
 {
     /// <summary>
-    /// FailedLoginDto
+    ///     Initializes a new instance of the <see cref="FailedLoginDto" /> class.
     /// </summary>
-    [DataContract(Name = "FailedLoginDto")]
-    public partial class FailedLoginDto : IValidatableObject
+    /// <param name="serverName">serverName.</param>
+    /// <param name="details">details.</param>
+    /// <param name="totalFailedLogins">totalFailedLogins.</param>
+    public FailedLoginDto(string serverName = default, List<FailedLoginDetailDto> details = default,
+        int totalFailedLogins = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FailedLoginDto" /> class.
-        /// </summary>
-        /// <param name="serverName">serverName.</param>
-        /// <param name="details">details.</param>
-        /// <param name="totalFailedLogins">totalFailedLogins.</param>
-        public FailedLoginDto(string serverName = default(string), List<FailedLoginDetailDto> details = default(List<FailedLoginDetailDto>), int totalFailedLogins = default(int))
-        {
-            this.ServerName = serverName;
-            this.Details = details;
-            this.TotalFailedLogins = totalFailedLogins;
-        }
-
-        /// <summary>
-        /// Gets or Sets ServerName
-        /// </summary>
-        [DataMember(Name = "serverName", EmitDefaultValue = true)]
-        public string ServerName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Details
-        /// </summary>
-        [DataMember(Name = "details", EmitDefaultValue = true)]
-        public List<FailedLoginDetailDto> Details { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TotalFailedLogins
-        /// </summary>
-        [DataMember(Name = "totalFailedLogins", EmitDefaultValue = false)]
-        public int TotalFailedLogins { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class FailedLoginDto {\n");
-            sb.Append("  ServerName: ").Append(ServerName).Append("\n");
-            sb.Append("  Details: ").Append(Details).Append("\n");
-            sb.Append("  TotalFailedLogins: ").Append(TotalFailedLogins).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        ServerName = serverName;
+        Details = details;
+        TotalFailedLogins = totalFailedLogins;
     }
 
+    /// <summary>
+    ///     Gets or Sets ServerName
+    /// </summary>
+    [DataMember(Name = "serverName", EmitDefaultValue = true)]
+    public string ServerName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Details
+    /// </summary>
+    [DataMember(Name = "details", EmitDefaultValue = true)]
+    public List<FailedLoginDetailDto> Details { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TotalFailedLogins
+    /// </summary>
+    [DataMember(Name = "totalFailedLogins", EmitDefaultValue = false)]
+    public int TotalFailedLogins { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class FailedLoginDto {\n");
+        sb.Append("  ServerName: ").Append(ServerName).Append("\n");
+        sb.Append("  Details: ").Append(Details).Append("\n");
+        sb.Append("  TotalFailedLogins: ").Append(TotalFailedLogins).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

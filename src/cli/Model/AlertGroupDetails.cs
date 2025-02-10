@@ -8,102 +8,93 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Channels.Data;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AlertGroupDetails
+/// </summary>
+[DataContract(Name = "AlertGroupDetails")]
+public class AlertGroupDetails : IValidatableObject
 {
     /// <summary>
-    /// AlertGroupDetails
+    ///     Initializes a new instance of the <see cref="AlertGroupDetails" /> class.
     /// </summary>
-    [DataContract(Name = "AlertGroupDetails")]
-    public partial class AlertGroupDetails : IValidatableObject
+    /// <param name="alertType">alertType.</param>
+    /// <param name="groupCir">groupCir.</param>
+    /// <param name="totalCount">totalCount.</param>
+    /// <param name="alerts">alerts.</param>
+    public AlertGroupDetails(string alertType = default, ChannelInstanceRef groupCir = default,
+        int totalCount = default, List<AlertModel> alerts = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertGroupDetails" /> class.
-        /// </summary>
-        /// <param name="alertType">alertType.</param>
-        /// <param name="groupCir">groupCir.</param>
-        /// <param name="totalCount">totalCount.</param>
-        /// <param name="alerts">alerts.</param>
-        public AlertGroupDetails(string alertType = default(string), ChannelInstanceRef groupCir = default(ChannelInstanceRef), int totalCount = default(int), List<AlertModel> alerts = default(List<AlertModel>))
-        {
-            this.AlertType = alertType;
-            this.GroupCir = groupCir;
-            this.TotalCount = totalCount;
-            this.Alerts = alerts;
-        }
-
-        /// <summary>
-        /// Gets or Sets AlertType
-        /// </summary>
-        [DataMember(Name = "alertType", EmitDefaultValue = true)]
-        public string AlertType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GroupCir
-        /// </summary>
-        [DataMember(Name = "groupCir", EmitDefaultValue = true)]
-        public ChannelInstanceRef GroupCir { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TotalCount
-        /// </summary>
-        [DataMember(Name = "totalCount", EmitDefaultValue = false)]
-        public int TotalCount { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Alerts
-        /// </summary>
-        [DataMember(Name = "alerts", EmitDefaultValue = true)]
-        public List<AlertModel> Alerts { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AlertGroupDetails {\n");
-            sb.Append("  AlertType: ").Append(AlertType).Append("\n");
-            sb.Append("  GroupCir: ").Append(GroupCir).Append("\n");
-            sb.Append("  TotalCount: ").Append(TotalCount).Append("\n");
-            sb.Append("  Alerts: ").Append(Alerts).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        AlertType = alertType;
+        GroupCir = groupCir;
+        TotalCount = totalCount;
+        Alerts = alerts;
     }
 
+    /// <summary>
+    ///     Gets or Sets AlertType
+    /// </summary>
+    [DataMember(Name = "alertType", EmitDefaultValue = true)]
+    public string AlertType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets GroupCir
+    /// </summary>
+    [DataMember(Name = "groupCir", EmitDefaultValue = true)]
+    public ChannelInstanceRef GroupCir { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TotalCount
+    /// </summary>
+    [DataMember(Name = "totalCount", EmitDefaultValue = false)]
+    public int TotalCount { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Alerts
+    /// </summary>
+    [DataMember(Name = "alerts", EmitDefaultValue = true)]
+    public List<AlertModel> Alerts { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AlertGroupDetails {\n");
+        sb.Append("  AlertType: ").Append(AlertType).Append("\n");
+        sb.Append("  GroupCir: ").Append(GroupCir).Append("\n");
+        sb.Append("  TotalCount: ").Append(TotalCount).Append("\n");
+        sb.Append("  Alerts: ").Append(Alerts).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

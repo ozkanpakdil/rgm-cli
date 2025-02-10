@@ -8,93 +8,84 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AuthenticationViewModel
+/// </summary>
+[DataContract(Name = "AuthenticationViewModel")]
+public class AuthenticationViewModel : IValidatableObject
 {
     /// <summary>
-    /// AuthenticationViewModel
+    ///     Initializes a new instance of the <see cref="AuthenticationViewModel" /> class.
     /// </summary>
-    [DataContract(Name = "AuthenticationViewModel")]
-    public partial class AuthenticationViewModel : IValidatableObject
+    /// <param name="authenticationType">authenticationType.</param>
+    /// <param name="activeDirectoryDomains">activeDirectoryDomains.</param>
+    /// <param name="hasActiveDirectorySettings">hasActiveDirectorySettings.</param>
+    public AuthenticationViewModel(AuthenticationTypeDto? authenticationType = default,
+        List<ActiveDirectoryDomainViewModel> activeDirectoryDomains = default,
+        bool hasActiveDirectorySettings = default)
     {
-
-        /// <summary>
-        /// Gets or Sets AuthenticationType
-        /// </summary>
-        [DataMember(Name = "authenticationType", EmitDefaultValue = false)]
-        public AuthenticationTypeDto? AuthenticationType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationViewModel" /> class.
-        /// </summary>
-        /// <param name="authenticationType">authenticationType.</param>
-        /// <param name="activeDirectoryDomains">activeDirectoryDomains.</param>
-        /// <param name="hasActiveDirectorySettings">hasActiveDirectorySettings.</param>
-        public AuthenticationViewModel(AuthenticationTypeDto? authenticationType = default(AuthenticationTypeDto?), List<ActiveDirectoryDomainViewModel> activeDirectoryDomains = default(List<ActiveDirectoryDomainViewModel>), bool hasActiveDirectorySettings = default(bool))
-        {
-            this.AuthenticationType = authenticationType;
-            this.ActiveDirectoryDomains = activeDirectoryDomains;
-            this.HasActiveDirectorySettings = hasActiveDirectorySettings;
-        }
-
-        /// <summary>
-        /// Gets or Sets ActiveDirectoryDomains
-        /// </summary>
-        [DataMember(Name = "activeDirectoryDomains", EmitDefaultValue = false)]
-        public List<ActiveDirectoryDomainViewModel> ActiveDirectoryDomains { get; set; }
-
-        /// <summary>
-        /// Gets or Sets HasActiveDirectorySettings
-        /// </summary>
-        [DataMember(Name = "hasActiveDirectorySettings", EmitDefaultValue = true)]
-        public bool HasActiveDirectorySettings { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AuthenticationViewModel {\n");
-            sb.Append("  AuthenticationType: ").Append(AuthenticationType).Append("\n");
-            sb.Append("  ActiveDirectoryDomains: ").Append(ActiveDirectoryDomains).Append("\n");
-            sb.Append("  HasActiveDirectorySettings: ").Append(HasActiveDirectorySettings).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        AuthenticationType = authenticationType;
+        ActiveDirectoryDomains = activeDirectoryDomains;
+        HasActiveDirectorySettings = hasActiveDirectorySettings;
     }
 
+    /// <summary>
+    ///     Gets or Sets AuthenticationType
+    /// </summary>
+    [DataMember(Name = "authenticationType", EmitDefaultValue = false)]
+    public AuthenticationTypeDto? AuthenticationType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ActiveDirectoryDomains
+    /// </summary>
+    [DataMember(Name = "activeDirectoryDomains", EmitDefaultValue = false)]
+    public List<ActiveDirectoryDomainViewModel> ActiveDirectoryDomains { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets HasActiveDirectorySettings
+    /// </summary>
+    [DataMember(Name = "hasActiveDirectorySettings", EmitDefaultValue = true)]
+    public bool HasActiveDirectorySettings { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AuthenticationViewModel {\n");
+        sb.Append("  AuthenticationType: ").Append(AuthenticationType).Append("\n");
+        sb.Append("  ActiveDirectoryDomains: ").Append(ActiveDirectoryDomains).Append("\n");
+        sb.Append("  HasActiveDirectorySettings: ").Append(HasActiveDirectorySettings).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

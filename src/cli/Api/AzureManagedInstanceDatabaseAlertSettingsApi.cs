@@ -9,1433 +9,1544 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Collections;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAzureManagedInstanceDatabaseAlertSettingsApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAzureManagedInstanceDatabaseAlertSettingsApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet(
+        string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetWithHttpInfo(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    void
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAzureManagedInstanceDatabaseAlertSettingsApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    Task
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAzureManagedInstanceDatabaseAlertSettingsApi : IAzureManagedInstanceDatabaseAlertSettingsApiSync,
+    IAzureManagedInstanceDatabaseAlertSettingsApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class AzureManagedInstanceDatabaseAlertSettingsApi : IAzureManagedInstanceDatabaseAlertSettingsApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="AzureManagedInstanceDatabaseAlertSettingsApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public AzureManagedInstanceDatabaseAlertSettingsApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch(string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetWithHttpInfo(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch(string serverName, string databaseName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(string serverName, string databaseName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch(string serverName, string databaseName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(string serverName, string databaseName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        void ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AzureManagedInstanceDatabaseAlertSettingsApi" /> class.
     /// </summary>
-    public interface IAzureManagedInstanceDatabaseAlertSettingsApiAsync : IApiAccessor
+    /// <returns></returns>
+    public AzureManagedInstanceDatabaseAlertSettingsApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AzureManagedInstanceDatabaseAlertSettingsApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IAzureManagedInstanceDatabaseAlertSettingsApi : IAzureManagedInstanceDatabaseAlertSettingsApiSync, IAzureManagedInstanceDatabaseAlertSettingsApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public AzureManagedInstanceDatabaseAlertSettingsApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AzureManagedInstanceDatabaseAlertSettingsApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class AzureManagedInstanceDatabaseAlertSettingsApi : IAzureManagedInstanceDatabaseAlertSettingsApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public AzureManagedInstanceDatabaseAlertSettingsApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureManagedInstanceDatabaseAlertSettingsApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AzureManagedInstanceDatabaseAlertSettingsApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(
+            serverName, databaseName, alertTypeId, baseMonitorName, body);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation =
+            "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/comments",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureManagedInstanceDatabaseAlertSettingsApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AzureManagedInstanceDatabaseAlertSettingsApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(
+                    serverName, databaseName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation =
+            "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/comments",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureManagedInstanceDatabaseAlertSettingsApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public AzureManagedInstanceDatabaseAlertSettingsApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetWithHttpInfo(
+            serverName, databaseName, alertTypeId, baseMonitorName);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetWithHttpInfo(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<object>(
+                "/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureManagedInstanceDatabaseAlertSettingsApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public AzureManagedInstanceDatabaseAlertSettingsApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(
+                    serverName, databaseName, alertTypeId, baseMonitorName, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(
+            serverName, databaseName, alertTypeId, baseMonitorName, alertNotificationSettingsDto);
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            return this.Configuration.BasePath;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = alertNotificationSettingsDto;
+
+        localVarRequestOptions.Operation =
+            "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/notificationsettings",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(
+                serverName, databaseName, alertTypeId, baseMonitorName, alertNotificationSettingsDto, operationIndex,
+                cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="alertNotificationSettingsDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            AlertNotificationSettingsDto? alertNotificationSettingsDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = alertNotificationSettingsDto;
+
+        localVarRequestOptions.Operation =
+            "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/notificationsettings",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch(string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(
+            serverName, databaseName, alertTypeId, baseMonitorName, requestBody);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(serverName, databaseName, alertTypeId, baseMonitorName, body);
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = requestBody;
+
+        localVarRequestOptions.Operation =
+            "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/specificsettings",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfo(string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(
+                    serverName, databaseName, alertTypeId, baseMonitorName, requestBody, operationIndex,
+                    cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="requestBody"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName,
+            Hashtable? requestBody = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = requestBody;
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/comments", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/specificsettings",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns></returns>
+    public void
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0)
+    {
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(
+            serverName, databaseName, alertTypeId, baseMonitorName, body);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of Object(void)</returns>
+    public ApiResponse<object>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            await ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(serverName, databaseName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken).ConfigureAwait(false);
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
+
+        localVarRequestOptions.Operation =
+            "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Patch<object>(
+                "/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/status",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatchWithHttpInfoAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, string? body = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of void</returns>
+    public async Task
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        await
+            ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(
+                    serverName, databaseName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken)
+                .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="serverName"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="alertTypeId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="body"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse</returns>
+    public async Task<ApiResponse<object>>
+        ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(
+            string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'serverName' is set
+        if (serverName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "application/json"
+        };
 
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch");
-            }
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        localVarRequestOptions.PathParameters.Add("serverName",
+            ClientUtils.ParameterToString(serverName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("alertTypeId",
+            ClientUtils.ParameterToString(alertTypeId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = body;
 
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/comments", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PatchAsync<object>(
+                "/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/status",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdCommentsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetWithHttpInfo(serverName, databaseName, alertTypeId, baseMonitorName);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetWithHttpInfo(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(serverName, databaseName, alertTypeId, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGetWithHttpInfoAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch(string serverName, string databaseName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(serverName, databaseName, alertTypeId, baseMonitorName, alertNotificationSettingsDto);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfo(string serverName, string databaseName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = alertNotificationSettingsDto;
-
-            localVarRequestOptions.Operation = "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/notificationsettings", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(serverName, databaseName, alertTypeId, baseMonitorName, alertNotificationSettingsDto, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="alertNotificationSettingsDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatchWithHttpInfoAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, AlertNotificationSettingsDto? alertNotificationSettingsDto = default(AlertNotificationSettingsDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = alertNotificationSettingsDto;
-
-            localVarRequestOptions.Operation = "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/notificationsettings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdNotificationsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch(string serverName, string databaseName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(serverName, databaseName, alertTypeId, baseMonitorName, requestBody);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfo(string serverName, string databaseName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0)
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = requestBody;
-
-            localVarRequestOptions.Operation = "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/specificsettings", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(serverName, databaseName, alertTypeId, baseMonitorName, requestBody, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="requestBody"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatchWithHttpInfoAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, Hashtable? requestBody = default(Hashtable?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = requestBody;
-
-            localVarRequestOptions.Operation = "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/specificsettings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdSpecificsettingsPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns></returns>
-        public void ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0)
-        {
-            ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(serverName, databaseName, alertTypeId, baseMonitorName, body);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public cli.Client.ApiResponse<Object> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfo(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0)
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Patch<Object>("/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/status", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            await ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(serverName, databaseName, alertTypeId, baseMonitorName, body, operationIndex, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="serverName"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="alertTypeId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="body"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<Object>> ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatchWithHttpInfoAsync(string serverName, string databaseName, long alertTypeId, string baseMonitorName, int? body = default(int?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'serverName' is set
-            if (serverName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'serverName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AzureManagedInstanceDatabaseAlertSettingsApi->ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("serverName", cli.Client.ClientUtils.ParameterToString(serverName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("alertTypeId", cli.Client.ClientUtils.ParameterToString(alertTypeId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = body;
-
-            localVarRequestOptions.Operation = "AzureManagedInstanceDatabaseAlertSettingsApi.ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/api/basemonitors/{baseMonitorName}/azuremanagedinstances/{serverName}/databases/{databaseName}/alertsettings/{alertTypeId}/status", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAzuremanagedinstancesServerNameDatabasesDatabaseNameAlertsettingsAlertTypeIdStatusPatch", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

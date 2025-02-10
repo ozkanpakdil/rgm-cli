@@ -8,93 +8,82 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     TestCollectionRequest
+/// </summary>
+[DataContract(Name = "TestCollectionRequest")]
+public class TestCollectionRequest : IValidatableObject
 {
     /// <summary>
-    /// TestCollectionRequest
+    ///     Initializes a new instance of the <see cref="TestCollectionRequest" /> class.
     /// </summary>
-    [DataContract(Name = "TestCollectionRequest")]
-    public partial class TestCollectionRequest : IValidatableObject
+    /// <param name="name">name.</param>
+    /// <param name="query">query.</param>
+    /// <param name="databaseCirs">databaseCirs.</param>
+    public TestCollectionRequest(string name = default, string query = default, List<string> databaseCirs = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TestCollectionRequest" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="query">query.</param>
-        /// <param name="databaseCirs">databaseCirs.</param>
-        public TestCollectionRequest(string name = default(string), string query = default(string), List<string> databaseCirs = default(List<string>))
-        {
-            this.Name = name;
-            this.Query = query;
-            this.DatabaseCirs = databaseCirs;
-        }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Query
-        /// </summary>
-        [DataMember(Name = "query", EmitDefaultValue = true)]
-        public string Query { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DatabaseCirs
-        /// </summary>
-        [DataMember(Name = "databaseCirs", EmitDefaultValue = true)]
-        public List<string> DatabaseCirs { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class TestCollectionRequest {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Query: ").Append(Query).Append("\n");
-            sb.Append("  DatabaseCirs: ").Append(DatabaseCirs).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Name = name;
+        Query = query;
+        DatabaseCirs = databaseCirs;
     }
 
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Query
+    /// </summary>
+    [DataMember(Name = "query", EmitDefaultValue = true)]
+    public string Query { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DatabaseCirs
+    /// </summary>
+    [DataMember(Name = "databaseCirs", EmitDefaultValue = true)]
+    public List<string> DatabaseCirs { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class TestCollectionRequest {\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  Query: ").Append(Query).Append("\n");
+        sb.Append("  DatabaseCirs: ").Append(DatabaseCirs).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

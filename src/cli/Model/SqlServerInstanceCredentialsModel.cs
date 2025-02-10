@@ -8,84 +8,74 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     SqlServerInstanceCredentialsModel
+/// </summary>
+[DataContract(Name = "SqlServerInstanceCredentialsModel")]
+public class SqlServerInstanceCredentialsModel : IValidatableObject
 {
     /// <summary>
-    /// SqlServerInstanceCredentialsModel
+    ///     Initializes a new instance of the <see cref="SqlServerInstanceCredentialsModel" /> class.
     /// </summary>
-    [DataContract(Name = "SqlServerInstanceCredentialsModel")]
-    public partial class SqlServerInstanceCredentialsModel : IValidatableObject
+    /// <param name="sqlServerId">sqlServerId.</param>
+    /// <param name="sqlServerCredentials">sqlServerCredentials.</param>
+    public SqlServerInstanceCredentialsModel(string sqlServerId = default,
+        SqlServerCredentialsModel sqlServerCredentials = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SqlServerInstanceCredentialsModel" /> class.
-        /// </summary>
-        /// <param name="sqlServerId">sqlServerId.</param>
-        /// <param name="sqlServerCredentials">sqlServerCredentials.</param>
-        public SqlServerInstanceCredentialsModel(string sqlServerId = default(string), SqlServerCredentialsModel sqlServerCredentials = default(SqlServerCredentialsModel))
-        {
-            this.SqlServerId = sqlServerId;
-            this.SqlServerCredentials = sqlServerCredentials;
-        }
-
-        /// <summary>
-        /// Gets or Sets SqlServerId
-        /// </summary>
-        [DataMember(Name = "sqlServerId", EmitDefaultValue = true)]
-        public string SqlServerId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlServerCredentials
-        /// </summary>
-        [DataMember(Name = "sqlServerCredentials", EmitDefaultValue = false)]
-        public SqlServerCredentialsModel SqlServerCredentials { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class SqlServerInstanceCredentialsModel {\n");
-            sb.Append("  SqlServerId: ").Append(SqlServerId).Append("\n");
-            sb.Append("  SqlServerCredentials: ").Append(SqlServerCredentials).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        SqlServerId = sqlServerId;
+        SqlServerCredentials = sqlServerCredentials;
     }
 
+    /// <summary>
+    ///     Gets or Sets SqlServerId
+    /// </summary>
+    [DataMember(Name = "sqlServerId", EmitDefaultValue = true)]
+    public string SqlServerId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlServerCredentials
+    /// </summary>
+    [DataMember(Name = "sqlServerCredentials", EmitDefaultValue = false)]
+    public SqlServerCredentialsModel SqlServerCredentials { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class SqlServerInstanceCredentialsModel {\n");
+        sb.Append("  SqlServerId: ").Append(SqlServerId).Append("\n");
+        sb.Append("  SqlServerCredentials: ").Append(SqlServerCredentials).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

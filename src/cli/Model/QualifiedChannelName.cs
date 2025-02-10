@@ -8,177 +8,172 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     QualifiedChannelName
+/// </summary>
+[DataContract(Name = "QualifiedChannelName")]
+public class QualifiedChannelName : IValidatableObject
 {
     /// <summary>
-    /// QualifiedChannelName
+    ///     Initializes a new instance of the <see cref="QualifiedChannelName" /> class.
     /// </summary>
-    [DataContract(Name = "QualifiedChannelName")]
-    public partial class QualifiedChannelName : IValidatableObject
+    /// <param name="parent">parent.</param>
+    /// <param name="channelName">channelName.</param>
+    /// <param name="headChannelName">headChannelName.</param>
+    /// <param name="tailQualifiedChannelName">tailQualifiedChannelName.</param>
+    public QualifiedChannelName(QualifiedChannelName parent = default, ChannelName channelName = default,
+        ChannelName headChannelName = default, QualifiedChannelName tailQualifiedChannelName = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="QualifiedChannelName" /> class.
-        /// </summary>
-        /// <param name="parent">parent.</param>
-        /// <param name="channelName">channelName.</param>
-        /// <param name="headChannelName">headChannelName.</param>
-        /// <param name="tailQualifiedChannelName">tailQualifiedChannelName.</param>
-        public QualifiedChannelName(QualifiedChannelName parent = default(QualifiedChannelName), ChannelName channelName = default(ChannelName), ChannelName headChannelName = default(ChannelName), QualifiedChannelName tailQualifiedChannelName = default(QualifiedChannelName))
-        {
-            this.Parent = parent;
-            this.ChannelName = channelName;
-            this.HeadChannelName = headChannelName;
-            this.TailQualifiedChannelName = tailQualifiedChannelName;
-        }
-
-        /// <summary>
-        /// Gets or Sets IsRoot
-        /// </summary>
-        [DataMember(Name = "isRoot", EmitDefaultValue = true)]
-        public bool IsRoot { get; private set; }
-
-        /// <summary>
-        /// Returns false as IsRoot should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeIsRoot()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets Depth
-        /// </summary>
-        [DataMember(Name = "depth", EmitDefaultValue = false)]
-        public int Depth { get; private set; }
-
-        /// <summary>
-        /// Returns false as Depth should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeDepth()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets Parent
-        /// </summary>
-        [DataMember(Name = "parent", EmitDefaultValue = false)]
-        public QualifiedChannelName Parent { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ChannelName
-        /// </summary>
-        [DataMember(Name = "channelName", EmitDefaultValue = false)]
-        public ChannelName ChannelName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets HeadChannelName
-        /// </summary>
-        [DataMember(Name = "headChannelName", EmitDefaultValue = false)]
-        public ChannelName HeadChannelName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TailQualifiedChannelName
-        /// </summary>
-        [DataMember(Name = "tailQualifiedChannelName", EmitDefaultValue = false)]
-        public QualifiedChannelName TailQualifiedChannelName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets QualifiedChannelNames
-        /// </summary>
-        [DataMember(Name = "qualifiedChannelNames", EmitDefaultValue = false)]
-        public List<QualifiedChannelName> QualifiedChannelNames { get; private set; }
-
-        /// <summary>
-        /// Returns false as QualifiedChannelNames should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeQualifiedChannelNames()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets QualifiedSubChannelNames
-        /// </summary>
-        [DataMember(Name = "qualifiedSubChannelNames", EmitDefaultValue = false)]
-        public List<QualifiedChannelName> QualifiedSubChannelNames { get; private set; }
-
-        /// <summary>
-        /// Returns false as QualifiedSubChannelNames should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeQualifiedSubChannelNames()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets SubChannelNames
-        /// </summary>
-        [DataMember(Name = "subChannelNames", EmitDefaultValue = false)]
-        public List<ChannelName> SubChannelNames { get; private set; }
-
-        /// <summary>
-        /// Returns false as SubChannelNames should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeSubChannelNames()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class QualifiedChannelName {\n");
-            sb.Append("  IsRoot: ").Append(IsRoot).Append("\n");
-            sb.Append("  Depth: ").Append(Depth).Append("\n");
-            sb.Append("  Parent: ").Append(Parent).Append("\n");
-            sb.Append("  ChannelName: ").Append(ChannelName).Append("\n");
-            sb.Append("  HeadChannelName: ").Append(HeadChannelName).Append("\n");
-            sb.Append("  TailQualifiedChannelName: ").Append(TailQualifiedChannelName).Append("\n");
-            sb.Append("  QualifiedChannelNames: ").Append(QualifiedChannelNames).Append("\n");
-            sb.Append("  QualifiedSubChannelNames: ").Append(QualifiedSubChannelNames).Append("\n");
-            sb.Append("  SubChannelNames: ").Append(SubChannelNames).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Parent = parent;
+        ChannelName = channelName;
+        HeadChannelName = headChannelName;
+        TailQualifiedChannelName = tailQualifiedChannelName;
     }
 
+    /// <summary>
+    ///     Gets or Sets IsRoot
+    /// </summary>
+    [DataMember(Name = "isRoot", EmitDefaultValue = true)]
+    public bool IsRoot { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets Depth
+    /// </summary>
+    [DataMember(Name = "depth", EmitDefaultValue = false)]
+    public int Depth { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets Parent
+    /// </summary>
+    [DataMember(Name = "parent", EmitDefaultValue = false)]
+    public QualifiedChannelName Parent { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ChannelName
+    /// </summary>
+    [DataMember(Name = "channelName", EmitDefaultValue = false)]
+    public ChannelName ChannelName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets HeadChannelName
+    /// </summary>
+    [DataMember(Name = "headChannelName", EmitDefaultValue = false)]
+    public ChannelName HeadChannelName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TailQualifiedChannelName
+    /// </summary>
+    [DataMember(Name = "tailQualifiedChannelName", EmitDefaultValue = false)]
+    public QualifiedChannelName TailQualifiedChannelName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets QualifiedChannelNames
+    /// </summary>
+    [DataMember(Name = "qualifiedChannelNames", EmitDefaultValue = false)]
+    public List<QualifiedChannelName> QualifiedChannelNames { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets QualifiedSubChannelNames
+    /// </summary>
+    [DataMember(Name = "qualifiedSubChannelNames", EmitDefaultValue = false)]
+    public List<QualifiedChannelName> QualifiedSubChannelNames { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets SubChannelNames
+    /// </summary>
+    [DataMember(Name = "subChannelNames", EmitDefaultValue = false)]
+    public List<ChannelName> SubChannelNames { get; private set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns false as IsRoot should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeIsRoot()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as Depth should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeDepth()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as QualifiedChannelNames should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeQualifiedChannelNames()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as QualifiedSubChannelNames should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeQualifiedSubChannelNames()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as SubChannelNames should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeSubChannelNames()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class QualifiedChannelName {\n");
+        sb.Append("  IsRoot: ").Append(IsRoot).Append("\n");
+        sb.Append("  Depth: ").Append(Depth).Append("\n");
+        sb.Append("  Parent: ").Append(Parent).Append("\n");
+        sb.Append("  ChannelName: ").Append(ChannelName).Append("\n");
+        sb.Append("  HeadChannelName: ").Append(HeadChannelName).Append("\n");
+        sb.Append("  TailQualifiedChannelName: ").Append(TailQualifiedChannelName).Append("\n");
+        sb.Append("  QualifiedChannelNames: ").Append(QualifiedChannelNames).Append("\n");
+        sb.Append("  QualifiedSubChannelNames: ").Append(QualifiedSubChannelNames).Append("\n");
+        sb.Append("  SubChannelNames: ").Append(SubChannelNames).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -8,84 +8,73 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AnalysisLinkDataMetric
+/// </summary>
+[DataContract(Name = "AnalysisLinkDataMetric")]
+public class AnalysisLinkDataMetric : IValidatableObject
 {
     /// <summary>
-    /// AnalysisLinkDataMetric
+    ///     Initializes a new instance of the <see cref="AnalysisLinkDataMetric" /> class.
     /// </summary>
-    [DataContract(Name = "AnalysisLinkDataMetric")]
-    public partial class AnalysisLinkDataMetric : IValidatableObject
+    /// <param name="cir">cir.</param>
+    /// <param name="dataStream">dataStream.</param>
+    public AnalysisLinkDataMetric(string cir = default, string dataStream = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AnalysisLinkDataMetric" /> class.
-        /// </summary>
-        /// <param name="cir">cir.</param>
-        /// <param name="dataStream">dataStream.</param>
-        public AnalysisLinkDataMetric(string cir = default(string), string dataStream = default(string))
-        {
-            this.Cir = cir;
-            this.DataStream = dataStream;
-        }
-
-        /// <summary>
-        /// Gets or Sets Cir
-        /// </summary>
-        [DataMember(Name = "cir", EmitDefaultValue = true)]
-        public string Cir { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DataStream
-        /// </summary>
-        [DataMember(Name = "dataStream", EmitDefaultValue = true)]
-        public string DataStream { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AnalysisLinkDataMetric {\n");
-            sb.Append("  Cir: ").Append(Cir).Append("\n");
-            sb.Append("  DataStream: ").Append(DataStream).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Cir = cir;
+        DataStream = dataStream;
     }
 
+    /// <summary>
+    ///     Gets or Sets Cir
+    /// </summary>
+    [DataMember(Name = "cir", EmitDefaultValue = true)]
+    public string Cir { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DataStream
+    /// </summary>
+    [DataMember(Name = "dataStream", EmitDefaultValue = true)]
+    public string DataStream { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AnalysisLinkDataMetric {\n");
+        sb.Append("  Cir: ").Append(Cir).Append("\n");
+        sb.Append("  DataStream: ").Append(DataStream).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

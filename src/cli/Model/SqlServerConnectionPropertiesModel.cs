@@ -8,129 +8,120 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     SqlServerConnectionPropertiesModel
+/// </summary>
+[DataContract(Name = "SqlServerConnectionPropertiesModel")]
+public class SqlServerConnectionPropertiesModel : IValidatableObject
 {
     /// <summary>
-    /// SqlServerConnectionPropertiesModel
+    ///     Initializes a new instance of the <see cref="SqlServerConnectionPropertiesModel" /> class.
     /// </summary>
-    [DataContract(Name = "SqlServerConnectionPropertiesModel")]
-    public partial class SqlServerConnectionPropertiesModel : IValidatableObject
+    /// <param name="networkProtocol">networkProtocol.</param>
+    /// <param name="portNumber">portNumber.</param>
+    /// <param name="networkPacketSize">networkPacketSize.</param>
+    /// <param name="connectionTimeout">connectionTimeout.</param>
+    /// <param name="executionTimeout">executionTimeout.</param>
+    /// <param name="encryptConnection">encryptConnection.</param>
+    /// <param name="trustServerCertificate">trustServerCertificate.</param>
+    public SqlServerConnectionPropertiesModel(NetworkProtocolEnum? networkProtocol = default, int? portNumber = default,
+        int? networkPacketSize = default, int? connectionTimeout = default, int? executionTimeout = default,
+        bool? encryptConnection = default, bool? trustServerCertificate = default)
     {
-
-        /// <summary>
-        /// Gets or Sets NetworkProtocol
-        /// </summary>
-        [DataMember(Name = "networkProtocol", EmitDefaultValue = false)]
-        public NetworkProtocolEnum? NetworkProtocol { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SqlServerConnectionPropertiesModel" /> class.
-        /// </summary>
-        /// <param name="networkProtocol">networkProtocol.</param>
-        /// <param name="portNumber">portNumber.</param>
-        /// <param name="networkPacketSize">networkPacketSize.</param>
-        /// <param name="connectionTimeout">connectionTimeout.</param>
-        /// <param name="executionTimeout">executionTimeout.</param>
-        /// <param name="encryptConnection">encryptConnection.</param>
-        /// <param name="trustServerCertificate">trustServerCertificate.</param>
-        public SqlServerConnectionPropertiesModel(NetworkProtocolEnum? networkProtocol = default(NetworkProtocolEnum?), int? portNumber = default(int?), int? networkPacketSize = default(int?), int? connectionTimeout = default(int?), int? executionTimeout = default(int?), bool? encryptConnection = default(bool?), bool? trustServerCertificate = default(bool?))
-        {
-            this.NetworkProtocol = networkProtocol;
-            this.PortNumber = portNumber;
-            this.NetworkPacketSize = networkPacketSize;
-            this.ConnectionTimeout = connectionTimeout;
-            this.ExecutionTimeout = executionTimeout;
-            this.EncryptConnection = encryptConnection;
-            this.TrustServerCertificate = trustServerCertificate;
-        }
-
-        /// <summary>
-        /// Gets or Sets PortNumber
-        /// </summary>
-        [DataMember(Name = "portNumber", EmitDefaultValue = true)]
-        public int? PortNumber { get; set; }
-
-        /// <summary>
-        /// Gets or Sets NetworkPacketSize
-        /// </summary>
-        [DataMember(Name = "networkPacketSize", EmitDefaultValue = true)]
-        public int? NetworkPacketSize { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ConnectionTimeout
-        /// </summary>
-        [DataMember(Name = "connectionTimeout", EmitDefaultValue = true)]
-        public int? ConnectionTimeout { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ExecutionTimeout
-        /// </summary>
-        [DataMember(Name = "executionTimeout", EmitDefaultValue = true)]
-        public int? ExecutionTimeout { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EncryptConnection
-        /// </summary>
-        [DataMember(Name = "encryptConnection", EmitDefaultValue = true)]
-        public bool? EncryptConnection { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TrustServerCertificate
-        /// </summary>
-        [DataMember(Name = "trustServerCertificate", EmitDefaultValue = true)]
-        public bool? TrustServerCertificate { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class SqlServerConnectionPropertiesModel {\n");
-            sb.Append("  NetworkProtocol: ").Append(NetworkProtocol).Append("\n");
-            sb.Append("  PortNumber: ").Append(PortNumber).Append("\n");
-            sb.Append("  NetworkPacketSize: ").Append(NetworkPacketSize).Append("\n");
-            sb.Append("  ConnectionTimeout: ").Append(ConnectionTimeout).Append("\n");
-            sb.Append("  ExecutionTimeout: ").Append(ExecutionTimeout).Append("\n");
-            sb.Append("  EncryptConnection: ").Append(EncryptConnection).Append("\n");
-            sb.Append("  TrustServerCertificate: ").Append(TrustServerCertificate).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        NetworkProtocol = networkProtocol;
+        PortNumber = portNumber;
+        NetworkPacketSize = networkPacketSize;
+        ConnectionTimeout = connectionTimeout;
+        ExecutionTimeout = executionTimeout;
+        EncryptConnection = encryptConnection;
+        TrustServerCertificate = trustServerCertificate;
     }
 
+    /// <summary>
+    ///     Gets or Sets NetworkProtocol
+    /// </summary>
+    [DataMember(Name = "networkProtocol", EmitDefaultValue = false)]
+    public NetworkProtocolEnum? NetworkProtocol { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets PortNumber
+    /// </summary>
+    [DataMember(Name = "portNumber", EmitDefaultValue = true)]
+    public int? PortNumber { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets NetworkPacketSize
+    /// </summary>
+    [DataMember(Name = "networkPacketSize", EmitDefaultValue = true)]
+    public int? NetworkPacketSize { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ConnectionTimeout
+    /// </summary>
+    [DataMember(Name = "connectionTimeout", EmitDefaultValue = true)]
+    public int? ConnectionTimeout { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ExecutionTimeout
+    /// </summary>
+    [DataMember(Name = "executionTimeout", EmitDefaultValue = true)]
+    public int? ExecutionTimeout { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EncryptConnection
+    /// </summary>
+    [DataMember(Name = "encryptConnection", EmitDefaultValue = true)]
+    public bool? EncryptConnection { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets TrustServerCertificate
+    /// </summary>
+    [DataMember(Name = "trustServerCertificate", EmitDefaultValue = true)]
+    public bool? TrustServerCertificate { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class SqlServerConnectionPropertiesModel {\n");
+        sb.Append("  NetworkProtocol: ").Append(NetworkProtocol).Append("\n");
+        sb.Append("  PortNumber: ").Append(PortNumber).Append("\n");
+        sb.Append("  NetworkPacketSize: ").Append(NetworkPacketSize).Append("\n");
+        sb.Append("  ConnectionTimeout: ").Append(ConnectionTimeout).Append("\n");
+        sb.Append("  ExecutionTimeout: ").Append(ExecutionTimeout).Append("\n");
+        sb.Append("  EncryptConnection: ").Append(EncryptConnection).Append("\n");
+        sb.Append("  TrustServerCertificate: ").Append(TrustServerCertificate).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

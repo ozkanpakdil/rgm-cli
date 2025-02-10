@@ -8,102 +8,92 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     BackupHistoriesDto
+/// </summary>
+[DataContract(Name = "BackupHistoriesDto")]
+public class BackupHistoriesDto : IValidatableObject
 {
     /// <summary>
-    /// BackupHistoriesDto
+    ///     Initializes a new instance of the <see cref="BackupHistoriesDto" /> class.
     /// </summary>
-    [DataContract(Name = "BackupHistoriesDto")]
-    public partial class BackupHistoriesDto : IValidatableObject
+    /// <param name="history">history.</param>
+    /// <param name="averageFullBackupInterval">averageFullBackupInterval.</param>
+    /// <param name="averageDiffBackupInterval">averageDiffBackupInterval.</param>
+    /// <param name="averageLogBackupInterval">averageLogBackupInterval.</param>
+    public BackupHistoriesDto(List<BackupHistoryDto> history = default, double averageFullBackupInterval = default,
+        double averageDiffBackupInterval = default, double averageLogBackupInterval = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BackupHistoriesDto" /> class.
-        /// </summary>
-        /// <param name="history">history.</param>
-        /// <param name="averageFullBackupInterval">averageFullBackupInterval.</param>
-        /// <param name="averageDiffBackupInterval">averageDiffBackupInterval.</param>
-        /// <param name="averageLogBackupInterval">averageLogBackupInterval.</param>
-        public BackupHistoriesDto(List<BackupHistoryDto> history = default(List<BackupHistoryDto>), double averageFullBackupInterval = default(double), double averageDiffBackupInterval = default(double), double averageLogBackupInterval = default(double))
-        {
-            this.History = history;
-            this.AverageFullBackupInterval = averageFullBackupInterval;
-            this.AverageDiffBackupInterval = averageDiffBackupInterval;
-            this.AverageLogBackupInterval = averageLogBackupInterval;
-        }
-
-        /// <summary>
-        /// Gets or Sets History
-        /// </summary>
-        [DataMember(Name = "history", EmitDefaultValue = true)]
-        public List<BackupHistoryDto> History { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AverageFullBackupInterval
-        /// </summary>
-        [DataMember(Name = "averageFullBackupInterval", EmitDefaultValue = false)]
-        public double AverageFullBackupInterval { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AverageDiffBackupInterval
-        /// </summary>
-        [DataMember(Name = "averageDiffBackupInterval", EmitDefaultValue = false)]
-        public double AverageDiffBackupInterval { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AverageLogBackupInterval
-        /// </summary>
-        [DataMember(Name = "averageLogBackupInterval", EmitDefaultValue = false)]
-        public double AverageLogBackupInterval { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class BackupHistoriesDto {\n");
-            sb.Append("  History: ").Append(History).Append("\n");
-            sb.Append("  AverageFullBackupInterval: ").Append(AverageFullBackupInterval).Append("\n");
-            sb.Append("  AverageDiffBackupInterval: ").Append(AverageDiffBackupInterval).Append("\n");
-            sb.Append("  AverageLogBackupInterval: ").Append(AverageLogBackupInterval).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        History = history;
+        AverageFullBackupInterval = averageFullBackupInterval;
+        AverageDiffBackupInterval = averageDiffBackupInterval;
+        AverageLogBackupInterval = averageLogBackupInterval;
     }
 
+    /// <summary>
+    ///     Gets or Sets History
+    /// </summary>
+    [DataMember(Name = "history", EmitDefaultValue = true)]
+    public List<BackupHistoryDto> History { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AverageFullBackupInterval
+    /// </summary>
+    [DataMember(Name = "averageFullBackupInterval", EmitDefaultValue = false)]
+    public double AverageFullBackupInterval { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AverageDiffBackupInterval
+    /// </summary>
+    [DataMember(Name = "averageDiffBackupInterval", EmitDefaultValue = false)]
+    public double AverageDiffBackupInterval { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AverageLogBackupInterval
+    /// </summary>
+    [DataMember(Name = "averageLogBackupInterval", EmitDefaultValue = false)]
+    public double AverageLogBackupInterval { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class BackupHistoriesDto {\n");
+        sb.Append("  History: ").Append(History).Append("\n");
+        sb.Append("  AverageFullBackupInterval: ").Append(AverageFullBackupInterval).Append("\n");
+        sb.Append("  AverageDiffBackupInterval: ").Append(AverageDiffBackupInterval).Append("\n");
+        sb.Append("  AverageLogBackupInterval: ").Append(AverageLogBackupInterval).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

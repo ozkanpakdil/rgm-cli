@@ -9,200 +9,194 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     IndexDetailsDto
+/// </summary>
+[DataContract(Name = "IndexDetailsDto")]
+public class IndexDetailsDto : IValidatableObject
 {
     /// <summary>
-    /// IndexDetailsDto
+    ///     Initializes a new instance of the <see cref="IndexDetailsDto" /> class.
     /// </summary>
-    [DataContract(Name = "IndexDetailsDto")]
-    public partial class IndexDetailsDto : IValidatableObject
+    /// <param name="name">name.</param>
+    /// <param name="sizeUsedKb">sizeUsedKb.</param>
+    /// <param name="updates">updates.</param>
+    /// <param name="seeks">seeks.</param>
+    /// <param name="scans">scans.</param>
+    /// <param name="lookups">lookups.</param>
+    /// <param name="lastUsed">lastUsed.</param>
+    /// <param name="indexType">indexType.</param>
+    /// <param name="isUnique">isUnique.</param>
+    /// <param name="parentObjectId">parentObjectId.</param>
+    /// <param name="parentObjectName">parentObjectName.</param>
+    /// <param name="databaseName">databaseName.</param>
+    /// <param name="lastUpdated">lastUpdated.</param>
+    /// <param name="fillFactor">fillFactor.</param>
+    /// <param name="isFiltered">isFiltered.</param>
+    public IndexDetailsDto(string name = default, long? sizeUsedKb = default, long updates = default,
+        long seeks = default, long scans = default, long lookups = default, DateTime? lastUsed = default,
+        IndexTypeDto? indexType = default, bool isUnique = default, IntegerIdentifier parentObjectId = default,
+        string parentObjectName = default, string databaseName = default, DateTime? lastUpdated = default,
+        long fillFactor = default, bool isFiltered = default)
     {
-
-        /// <summary>
-        /// Gets or Sets IndexType
-        /// </summary>
-        [DataMember(Name = "indexType", EmitDefaultValue = false)]
-        public IndexTypeDto? IndexType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IndexDetailsDto" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="sizeUsedKb">sizeUsedKb.</param>
-        /// <param name="updates">updates.</param>
-        /// <param name="seeks">seeks.</param>
-        /// <param name="scans">scans.</param>
-        /// <param name="lookups">lookups.</param>
-        /// <param name="lastUsed">lastUsed.</param>
-        /// <param name="indexType">indexType.</param>
-        /// <param name="isUnique">isUnique.</param>
-        /// <param name="parentObjectId">parentObjectId.</param>
-        /// <param name="parentObjectName">parentObjectName.</param>
-        /// <param name="databaseName">databaseName.</param>
-        /// <param name="lastUpdated">lastUpdated.</param>
-        /// <param name="fillFactor">fillFactor.</param>
-        /// <param name="isFiltered">isFiltered.</param>
-        public IndexDetailsDto(string name = default(string), long? sizeUsedKb = default(long?), long updates = default(long), long seeks = default(long), long scans = default(long), long lookups = default(long), DateTime? lastUsed = default(DateTime?), IndexTypeDto? indexType = default(IndexTypeDto?), bool isUnique = default(bool), IntegerIdentifier parentObjectId = default(IntegerIdentifier), string parentObjectName = default(string), string databaseName = default(string), DateTime? lastUpdated = default(DateTime?), long fillFactor = default(long), bool isFiltered = default(bool))
-        {
-            this.Name = name;
-            this.SizeUsedKb = sizeUsedKb;
-            this.Updates = updates;
-            this.Seeks = seeks;
-            this.Scans = scans;
-            this.Lookups = lookups;
-            this.LastUsed = lastUsed;
-            this.IndexType = indexType;
-            this.IsUnique = isUnique;
-            this.ParentObjectId = parentObjectId;
-            this.ParentObjectName = parentObjectName;
-            this.DatabaseName = databaseName;
-            this.LastUpdated = lastUpdated;
-            this.FillFactor = fillFactor;
-            this.IsFiltered = isFiltered;
-        }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SizeUsedKb
-        /// </summary>
-        [DataMember(Name = "sizeUsedKb", EmitDefaultValue = true)]
-        public long? SizeUsedKb { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Updates
-        /// </summary>
-        [DataMember(Name = "updates", EmitDefaultValue = false)]
-        public long Updates { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Seeks
-        /// </summary>
-        [DataMember(Name = "seeks", EmitDefaultValue = false)]
-        public long Seeks { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Scans
-        /// </summary>
-        [DataMember(Name = "scans", EmitDefaultValue = false)]
-        public long Scans { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Lookups
-        /// </summary>
-        [DataMember(Name = "lookups", EmitDefaultValue = false)]
-        public long Lookups { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LastUsed
-        /// </summary>
-        [DataMember(Name = "lastUsed", EmitDefaultValue = true)]
-        public DateTime? LastUsed { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsUnique
-        /// </summary>
-        [DataMember(Name = "isUnique", EmitDefaultValue = true)]
-        public bool IsUnique { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ParentObjectId
-        /// </summary>
-        [DataMember(Name = "parentObjectId", EmitDefaultValue = false)]
-        public IntegerIdentifier ParentObjectId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ParentObjectName
-        /// </summary>
-        [DataMember(Name = "parentObjectName", EmitDefaultValue = false)]
-        public string ParentObjectName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DatabaseName
-        /// </summary>
-        [DataMember(Name = "databaseName", EmitDefaultValue = false)]
-        public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LastUpdated
-        /// </summary>
-        [DataMember(Name = "lastUpdated", EmitDefaultValue = true)]
-        public DateTime? LastUpdated { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FillFactor
-        /// </summary>
-        [DataMember(Name = "fillFactor", EmitDefaultValue = false)]
-        public long FillFactor { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsFiltered
-        /// </summary>
-        [DataMember(Name = "isFiltered", EmitDefaultValue = true)]
-        public bool IsFiltered { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class IndexDetailsDto {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  SizeUsedKb: ").Append(SizeUsedKb).Append("\n");
-            sb.Append("  Updates: ").Append(Updates).Append("\n");
-            sb.Append("  Seeks: ").Append(Seeks).Append("\n");
-            sb.Append("  Scans: ").Append(Scans).Append("\n");
-            sb.Append("  Lookups: ").Append(Lookups).Append("\n");
-            sb.Append("  LastUsed: ").Append(LastUsed).Append("\n");
-            sb.Append("  IndexType: ").Append(IndexType).Append("\n");
-            sb.Append("  IsUnique: ").Append(IsUnique).Append("\n");
-            sb.Append("  ParentObjectId: ").Append(ParentObjectId).Append("\n");
-            sb.Append("  ParentObjectName: ").Append(ParentObjectName).Append("\n");
-            sb.Append("  DatabaseName: ").Append(DatabaseName).Append("\n");
-            sb.Append("  LastUpdated: ").Append(LastUpdated).Append("\n");
-            sb.Append("  FillFactor: ").Append(FillFactor).Append("\n");
-            sb.Append("  IsFiltered: ").Append(IsFiltered).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Name = name;
+        SizeUsedKb = sizeUsedKb;
+        Updates = updates;
+        Seeks = seeks;
+        Scans = scans;
+        Lookups = lookups;
+        LastUsed = lastUsed;
+        IndexType = indexType;
+        IsUnique = isUnique;
+        ParentObjectId = parentObjectId;
+        ParentObjectName = parentObjectName;
+        DatabaseName = databaseName;
+        LastUpdated = lastUpdated;
+        FillFactor = fillFactor;
+        IsFiltered = isFiltered;
     }
 
+    /// <summary>
+    ///     Gets or Sets IndexType
+    /// </summary>
+    [DataMember(Name = "indexType", EmitDefaultValue = false)]
+    public IndexTypeDto? IndexType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SizeUsedKb
+    /// </summary>
+    [DataMember(Name = "sizeUsedKb", EmitDefaultValue = true)]
+    public long? SizeUsedKb { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Updates
+    /// </summary>
+    [DataMember(Name = "updates", EmitDefaultValue = false)]
+    public long Updates { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Seeks
+    /// </summary>
+    [DataMember(Name = "seeks", EmitDefaultValue = false)]
+    public long Seeks { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Scans
+    /// </summary>
+    [DataMember(Name = "scans", EmitDefaultValue = false)]
+    public long Scans { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Lookups
+    /// </summary>
+    [DataMember(Name = "lookups", EmitDefaultValue = false)]
+    public long Lookups { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LastUsed
+    /// </summary>
+    [DataMember(Name = "lastUsed", EmitDefaultValue = true)]
+    public DateTime? LastUsed { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsUnique
+    /// </summary>
+    [DataMember(Name = "isUnique", EmitDefaultValue = true)]
+    public bool IsUnique { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ParentObjectId
+    /// </summary>
+    [DataMember(Name = "parentObjectId", EmitDefaultValue = false)]
+    public IntegerIdentifier ParentObjectId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ParentObjectName
+    /// </summary>
+    [DataMember(Name = "parentObjectName", EmitDefaultValue = false)]
+    public string ParentObjectName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DatabaseName
+    /// </summary>
+    [DataMember(Name = "databaseName", EmitDefaultValue = false)]
+    public string DatabaseName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LastUpdated
+    /// </summary>
+    [DataMember(Name = "lastUpdated", EmitDefaultValue = true)]
+    public DateTime? LastUpdated { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FillFactor
+    /// </summary>
+    [DataMember(Name = "fillFactor", EmitDefaultValue = false)]
+    public long FillFactor { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsFiltered
+    /// </summary>
+    [DataMember(Name = "isFiltered", EmitDefaultValue = true)]
+    public bool IsFiltered { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class IndexDetailsDto {\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  SizeUsedKb: ").Append(SizeUsedKb).Append("\n");
+        sb.Append("  Updates: ").Append(Updates).Append("\n");
+        sb.Append("  Seeks: ").Append(Seeks).Append("\n");
+        sb.Append("  Scans: ").Append(Scans).Append("\n");
+        sb.Append("  Lookups: ").Append(Lookups).Append("\n");
+        sb.Append("  LastUsed: ").Append(LastUsed).Append("\n");
+        sb.Append("  IndexType: ").Append(IndexType).Append("\n");
+        sb.Append("  IsUnique: ").Append(IsUnique).Append("\n");
+        sb.Append("  ParentObjectId: ").Append(ParentObjectId).Append("\n");
+        sb.Append("  ParentObjectName: ").Append(ParentObjectName).Append("\n");
+        sb.Append("  DatabaseName: ").Append(DatabaseName).Append("\n");
+        sb.Append("  LastUpdated: ").Append(LastUpdated).Append("\n");
+        sb.Append("  FillFactor: ").Append(FillFactor).Append("\n");
+        sb.Append("  IsFiltered: ").Append(IsFiltered).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

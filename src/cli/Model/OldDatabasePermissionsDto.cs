@@ -8,93 +8,83 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     OldDatabasePermissionsDto
+/// </summary>
+[DataContract(Name = "OldDatabasePermissionsDto")]
+public class OldDatabasePermissionsDto : IValidatableObject
 {
     /// <summary>
-    /// OldDatabasePermissionsDto
+    ///     Initializes a new instance of the <see cref="OldDatabasePermissionsDto" /> class.
     /// </summary>
-    [DataContract(Name = "OldDatabasePermissionsDto")]
-    public partial class OldDatabasePermissionsDto : IValidatableObject
+    /// <param name="id">id.</param>
+    /// <param name="serverInfo">serverInfo.</param>
+    /// <param name="databases">databases.</param>
+    public OldDatabasePermissionsDto(string id = default, MonitoredEntityInfoDto serverInfo = default,
+        List<OldDatabaseDto> databases = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OldDatabasePermissionsDto" /> class.
-        /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="serverInfo">serverInfo.</param>
-        /// <param name="databases">databases.</param>
-        public OldDatabasePermissionsDto(string id = default(string), MonitoredEntityInfoDto serverInfo = default(MonitoredEntityInfoDto), List<OldDatabaseDto> databases = default(List<OldDatabaseDto>))
-        {
-            this.Id = id;
-            this.ServerInfo = serverInfo;
-            this.Databases = databases;
-        }
-
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = true)]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ServerInfo
-        /// </summary>
-        [DataMember(Name = "serverInfo", EmitDefaultValue = false)]
-        public MonitoredEntityInfoDto ServerInfo { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Databases
-        /// </summary>
-        [DataMember(Name = "databases", EmitDefaultValue = true)]
-        public List<OldDatabaseDto> Databases { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class OldDatabasePermissionsDto {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  ServerInfo: ").Append(ServerInfo).Append("\n");
-            sb.Append("  Databases: ").Append(Databases).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Id = id;
+        ServerInfo = serverInfo;
+        Databases = databases;
     }
 
+    /// <summary>
+    ///     Gets or Sets Id
+    /// </summary>
+    [DataMember(Name = "id", EmitDefaultValue = true)]
+    public string Id { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ServerInfo
+    /// </summary>
+    [DataMember(Name = "serverInfo", EmitDefaultValue = false)]
+    public MonitoredEntityInfoDto ServerInfo { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Databases
+    /// </summary>
+    [DataMember(Name = "databases", EmitDefaultValue = true)]
+    public List<OldDatabaseDto> Databases { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class OldDatabasePermissionsDto {\n");
+        sb.Append("  Id: ").Append(Id).Append("\n");
+        sb.Append("  ServerInfo: ").Append(ServerInfo).Append("\n");
+        sb.Append("  Databases: ").Append(Databases).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

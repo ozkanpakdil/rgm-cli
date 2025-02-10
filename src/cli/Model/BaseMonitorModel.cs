@@ -8,183 +8,178 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     BaseMonitorModel
+/// </summary>
+[DataContract(Name = "BaseMonitorModel")]
+public class BaseMonitorModel : IValidatableObject
 {
     /// <summary>
-    /// BaseMonitorModel
+    ///     Initializes a new instance of the <see cref="BaseMonitorModel" /> class.
     /// </summary>
-    [DataContract(Name = "BaseMonitorModel")]
-    public partial class BaseMonitorModel : IValidatableObject
+    /// <param name="versionNumber">versionNumber.</param>
+    /// <param name="installLocation">installLocation.</param>
+    /// <param name="userRunningAs">userRunningAs.</param>
+    /// <param name="userDomain">userDomain.</param>
+    /// <param name="databaseLocation">databaseLocation.</param>
+    /// <param name="runtime">runtime.</param>
+    /// <param name="isDbConnected">isDbConnected.</param>
+    /// <param name="errorReportingEnabled">errorReportingEnabled.</param>
+    /// <param name="hasCredentialDecryptionFailed">hasCredentialDecryptionFailed.</param>
+    /// <param name="hasUnsupportedEntities">hasUnsupportedEntities.</param>
+    /// <param name="hasSupportedEntitiesWithUnsupportedCredentials">hasSupportedEntitiesWithUnsupportedCredentials.</param>
+    /// <param name="platform">platform.</param>
+    /// <param name="repositoryDatabaseEngine">repositoryDatabaseEngine.</param>
+    public BaseMonitorModel(string versionNumber = default, string installLocation = default,
+        string userRunningAs = default, string userDomain = default, string databaseLocation = default,
+        string runtime = default, bool isDbConnected = default, bool errorReportingEnabled = default,
+        bool hasCredentialDecryptionFailed = default, bool hasUnsupportedEntities = default,
+        bool hasSupportedEntitiesWithUnsupportedCredentials = default, PlatformDto? platform = default,
+        DatabaseEngineDto? repositoryDatabaseEngine = default)
     {
-
-        /// <summary>
-        /// Gets or Sets Platform
-        /// </summary>
-        [DataMember(Name = "platform", EmitDefaultValue = false)]
-        public PlatformDto? Platform { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RepositoryDatabaseEngine
-        /// </summary>
-        [DataMember(Name = "repositoryDatabaseEngine", EmitDefaultValue = false)]
-        public DatabaseEngineDto? RepositoryDatabaseEngine { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BaseMonitorModel" /> class.
-        /// </summary>
-        /// <param name="versionNumber">versionNumber.</param>
-        /// <param name="installLocation">installLocation.</param>
-        /// <param name="userRunningAs">userRunningAs.</param>
-        /// <param name="userDomain">userDomain.</param>
-        /// <param name="databaseLocation">databaseLocation.</param>
-        /// <param name="runtime">runtime.</param>
-        /// <param name="isDbConnected">isDbConnected.</param>
-        /// <param name="errorReportingEnabled">errorReportingEnabled.</param>
-        /// <param name="hasCredentialDecryptionFailed">hasCredentialDecryptionFailed.</param>
-        /// <param name="hasUnsupportedEntities">hasUnsupportedEntities.</param>
-        /// <param name="hasSupportedEntitiesWithUnsupportedCredentials">hasSupportedEntitiesWithUnsupportedCredentials.</param>
-        /// <param name="platform">platform.</param>
-        /// <param name="repositoryDatabaseEngine">repositoryDatabaseEngine.</param>
-        public BaseMonitorModel(string versionNumber = default(string), string installLocation = default(string), string userRunningAs = default(string), string userDomain = default(string), string databaseLocation = default(string), string runtime = default(string), bool isDbConnected = default(bool), bool errorReportingEnabled = default(bool), bool hasCredentialDecryptionFailed = default(bool), bool hasUnsupportedEntities = default(bool), bool hasSupportedEntitiesWithUnsupportedCredentials = default(bool), PlatformDto? platform = default(PlatformDto?), DatabaseEngineDto? repositoryDatabaseEngine = default(DatabaseEngineDto?))
-        {
-            this.VersionNumber = versionNumber;
-            this.InstallLocation = installLocation;
-            this.UserRunningAs = userRunningAs;
-            this.UserDomain = userDomain;
-            this.DatabaseLocation = databaseLocation;
-            this.Runtime = runtime;
-            this.IsDbConnected = isDbConnected;
-            this.ErrorReportingEnabled = errorReportingEnabled;
-            this.HasCredentialDecryptionFailed = hasCredentialDecryptionFailed;
-            this.HasUnsupportedEntities = hasUnsupportedEntities;
-            this.HasSupportedEntitiesWithUnsupportedCredentials = hasSupportedEntitiesWithUnsupportedCredentials;
-            this.Platform = platform;
-            this.RepositoryDatabaseEngine = repositoryDatabaseEngine;
-        }
-
-        /// <summary>
-        /// Gets or Sets VersionNumber
-        /// </summary>
-        [DataMember(Name = "versionNumber", EmitDefaultValue = false)]
-        public string VersionNumber { get; set; }
-
-        /// <summary>
-        /// Gets or Sets InstallLocation
-        /// </summary>
-        [DataMember(Name = "installLocation", EmitDefaultValue = false)]
-        public string InstallLocation { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UserRunningAs
-        /// </summary>
-        [DataMember(Name = "userRunningAs", EmitDefaultValue = false)]
-        public string UserRunningAs { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UserDomain
-        /// </summary>
-        [DataMember(Name = "userDomain", EmitDefaultValue = false)]
-        public string UserDomain { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DatabaseLocation
-        /// </summary>
-        [DataMember(Name = "databaseLocation", EmitDefaultValue = false)]
-        public string DatabaseLocation { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Runtime
-        /// </summary>
-        [DataMember(Name = "runtime", EmitDefaultValue = false)]
-        public string Runtime { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsDbConnected
-        /// </summary>
-        [DataMember(Name = "isDbConnected", EmitDefaultValue = true)]
-        public bool IsDbConnected { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ErrorReportingEnabled
-        /// </summary>
-        [DataMember(Name = "errorReportingEnabled", EmitDefaultValue = true)]
-        public bool ErrorReportingEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or Sets HasCredentialDecryptionFailed
-        /// </summary>
-        [DataMember(Name = "hasCredentialDecryptionFailed", EmitDefaultValue = true)]
-        public bool HasCredentialDecryptionFailed { get; set; }
-
-        /// <summary>
-        /// Gets or Sets HasUnsupportedEntities
-        /// </summary>
-        [DataMember(Name = "hasUnsupportedEntities", EmitDefaultValue = true)]
-        public bool HasUnsupportedEntities { get; set; }
-
-        /// <summary>
-        /// Gets or Sets HasSupportedEntitiesWithUnsupportedCredentials
-        /// </summary>
-        [DataMember(Name = "hasSupportedEntitiesWithUnsupportedCredentials", EmitDefaultValue = true)]
-        public bool HasSupportedEntitiesWithUnsupportedCredentials { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class BaseMonitorModel {\n");
-            sb.Append("  VersionNumber: ").Append(VersionNumber).Append("\n");
-            sb.Append("  InstallLocation: ").Append(InstallLocation).Append("\n");
-            sb.Append("  UserRunningAs: ").Append(UserRunningAs).Append("\n");
-            sb.Append("  UserDomain: ").Append(UserDomain).Append("\n");
-            sb.Append("  DatabaseLocation: ").Append(DatabaseLocation).Append("\n");
-            sb.Append("  Runtime: ").Append(Runtime).Append("\n");
-            sb.Append("  IsDbConnected: ").Append(IsDbConnected).Append("\n");
-            sb.Append("  ErrorReportingEnabled: ").Append(ErrorReportingEnabled).Append("\n");
-            sb.Append("  HasCredentialDecryptionFailed: ").Append(HasCredentialDecryptionFailed).Append("\n");
-            sb.Append("  HasUnsupportedEntities: ").Append(HasUnsupportedEntities).Append("\n");
-            sb.Append("  HasSupportedEntitiesWithUnsupportedCredentials: ").Append(HasSupportedEntitiesWithUnsupportedCredentials).Append("\n");
-            sb.Append("  Platform: ").Append(Platform).Append("\n");
-            sb.Append("  RepositoryDatabaseEngine: ").Append(RepositoryDatabaseEngine).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        VersionNumber = versionNumber;
+        InstallLocation = installLocation;
+        UserRunningAs = userRunningAs;
+        UserDomain = userDomain;
+        DatabaseLocation = databaseLocation;
+        Runtime = runtime;
+        IsDbConnected = isDbConnected;
+        ErrorReportingEnabled = errorReportingEnabled;
+        HasCredentialDecryptionFailed = hasCredentialDecryptionFailed;
+        HasUnsupportedEntities = hasUnsupportedEntities;
+        HasSupportedEntitiesWithUnsupportedCredentials = hasSupportedEntitiesWithUnsupportedCredentials;
+        Platform = platform;
+        RepositoryDatabaseEngine = repositoryDatabaseEngine;
     }
 
+    /// <summary>
+    ///     Gets or Sets Platform
+    /// </summary>
+    [DataMember(Name = "platform", EmitDefaultValue = false)]
+    public PlatformDto? Platform { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets RepositoryDatabaseEngine
+    /// </summary>
+    [DataMember(Name = "repositoryDatabaseEngine", EmitDefaultValue = false)]
+    public DatabaseEngineDto? RepositoryDatabaseEngine { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets VersionNumber
+    /// </summary>
+    [DataMember(Name = "versionNumber", EmitDefaultValue = false)]
+    public string VersionNumber { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets InstallLocation
+    /// </summary>
+    [DataMember(Name = "installLocation", EmitDefaultValue = false)]
+    public string InstallLocation { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UserRunningAs
+    /// </summary>
+    [DataMember(Name = "userRunningAs", EmitDefaultValue = false)]
+    public string UserRunningAs { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UserDomain
+    /// </summary>
+    [DataMember(Name = "userDomain", EmitDefaultValue = false)]
+    public string UserDomain { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DatabaseLocation
+    /// </summary>
+    [DataMember(Name = "databaseLocation", EmitDefaultValue = false)]
+    public string DatabaseLocation { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Runtime
+    /// </summary>
+    [DataMember(Name = "runtime", EmitDefaultValue = false)]
+    public string Runtime { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IsDbConnected
+    /// </summary>
+    [DataMember(Name = "isDbConnected", EmitDefaultValue = true)]
+    public bool IsDbConnected { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ErrorReportingEnabled
+    /// </summary>
+    [DataMember(Name = "errorReportingEnabled", EmitDefaultValue = true)]
+    public bool ErrorReportingEnabled { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets HasCredentialDecryptionFailed
+    /// </summary>
+    [DataMember(Name = "hasCredentialDecryptionFailed", EmitDefaultValue = true)]
+    public bool HasCredentialDecryptionFailed { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets HasUnsupportedEntities
+    /// </summary>
+    [DataMember(Name = "hasUnsupportedEntities", EmitDefaultValue = true)]
+    public bool HasUnsupportedEntities { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets HasSupportedEntitiesWithUnsupportedCredentials
+    /// </summary>
+    [DataMember(Name = "hasSupportedEntitiesWithUnsupportedCredentials", EmitDefaultValue = true)]
+    public bool HasSupportedEntitiesWithUnsupportedCredentials { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class BaseMonitorModel {\n");
+        sb.Append("  VersionNumber: ").Append(VersionNumber).Append("\n");
+        sb.Append("  InstallLocation: ").Append(InstallLocation).Append("\n");
+        sb.Append("  UserRunningAs: ").Append(UserRunningAs).Append("\n");
+        sb.Append("  UserDomain: ").Append(UserDomain).Append("\n");
+        sb.Append("  DatabaseLocation: ").Append(DatabaseLocation).Append("\n");
+        sb.Append("  Runtime: ").Append(Runtime).Append("\n");
+        sb.Append("  IsDbConnected: ").Append(IsDbConnected).Append("\n");
+        sb.Append("  ErrorReportingEnabled: ").Append(ErrorReportingEnabled).Append("\n");
+        sb.Append("  HasCredentialDecryptionFailed: ").Append(HasCredentialDecryptionFailed).Append("\n");
+        sb.Append("  HasUnsupportedEntities: ").Append(HasUnsupportedEntities).Append("\n");
+        sb.Append("  HasSupportedEntitiesWithUnsupportedCredentials: ")
+            .Append(HasSupportedEntitiesWithUnsupportedCredentials).Append("\n");
+        sb.Append("  Platform: ").Append(Platform).Append("\n");
+        sb.Append("  RepositoryDatabaseEngine: ").Append(RepositoryDatabaseEngine).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

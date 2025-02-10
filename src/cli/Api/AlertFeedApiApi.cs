@@ -9,820 +9,817 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 using RedGate.SqlMonitor.Channels.Data;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAlertFeedApiApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IAlertFeedApiApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>RecentAlertDetailsDtoJSendSuccess</returns>
+    RecentAlertDetailsDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet(IntegerIdentifier alertId,
+        string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of RecentAlertDetailsDtoJSendSuccess</returns>
+    ApiResponse<RecentAlertDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetWithHttpInfo(
+        IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertHistoryCommentsDtoIEnumerableJSendSuccess</returns>
+    AlertHistoryCommentsDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet(
+        IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertHistoryCommentsDtoIEnumerableJSendSuccess</returns>
+    ApiResponse<AlertHistoryCommentsDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetWithHttpInfo(IntegerIdentifier alertId,
+            string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="minTime"></param>
+    /// <param name="maxTime"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ServerOverviewAlertsFeedModelDtoJSendSuccess</returns>
+    ServerOverviewAlertsFeedModelDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsFeedGet(ChannelInstanceRef cir,
+        DateTime minTime, DateTime maxTime, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="minTime"></param>
+    /// <param name="maxTime"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ServerOverviewAlertsFeedModelDtoJSendSuccess</returns>
+    ApiResponse<ServerOverviewAlertsFeedModelDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsFeedGetWithHttpInfo(
+        ChannelInstanceRef cir, DateTime minTime, DateTime maxTime, string baseMonitorName, int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAlertFeedApiApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of RecentAlertDetailsDtoJSendSuccess</returns>
+    Task<RecentAlertDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetAsync(
+        IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (RecentAlertDetailsDtoJSendSuccess)</returns>
+    Task<ApiResponse<RecentAlertDetailsDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetWithHttpInfoAsync(IntegerIdentifier alertId,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertHistoryCommentsDtoIEnumerableJSendSuccess</returns>
+    Task<AlertHistoryCommentsDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetAsync(IntegerIdentifier alertId,
+            string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertHistoryCommentsDtoIEnumerableJSendSuccess)</returns>
+    Task<ApiResponse<AlertHistoryCommentsDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetWithHttpInfoAsync(IntegerIdentifier alertId,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="minTime"></param>
+    /// <param name="maxTime"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ServerOverviewAlertsFeedModelDtoJSendSuccess</returns>
+    Task<ServerOverviewAlertsFeedModelDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsFeedGetAsync(
+        ChannelInstanceRef cir, DateTime minTime, DateTime maxTime, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="minTime"></param>
+    /// <param name="maxTime"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ServerOverviewAlertsFeedModelDtoJSendSuccess)</returns>
+    Task<ApiResponse<ServerOverviewAlertsFeedModelDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsFeedGetWithHttpInfoAsync(ChannelInstanceRef cir, DateTime minTime,
+            DateTime maxTime, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IAlertFeedApiApi : IAlertFeedApiApiSync, IAlertFeedApiApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class AlertFeedApiApi : IAlertFeedApiApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="AlertFeedApiApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public AlertFeedApiApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>RecentAlertDetailsDtoJSendSuccess</returns>
-        RecentAlertDetailsDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of RecentAlertDetailsDtoJSendSuccess</returns>
-        ApiResponse<RecentAlertDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetWithHttpInfo(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertHistoryCommentsDtoIEnumerableJSendSuccess</returns>
-        AlertHistoryCommentsDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertHistoryCommentsDtoIEnumerableJSendSuccess</returns>
-        ApiResponse<AlertHistoryCommentsDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetWithHttpInfo(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="minTime"></param>
-        /// <param name="maxTime"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ServerOverviewAlertsFeedModelDtoJSendSuccess</returns>
-        ServerOverviewAlertsFeedModelDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsFeedGet(ChannelInstanceRef cir, DateTime minTime, DateTime maxTime, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="minTime"></param>
-        /// <param name="maxTime"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ServerOverviewAlertsFeedModelDtoJSendSuccess</returns>
-        ApiResponse<ServerOverviewAlertsFeedModelDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsFeedGetWithHttpInfo(ChannelInstanceRef cir, DateTime minTime, DateTime maxTime, string baseMonitorName, int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AlertFeedApiApi" /> class.
     /// </summary>
-    public interface IAlertFeedApiApiAsync : IApiAccessor
+    /// <returns></returns>
+    public AlertFeedApiApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of RecentAlertDetailsDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<RecentAlertDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetAsync(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (RecentAlertDetailsDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RecentAlertDetailsDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetWithHttpInfoAsync(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertHistoryCommentsDtoIEnumerableJSendSuccess</returns>
-        System.Threading.Tasks.Task<AlertHistoryCommentsDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetAsync(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertHistoryCommentsDtoIEnumerableJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AlertHistoryCommentsDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetWithHttpInfoAsync(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="minTime"></param>
-        /// <param name="maxTime"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ServerOverviewAlertsFeedModelDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<ServerOverviewAlertsFeedModelDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsFeedGetAsync(ChannelInstanceRef cir, DateTime minTime, DateTime maxTime, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="minTime"></param>
-        /// <param name="maxTime"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ServerOverviewAlertsFeedModelDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ServerOverviewAlertsFeedModelDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsFeedGetWithHttpInfoAsync(ChannelInstanceRef cir, DateTime minTime, DateTime maxTime, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AlertFeedApiApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IAlertFeedApiApi : IAlertFeedApiApiSync, IAlertFeedApiApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public AlertFeedApiApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="AlertFeedApiApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class AlertFeedApiApi : IAlertFeedApiApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public AlertFeedApiApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertFeedApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AlertFeedApiApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>RecentAlertDetailsDtoJSendSuccess</returns>
+    public RecentAlertDetailsDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet(
+        IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetWithHttpInfo(alertId, baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of RecentAlertDetailsDtoJSendSuccess</returns>
+    public ApiResponse<RecentAlertDetailsDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetWithHttpInfo(IntegerIdentifier alertId,
+            string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'alertId' is set
+        if (alertId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'alertId' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("alertId", ClientUtils.ParameterToString(alertId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation = "AlertFeedApiApi.ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<RecentAlertDetailsDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/alerts/details/{alertId}", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertFeedApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public AlertFeedApiApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of RecentAlertDetailsDtoJSendSuccess</returns>
+    public async Task<RecentAlertDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetAsync(
+        IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetWithHttpInfoAsync(alertId, baseMonitorName,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (RecentAlertDetailsDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<RecentAlertDetailsDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetWithHttpInfoAsync(IntegerIdentifier alertId,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'alertId' is set
+        if (alertId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'alertId' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("alertId", ClientUtils.ParameterToString(alertId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation = "AlertFeedApiApi.ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<RecentAlertDetailsDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/alerts/details/{alertId}",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertFeedApiApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public AlertFeedApiApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>AlertHistoryCommentsDtoIEnumerableJSendSuccess</returns>
+    public AlertHistoryCommentsDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet(
+        IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetWithHttpInfo(alertId, baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of AlertHistoryCommentsDtoIEnumerableJSendSuccess</returns>
+    public ApiResponse<AlertHistoryCommentsDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetWithHttpInfo(IntegerIdentifier alertId,
+            string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'alertId' is set
+        if (alertId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'alertId' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("alertId", ClientUtils.ParameterToString(alertId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AlertFeedApiApi.ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<AlertHistoryCommentsDtoIEnumerableJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/alerts/details/related/{alertId}", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertFeedApiApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public AlertFeedApiApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of AlertHistoryCommentsDtoIEnumerableJSendSuccess</returns>
+    public async Task<AlertHistoryCommentsDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetAsync(IntegerIdentifier alertId,
+            string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetWithHttpInfoAsync(alertId,
+                baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="alertId"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (AlertHistoryCommentsDtoIEnumerableJSendSuccess)</returns>
+    public async Task<ApiResponse<AlertHistoryCommentsDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetWithHttpInfoAsync(IntegerIdentifier alertId,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'alertId' is set
+        if (alertId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'alertId' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("alertId", ClientUtils.ParameterToString(alertId)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "AlertFeedApiApi.ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<AlertHistoryCommentsDtoIEnumerableJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/alerts/details/related/{alertId}", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="minTime"></param>
+    /// <param name="maxTime"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ServerOverviewAlertsFeedModelDtoJSendSuccess</returns>
+    public ServerOverviewAlertsFeedModelDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsFeedGet(
+        ChannelInstanceRef cir, DateTime minTime, DateTime maxTime, string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameAlertsFeedGetWithHttpInfo(cir, minTime, maxTime, baseMonitorName);
+        return localVarResponse.Data;
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="minTime"></param>
+    /// <param name="maxTime"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of ServerOverviewAlertsFeedModelDtoJSendSuccess</returns>
+    public ApiResponse<ServerOverviewAlertsFeedModelDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameAlertsFeedGetWithHttpInfo(ChannelInstanceRef cir, DateTime minTime,
+            DateTime maxTime,
+            string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'cir' is set
+        if (cir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'cir' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsFeedGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsFeedGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            return this.Configuration.BasePath;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "minTime", minTime));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "maxTime", maxTime));
+
+        localVarRequestOptions.Operation = "AlertFeedApiApi.ApiBasemonitorsBaseMonitorNameAlertsFeedGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<ServerOverviewAlertsFeedModelDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/alerts/feed", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsFeedGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="minTime"></param>
+    /// <param name="maxTime"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ServerOverviewAlertsFeedModelDtoJSendSuccess</returns>
+    public async Task<ServerOverviewAlertsFeedModelDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsFeedGetAsync(
+        ChannelInstanceRef cir, DateTime minTime, DateTime maxTime, string baseMonitorName, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameAlertsFeedGetWithHttpInfoAsync(cir, minTime, maxTime, baseMonitorName,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="cir"></param>
+    /// <param name="minTime"></param>
+    /// <param name="maxTime"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ServerOverviewAlertsFeedModelDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<ServerOverviewAlertsFeedModelDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameAlertsFeedGetWithHttpInfoAsync(ChannelInstanceRef cir, DateTime minTime,
+            DateTime maxTime, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'cir' is set
+        if (cir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'cir' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsFeedGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsFeedGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "minTime", minTime));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "maxTime", maxTime));
+
+        localVarRequestOptions.Operation = "AlertFeedApiApi.ApiBasemonitorsBaseMonitorNameAlertsFeedGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<ServerOverviewAlertsFeedModelDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/alerts/feed",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsFeedGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>RecentAlertDetailsDtoJSendSuccess</returns>
-        public RecentAlertDetailsDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<RecentAlertDetailsDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetWithHttpInfo(alertId, baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of RecentAlertDetailsDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<RecentAlertDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetWithHttpInfo(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'alertId' is set
-            if (alertId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'alertId' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("alertId", cli.Client.ClientUtils.ParameterToString(alertId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AlertFeedApiApi.ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<RecentAlertDetailsDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/alerts/details/{alertId}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of RecentAlertDetailsDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<RecentAlertDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetAsync(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<RecentAlertDetailsDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetWithHttpInfoAsync(alertId, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (RecentAlertDetailsDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<RecentAlertDetailsDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGetWithHttpInfoAsync(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'alertId' is set
-            if (alertId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'alertId' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("alertId", cli.Client.ClientUtils.ParameterToString(alertId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AlertFeedApiApi.ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<RecentAlertDetailsDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/alerts/details/{alertId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsDetailsAlertIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>AlertHistoryCommentsDtoIEnumerableJSendSuccess</returns>
-        public AlertHistoryCommentsDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<AlertHistoryCommentsDtoIEnumerableJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetWithHttpInfo(alertId, baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of AlertHistoryCommentsDtoIEnumerableJSendSuccess</returns>
-        public cli.Client.ApiResponse<AlertHistoryCommentsDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetWithHttpInfo(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'alertId' is set
-            if (alertId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'alertId' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("alertId", cli.Client.ClientUtils.ParameterToString(alertId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AlertFeedApiApi.ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<AlertHistoryCommentsDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/alerts/details/related/{alertId}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AlertHistoryCommentsDtoIEnumerableJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<AlertHistoryCommentsDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetAsync(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<AlertHistoryCommentsDtoIEnumerableJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetWithHttpInfoAsync(alertId, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="alertId"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AlertHistoryCommentsDtoIEnumerableJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<AlertHistoryCommentsDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGetWithHttpInfoAsync(IntegerIdentifier alertId, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'alertId' is set
-            if (alertId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'alertId' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("alertId", cli.Client.ClientUtils.ParameterToString(alertId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "AlertFeedApiApi.ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<AlertHistoryCommentsDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/alerts/details/related/{alertId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsDetailsRelatedAlertIdGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="minTime"></param>
-        /// <param name="maxTime"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ServerOverviewAlertsFeedModelDtoJSendSuccess</returns>
-        public ServerOverviewAlertsFeedModelDtoJSendSuccess ApiBasemonitorsBaseMonitorNameAlertsFeedGet(ChannelInstanceRef cir, DateTime minTime, DateTime maxTime, string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<ServerOverviewAlertsFeedModelDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameAlertsFeedGetWithHttpInfo(cir, minTime, maxTime, baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="minTime"></param>
-        /// <param name="maxTime"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of ServerOverviewAlertsFeedModelDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<ServerOverviewAlertsFeedModelDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsFeedGetWithHttpInfo(ChannelInstanceRef cir, DateTime minTime, DateTime maxTime, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'cir' is set
-            if (cir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'cir' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsFeedGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsFeedGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "minTime", minTime));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "maxTime", maxTime));
-
-            localVarRequestOptions.Operation = "AlertFeedApiApi.ApiBasemonitorsBaseMonitorNameAlertsFeedGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<ServerOverviewAlertsFeedModelDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/alerts/feed", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsFeedGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="minTime"></param>
-        /// <param name="maxTime"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ServerOverviewAlertsFeedModelDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<ServerOverviewAlertsFeedModelDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameAlertsFeedGetAsync(ChannelInstanceRef cir, DateTime minTime, DateTime maxTime, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<ServerOverviewAlertsFeedModelDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameAlertsFeedGetWithHttpInfoAsync(cir, minTime, maxTime, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cir"></param>
-        /// <param name="minTime"></param>
-        /// <param name="maxTime"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ServerOverviewAlertsFeedModelDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<ServerOverviewAlertsFeedModelDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameAlertsFeedGetWithHttpInfoAsync(ChannelInstanceRef cir, DateTime minTime, DateTime maxTime, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'cir' is set
-            if (cir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'cir' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsFeedGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling AlertFeedApiApi->ApiBasemonitorsBaseMonitorNameAlertsFeedGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "minTime", minTime));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "maxTime", maxTime));
-
-            localVarRequestOptions.Operation = "AlertFeedApiApi.ApiBasemonitorsBaseMonitorNameAlertsFeedGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ServerOverviewAlertsFeedModelDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/alerts/feed", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameAlertsFeedGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

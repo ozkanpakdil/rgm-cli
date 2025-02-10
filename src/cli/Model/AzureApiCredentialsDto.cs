@@ -9,88 +9,82 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AzureApiCredentialsDto
+/// </summary>
+[DataContract(Name = "AzureApiCredentialsDto")]
+public class AzureApiCredentialsDto : IValidatableObject
 {
     /// <summary>
-    /// AzureApiCredentialsDto
+    ///     Initializes a new instance of the <see cref="AzureApiCredentialsDto" /> class.
     /// </summary>
-    [DataContract(Name = "AzureApiCredentialsDto")]
-    public partial class AzureApiCredentialsDto : IValidatableObject
+    [JsonConstructorAttribute]
+    protected AzureApiCredentialsDto()
     {
-
-        /// <summary>
-        /// Gets or Sets AuthenticationMode
-        /// </summary>
-        [DataMember(Name = "authenticationMode", IsRequired = true, EmitDefaultValue = true)]
-        public AzureApiAuthenticationMode AuthenticationMode { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureApiCredentialsDto" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected AzureApiCredentialsDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AzureApiCredentialsDto" /> class.
-        /// </summary>
-        /// <param name="authenticationMode">authenticationMode (required).</param>
-        /// <param name="servicePrincipalCredentialId">servicePrincipalCredentialId.</param>
-        public AzureApiCredentialsDto(AzureApiAuthenticationMode authenticationMode = default(AzureApiAuthenticationMode), Guid? servicePrincipalCredentialId = default(Guid?))
-        {
-            this.AuthenticationMode = authenticationMode;
-            this.ServicePrincipalCredentialId = servicePrincipalCredentialId;
-        }
-
-        /// <summary>
-        /// Gets or Sets ServicePrincipalCredentialId
-        /// </summary>
-        [DataMember(Name = "servicePrincipalCredentialId", EmitDefaultValue = true)]
-        public Guid? ServicePrincipalCredentialId { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AzureApiCredentialsDto {\n");
-            sb.Append("  AuthenticationMode: ").Append(AuthenticationMode).Append("\n");
-            sb.Append("  ServicePrincipalCredentialId: ").Append(ServicePrincipalCredentialId).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="AzureApiCredentialsDto" /> class.
+    /// </summary>
+    /// <param name="authenticationMode">authenticationMode (required).</param>
+    /// <param name="servicePrincipalCredentialId">servicePrincipalCredentialId.</param>
+    public AzureApiCredentialsDto(AzureApiAuthenticationMode authenticationMode = default,
+        Guid? servicePrincipalCredentialId = default)
+    {
+        AuthenticationMode = authenticationMode;
+        ServicePrincipalCredentialId = servicePrincipalCredentialId;
+    }
+
+    /// <summary>
+    ///     Gets or Sets AuthenticationMode
+    /// </summary>
+    [DataMember(Name = "authenticationMode", IsRequired = true, EmitDefaultValue = true)]
+    public AzureApiAuthenticationMode AuthenticationMode { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ServicePrincipalCredentialId
+    /// </summary>
+    [DataMember(Name = "servicePrincipalCredentialId", EmitDefaultValue = true)]
+    public Guid? ServicePrincipalCredentialId { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AzureApiCredentialsDto {\n");
+        sb.Append("  AuthenticationMode: ").Append(AuthenticationMode).Append("\n");
+        sb.Append("  ServicePrincipalCredentialId: ").Append(ServicePrincipalCredentialId).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -9,252 +9,236 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
-using System.Reflection;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     ApiDiagnosticsErrorReportingTestGet500Response
+/// </summary>
+[JsonConverter(typeof(ApiDiagnosticsErrorReportingTestGet500ResponseJsonConverter))]
+[DataContract(Name = "_api_diagnostics_errorReporting_test_get_500_response")]
+public class ApiDiagnosticsErrorReportingTestGet500Response : AbstractOpenAPISchema, IValidatableObject
+{
+    private object _actualInstance;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ApiDiagnosticsErrorReportingTestGet500Response" /> class
+    ///     with the <see cref="InternalServerErrorJSendDataError" /> class
+    /// </summary>
+    /// <param name="actualInstance">An instance of InternalServerErrorJSendDataError.</param>
+    public ApiDiagnosticsErrorReportingTestGet500Response(InternalServerErrorJSendDataError actualInstance)
+    {
+        IsNullable = false;
+        SchemaType = "oneOf";
+        ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ApiDiagnosticsErrorReportingTestGet500Response" /> class
+    ///     with the <see cref="object" /> class
+    /// </summary>
+    /// <param name="actualInstance">An instance of Object.</param>
+    public ApiDiagnosticsErrorReportingTestGet500Response(object actualInstance)
+    {
+        IsNullable = false;
+        SchemaType = "oneOf";
+        ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
+    }
+
+    /// <summary>
+    ///     Gets or Sets ActualInstance
+    /// </summary>
+    public override object ActualInstance
+    {
+        get => _actualInstance;
+        set
+        {
+            if (value.GetType() == typeof(InternalServerErrorJSendDataError) ||
+                value is InternalServerErrorJSendDataError)
+                _actualInstance = value;
+            else if (value.GetType() == typeof(object) || value is object)
+                _actualInstance = value;
+            else
+                throw new ArgumentException(
+                    "Invalid instance found. Must be the following types: InternalServerErrorJSendDataError, Object");
+        }
+    }
+
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Get the actual instance of `InternalServerErrorJSendDataError`. If the actual instance is not
+    ///     `InternalServerErrorJSendDataError`,
+    ///     the InvalidClassException will be thrown
+    /// </summary>
+    /// <returns>An instance of InternalServerErrorJSendDataError</returns>
+    public InternalServerErrorJSendDataError GetInternalServerErrorJSendDataError()
+    {
+        return (InternalServerErrorJSendDataError)ActualInstance;
+    }
+
+    /// <summary>
+    ///     Get the actual instance of `Object`. If the actual instance is not `Object`,
+    ///     the InvalidClassException will be thrown
+    /// </summary>
+    /// <returns>An instance of Object</returns>
+    public object GetObject()
+    {
+        return (object)ActualInstance;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class ApiDiagnosticsErrorReportingTestGet500Response {\n");
+        sb.Append("  ActualInstance: ").Append(ActualInstance).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public override string ToJson()
+    {
+        return JsonConvert.SerializeObject(ActualInstance, SerializerSettings);
+    }
+
+    /// <summary>
+    ///     Converts the JSON string into an instance of ApiDiagnosticsErrorReportingTestGet500Response
+    /// </summary>
+    /// <param name="jsonString">JSON string</param>
+    /// <returns>An instance of ApiDiagnosticsErrorReportingTestGet500Response</returns>
+    public static ApiDiagnosticsErrorReportingTestGet500Response FromJson(string jsonString)
+    {
+        ApiDiagnosticsErrorReportingTestGet500Response newApiDiagnosticsErrorReportingTestGet500Response = null;
+
+        if (string.IsNullOrEmpty(jsonString)) return newApiDiagnosticsErrorReportingTestGet500Response;
+        var match = 0;
+        var matchedTypes = new List<string>();
+
+        try
+        {
+            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+            if (typeof(InternalServerErrorJSendDataError).GetProperty("AdditionalProperties") == null)
+                newApiDiagnosticsErrorReportingTestGet500Response = new ApiDiagnosticsErrorReportingTestGet500Response(
+                    JsonConvert.DeserializeObject<InternalServerErrorJSendDataError>(jsonString, SerializerSettings));
+            else
+                newApiDiagnosticsErrorReportingTestGet500Response = new ApiDiagnosticsErrorReportingTestGet500Response(
+                    JsonConvert.DeserializeObject<InternalServerErrorJSendDataError>(jsonString,
+                        AdditionalPropertiesSerializerSettings));
+            matchedTypes.Add("InternalServerErrorJSendDataError");
+            match++;
+        }
+        catch (Exception exception)
+        {
+            // deserialization failed, try the next one
+            Debug.WriteLine("Failed to deserialize `{0}` into InternalServerErrorJSendDataError: {1}", jsonString,
+                exception);
+        }
+
+        try
+        {
+            // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
+            if (typeof(object).GetProperty("AdditionalProperties") == null)
+                newApiDiagnosticsErrorReportingTestGet500Response =
+                    new ApiDiagnosticsErrorReportingTestGet500Response(
+                        JsonConvert.DeserializeObject<object>(jsonString, SerializerSettings));
+            else
+                newApiDiagnosticsErrorReportingTestGet500Response = new ApiDiagnosticsErrorReportingTestGet500Response(
+                    JsonConvert.DeserializeObject<object>(jsonString, AdditionalPropertiesSerializerSettings));
+            matchedTypes.Add("Object");
+            match++;
+        }
+        catch (Exception exception)
+        {
+            // deserialization failed, try the next one
+            Debug.WriteLine("Failed to deserialize `{0}` into Object: {1}", jsonString, exception);
+        }
+
+        if (match == 0)
+            throw new InvalidDataException("The JSON string `" + jsonString +
+                                           "` cannot be deserialized into any schema defined.");
+
+        if (match > 1)
+            throw new InvalidDataException("The JSON string `" + jsonString +
+                                           "` incorrectly matches more than one schema (should be exactly one match): " +
+                                           string.Join(",", matchedTypes));
+
+        // deserialization is considered successful at this point if no exception has been thrown.
+        return newApiDiagnosticsErrorReportingTestGet500Response;
+    }
+}
+
+/// <summary>
+///     Custom JSON converter for ApiDiagnosticsErrorReportingTestGet500Response
+/// </summary>
+public class ApiDiagnosticsErrorReportingTestGet500ResponseJsonConverter : JsonConverter
 {
     /// <summary>
-    /// ApiDiagnosticsErrorReportingTestGet500Response
+    ///     To write the JSON string
     /// </summary>
-    [JsonConverter(typeof(ApiDiagnosticsErrorReportingTestGet500ResponseJsonConverter))]
-    [DataContract(Name = "_api_diagnostics_errorReporting_test_get_500_response")]
-    public partial class ApiDiagnosticsErrorReportingTestGet500Response : AbstractOpenAPISchema, IValidatableObject
+    /// <param name="writer">JSON writer</param>
+    /// <param name="value">Object to be converted into a JSON string</param>
+    /// <param name="serializer">JSON Serializer</param>
+    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiDiagnosticsErrorReportingTestGet500Response" /> class
-        /// with the <see cref="InternalServerErrorJSendDataError" /> class
-        /// </summary>
-        /// <param name="actualInstance">An instance of InternalServerErrorJSendDataError.</param>
-        public ApiDiagnosticsErrorReportingTestGet500Response(InternalServerErrorJSendDataError actualInstance)
+        writer.WriteRawValue((string)typeof(ApiDiagnosticsErrorReportingTestGet500Response).GetMethod("ToJson")
+            .Invoke(value, null));
+    }
+
+    /// <summary>
+    ///     To convert a JSON string into an object
+    /// </summary>
+    /// <param name="reader">JSON reader</param>
+    /// <param name="objectType">Object type</param>
+    /// <param name="existingValue">Existing value</param>
+    /// <param name="serializer">JSON Serializer</param>
+    /// <returns>The object converted from the JSON string</returns>
+    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+    {
+        switch (reader.TokenType)
         {
-            this.IsNullable = false;
-            this.SchemaType= "oneOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiDiagnosticsErrorReportingTestGet500Response" /> class
-        /// with the <see cref="Object" /> class
-        /// </summary>
-        /// <param name="actualInstance">An instance of Object.</param>
-        public ApiDiagnosticsErrorReportingTestGet500Response(Object actualInstance)
-        {
-            this.IsNullable = false;
-            this.SchemaType= "oneOf";
-            this.ActualInstance = actualInstance ?? throw new ArgumentException("Invalid instance found. Must not be null.");
-        }
-
-
-        private Object _actualInstance;
-
-        /// <summary>
-        /// Gets or Sets ActualInstance
-        /// </summary>
-        public override Object ActualInstance
-        {
-            get
-            {
-                return _actualInstance;
-            }
-            set
-            {
-                if (value.GetType() == typeof(InternalServerErrorJSendDataError) || value is InternalServerErrorJSendDataError)
-                {
-                    this._actualInstance = value;
-                }
-                else if (value.GetType() == typeof(Object) || value is Object)
-                {
-                    this._actualInstance = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Invalid instance found. Must be the following types: InternalServerErrorJSendDataError, Object");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Get the actual instance of `InternalServerErrorJSendDataError`. If the actual instance is not `InternalServerErrorJSendDataError`,
-        /// the InvalidClassException will be thrown
-        /// </summary>
-        /// <returns>An instance of InternalServerErrorJSendDataError</returns>
-        public InternalServerErrorJSendDataError GetInternalServerErrorJSendDataError()
-        {
-            return (InternalServerErrorJSendDataError)this.ActualInstance;
-        }
-
-        /// <summary>
-        /// Get the actual instance of `Object`. If the actual instance is not `Object`,
-        /// the InvalidClassException will be thrown
-        /// </summary>
-        /// <returns>An instance of Object</returns>
-        public Object GetObject()
-        {
-            return (Object)this.ActualInstance;
-        }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            var sb = new StringBuilder();
-            sb.Append("class ApiDiagnosticsErrorReportingTestGet500Response {\n");
-            sb.Append("  ActualInstance: ").Append(this.ActualInstance).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
-        {
-            return JsonConvert.SerializeObject(this.ActualInstance, ApiDiagnosticsErrorReportingTestGet500Response.SerializerSettings);
-        }
-
-        /// <summary>
-        /// Converts the JSON string into an instance of ApiDiagnosticsErrorReportingTestGet500Response
-        /// </summary>
-        /// <param name="jsonString">JSON string</param>
-        /// <returns>An instance of ApiDiagnosticsErrorReportingTestGet500Response</returns>
-        public static ApiDiagnosticsErrorReportingTestGet500Response FromJson(string jsonString)
-        {
-            ApiDiagnosticsErrorReportingTestGet500Response newApiDiagnosticsErrorReportingTestGet500Response = null;
-
-            if (string.IsNullOrEmpty(jsonString))
-            {
-                return newApiDiagnosticsErrorReportingTestGet500Response;
-            }
-            int match = 0;
-            List<string> matchedTypes = new List<string>();
-
-            try
-            {
-                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(InternalServerErrorJSendDataError).GetProperty("AdditionalProperties") == null)
-                {
-                    newApiDiagnosticsErrorReportingTestGet500Response = new ApiDiagnosticsErrorReportingTestGet500Response(JsonConvert.DeserializeObject<InternalServerErrorJSendDataError>(jsonString, ApiDiagnosticsErrorReportingTestGet500Response.SerializerSettings));
-                }
-                else
-                {
-                    newApiDiagnosticsErrorReportingTestGet500Response = new ApiDiagnosticsErrorReportingTestGet500Response(JsonConvert.DeserializeObject<InternalServerErrorJSendDataError>(jsonString, ApiDiagnosticsErrorReportingTestGet500Response.AdditionalPropertiesSerializerSettings));
-                }
-                matchedTypes.Add("InternalServerErrorJSendDataError");
-                match++;
-            }
-            catch (Exception exception)
-            {
-                // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into InternalServerErrorJSendDataError: {1}", jsonString, exception.ToString()));
-            }
-
-            try
-            {
-                // if it does not contains "AdditionalProperties", use SerializerSettings to deserialize
-                if (typeof(Object).GetProperty("AdditionalProperties") == null)
-                {
-                    newApiDiagnosticsErrorReportingTestGet500Response = new ApiDiagnosticsErrorReportingTestGet500Response(JsonConvert.DeserializeObject<Object>(jsonString, ApiDiagnosticsErrorReportingTestGet500Response.SerializerSettings));
-                }
-                else
-                {
-                    newApiDiagnosticsErrorReportingTestGet500Response = new ApiDiagnosticsErrorReportingTestGet500Response(JsonConvert.DeserializeObject<Object>(jsonString, ApiDiagnosticsErrorReportingTestGet500Response.AdditionalPropertiesSerializerSettings));
-                }
-                matchedTypes.Add("Object");
-                match++;
-            }
-            catch (Exception exception)
-            {
-                // deserialization failed, try the next one
-                System.Diagnostics.Debug.WriteLine(string.Format("Failed to deserialize `{0}` into Object: {1}", jsonString, exception.ToString()));
-            }
-
-            if (match == 0)
-            {
-                throw new InvalidDataException("The JSON string `" + jsonString + "` cannot be deserialized into any schema defined.");
-            }
-            else if (match > 1)
-            {
-                throw new InvalidDataException("The JSON string `" + jsonString + "` incorrectly matches more than one schema (should be exactly one match): " + String.Join(",", matchedTypes));
-            }
-
-            // deserialization is considered successful at this point if no exception has been thrown.
-            return newApiDiagnosticsErrorReportingTestGet500Response;
-        }
-
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
+            case JsonToken.StartObject:
+                return ApiDiagnosticsErrorReportingTestGet500Response.FromJson(JObject.Load(reader)
+                    .ToString(Formatting.None));
+            case JsonToken.StartArray:
+                return ApiDiagnosticsErrorReportingTestGet500Response.FromJson(JArray.Load(reader)
+                    .ToString(Formatting.None));
+            default:
+                return null;
         }
     }
 
     /// <summary>
-    /// Custom JSON converter for ApiDiagnosticsErrorReportingTestGet500Response
+    ///     Check if the object can be converted
     /// </summary>
-    public class ApiDiagnosticsErrorReportingTestGet500ResponseJsonConverter : JsonConverter
+    /// <param name="objectType">Object type</param>
+    /// <returns>True if the object can be converted</returns>
+    public override bool CanConvert(Type objectType)
     {
-        /// <summary>
-        /// To write the JSON string
-        /// </summary>
-        /// <param name="writer">JSON writer</param>
-        /// <param name="value">Object to be converted into a JSON string</param>
-        /// <param name="serializer">JSON Serializer</param>
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            writer.WriteRawValue((string)(typeof(ApiDiagnosticsErrorReportingTestGet500Response).GetMethod("ToJson").Invoke(value, null)));
-        }
-
-        /// <summary>
-        /// To convert a JSON string into an object
-        /// </summary>
-        /// <param name="reader">JSON reader</param>
-        /// <param name="objectType">Object type</param>
-        /// <param name="existingValue">Existing value</param>
-        /// <param name="serializer">JSON Serializer</param>
-        /// <returns>The object converted from the JSON string</returns>
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            switch(reader.TokenType) 
-            {
-                case JsonToken.StartObject:
-                    return ApiDiagnosticsErrorReportingTestGet500Response.FromJson(JObject.Load(reader).ToString(Formatting.None));
-                case JsonToken.StartArray:
-                    return ApiDiagnosticsErrorReportingTestGet500Response.FromJson(JArray.Load(reader).ToString(Formatting.None));
-                default:
-                    return null;
-            }
-        }
-
-        /// <summary>
-        /// Check if the object can be converted
-        /// </summary>
-        /// <param name="objectType">Object type</param>
-        /// <returns>True if the object can be converted</returns>
-        public override bool CanConvert(Type objectType)
-        {
-            return false;
-        }
+        return false;
     }
-
 }

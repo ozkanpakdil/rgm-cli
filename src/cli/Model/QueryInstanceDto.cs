@@ -9,146 +9,138 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     QueryInstanceDto
+/// </summary>
+[DataContract(Name = "QueryInstanceDto")]
+public class QueryInstanceDto : IValidatableObject
 {
     /// <summary>
-    /// QueryInstanceDto
+    ///     Initializes a new instance of the <see cref="QueryInstanceDto" /> class.
     /// </summary>
-    [DataContract(Name = "QueryInstanceDto")]
-    public partial class QueryInstanceDto : IValidatableObject
+    /// <param name="startTime">startTime.</param>
+    /// <param name="endTime">endTime.</param>
+    /// <param name="queryText">queryText.</param>
+    /// <param name="programName">programName.</param>
+    /// <param name="loginName">loginName.</param>
+    /// <param name="databaseName">databaseName.</param>
+    /// <param name="logicalReads">logicalReads.</param>
+    /// <param name="writes">writes.</param>
+    /// <param name="eventName">eventName.</param>
+    public QueryInstanceDto(DateTime startTime = default, DateTime endTime = default, string queryText = default,
+        string programName = default, string loginName = default, string databaseName = default,
+        long logicalReads = default, long writes = default, string eventName = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="QueryInstanceDto" /> class.
-        /// </summary>
-        /// <param name="startTime">startTime.</param>
-        /// <param name="endTime">endTime.</param>
-        /// <param name="queryText">queryText.</param>
-        /// <param name="programName">programName.</param>
-        /// <param name="loginName">loginName.</param>
-        /// <param name="databaseName">databaseName.</param>
-        /// <param name="logicalReads">logicalReads.</param>
-        /// <param name="writes">writes.</param>
-        /// <param name="eventName">eventName.</param>
-        public QueryInstanceDto(DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), string queryText = default(string), string programName = default(string), string loginName = default(string), string databaseName = default(string), long logicalReads = default(long), long writes = default(long), string eventName = default(string))
-        {
-            this.StartTime = startTime;
-            this.EndTime = endTime;
-            this.QueryText = queryText;
-            this.ProgramName = programName;
-            this.LoginName = loginName;
-            this.DatabaseName = databaseName;
-            this.LogicalReads = logicalReads;
-            this.Writes = writes;
-            this.EventName = eventName;
-        }
-
-        /// <summary>
-        /// Gets or Sets StartTime
-        /// </summary>
-        [DataMember(Name = "startTime", EmitDefaultValue = false)]
-        public DateTime StartTime { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EndTime
-        /// </summary>
-        [DataMember(Name = "endTime", EmitDefaultValue = false)]
-        public DateTime EndTime { get; set; }
-
-        /// <summary>
-        /// Gets or Sets QueryText
-        /// </summary>
-        [DataMember(Name = "queryText", EmitDefaultValue = true)]
-        public string QueryText { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ProgramName
-        /// </summary>
-        [DataMember(Name = "programName", EmitDefaultValue = true)]
-        public string ProgramName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LoginName
-        /// </summary>
-        [DataMember(Name = "loginName", EmitDefaultValue = true)]
-        public string LoginName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DatabaseName
-        /// </summary>
-        [DataMember(Name = "databaseName", EmitDefaultValue = true)]
-        public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LogicalReads
-        /// </summary>
-        [DataMember(Name = "logicalReads", EmitDefaultValue = false)]
-        public long LogicalReads { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Writes
-        /// </summary>
-        [DataMember(Name = "writes", EmitDefaultValue = false)]
-        public long Writes { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EventName
-        /// </summary>
-        [DataMember(Name = "eventName", EmitDefaultValue = true)]
-        public string EventName { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class QueryInstanceDto {\n");
-            sb.Append("  StartTime: ").Append(StartTime).Append("\n");
-            sb.Append("  EndTime: ").Append(EndTime).Append("\n");
-            sb.Append("  QueryText: ").Append(QueryText).Append("\n");
-            sb.Append("  ProgramName: ").Append(ProgramName).Append("\n");
-            sb.Append("  LoginName: ").Append(LoginName).Append("\n");
-            sb.Append("  DatabaseName: ").Append(DatabaseName).Append("\n");
-            sb.Append("  LogicalReads: ").Append(LogicalReads).Append("\n");
-            sb.Append("  Writes: ").Append(Writes).Append("\n");
-            sb.Append("  EventName: ").Append(EventName).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        StartTime = startTime;
+        EndTime = endTime;
+        QueryText = queryText;
+        ProgramName = programName;
+        LoginName = loginName;
+        DatabaseName = databaseName;
+        LogicalReads = logicalReads;
+        Writes = writes;
+        EventName = eventName;
     }
 
+    /// <summary>
+    ///     Gets or Sets StartTime
+    /// </summary>
+    [DataMember(Name = "startTime", EmitDefaultValue = false)]
+    public DateTime StartTime { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EndTime
+    /// </summary>
+    [DataMember(Name = "endTime", EmitDefaultValue = false)]
+    public DateTime EndTime { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets QueryText
+    /// </summary>
+    [DataMember(Name = "queryText", EmitDefaultValue = true)]
+    public string QueryText { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ProgramName
+    /// </summary>
+    [DataMember(Name = "programName", EmitDefaultValue = true)]
+    public string ProgramName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LoginName
+    /// </summary>
+    [DataMember(Name = "loginName", EmitDefaultValue = true)]
+    public string LoginName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DatabaseName
+    /// </summary>
+    [DataMember(Name = "databaseName", EmitDefaultValue = true)]
+    public string DatabaseName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LogicalReads
+    /// </summary>
+    [DataMember(Name = "logicalReads", EmitDefaultValue = false)]
+    public long LogicalReads { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Writes
+    /// </summary>
+    [DataMember(Name = "writes", EmitDefaultValue = false)]
+    public long Writes { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EventName
+    /// </summary>
+    [DataMember(Name = "eventName", EmitDefaultValue = true)]
+    public string EventName { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class QueryInstanceDto {\n");
+        sb.Append("  StartTime: ").Append(StartTime).Append("\n");
+        sb.Append("  EndTime: ").Append(EndTime).Append("\n");
+        sb.Append("  QueryText: ").Append(QueryText).Append("\n");
+        sb.Append("  ProgramName: ").Append(ProgramName).Append("\n");
+        sb.Append("  LoginName: ").Append(LoginName).Append("\n");
+        sb.Append("  DatabaseName: ").Append(DatabaseName).Append("\n");
+        sb.Append("  LogicalReads: ").Append(LogicalReads).Append("\n");
+        sb.Append("  Writes: ").Append(Writes).Append("\n");
+        sb.Append("  EventName: ").Append(EventName).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -8,93 +8,84 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     SelectDatabasesAzureSqlServerModel
+/// </summary>
+[DataContract(Name = "SelectDatabasesAzureSqlServerModel")]
+public class SelectDatabasesAzureSqlServerModel : IValidatableObject
 {
     /// <summary>
-    /// SelectDatabasesAzureSqlServerModel
+    ///     Initializes a new instance of the <see cref="SelectDatabasesAzureSqlServerModel" /> class.
     /// </summary>
-    [DataContract(Name = "SelectDatabasesAzureSqlServerModel")]
-    public partial class SelectDatabasesAzureSqlServerModel : IValidatableObject
+    /// <param name="azureSqlServerName">azureSqlServerName.</param>
+    /// <param name="azureCredentials">azureCredentials.</param>
+    /// <param name="sqlServerConnectionProperties">sqlServerConnectionProperties.</param>
+    public SelectDatabasesAzureSqlServerModel(string azureSqlServerName = default,
+        AzureCredentialsModel azureCredentials = default,
+        SqlServerConnectionPropertiesModel sqlServerConnectionProperties = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SelectDatabasesAzureSqlServerModel" /> class.
-        /// </summary>
-        /// <param name="azureSqlServerName">azureSqlServerName.</param>
-        /// <param name="azureCredentials">azureCredentials.</param>
-        /// <param name="sqlServerConnectionProperties">sqlServerConnectionProperties.</param>
-        public SelectDatabasesAzureSqlServerModel(string azureSqlServerName = default(string), AzureCredentialsModel azureCredentials = default(AzureCredentialsModel), SqlServerConnectionPropertiesModel sqlServerConnectionProperties = default(SqlServerConnectionPropertiesModel))
-        {
-            this.AzureSqlServerName = azureSqlServerName;
-            this.AzureCredentials = azureCredentials;
-            this.SqlServerConnectionProperties = sqlServerConnectionProperties;
-        }
-
-        /// <summary>
-        /// Gets or Sets AzureSqlServerName
-        /// </summary>
-        [DataMember(Name = "azureSqlServerName", EmitDefaultValue = true)]
-        public string AzureSqlServerName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AzureCredentials
-        /// </summary>
-        [DataMember(Name = "azureCredentials", EmitDefaultValue = false)]
-        public AzureCredentialsModel AzureCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlServerConnectionProperties
-        /// </summary>
-        [DataMember(Name = "sqlServerConnectionProperties", EmitDefaultValue = false)]
-        public SqlServerConnectionPropertiesModel SqlServerConnectionProperties { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class SelectDatabasesAzureSqlServerModel {\n");
-            sb.Append("  AzureSqlServerName: ").Append(AzureSqlServerName).Append("\n");
-            sb.Append("  AzureCredentials: ").Append(AzureCredentials).Append("\n");
-            sb.Append("  SqlServerConnectionProperties: ").Append(SqlServerConnectionProperties).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        AzureSqlServerName = azureSqlServerName;
+        AzureCredentials = azureCredentials;
+        SqlServerConnectionProperties = sqlServerConnectionProperties;
     }
 
+    /// <summary>
+    ///     Gets or Sets AzureSqlServerName
+    /// </summary>
+    [DataMember(Name = "azureSqlServerName", EmitDefaultValue = true)]
+    public string AzureSqlServerName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AzureCredentials
+    /// </summary>
+    [DataMember(Name = "azureCredentials", EmitDefaultValue = false)]
+    public AzureCredentialsModel AzureCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlServerConnectionProperties
+    /// </summary>
+    [DataMember(Name = "sqlServerConnectionProperties", EmitDefaultValue = false)]
+    public SqlServerConnectionPropertiesModel SqlServerConnectionProperties { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class SelectDatabasesAzureSqlServerModel {\n");
+        sb.Append("  AzureSqlServerName: ").Append(AzureSqlServerName).Append("\n");
+        sb.Append("  AzureCredentials: ").Append(AzureCredentials).Append("\n");
+        sb.Append("  SqlServerConnectionProperties: ").Append(SqlServerConnectionProperties).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

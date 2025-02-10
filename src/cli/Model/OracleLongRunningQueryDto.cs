@@ -9,155 +9,148 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     OracleLongRunningQueryDto
+/// </summary>
+[DataContract(Name = "OracleLongRunningQueryDto")]
+public class OracleLongRunningQueryDto : IValidatableObject
 {
     /// <summary>
-    /// OracleLongRunningQueryDto
+    ///     Initializes a new instance of the <see cref="OracleLongRunningQueryDto" /> class.
     /// </summary>
-    [DataContract(Name = "OracleLongRunningQueryDto")]
-    public partial class OracleLongRunningQueryDto : IValidatableObject
+    /// <param name="sessionId">sessionId.</param>
+    /// <param name="sessionSerialNumber">sessionSerialNumber.</param>
+    /// <param name="logOnTime">logOnTime.</param>
+    /// <param name="sqlExecutionStart">sqlExecutionStart.</param>
+    /// <param name="username">username.</param>
+    /// <param name="osUser">osUser.</param>
+    /// <param name="machine">machine.</param>
+    /// <param name="program">program.</param>
+    /// <param name="sqlText">sqlText.</param>
+    /// <param name="duration">duration.</param>
+    public OracleLongRunningQueryDto(IntegerIdentifier sessionId = default,
+        IntegerIdentifier sessionSerialNumber = default, DateTime logOnTime = default,
+        DateTime sqlExecutionStart = default, string username = default, string osUser = default,
+        string machine = default, string program = default, string sqlText = default, double duration = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OracleLongRunningQueryDto" /> class.
-        /// </summary>
-        /// <param name="sessionId">sessionId.</param>
-        /// <param name="sessionSerialNumber">sessionSerialNumber.</param>
-        /// <param name="logOnTime">logOnTime.</param>
-        /// <param name="sqlExecutionStart">sqlExecutionStart.</param>
-        /// <param name="username">username.</param>
-        /// <param name="osUser">osUser.</param>
-        /// <param name="machine">machine.</param>
-        /// <param name="program">program.</param>
-        /// <param name="sqlText">sqlText.</param>
-        /// <param name="duration">duration.</param>
-        public OracleLongRunningQueryDto(IntegerIdentifier sessionId = default(IntegerIdentifier), IntegerIdentifier sessionSerialNumber = default(IntegerIdentifier), DateTime logOnTime = default(DateTime), DateTime sqlExecutionStart = default(DateTime), string username = default(string), string osUser = default(string), string machine = default(string), string program = default(string), string sqlText = default(string), double duration = default(double))
-        {
-            this.SessionId = sessionId;
-            this.SessionSerialNumber = sessionSerialNumber;
-            this.LogOnTime = logOnTime;
-            this.SqlExecutionStart = sqlExecutionStart;
-            this.Username = username;
-            this.OsUser = osUser;
-            this.Machine = machine;
-            this.Program = program;
-            this.SqlText = sqlText;
-            this.Duration = duration;
-        }
-
-        /// <summary>
-        /// Gets or Sets SessionId
-        /// </summary>
-        [DataMember(Name = "sessionId", EmitDefaultValue = false)]
-        public IntegerIdentifier SessionId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SessionSerialNumber
-        /// </summary>
-        [DataMember(Name = "sessionSerialNumber", EmitDefaultValue = false)]
-        public IntegerIdentifier SessionSerialNumber { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LogOnTime
-        /// </summary>
-        [DataMember(Name = "logOnTime", EmitDefaultValue = false)]
-        public DateTime LogOnTime { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlExecutionStart
-        /// </summary>
-        [DataMember(Name = "sqlExecutionStart", EmitDefaultValue = false)]
-        public DateTime SqlExecutionStart { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Username
-        /// </summary>
-        [DataMember(Name = "username", EmitDefaultValue = true)]
-        public string Username { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OsUser
-        /// </summary>
-        [DataMember(Name = "osUser", EmitDefaultValue = true)]
-        public string OsUser { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Machine
-        /// </summary>
-        [DataMember(Name = "machine", EmitDefaultValue = true)]
-        public string Machine { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Program
-        /// </summary>
-        [DataMember(Name = "program", EmitDefaultValue = true)]
-        public string Program { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SqlText
-        /// </summary>
-        [DataMember(Name = "sqlText", EmitDefaultValue = true)]
-        public string SqlText { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Duration
-        /// </summary>
-        [DataMember(Name = "duration", EmitDefaultValue = false)]
-        public double Duration { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class OracleLongRunningQueryDto {\n");
-            sb.Append("  SessionId: ").Append(SessionId).Append("\n");
-            sb.Append("  SessionSerialNumber: ").Append(SessionSerialNumber).Append("\n");
-            sb.Append("  LogOnTime: ").Append(LogOnTime).Append("\n");
-            sb.Append("  SqlExecutionStart: ").Append(SqlExecutionStart).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  OsUser: ").Append(OsUser).Append("\n");
-            sb.Append("  Machine: ").Append(Machine).Append("\n");
-            sb.Append("  Program: ").Append(Program).Append("\n");
-            sb.Append("  SqlText: ").Append(SqlText).Append("\n");
-            sb.Append("  Duration: ").Append(Duration).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        SessionId = sessionId;
+        SessionSerialNumber = sessionSerialNumber;
+        LogOnTime = logOnTime;
+        SqlExecutionStart = sqlExecutionStart;
+        Username = username;
+        OsUser = osUser;
+        Machine = machine;
+        Program = program;
+        SqlText = sqlText;
+        Duration = duration;
     }
 
+    /// <summary>
+    ///     Gets or Sets SessionId
+    /// </summary>
+    [DataMember(Name = "sessionId", EmitDefaultValue = false)]
+    public IntegerIdentifier SessionId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SessionSerialNumber
+    /// </summary>
+    [DataMember(Name = "sessionSerialNumber", EmitDefaultValue = false)]
+    public IntegerIdentifier SessionSerialNumber { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LogOnTime
+    /// </summary>
+    [DataMember(Name = "logOnTime", EmitDefaultValue = false)]
+    public DateTime LogOnTime { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlExecutionStart
+    /// </summary>
+    [DataMember(Name = "sqlExecutionStart", EmitDefaultValue = false)]
+    public DateTime SqlExecutionStart { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Username
+    /// </summary>
+    [DataMember(Name = "username", EmitDefaultValue = true)]
+    public string Username { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets OsUser
+    /// </summary>
+    [DataMember(Name = "osUser", EmitDefaultValue = true)]
+    public string OsUser { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Machine
+    /// </summary>
+    [DataMember(Name = "machine", EmitDefaultValue = true)]
+    public string Machine { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Program
+    /// </summary>
+    [DataMember(Name = "program", EmitDefaultValue = true)]
+    public string Program { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SqlText
+    /// </summary>
+    [DataMember(Name = "sqlText", EmitDefaultValue = true)]
+    public string SqlText { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Duration
+    /// </summary>
+    [DataMember(Name = "duration", EmitDefaultValue = false)]
+    public double Duration { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class OracleLongRunningQueryDto {\n");
+        sb.Append("  SessionId: ").Append(SessionId).Append("\n");
+        sb.Append("  SessionSerialNumber: ").Append(SessionSerialNumber).Append("\n");
+        sb.Append("  LogOnTime: ").Append(LogOnTime).Append("\n");
+        sb.Append("  SqlExecutionStart: ").Append(SqlExecutionStart).Append("\n");
+        sb.Append("  Username: ").Append(Username).Append("\n");
+        sb.Append("  OsUser: ").Append(OsUser).Append("\n");
+        sb.Append("  Machine: ").Append(Machine).Append("\n");
+        sb.Append("  Program: ").Append(Program).Append("\n");
+        sb.Append("  SqlText: ").Append(SqlText).Append("\n");
+        sb.Append("  Duration: ").Append(Duration).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

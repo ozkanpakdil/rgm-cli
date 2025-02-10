@@ -9,110 +9,101 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     DiscoveryProgressDto
+/// </summary>
+[DataContract(Name = "DiscoveryProgressDto")]
+public class DiscoveryProgressDto : IValidatableObject
 {
     /// <summary>
-    /// DiscoveryProgressDto
+    ///     Initializes a new instance of the <see cref="DiscoveryProgressDto" /> class.
     /// </summary>
-    [DataContract(Name = "DiscoveryProgressDto")]
-    public partial class DiscoveryProgressDto : IValidatableObject
+    /// <param name="status">status.</param>
+    /// <param name="errorMessages">errorMessages.</param>
+    /// <param name="currentAction">currentAction.</param>
+    /// <param name="actionProgress">actionProgress.</param>
+    /// <param name="lastRun">lastRun.</param>
+    public DiscoveryProgressDto(DiscoveryStatusDto? status = default, List<string> errorMessages = default,
+        string currentAction = default, string actionProgress = default, DateTime? lastRun = default)
     {
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
-        public DiscoveryStatusDto? Status { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DiscoveryProgressDto" /> class.
-        /// </summary>
-        /// <param name="status">status.</param>
-        /// <param name="errorMessages">errorMessages.</param>
-        /// <param name="currentAction">currentAction.</param>
-        /// <param name="actionProgress">actionProgress.</param>
-        /// <param name="lastRun">lastRun.</param>
-        public DiscoveryProgressDto(DiscoveryStatusDto? status = default(DiscoveryStatusDto?), List<string> errorMessages = default(List<string>), string currentAction = default(string), string actionProgress = default(string), DateTime? lastRun = default(DateTime?))
-        {
-            this.Status = status;
-            this.ErrorMessages = errorMessages;
-            this.CurrentAction = currentAction;
-            this.ActionProgress = actionProgress;
-            this.LastRun = lastRun;
-        }
-
-        /// <summary>
-        /// Gets or Sets ErrorMessages
-        /// </summary>
-        [DataMember(Name = "errorMessages", EmitDefaultValue = false)]
-        public List<string> ErrorMessages { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CurrentAction
-        /// </summary>
-        [DataMember(Name = "currentAction", EmitDefaultValue = false)]
-        public string CurrentAction { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ActionProgress
-        /// </summary>
-        [DataMember(Name = "actionProgress", EmitDefaultValue = true)]
-        public string ActionProgress { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LastRun
-        /// </summary>
-        [DataMember(Name = "lastRun", EmitDefaultValue = true)]
-        public DateTime? LastRun { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class DiscoveryProgressDto {\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  ErrorMessages: ").Append(ErrorMessages).Append("\n");
-            sb.Append("  CurrentAction: ").Append(CurrentAction).Append("\n");
-            sb.Append("  ActionProgress: ").Append(ActionProgress).Append("\n");
-            sb.Append("  LastRun: ").Append(LastRun).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Status = status;
+        ErrorMessages = errorMessages;
+        CurrentAction = currentAction;
+        ActionProgress = actionProgress;
+        LastRun = lastRun;
     }
 
+    /// <summary>
+    ///     Gets or Sets Status
+    /// </summary>
+    [DataMember(Name = "status", EmitDefaultValue = false)]
+    public DiscoveryStatusDto? Status { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ErrorMessages
+    /// </summary>
+    [DataMember(Name = "errorMessages", EmitDefaultValue = false)]
+    public List<string> ErrorMessages { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CurrentAction
+    /// </summary>
+    [DataMember(Name = "currentAction", EmitDefaultValue = false)]
+    public string CurrentAction { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ActionProgress
+    /// </summary>
+    [DataMember(Name = "actionProgress", EmitDefaultValue = true)]
+    public string ActionProgress { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LastRun
+    /// </summary>
+    [DataMember(Name = "lastRun", EmitDefaultValue = true)]
+    public DateTime? LastRun { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class DiscoveryProgressDto {\n");
+        sb.Append("  Status: ").Append(Status).Append("\n");
+        sb.Append("  ErrorMessages: ").Append(ErrorMessages).Append("\n");
+        sb.Append("  CurrentAction: ").Append(CurrentAction).Append("\n");
+        sb.Append("  ActionProgress: ").Append(ActionProgress).Append("\n");
+        sb.Append("  LastRun: ").Append(LastRun).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

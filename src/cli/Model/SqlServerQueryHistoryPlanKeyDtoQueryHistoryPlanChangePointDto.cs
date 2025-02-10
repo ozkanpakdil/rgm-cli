@@ -9,83 +9,75 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     SqlServerQueryHistoryPlanKeyDtoQueryHistoryPlanChangePointDto
+/// </summary>
+[DataContract(Name = "SqlServerQueryHistoryPlanKeyDtoQueryHistoryPlanChangePointDto")]
+public class SqlServerQueryHistoryPlanKeyDtoQueryHistoryPlanChangePointDto : IValidatableObject
 {
     /// <summary>
-    /// SqlServerQueryHistoryPlanKeyDtoQueryHistoryPlanChangePointDto
+    ///     Initializes a new instance of the <see cref="SqlServerQueryHistoryPlanKeyDtoQueryHistoryPlanChangePointDto" />
+    ///     class.
     /// </summary>
-    [DataContract(Name = "SqlServerQueryHistoryPlanKeyDtoQueryHistoryPlanChangePointDto")]
-    public partial class SqlServerQueryHistoryPlanKeyDtoQueryHistoryPlanChangePointDto : IValidatableObject
+    /// <param name="date">date.</param>
+    /// <param name="planKey">planKey.</param>
+    public SqlServerQueryHistoryPlanKeyDtoQueryHistoryPlanChangePointDto(DateTime date = default,
+        SqlServerQueryHistoryPlanKeyDto planKey = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SqlServerQueryHistoryPlanKeyDtoQueryHistoryPlanChangePointDto" /> class.
-        /// </summary>
-        /// <param name="date">date.</param>
-        /// <param name="planKey">planKey.</param>
-        public SqlServerQueryHistoryPlanKeyDtoQueryHistoryPlanChangePointDto(DateTime date = default(DateTime), SqlServerQueryHistoryPlanKeyDto planKey = default(SqlServerQueryHistoryPlanKeyDto))
-        {
-            this.Date = date;
-            this.PlanKey = planKey;
-        }
-
-        /// <summary>
-        /// Gets or Sets Date
-        /// </summary>
-        [DataMember(Name = "date", EmitDefaultValue = false)]
-        public DateTime Date { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PlanKey
-        /// </summary>
-        [DataMember(Name = "planKey", EmitDefaultValue = false)]
-        public SqlServerQueryHistoryPlanKeyDto PlanKey { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class SqlServerQueryHistoryPlanKeyDtoQueryHistoryPlanChangePointDto {\n");
-            sb.Append("  Date: ").Append(Date).Append("\n");
-            sb.Append("  PlanKey: ").Append(PlanKey).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Date = date;
+        PlanKey = planKey;
     }
 
+    /// <summary>
+    ///     Gets or Sets Date
+    /// </summary>
+    [DataMember(Name = "date", EmitDefaultValue = false)]
+    public DateTime Date { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets PlanKey
+    /// </summary>
+    [DataMember(Name = "planKey", EmitDefaultValue = false)]
+    public SqlServerQueryHistoryPlanKeyDto PlanKey { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class SqlServerQueryHistoryPlanKeyDtoQueryHistoryPlanChangePointDto {\n");
+        sb.Append("  Date: ").Append(Date).Append("\n");
+        sb.Append("  PlanKey: ").Append(PlanKey).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

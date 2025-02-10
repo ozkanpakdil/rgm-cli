@@ -8,111 +8,101 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     RecentAlertCommentDto
+/// </summary>
+[DataContract(Name = "RecentAlertCommentDto")]
+public class RecentAlertCommentDto : IValidatableObject
 {
     /// <summary>
-    /// RecentAlertCommentDto
+    ///     Initializes a new instance of the <see cref="RecentAlertCommentDto" /> class.
     /// </summary>
-    [DataContract(Name = "RecentAlertCommentDto")]
-    public partial class RecentAlertCommentDto : IValidatableObject
+    /// <param name="alertId">alertId.</param>
+    /// <param name="commentId">commentId.</param>
+    /// <param name="author">author.</param>
+    /// <param name="commentText">commentText.</param>
+    /// <param name="datePosted">datePosted.</param>
+    public RecentAlertCommentDto(IntegerIdentifier alertId = default, IntegerIdentifier commentId = default,
+        string author = default, string commentText = default, long datePosted = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RecentAlertCommentDto" /> class.
-        /// </summary>
-        /// <param name="alertId">alertId.</param>
-        /// <param name="commentId">commentId.</param>
-        /// <param name="author">author.</param>
-        /// <param name="commentText">commentText.</param>
-        /// <param name="datePosted">datePosted.</param>
-        public RecentAlertCommentDto(IntegerIdentifier alertId = default(IntegerIdentifier), IntegerIdentifier commentId = default(IntegerIdentifier), string author = default(string), string commentText = default(string), long datePosted = default(long))
-        {
-            this.AlertId = alertId;
-            this.CommentId = commentId;
-            this.Author = author;
-            this.CommentText = commentText;
-            this.DatePosted = datePosted;
-        }
-
-        /// <summary>
-        /// Gets or Sets AlertId
-        /// </summary>
-        [DataMember(Name = "alertId", EmitDefaultValue = false)]
-        public IntegerIdentifier AlertId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CommentId
-        /// </summary>
-        [DataMember(Name = "commentId", EmitDefaultValue = false)]
-        public IntegerIdentifier CommentId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Author
-        /// </summary>
-        [DataMember(Name = "author", EmitDefaultValue = true)]
-        public string Author { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CommentText
-        /// </summary>
-        [DataMember(Name = "commentText", EmitDefaultValue = true)]
-        public string CommentText { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DatePosted
-        /// </summary>
-        [DataMember(Name = "datePosted", EmitDefaultValue = false)]
-        public long DatePosted { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class RecentAlertCommentDto {\n");
-            sb.Append("  AlertId: ").Append(AlertId).Append("\n");
-            sb.Append("  CommentId: ").Append(CommentId).Append("\n");
-            sb.Append("  Author: ").Append(Author).Append("\n");
-            sb.Append("  CommentText: ").Append(CommentText).Append("\n");
-            sb.Append("  DatePosted: ").Append(DatePosted).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        AlertId = alertId;
+        CommentId = commentId;
+        Author = author;
+        CommentText = commentText;
+        DatePosted = datePosted;
     }
 
+    /// <summary>
+    ///     Gets or Sets AlertId
+    /// </summary>
+    [DataMember(Name = "alertId", EmitDefaultValue = false)]
+    public IntegerIdentifier AlertId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CommentId
+    /// </summary>
+    [DataMember(Name = "commentId", EmitDefaultValue = false)]
+    public IntegerIdentifier CommentId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Author
+    /// </summary>
+    [DataMember(Name = "author", EmitDefaultValue = true)]
+    public string Author { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CommentText
+    /// </summary>
+    [DataMember(Name = "commentText", EmitDefaultValue = true)]
+    public string CommentText { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DatePosted
+    /// </summary>
+    [DataMember(Name = "datePosted", EmitDefaultValue = false)]
+    public long DatePosted { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class RecentAlertCommentDto {\n");
+        sb.Append("  AlertId: ").Append(AlertId).Append("\n");
+        sb.Append("  CommentId: ").Append(CommentId).Append("\n");
+        sb.Append("  Author: ").Append(Author).Append("\n");
+        sb.Append("  CommentText: ").Append(CommentText).Append("\n");
+        sb.Append("  DatePosted: ").Append(DatePosted).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

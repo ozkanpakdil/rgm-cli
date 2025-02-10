@@ -9,110 +9,101 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     JobExecutionResultDto
+/// </summary>
+[DataContract(Name = "JobExecutionResultDto")]
+public class JobExecutionResultDto : IValidatableObject
 {
     /// <summary>
-    /// JobExecutionResultDto
+    ///     Initializes a new instance of the <see cref="JobExecutionResultDto" /> class.
     /// </summary>
-    [DataContract(Name = "JobExecutionResultDto")]
-    public partial class JobExecutionResultDto : IValidatableObject
+    /// <param name="date">date.</param>
+    /// <param name="status">status.</param>
+    /// <param name="duration">duration.</param>
+    /// <param name="message">message.</param>
+    /// <param name="step">step.</param>
+    public JobExecutionResultDto(DateTime date = default, ExecutionResult? status = default, string duration = default,
+        string message = default, string step = default)
     {
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
-        public ExecutionResult? Status { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JobExecutionResultDto" /> class.
-        /// </summary>
-        /// <param name="date">date.</param>
-        /// <param name="status">status.</param>
-        /// <param name="duration">duration.</param>
-        /// <param name="message">message.</param>
-        /// <param name="step">step.</param>
-        public JobExecutionResultDto(DateTime date = default(DateTime), ExecutionResult? status = default(ExecutionResult?), string duration = default(string), string message = default(string), string step = default(string))
-        {
-            this.Date = date;
-            this.Status = status;
-            this.Duration = duration;
-            this.Message = message;
-            this.Step = step;
-        }
-
-        /// <summary>
-        /// Gets or Sets Date
-        /// </summary>
-        [DataMember(Name = "date", EmitDefaultValue = false)]
-        public DateTime Date { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Duration
-        /// </summary>
-        [DataMember(Name = "duration", EmitDefaultValue = false)]
-        public string Duration { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Message
-        /// </summary>
-        [DataMember(Name = "message", EmitDefaultValue = true)]
-        public string Message { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Step
-        /// </summary>
-        [DataMember(Name = "step", EmitDefaultValue = true)]
-        public string Step { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class JobExecutionResultDto {\n");
-            sb.Append("  Date: ").Append(Date).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Duration: ").Append(Duration).Append("\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
-            sb.Append("  Step: ").Append(Step).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Date = date;
+        Status = status;
+        Duration = duration;
+        Message = message;
+        Step = step;
     }
 
+    /// <summary>
+    ///     Gets or Sets Status
+    /// </summary>
+    [DataMember(Name = "status", EmitDefaultValue = false)]
+    public ExecutionResult? Status { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Date
+    /// </summary>
+    [DataMember(Name = "date", EmitDefaultValue = false)]
+    public DateTime Date { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Duration
+    /// </summary>
+    [DataMember(Name = "duration", EmitDefaultValue = false)]
+    public string Duration { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Message
+    /// </summary>
+    [DataMember(Name = "message", EmitDefaultValue = true)]
+    public string Message { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Step
+    /// </summary>
+    [DataMember(Name = "step", EmitDefaultValue = true)]
+    public string Step { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class JobExecutionResultDto {\n");
+        sb.Append("  Date: ").Append(Date).Append("\n");
+        sb.Append("  Status: ").Append(Status).Append("\n");
+        sb.Append("  Duration: ").Append(Duration).Append("\n");
+        sb.Append("  Message: ").Append(Message).Append("\n");
+        sb.Append("  Step: ").Append(Step).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

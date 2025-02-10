@@ -8,111 +8,102 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+using RedGate.SqlMonitor.Channels.Data;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     GroupIdDto
+/// </summary>
+[DataContract(Name = "GroupIdDto")]
+public class GroupIdDto : IValidatableObject
 {
     /// <summary>
-    /// GroupIdDto
+    ///     Initializes a new instance of the <see cref="GroupIdDto" /> class.
     /// </summary>
-    [DataContract(Name = "GroupIdDto")]
-    public partial class GroupIdDto : IValidatableObject
+    /// <param name="groupCir">groupCir.</param>
+    /// <param name="alertType">alertType.</param>
+    /// <param name="subType">subType.</param>
+    /// <param name="lastUpdate">lastUpdate.</param>
+    /// <param name="firstUpdate">firstUpdate.</param>
+    public GroupIdDto(ChannelInstanceRef groupCir = default, int alertType = default, int subType = default,
+        string lastUpdate = default, string firstUpdate = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GroupIdDto" /> class.
-        /// </summary>
-        /// <param name="groupCir">groupCir.</param>
-        /// <param name="alertType">alertType.</param>
-        /// <param name="subType">subType.</param>
-        /// <param name="lastUpdate">lastUpdate.</param>
-        /// <param name="firstUpdate">firstUpdate.</param>
-        public GroupIdDto(ChannelInstanceRef groupCir = default(ChannelInstanceRef), int alertType = default(int), int subType = default(int), string lastUpdate = default(string), string firstUpdate = default(string))
-        {
-            this.GroupCir = groupCir;
-            this.AlertType = alertType;
-            this.SubType = subType;
-            this.LastUpdate = lastUpdate;
-            this.FirstUpdate = firstUpdate;
-        }
-
-        /// <summary>
-        /// Gets or Sets GroupCir
-        /// </summary>
-        [DataMember(Name = "groupCir", EmitDefaultValue = true)]
-        public ChannelInstanceRef GroupCir { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AlertType
-        /// </summary>
-        [DataMember(Name = "alertType", EmitDefaultValue = false)]
-        public int AlertType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SubType
-        /// </summary>
-        [DataMember(Name = "subType", EmitDefaultValue = false)]
-        public int SubType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LastUpdate
-        /// </summary>
-        [DataMember(Name = "lastUpdate", EmitDefaultValue = true)]
-        public string LastUpdate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FirstUpdate
-        /// </summary>
-        [DataMember(Name = "firstUpdate", EmitDefaultValue = true)]
-        public string FirstUpdate { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class GroupIdDto {\n");
-            sb.Append("  GroupCir: ").Append(GroupCir).Append("\n");
-            sb.Append("  AlertType: ").Append(AlertType).Append("\n");
-            sb.Append("  SubType: ").Append(SubType).Append("\n");
-            sb.Append("  LastUpdate: ").Append(LastUpdate).Append("\n");
-            sb.Append("  FirstUpdate: ").Append(FirstUpdate).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        GroupCir = groupCir;
+        AlertType = alertType;
+        SubType = subType;
+        LastUpdate = lastUpdate;
+        FirstUpdate = firstUpdate;
     }
 
+    /// <summary>
+    ///     Gets or Sets GroupCir
+    /// </summary>
+    [DataMember(Name = "groupCir", EmitDefaultValue = true)]
+    public ChannelInstanceRef GroupCir { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AlertType
+    /// </summary>
+    [DataMember(Name = "alertType", EmitDefaultValue = false)]
+    public int AlertType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets SubType
+    /// </summary>
+    [DataMember(Name = "subType", EmitDefaultValue = false)]
+    public int SubType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LastUpdate
+    /// </summary>
+    [DataMember(Name = "lastUpdate", EmitDefaultValue = true)]
+    public string LastUpdate { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FirstUpdate
+    /// </summary>
+    [DataMember(Name = "firstUpdate", EmitDefaultValue = true)]
+    public string FirstUpdate { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class GroupIdDto {\n");
+        sb.Append("  GroupCir: ").Append(GroupCir).Append("\n");
+        sb.Append("  AlertType: ").Append(AlertType).Append("\n");
+        sb.Append("  SubType: ").Append(SubType).Append("\n");
+        sb.Append("  LastUpdate: ").Append(LastUpdate).Append("\n");
+        sb.Append("  FirstUpdate: ").Append(FirstUpdate).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

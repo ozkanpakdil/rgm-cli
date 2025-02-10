@@ -10,1806 +10,1835 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface ICustomMetricsApiApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface ICustomMetricsApiApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>StringJSendSuccess</returns>
+    StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete(string baseMonitorName,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of StringJSendSuccess</returns>
+    ApiResponse<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteWithHttpInfo(
+        string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>StringJSendSuccess</returns>
+    StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut(string baseMonitorName,
+        bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of StringJSendSuccess</returns>
+    ApiResponse<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutWithHttpInfo(
+        string baseMonitorName, bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>DatabaseDtoIEnumerableJSendSuccess</returns>
+    DatabaseDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet(
+        string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of DatabaseDtoIEnumerableJSendSuccess</returns>
+    ApiResponse<DatabaseDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetWithHttpInfo(string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>StringJSendSuccess</returns>
+    StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete(string baseMonitorName,
+        List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of StringJSendSuccess</returns>
+    ApiResponse<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteWithHttpInfo(
+        string baseMonitorName, List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>StringJSendSuccess</returns>
+    StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut(string baseMonitorName,
+        bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of StringJSendSuccess</returns>
+    ApiResponse<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutWithHttpInfo(
+        string baseMonitorName, bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>CustomMetricsGridDtoIEnumerableJSendSuccess</returns>
+    CustomMetricsGridDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet(
+        string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of CustomMetricsGridDtoIEnumerableJSendSuccess</returns>
+    ApiResponse<CustomMetricsGridDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetWithHttpInfo(string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>MonitoredEntityTreeDtoJSendSuccess</returns>
+    MonitoredEntityTreeDtoJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet(
+        string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of MonitoredEntityTreeDtoJSendSuccess</returns>
+    ApiResponse<MonitoredEntityTreeDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetWithHttpInfo(
+            string baseMonitorName,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="customMetricDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>IntegerIdentifierJSendSuccess</returns>
+    IntegerIdentifierJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost(string baseMonitorName,
+        CustomMetricDto? customMetricDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="customMetricDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of IntegerIdentifierJSendSuccess</returns>
+    ApiResponse<IntegerIdentifierJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostWithHttpInfo(
+        string baseMonitorName, CustomMetricDto? customMetricDto = default, int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface ICustomMetricsApiApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of StringJSendSuccess</returns>
+    Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteAsync(
+        string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
+    Task<ApiResponse<StringJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteWithHttpInfoAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of StringJSendSuccess</returns>
+    Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutAsync(
+        string baseMonitorName, bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
+    Task<ApiResponse<StringJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutWithHttpInfoAsync(string baseMonitorName,
+            bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of DatabaseDtoIEnumerableJSendSuccess</returns>
+    Task<DatabaseDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetAsync(
+        string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (DatabaseDtoIEnumerableJSendSuccess)</returns>
+    Task<ApiResponse<DatabaseDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetWithHttpInfoAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of StringJSendSuccess</returns>
+    Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteAsync(string baseMonitorName,
+        List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
+    Task<ApiResponse<StringJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteWithHttpInfoAsync(string baseMonitorName,
+            List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of StringJSendSuccess</returns>
+    Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutAsync(
+        string baseMonitorName, bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
+    Task<ApiResponse<StringJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutWithHttpInfoAsync(string baseMonitorName,
+            bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of CustomMetricsGridDtoIEnumerableJSendSuccess</returns>
+    Task<CustomMetricsGridDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetAsync(
+        string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CustomMetricsGridDtoIEnumerableJSendSuccess)</returns>
+    Task<ApiResponse<CustomMetricsGridDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetWithHttpInfoAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of MonitoredEntityTreeDtoJSendSuccess</returns>
+    Task<MonitoredEntityTreeDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (MonitoredEntityTreeDtoJSendSuccess)</returns>
+    Task<ApiResponse<MonitoredEntityTreeDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetWithHttpInfoAsync(
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="customMetricDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of IntegerIdentifierJSendSuccess</returns>
+    Task<IntegerIdentifierJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostAsync(
+        string baseMonitorName, CustomMetricDto? customMetricDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="customMetricDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (IntegerIdentifierJSendSuccess)</returns>
+    Task<ApiResponse<IntegerIdentifierJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostWithHttpInfoAsync(string baseMonitorName,
+            CustomMetricDto? customMetricDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface ICustomMetricsApiApi : ICustomMetricsApiApiSync, ICustomMetricsApiApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class CustomMetricsApiApi : ICustomMetricsApiApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="CustomMetricsApiApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public CustomMetricsApiApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>StringJSendSuccess</returns>
-        StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete(string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of StringJSendSuccess</returns>
-        ApiResponse<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteWithHttpInfo(string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>StringJSendSuccess</returns>
-        StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of StringJSendSuccess</returns>
-        ApiResponse<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutWithHttpInfo(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DatabaseDtoIEnumerableJSendSuccess</returns>
-        DatabaseDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet(string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DatabaseDtoIEnumerableJSendSuccess</returns>
-        ApiResponse<DatabaseDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetWithHttpInfo(string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>StringJSendSuccess</returns>
-        StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete(string baseMonitorName, List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of StringJSendSuccess</returns>
-        ApiResponse<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteWithHttpInfo(string baseMonitorName, List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>StringJSendSuccess</returns>
-        StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of StringJSendSuccess</returns>
-        ApiResponse<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutWithHttpInfo(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>CustomMetricsGridDtoIEnumerableJSendSuccess</returns>
-        CustomMetricsGridDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet(string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of CustomMetricsGridDtoIEnumerableJSendSuccess</returns>
-        ApiResponse<CustomMetricsGridDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetWithHttpInfo(string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>MonitoredEntityTreeDtoJSendSuccess</returns>
-        MonitoredEntityTreeDtoJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet(string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of MonitoredEntityTreeDtoJSendSuccess</returns>
-        ApiResponse<MonitoredEntityTreeDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetWithHttpInfo(string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="customMetricDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>IntegerIdentifierJSendSuccess</returns>
-        IntegerIdentifierJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost(string baseMonitorName, CustomMetricDto? customMetricDto = default(CustomMetricDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="customMetricDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of IntegerIdentifierJSendSuccess</returns>
-        ApiResponse<IntegerIdentifierJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostWithHttpInfo(string baseMonitorName, CustomMetricDto? customMetricDto = default(CustomMetricDto?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="CustomMetricsApiApi" /> class.
     /// </summary>
-    public interface ICustomMetricsApiApiAsync : IApiAccessor
+    /// <returns></returns>
+    public CustomMetricsApiApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of StringJSendSuccess</returns>
-        System.Threading.Tasks.Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StringJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of StringJSendSuccess</returns>
-        System.Threading.Tasks.Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutAsync(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StringJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutWithHttpInfoAsync(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DatabaseDtoIEnumerableJSendSuccess</returns>
-        System.Threading.Tasks.Task<DatabaseDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DatabaseDtoIEnumerableJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DatabaseDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of StringJSendSuccess</returns>
-        System.Threading.Tasks.Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteAsync(string baseMonitorName, List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StringJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteWithHttpInfoAsync(string baseMonitorName, List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of StringJSendSuccess</returns>
-        System.Threading.Tasks.Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutAsync(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StringJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutWithHttpInfoAsync(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CustomMetricsGridDtoIEnumerableJSendSuccess</returns>
-        System.Threading.Tasks.Task<CustomMetricsGridDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CustomMetricsGridDtoIEnumerableJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CustomMetricsGridDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of MonitoredEntityTreeDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<MonitoredEntityTreeDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (MonitoredEntityTreeDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MonitoredEntityTreeDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="customMetricDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IntegerIdentifierJSendSuccess</returns>
-        System.Threading.Tasks.Task<IntegerIdentifierJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostAsync(string baseMonitorName, CustomMetricDto? customMetricDto = default(CustomMetricDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="customMetricDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IntegerIdentifierJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IntegerIdentifierJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostWithHttpInfoAsync(string baseMonitorName, CustomMetricDto? customMetricDto = default(CustomMetricDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="CustomMetricsApiApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface ICustomMetricsApiApi : ICustomMetricsApiApiSync, ICustomMetricsApiApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public CustomMetricsApiApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="CustomMetricsApiApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class CustomMetricsApiApi : ICustomMetricsApiApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public CustomMetricsApiApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CustomMetricsApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public CustomMetricsApiApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>StringJSendSuccess</returns>
+    public StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete(
+        string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteWithHttpInfo(baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of StringJSendSuccess</returns>
+    public ApiResponse<StringJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteWithHttpInfo(string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Delete<StringJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/alerts", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CustomMetricsApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public CustomMetricsApiApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of StringJSendSuccess</returns>
+    public async Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteAsync(
+        string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteWithHttpInfoAsync(baseMonitorName,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
+    public async Task<ApiResponse<StringJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteWithHttpInfoAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .DeleteAsync<StringJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/alerts",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CustomMetricsApiApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public CustomMetricsApiApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>StringJSendSuccess</returns>
+    public StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut(
+        string baseMonitorName, bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default,
+        int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutWithHttpInfo(baseMonitorName, enable,
+                integerIdentifier);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of StringJSendSuccess</returns>
+    public ApiResponse<StringJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutWithHttpInfo(string baseMonitorName,
+            bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (enable != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "enable", enable));
+        localVarRequestOptions.Data = integerIdentifier;
+
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Put<StringJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/alerts/enable", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CustomMetricsApiApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public CustomMetricsApiApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of StringJSendSuccess</returns>
+    public async Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutAsync(
+        string baseMonitorName, bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutWithHttpInfoAsync(
+                baseMonitorName, enable, integerIdentifier, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
+    public async Task<ApiResponse<StringJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutWithHttpInfoAsync(string baseMonitorName,
+            bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (enable != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "enable", enable));
+        localVarRequestOptions.Data = integerIdentifier;
+
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PutAsync<StringJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/alerts/enable",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>DatabaseDtoIEnumerableJSendSuccess</returns>
+    public DatabaseDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet(
+        string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetWithHttpInfo(baseMonitorName);
+        return localVarResponse.Data;
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of DatabaseDtoIEnumerableJSendSuccess</returns>
+    public ApiResponse<DatabaseDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetWithHttpInfo(string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            return this.Configuration.BasePath;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<DatabaseDtoIEnumerableJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/databases", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of DatabaseDtoIEnumerableJSendSuccess</returns>
+    public async Task<DatabaseDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetWithHttpInfoAsync(baseMonitorName,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (DatabaseDtoIEnumerableJSendSuccess)</returns>
+    public async Task<ApiResponse<DatabaseDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetWithHttpInfoAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<DatabaseDtoIEnumerableJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/databases", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>StringJSendSuccess</returns>
-        public StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete(string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>StringJSendSuccess</returns>
+    public StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete(string baseMonitorName,
+        List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteWithHttpInfo(baseMonitorName,
+                integerIdentifier);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of StringJSendSuccess</returns>
+    public ApiResponse<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteWithHttpInfo(
+        string baseMonitorName, List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            cli.Client.ApiResponse<StringJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteWithHttpInfo(baseMonitorName);
-            return localVarResponse.Data;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = integerIdentifier;
+
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Delete<StringJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configuration/custom-metrics", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of StringJSendSuccess</returns>
-        public cli.Client.ApiResponse<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteWithHttpInfo(string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of StringJSendSuccess</returns>
+    public async Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteAsync(
+        string baseMonitorName, List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteWithHttpInfoAsync(baseMonitorName,
+                integerIdentifier, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
+    public async Task<ApiResponse<StringJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteWithHttpInfoAsync(string baseMonitorName,
+            List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = integerIdentifier;
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Delete<StringJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/alerts", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .DeleteAsync<StringJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of StringJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>StringJSendSuccess</returns>
+    public StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut(string baseMonitorName,
+        bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutWithHttpInfo(baseMonitorName, enable,
+                integerIdentifier);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of StringJSendSuccess</returns>
+    public ApiResponse<StringJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutWithHttpInfo(string baseMonitorName,
+            bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            cli.Client.ApiResponse<StringJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteWithHttpInfoAsync(baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (enable != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "enable", enable));
+        localVarRequestOptions.Data = integerIdentifier;
+
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Put<StringJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/enable", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<StringJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDeleteWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of StringJSendSuccess</returns>
+    public async Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutAsync(
+        string baseMonitorName, bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutWithHttpInfoAsync(baseMonitorName,
+                enable, integerIdentifier, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="enable"> (optional)</param>
+    /// <param name="integerIdentifier"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
+    public async Task<ApiResponse<StringJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutWithHttpInfoAsync(string baseMonitorName,
+            bool? enable = default, List<IntegerIdentifier>? integerIdentifier = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (enable != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "enable", enable));
+        localVarRequestOptions.Data = integerIdentifier;
+
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PutAsync<StringJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/enable",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<StringJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/alerts", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsDelete", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>StringJSendSuccess</returns>
-        public StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>CustomMetricsGridDtoIEnumerableJSendSuccess</returns>
+    public CustomMetricsGridDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet(
+        string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetWithHttpInfo(baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of CustomMetricsGridDtoIEnumerableJSendSuccess</returns>
+    public ApiResponse<CustomMetricsGridDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetWithHttpInfo(string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<StringJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutWithHttpInfo(baseMonitorName, enable, integerIdentifier);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<CustomMetricsGridDtoIEnumerableJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configuration/custom-metrics", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of StringJSendSuccess</returns>
-        public cli.Client.ApiResponse<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutWithHttpInfo(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of CustomMetricsGridDtoIEnumerableJSendSuccess</returns>
+    public async Task<CustomMetricsGridDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetAsync(string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetWithHttpInfoAsync(baseMonitorName,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (CustomMetricsGridDtoIEnumerableJSendSuccess)</returns>
+    public async Task<ApiResponse<CustomMetricsGridDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetWithHttpInfoAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut");
-            }
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (enable != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "enable", enable));
-            }
-            localVarRequestOptions.Data = integerIdentifier;
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Put<StringJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/alerts/enable", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<CustomMetricsGridDtoIEnumerableJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/configuration/custom-metrics", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of StringJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutAsync(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>MonitoredEntityTreeDtoJSendSuccess</returns>
+    public MonitoredEntityTreeDtoJSendSuccess
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet(string baseMonitorName,
+            int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetWithHttpInfo(baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of MonitoredEntityTreeDtoJSendSuccess</returns>
+    public ApiResponse<MonitoredEntityTreeDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetWithHttpInfo(
+            string baseMonitorName,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<StringJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutWithHttpInfoAsync(baseMonitorName, enable, integerIdentifier, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<MonitoredEntityTreeDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/monitored-entity-tree",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<StringJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePutWithHttpInfoAsync(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of MonitoredEntityTreeDtoJSendSuccess</returns>
+    public async Task<MonitoredEntityTreeDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetAsync(string baseMonitorName,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetWithHttpInfoAsync(
+                baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (MonitoredEntityTreeDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<MonitoredEntityTreeDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetWithHttpInfoAsync(
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut");
-            }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<MonitoredEntityTreeDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/monitored-entity-tree",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (enable != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "enable", enable));
-            }
-            localVarRequestOptions.Data = integerIdentifier;
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<StringJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/alerts/enable", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsAlertsEnablePut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>DatabaseDtoIEnumerableJSendSuccess</returns>
-        public DatabaseDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet(string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="customMetricDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>IntegerIdentifierJSendSuccess</returns>
+    public IntegerIdentifierJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost(
+        string baseMonitorName, CustomMetricDto? customMetricDto = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostWithHttpInfo(baseMonitorName, customMetricDto);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="customMetricDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of IntegerIdentifierJSendSuccess</returns>
+    public ApiResponse<IntegerIdentifierJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostWithHttpInfo(string baseMonitorName,
+            CustomMetricDto? customMetricDto = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            cli.Client.ApiResponse<DatabaseDtoIEnumerableJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetWithHttpInfo(baseMonitorName);
-            return localVarResponse.Data;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = customMetricDto;
+
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<IntegerIdentifierJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/configuration/custom-metrics", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of DatabaseDtoIEnumerableJSendSuccess</returns>
-        public cli.Client.ApiResponse<DatabaseDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetWithHttpInfo(string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="customMetricDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of IntegerIdentifierJSendSuccess</returns>
+    public async Task<IntegerIdentifierJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostAsync(
+        string baseMonitorName, CustomMetricDto? customMetricDto = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostWithHttpInfoAsync(baseMonitorName,
+                customMetricDto, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="customMetricDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (IntegerIdentifierJSendSuccess)</returns>
+    public async Task<ApiResponse<IntegerIdentifierJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostWithHttpInfoAsync(string baseMonitorName,
+            CustomMetricDto? customMetricDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet");
-            }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = customMetricDto;
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<DatabaseDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/databases", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PostAsync<IntegerIdentifierJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/configuration/custom-metrics", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DatabaseDtoIEnumerableJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<DatabaseDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<DatabaseDtoIEnumerableJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetWithHttpInfoAsync(baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DatabaseDtoIEnumerableJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<DatabaseDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<DatabaseDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/databases", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDatabasesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>StringJSendSuccess</returns>
-        public StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete(string baseMonitorName, List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<StringJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteWithHttpInfo(baseMonitorName, integerIdentifier);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of StringJSendSuccess</returns>
-        public cli.Client.ApiResponse<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteWithHttpInfo(string baseMonitorName, List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = integerIdentifier;
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Delete<StringJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of StringJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteAsync(string baseMonitorName, List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<StringJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteWithHttpInfoAsync(baseMonitorName, integerIdentifier, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<StringJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDeleteWithHttpInfoAsync(string baseMonitorName, List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = integerIdentifier;
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<StringJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsDelete", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>StringJSendSuccess</returns>
-        public StringJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<StringJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutWithHttpInfo(baseMonitorName, enable, integerIdentifier);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of StringJSendSuccess</returns>
-        public cli.Client.ApiResponse<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutWithHttpInfo(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (enable != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "enable", enable));
-            }
-            localVarRequestOptions.Data = integerIdentifier;
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Put<StringJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/enable", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of StringJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<StringJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutAsync(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<StringJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutWithHttpInfoAsync(baseMonitorName, enable, integerIdentifier, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="enable"> (optional)</param>
-        /// <param name="integerIdentifier"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (StringJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<StringJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePutWithHttpInfoAsync(string baseMonitorName, bool? enable = default(bool?), List<IntegerIdentifier>? integerIdentifier = default(List<IntegerIdentifier>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (enable != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "enable", enable));
-            }
-            localVarRequestOptions.Data = integerIdentifier;
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<StringJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/enable", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsEnablePut", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>CustomMetricsGridDtoIEnumerableJSendSuccess</returns>
-        public CustomMetricsGridDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet(string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<CustomMetricsGridDtoIEnumerableJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetWithHttpInfo(baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of CustomMetricsGridDtoIEnumerableJSendSuccess</returns>
-        public cli.Client.ApiResponse<CustomMetricsGridDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetWithHttpInfo(string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<CustomMetricsGridDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CustomMetricsGridDtoIEnumerableJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<CustomMetricsGridDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<CustomMetricsGridDtoIEnumerableJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetWithHttpInfoAsync(baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CustomMetricsGridDtoIEnumerableJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<CustomMetricsGridDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<CustomMetricsGridDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>MonitoredEntityTreeDtoJSendSuccess</returns>
-        public MonitoredEntityTreeDtoJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet(string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<MonitoredEntityTreeDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetWithHttpInfo(baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of MonitoredEntityTreeDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<MonitoredEntityTreeDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetWithHttpInfo(string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<MonitoredEntityTreeDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/monitored-entity-tree", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of MonitoredEntityTreeDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<MonitoredEntityTreeDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<MonitoredEntityTreeDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetWithHttpInfoAsync(baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (MonitoredEntityTreeDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<MonitoredEntityTreeDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGetWithHttpInfoAsync(string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<MonitoredEntityTreeDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics/monitored-entity-tree", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsMonitoredEntityTreeGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="customMetricDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>IntegerIdentifierJSendSuccess</returns>
-        public IntegerIdentifierJSendSuccess ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost(string baseMonitorName, CustomMetricDto? customMetricDto = default(CustomMetricDto?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<IntegerIdentifierJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostWithHttpInfo(baseMonitorName, customMetricDto);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="customMetricDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of IntegerIdentifierJSendSuccess</returns>
-        public cli.Client.ApiResponse<IntegerIdentifierJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostWithHttpInfo(string baseMonitorName, CustomMetricDto? customMetricDto = default(CustomMetricDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = customMetricDto;
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<IntegerIdentifierJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="customMetricDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IntegerIdentifierJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<IntegerIdentifierJSendSuccess> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostAsync(string baseMonitorName, CustomMetricDto? customMetricDto = default(CustomMetricDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<IntegerIdentifierJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostWithHttpInfoAsync(baseMonitorName, customMetricDto, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="customMetricDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IntegerIdentifierJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<IntegerIdentifierJSendSuccess>> ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPostWithHttpInfoAsync(string baseMonitorName, CustomMetricDto? customMetricDto = default(CustomMetricDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling CustomMetricsApiApi->ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = customMetricDto;
-
-            localVarRequestOptions.Operation = "CustomMetricsApiApi.ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<IntegerIdentifierJSendSuccess>("/api/basemonitors/{baseMonitorName}/configuration/custom-metrics", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameConfigurationCustomMetricsPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

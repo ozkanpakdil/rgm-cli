@@ -8,102 +8,93 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     DatabaseFileUsageViewModel
+/// </summary>
+[DataContract(Name = "DatabaseFileUsageViewModel")]
+public class DatabaseFileUsageViewModel : IValidatableObject
 {
     /// <summary>
-    /// DatabaseFileUsageViewModel
+    ///     Initializes a new instance of the <see cref="DatabaseFileUsageViewModel" /> class.
     /// </summary>
-    [DataContract(Name = "DatabaseFileUsageViewModel")]
-    public partial class DatabaseFileUsageViewModel : IValidatableObject
+    /// <param name="diskInfos">diskInfos.</param>
+    /// <param name="files">files.</param>
+    /// <param name="graphData">graphData.</param>
+    /// <param name="csvVolumeName">csvVolumeName.</param>
+    public DatabaseFileUsageViewModel(List<VolumeUsageViewModel> diskInfos = default,
+        List<DatabaseFileUsageInfoDto> files = default, GraphDataViewModel graphData = default,
+        string csvVolumeName = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabaseFileUsageViewModel" /> class.
-        /// </summary>
-        /// <param name="diskInfos">diskInfos.</param>
-        /// <param name="files">files.</param>
-        /// <param name="graphData">graphData.</param>
-        /// <param name="csvVolumeName">csvVolumeName.</param>
-        public DatabaseFileUsageViewModel(List<VolumeUsageViewModel> diskInfos = default(List<VolumeUsageViewModel>), List<DatabaseFileUsageInfoDto> files = default(List<DatabaseFileUsageInfoDto>), GraphDataViewModel graphData = default(GraphDataViewModel), string csvVolumeName = default(string))
-        {
-            this.DiskInfos = diskInfos;
-            this.Files = files;
-            this.GraphData = graphData;
-            this.CsvVolumeName = csvVolumeName;
-        }
-
-        /// <summary>
-        /// Gets or Sets DiskInfos
-        /// </summary>
-        [DataMember(Name = "diskInfos", EmitDefaultValue = true)]
-        public List<VolumeUsageViewModel> DiskInfos { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Files
-        /// </summary>
-        [DataMember(Name = "files", EmitDefaultValue = true)]
-        public List<DatabaseFileUsageInfoDto> Files { get; set; }
-
-        /// <summary>
-        /// Gets or Sets GraphData
-        /// </summary>
-        [DataMember(Name = "graphData", EmitDefaultValue = false)]
-        public GraphDataViewModel GraphData { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CsvVolumeName
-        /// </summary>
-        [DataMember(Name = "csvVolumeName", EmitDefaultValue = true)]
-        public string CsvVolumeName { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class DatabaseFileUsageViewModel {\n");
-            sb.Append("  DiskInfos: ").Append(DiskInfos).Append("\n");
-            sb.Append("  Files: ").Append(Files).Append("\n");
-            sb.Append("  GraphData: ").Append(GraphData).Append("\n");
-            sb.Append("  CsvVolumeName: ").Append(CsvVolumeName).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        DiskInfos = diskInfos;
+        Files = files;
+        GraphData = graphData;
+        CsvVolumeName = csvVolumeName;
     }
 
+    /// <summary>
+    ///     Gets or Sets DiskInfos
+    /// </summary>
+    [DataMember(Name = "diskInfos", EmitDefaultValue = true)]
+    public List<VolumeUsageViewModel> DiskInfos { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Files
+    /// </summary>
+    [DataMember(Name = "files", EmitDefaultValue = true)]
+    public List<DatabaseFileUsageInfoDto> Files { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets GraphData
+    /// </summary>
+    [DataMember(Name = "graphData", EmitDefaultValue = false)]
+    public GraphDataViewModel GraphData { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets CsvVolumeName
+    /// </summary>
+    [DataMember(Name = "csvVolumeName", EmitDefaultValue = true)]
+    public string CsvVolumeName { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class DatabaseFileUsageViewModel {\n");
+        sb.Append("  DiskInfos: ").Append(DiskInfos).Append("\n");
+        sb.Append("  Files: ").Append(Files).Append("\n");
+        sb.Append("  GraphData: ").Append(GraphData).Append("\n");
+        sb.Append("  CsvVolumeName: ").Append(CsvVolumeName).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

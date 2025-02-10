@@ -8,157 +8,152 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     JobHistoryViewModel
+/// </summary>
+[DataContract(Name = "JobHistoryViewModel")]
+public class JobHistoryViewModel : IValidatableObject
 {
     /// <summary>
-    /// JobHistoryViewModel
+    ///     Initializes a new instance of the <see cref="JobHistoryViewModel" /> class.
     /// </summary>
-    [DataContract(Name = "JobHistoryViewModel")]
-    public partial class JobHistoryViewModel : IValidatableObject
+    [JsonConstructorAttribute]
+    public JobHistoryViewModel()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JobHistoryViewModel" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        public JobHistoryViewModel()
-        {
-        }
-
-        /// <summary>
-        /// Gets or Sets DateRun
-        /// </summary>
-        [DataMember(Name = "dateRun", EmitDefaultValue = true)]
-        public string DateRun { get; private set; }
-
-        /// <summary>
-        /// Returns false as DateRun should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeDateRun()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets Duration
-        /// </summary>
-        [DataMember(Name = "duration", EmitDefaultValue = true)]
-        public string Duration { get; private set; }
-
-        /// <summary>
-        /// Returns false as Duration should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeDuration()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
-        public int Status { get; private set; }
-
-        /// <summary>
-        /// Returns false as Status should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeStatus()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets Step
-        /// </summary>
-        [DataMember(Name = "step", EmitDefaultValue = true)]
-        public string Step { get; private set; }
-
-        /// <summary>
-        /// Returns false as Step should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeStep()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets Message
-        /// </summary>
-        [DataMember(Name = "message", EmitDefaultValue = true)]
-        public string Message { get; private set; }
-
-        /// <summary>
-        /// Returns false as Message should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeMessage()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets ServerOverviewUrl
-        /// </summary>
-        [DataMember(Name = "serverOverviewUrl", EmitDefaultValue = true)]
-        public string ServerOverviewUrl { get; private set; }
-
-        /// <summary>
-        /// Returns false as ServerOverviewUrl should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeServerOverviewUrl()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class JobHistoryViewModel {\n");
-            sb.Append("  DateRun: ").Append(DateRun).Append("\n");
-            sb.Append("  Duration: ").Append(Duration).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Step: ").Append(Step).Append("\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
-            sb.Append("  ServerOverviewUrl: ").Append(ServerOverviewUrl).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Gets or Sets DateRun
+    /// </summary>
+    [DataMember(Name = "dateRun", EmitDefaultValue = true)]
+    public string DateRun { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets Duration
+    /// </summary>
+    [DataMember(Name = "duration", EmitDefaultValue = true)]
+    public string Duration { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets Status
+    /// </summary>
+    [DataMember(Name = "status", EmitDefaultValue = false)]
+    public int Status { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets Step
+    /// </summary>
+    [DataMember(Name = "step", EmitDefaultValue = true)]
+    public string Step { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets Message
+    /// </summary>
+    [DataMember(Name = "message", EmitDefaultValue = true)]
+    public string Message { get; private set; }
+
+    /// <summary>
+    ///     Gets or Sets ServerOverviewUrl
+    /// </summary>
+    [DataMember(Name = "serverOverviewUrl", EmitDefaultValue = true)]
+    public string ServerOverviewUrl { get; private set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns false as DateRun should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeDateRun()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as Duration should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeDuration()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as Status should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeStatus()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as Step should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeStep()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as Message should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeMessage()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns false as ServerOverviewUrl should not be serialized given that it's read-only.
+    /// </summary>
+    /// <returns>false (boolean)</returns>
+    public bool ShouldSerializeServerOverviewUrl()
+    {
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class JobHistoryViewModel {\n");
+        sb.Append("  DateRun: ").Append(DateRun).Append("\n");
+        sb.Append("  Duration: ").Append(Duration).Append("\n");
+        sb.Append("  Status: ").Append(Status).Append("\n");
+        sb.Append("  Step: ").Append(Step).Append("\n");
+        sb.Append("  Message: ").Append(Message).Append("\n");
+        sb.Append("  ServerOverviewUrl: ").Append(ServerOverviewUrl).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

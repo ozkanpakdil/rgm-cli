@@ -9,92 +9,83 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     IndexTableDataDto
+/// </summary>
+[DataContract(Name = "IndexTableDataDto")]
+public class IndexTableDataDto : IValidatableObject
 {
     /// <summary>
-    /// IndexTableDataDto
+    ///     Initializes a new instance of the <see cref="IndexTableDataDto" /> class.
     /// </summary>
-    [DataContract(Name = "IndexTableDataDto")]
-    public partial class IndexTableDataDto : IValidatableObject
+    /// <param name="indexes">indexes.</param>
+    /// <param name="firstSample">firstSample.</param>
+    /// <param name="lastSample">lastSample.</param>
+    public IndexTableDataDto(List<IndexesTableItemDto> indexes = default, DateTime? firstSample = default,
+        DateTime? lastSample = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IndexTableDataDto" /> class.
-        /// </summary>
-        /// <param name="indexes">indexes.</param>
-        /// <param name="firstSample">firstSample.</param>
-        /// <param name="lastSample">lastSample.</param>
-        public IndexTableDataDto(List<IndexesTableItemDto> indexes = default(List<IndexesTableItemDto>), DateTime? firstSample = default(DateTime?), DateTime? lastSample = default(DateTime?))
-        {
-            this.Indexes = indexes;
-            this.FirstSample = firstSample;
-            this.LastSample = lastSample;
-        }
-
-        /// <summary>
-        /// Gets or Sets Indexes
-        /// </summary>
-        [DataMember(Name = "indexes", EmitDefaultValue = false)]
-        public List<IndexesTableItemDto> Indexes { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FirstSample
-        /// </summary>
-        [DataMember(Name = "firstSample", EmitDefaultValue = true)]
-        public DateTime? FirstSample { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LastSample
-        /// </summary>
-        [DataMember(Name = "lastSample", EmitDefaultValue = true)]
-        public DateTime? LastSample { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class IndexTableDataDto {\n");
-            sb.Append("  Indexes: ").Append(Indexes).Append("\n");
-            sb.Append("  FirstSample: ").Append(FirstSample).Append("\n");
-            sb.Append("  LastSample: ").Append(LastSample).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Indexes = indexes;
+        FirstSample = firstSample;
+        LastSample = lastSample;
     }
 
+    /// <summary>
+    ///     Gets or Sets Indexes
+    /// </summary>
+    [DataMember(Name = "indexes", EmitDefaultValue = false)]
+    public List<IndexesTableItemDto> Indexes { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FirstSample
+    /// </summary>
+    [DataMember(Name = "firstSample", EmitDefaultValue = true)]
+    public DateTime? FirstSample { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets LastSample
+    /// </summary>
+    [DataMember(Name = "lastSample", EmitDefaultValue = true)]
+    public DateTime? LastSample { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class IndexTableDataDto {\n");
+        sb.Append("  Indexes: ").Append(Indexes).Append("\n");
+        sb.Append("  FirstSample: ").Append(FirstSample).Append("\n");
+        sb.Append("  LastSample: ").Append(LastSample).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

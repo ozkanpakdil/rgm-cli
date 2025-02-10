@@ -9,1119 +9,1074 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IIndexesApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IIndexesApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>IndexColumnDtoIEnumerableJSendSuccess</returns>
+    IndexColumnDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesColumnsGet(string baseMonitorName,
+        SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of IndexColumnDtoIEnumerableJSendSuccess</returns>
+    ApiResponse<IndexColumnDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesColumnsGetWithHttpInfo(
+        string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>IndexDetailsDtoJSendSuccess</returns>
+    IndexDetailsDtoJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesDetailsGet(string baseMonitorName,
+        SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of IndexDetailsDtoJSendSuccess</returns>
+    ApiResponse<IndexDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesDetailsGetWithHttpInfo(
+        string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>IndexTableDataDtoJSendSuccess</returns>
+    IndexTableDataDtoJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesGet(string baseMonitorName,
+        SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of IndexTableDataDtoJSendSuccess</returns>
+    ApiResponse<IndexTableDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesGetWithHttpInfo(
+        string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>IndexUsageDtoIEnumerableJSendSuccess</returns>
+    IndexUsageDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesUsageGet(string baseMonitorName,
+        SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of IndexUsageDtoIEnumerableJSendSuccess</returns>
+    ApiResponse<IndexUsageDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesUsageGetWithHttpInfo(
+        string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IIndexesApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of IndexColumnDtoIEnumerableJSendSuccess</returns>
+    Task<IndexColumnDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesColumnsGetAsync(
+        string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (IndexColumnDtoIEnumerableJSendSuccess)</returns>
+    Task<ApiResponse<IndexColumnDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameIndexesColumnsGetWithHttpInfoAsync(string baseMonitorName,
+            SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of IndexDetailsDtoJSendSuccess</returns>
+    Task<IndexDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesDetailsGetAsync(string baseMonitorName,
+        SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (IndexDetailsDtoJSendSuccess)</returns>
+    Task<ApiResponse<IndexDetailsDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameIndexesDetailsGetWithHttpInfoAsync(
+        string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of IndexTableDataDtoJSendSuccess</returns>
+    Task<IndexTableDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesGetAsync(string baseMonitorName,
+        SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (IndexTableDataDtoJSendSuccess)</returns>
+    Task<ApiResponse<IndexTableDataDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameIndexesGetWithHttpInfoAsync(
+        string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of IndexUsageDtoIEnumerableJSendSuccess</returns>
+    Task<IndexUsageDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesUsageGetAsync(
+        string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (IndexUsageDtoIEnumerableJSendSuccess)</returns>
+    Task<ApiResponse<IndexUsageDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameIndexesUsageGetWithHttpInfoAsync(string baseMonitorName,
+            SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IIndexesApi : IIndexesApiSync, IIndexesApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class IndexesApi : IIndexesApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="IndexesApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public IndexesApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>IndexColumnDtoIEnumerableJSendSuccess</returns>
-        IndexColumnDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesColumnsGet(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of IndexColumnDtoIEnumerableJSendSuccess</returns>
-        ApiResponse<IndexColumnDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesColumnsGetWithHttpInfo(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>IndexDetailsDtoJSendSuccess</returns>
-        IndexDetailsDtoJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesDetailsGet(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of IndexDetailsDtoJSendSuccess</returns>
-        ApiResponse<IndexDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesDetailsGetWithHttpInfo(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>IndexTableDataDtoJSendSuccess</returns>
-        IndexTableDataDtoJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesGet(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of IndexTableDataDtoJSendSuccess</returns>
-        ApiResponse<IndexTableDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesGetWithHttpInfo(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>IndexUsageDtoIEnumerableJSendSuccess</returns>
-        IndexUsageDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesUsageGet(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of IndexUsageDtoIEnumerableJSendSuccess</returns>
-        ApiResponse<IndexUsageDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesUsageGetWithHttpInfo(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="IndexesApi" /> class.
     /// </summary>
-    public interface IIndexesApiAsync : IApiAccessor
+    /// <returns></returns>
+    public IndexesApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IndexColumnDtoIEnumerableJSendSuccess</returns>
-        System.Threading.Tasks.Task<IndexColumnDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesColumnsGetAsync(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IndexColumnDtoIEnumerableJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IndexColumnDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameIndexesColumnsGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IndexDetailsDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<IndexDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesDetailsGetAsync(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IndexDetailsDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IndexDetailsDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameIndexesDetailsGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IndexTableDataDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<IndexTableDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesGetAsync(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IndexTableDataDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IndexTableDataDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameIndexesGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IndexUsageDtoIEnumerableJSendSuccess</returns>
-        System.Threading.Tasks.Task<IndexUsageDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesUsageGetAsync(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IndexUsageDtoIEnumerableJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IndexUsageDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameIndexesUsageGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="IndexesApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IIndexesApi : IIndexesApiSync, IIndexesApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public IndexesApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="IndexesApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class IndexesApi : IIndexesApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public IndexesApi(ISynchronousClient client, IAsynchronousClient asyncClient, IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IndexesApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public IndexesApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>IndexColumnDtoIEnumerableJSendSuccess</returns>
+    public IndexColumnDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesColumnsGet(string baseMonitorName,
+        SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameIndexesColumnsGetWithHttpInfo(baseMonitorName, cir, startTime, endTime);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of IndexColumnDtoIEnumerableJSendSuccess</returns>
+    public ApiResponse<IndexColumnDtoIEnumerableJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameIndexesColumnsGetWithHttpInfo(string baseMonitorName,
+            SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesColumnsGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesColumnsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<IndexColumnDtoIEnumerableJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/indexes/columns", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesColumnsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IndexesApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public IndexesApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of IndexColumnDtoIEnumerableJSendSuccess</returns>
+    public async Task<IndexColumnDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesColumnsGetAsync(
+        string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameIndexesColumnsGetWithHttpInfoAsync(baseMonitorName, cir, startTime,
+                endTime, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (IndexColumnDtoIEnumerableJSendSuccess)</returns>
+    public async Task<ApiResponse<IndexColumnDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameIndexesColumnsGetWithHttpInfoAsync(string baseMonitorName,
+            SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesColumnsGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesColumnsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<IndexColumnDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes/columns",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesColumnsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IndexesApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public IndexesApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>IndexDetailsDtoJSendSuccess</returns>
+    public IndexDetailsDtoJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesDetailsGet(string baseMonitorName,
+        SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameIndexesDetailsGetWithHttpInfo(baseMonitorName, cir, startTime, endTime);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of IndexDetailsDtoJSendSuccess</returns>
+    public ApiResponse<IndexDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesDetailsGetWithHttpInfo(
+        string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesDetailsGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesDetailsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Get<IndexDetailsDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes/details",
+                localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesDetailsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IndexesApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public IndexesApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of IndexDetailsDtoJSendSuccess</returns>
+    public async Task<IndexDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesDetailsGetAsync(
+        string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameIndexesDetailsGetWithHttpInfoAsync(baseMonitorName, cir, startTime,
+                endTime, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (IndexDetailsDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<IndexDetailsDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameIndexesDetailsGetWithHttpInfoAsync(string baseMonitorName,
+            SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesDetailsGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesDetailsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<IndexDetailsDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes/details",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesDetailsGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>IndexTableDataDtoJSendSuccess</returns>
+    public IndexTableDataDtoJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesGet(string baseMonitorName,
+        SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameIndexesGetWithHttpInfo(baseMonitorName, cir, startTime, endTime);
+        return localVarResponse.Data;
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of IndexTableDataDtoJSendSuccess</returns>
+    public ApiResponse<IndexTableDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesGetWithHttpInfo(
+        string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            return this.Configuration.BasePath;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<IndexTableDataDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of IndexTableDataDtoJSendSuccess</returns>
+    public async Task<IndexTableDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesGetAsync(
+        string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameIndexesGetWithHttpInfoAsync(baseMonitorName, cir, startTime, endTime,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (IndexTableDataDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<IndexTableDataDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameIndexesGetWithHttpInfoAsync(string baseMonitorName,
+            SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<IndexTableDataDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>IndexColumnDtoIEnumerableJSendSuccess</returns>
-        public IndexColumnDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesColumnsGet(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>IndexUsageDtoIEnumerableJSendSuccess</returns>
+    public IndexUsageDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesUsageGet(string baseMonitorName,
+        SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+        int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameIndexesUsageGetWithHttpInfo(baseMonitorName, cir, startTime, endTime);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of IndexUsageDtoIEnumerableJSendSuccess</returns>
+    public ApiResponse<IndexUsageDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesUsageGetWithHttpInfo(
+        string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesUsageGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<IndexColumnDtoIEnumerableJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameIndexesColumnsGetWithHttpInfo(baseMonitorName, cir, startTime, endTime);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesUsageGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<IndexUsageDtoIEnumerableJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/indexes/usage", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesUsageGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of IndexColumnDtoIEnumerableJSendSuccess</returns>
-        public cli.Client.ApiResponse<IndexColumnDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesColumnsGetWithHttpInfo(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of IndexUsageDtoIEnumerableJSendSuccess</returns>
+    public async Task<IndexUsageDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesUsageGetAsync(
+        string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+        DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameIndexesUsageGetWithHttpInfoAsync(baseMonitorName, cir, startTime,
+                endTime, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (IndexUsageDtoIEnumerableJSendSuccess)</returns>
+    public async Task<ApiResponse<IndexUsageDtoIEnumerableJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameIndexesUsageGetWithHttpInfoAsync(string baseMonitorName,
+            SqlInstanceIndexesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesUsageGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesColumnsGet");
-            }
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesColumnsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesUsageGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<IndexColumnDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes/columns", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesColumnsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<IndexUsageDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes/usage",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesUsageGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IndexColumnDtoIEnumerableJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<IndexColumnDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesColumnsGetAsync(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<IndexColumnDtoIEnumerableJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameIndexesColumnsGetWithHttpInfoAsync(baseMonitorName, cir, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IndexColumnDtoIEnumerableJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<IndexColumnDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameIndexesColumnsGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesColumnsGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesColumnsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<IndexColumnDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes/columns", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesColumnsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>IndexDetailsDtoJSendSuccess</returns>
-        public IndexDetailsDtoJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesDetailsGet(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<IndexDetailsDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameIndexesDetailsGetWithHttpInfo(baseMonitorName, cir, startTime, endTime);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of IndexDetailsDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<IndexDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesDetailsGetWithHttpInfo(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesDetailsGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesDetailsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<IndexDetailsDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes/details", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesDetailsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IndexDetailsDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<IndexDetailsDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesDetailsGetAsync(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<IndexDetailsDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameIndexesDetailsGetWithHttpInfoAsync(baseMonitorName, cir, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IndexDetailsDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<IndexDetailsDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameIndexesDetailsGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesDetailsGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesDetailsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<IndexDetailsDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes/details", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesDetailsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>IndexTableDataDtoJSendSuccess</returns>
-        public IndexTableDataDtoJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesGet(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<IndexTableDataDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameIndexesGetWithHttpInfo(baseMonitorName, cir, startTime, endTime);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of IndexTableDataDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<IndexTableDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesGetWithHttpInfo(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<IndexTableDataDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IndexTableDataDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<IndexTableDataDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesGetAsync(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<IndexTableDataDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameIndexesGetWithHttpInfoAsync(baseMonitorName, cir, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IndexTableDataDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<IndexTableDataDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameIndexesGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<IndexTableDataDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>IndexUsageDtoIEnumerableJSendSuccess</returns>
-        public IndexUsageDtoIEnumerableJSendSuccess ApiBasemonitorsBaseMonitorNameIndexesUsageGet(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<IndexUsageDtoIEnumerableJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameIndexesUsageGetWithHttpInfo(baseMonitorName, cir, startTime, endTime);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of IndexUsageDtoIEnumerableJSendSuccess</returns>
-        public cli.Client.ApiResponse<IndexUsageDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesUsageGetWithHttpInfo(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesUsageGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesUsageGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<IndexUsageDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes/usage", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesUsageGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IndexUsageDtoIEnumerableJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<IndexUsageDtoIEnumerableJSendSuccess> ApiBasemonitorsBaseMonitorNameIndexesUsageGetAsync(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<IndexUsageDtoIEnumerableJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameIndexesUsageGetWithHttpInfoAsync(baseMonitorName, cir, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IndexUsageDtoIEnumerableJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<IndexUsageDtoIEnumerableJSendSuccess>> ApiBasemonitorsBaseMonitorNameIndexesUsageGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceIndexesChannelInstanceRef? cir = default(SqlInstanceIndexesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling IndexesApi->ApiBasemonitorsBaseMonitorNameIndexesUsageGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "IndexesApi.ApiBasemonitorsBaseMonitorNameIndexesUsageGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<IndexUsageDtoIEnumerableJSendSuccess>("/api/basemonitors/{baseMonitorName}/indexes/usage", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameIndexesUsageGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

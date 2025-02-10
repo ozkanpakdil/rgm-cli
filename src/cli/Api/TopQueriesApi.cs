@@ -9,1151 +9,1138 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
+using RedGate.SqlMonitor.Channels.Data;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface ITopQueriesApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface ITopQueriesApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>FragmentAnalysisIssueWithIdDtoArrayJSendSuccess</returns>
+    FragmentAnalysisIssueWithIdDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet(
+        string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of FragmentAnalysisIssueWithIdDtoArrayJSendSuccess</returns>
+    ApiResponse<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetWithHttpInfo(string baseMonitorName,
+            SqlInstanceTopQueriesChannelInstanceRef? cir = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="selectedWait"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="sqlQueryTextFragment"> (optional)</param>
+    /// <param name="groupResults"> (optional, default to true)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess</returns>
+    TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess ApiBasemonitorsBaseMonitorNameTopqueriesGetGet(
+        string baseMonitorName, ChannelInstanceRef? cir = default, string? selectedWait = default,
+        IntegerIdentifier? alertId = default, DateTime? startTime = default, DateTime? endTime = default,
+        string? sqlQueryTextFragment = default, bool? groupResults = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="selectedWait"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="sqlQueryTextFragment"> (optional)</param>
+    /// <param name="groupResults"> (optional, default to true)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess</returns>
+    ApiResponse<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesGetGetWithHttpInfo(string baseMonitorName,
+            ChannelInstanceRef? cir = default, string? selectedWait = default, IntegerIdentifier? alertId = default,
+            DateTime? startTime = default, DateTime? endTime = default, string? sqlQueryTextFragment = default,
+            bool? groupResults = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess</returns>
+    TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess
+        ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet(string baseMonitorName,
+            SqlInstanceTopQueriesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess</returns>
+    ApiResponse<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetWithHttpInfo(string baseMonitorName,
+            SqlInstanceTopQueriesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess</returns>
+    TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess
+        ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet(string baseMonitorName,
+            SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess</returns>
+    ApiResponse<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetWithHttpInfo(string baseMonitorName,
+            SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+            int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface ITopQueriesApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of FragmentAnalysisIssueWithIdDtoArrayJSendSuccess</returns>
+    Task<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetAsync(
+        string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (FragmentAnalysisIssueWithIdDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetWithHttpInfoAsync(string baseMonitorName,
+            SqlInstanceTopQueriesChannelInstanceRef? cir = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="selectedWait"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="sqlQueryTextFragment"> (optional)</param>
+    /// <param name="groupResults"> (optional, default to true)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess</returns>
+    Task<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesGetGetAsync(
+        string baseMonitorName, ChannelInstanceRef? cir = default, string? selectedWait = default,
+        IntegerIdentifier? alertId = default, DateTime? startTime = default, DateTime? endTime = default,
+        string? sqlQueryTextFragment = default, bool? groupResults = default, int operationIndex = 0,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="selectedWait"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="sqlQueryTextFragment"> (optional)</param>
+    /// <param name="groupResults"> (optional, default to true)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess)</returns>
+    Task<ApiResponse<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameTopqueriesGetGetWithHttpInfoAsync(string baseMonitorName,
+            ChannelInstanceRef? cir = default, string? selectedWait = default, IntegerIdentifier? alertId = default,
+            DateTime? startTime = default, DateTime? endTime = default, string? sqlQueryTextFragment = default,
+            bool? groupResults = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess</returns>
+    Task<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetAsync(string baseMonitorName,
+            SqlInstanceTopQueriesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess)</returns>
+    Task<ApiResponse<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetWithHttpInfoAsync(string baseMonitorName,
+            SqlInstanceTopQueriesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess</returns>
+    Task<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetAsync(string baseMonitorName,
+            SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess)</returns>
+    Task<ApiResponse<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetWithHttpInfoAsync(string baseMonitorName,
+            SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface ITopQueriesApi : ITopQueriesApiSync, ITopQueriesApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class TopQueriesApi : ITopQueriesApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="TopQueriesApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public TopQueriesApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>FragmentAnalysisIssueWithIdDtoArrayJSendSuccess</returns>
-        FragmentAnalysisIssueWithIdDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of FragmentAnalysisIssueWithIdDtoArrayJSendSuccess</returns>
-        ApiResponse<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetWithHttpInfo(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="selectedWait"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="sqlQueryTextFragment"> (optional)</param>
-        /// <param name="groupResults"> (optional, default to true)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess</returns>
-        TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess ApiBasemonitorsBaseMonitorNameTopqueriesGetGet(string baseMonitorName, ChannelInstanceRef? cir = default(ChannelInstanceRef?), string? selectedWait = default(string?), IntegerIdentifier? alertId = default(IntegerIdentifier?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), string? sqlQueryTextFragment = default(string?), bool? groupResults = default(bool?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="selectedWait"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="sqlQueryTextFragment"> (optional)</param>
-        /// <param name="groupResults"> (optional, default to true)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess</returns>
-        ApiResponse<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesGetGetWithHttpInfo(string baseMonitorName, ChannelInstanceRef? cir = default(ChannelInstanceRef?), string? selectedWait = default(string?), IntegerIdentifier? alertId = default(IntegerIdentifier?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), string? sqlQueryTextFragment = default(string?), bool? groupResults = default(bool?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess</returns>
-        TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess</returns>
-        ApiResponse<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetWithHttpInfo(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess</returns>
-        TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess</returns>
-        ApiResponse<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetWithHttpInfo(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="TopQueriesApi" /> class.
     /// </summary>
-    public interface ITopQueriesApiAsync : IApiAccessor
+    /// <returns></returns>
+    public TopQueriesApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of FragmentAnalysisIssueWithIdDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetAsync(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (FragmentAnalysisIssueWithIdDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="selectedWait"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="sqlQueryTextFragment"> (optional)</param>
-        /// <param name="groupResults"> (optional, default to true)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesGetGetAsync(string baseMonitorName, ChannelInstanceRef? cir = default(ChannelInstanceRef?), string? selectedWait = default(string?), IntegerIdentifier? alertId = default(IntegerIdentifier?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), string? sqlQueryTextFragment = default(string?), bool? groupResults = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="selectedWait"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="sqlQueryTextFragment"> (optional)</param>
-        /// <param name="groupResults"> (optional, default to true)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameTopqueriesGetGetWithHttpInfoAsync(string baseMonitorName, ChannelInstanceRef? cir = default(ChannelInstanceRef?), string? selectedWait = default(string?), IntegerIdentifier? alertId = default(IntegerIdentifier?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), string? sqlQueryTextFragment = default(string?), bool? groupResults = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess</returns>
-        System.Threading.Tasks.Task<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetAsync(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetAsync(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="TopQueriesApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface ITopQueriesApi : ITopQueriesApiSync, ITopQueriesApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public TopQueriesApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="TopQueriesApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class TopQueriesApi : ITopQueriesApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public TopQueriesApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TopQueriesApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public TopQueriesApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>FragmentAnalysisIssueWithIdDtoArrayJSendSuccess</returns>
+    public FragmentAnalysisIssueWithIdDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet(
+        string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetWithHttpInfo(baseMonitorName, cir);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of FragmentAnalysisIssueWithIdDtoArrayJSendSuccess</returns>
+    public ApiResponse<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetWithHttpInfo(string baseMonitorName,
+            SqlInstanceTopQueriesChannelInstanceRef? cir = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+
+        localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/topqueries/analysequery", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TopQueriesApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public TopQueriesApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of FragmentAnalysisIssueWithIdDtoArrayJSendSuccess</returns>
+    public async Task<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetAsync(string baseMonitorName,
+            SqlInstanceTopQueriesChannelInstanceRef? cir = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetWithHttpInfoAsync(baseMonitorName, cir,
+                operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (FragmentAnalysisIssueWithIdDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetWithHttpInfoAsync(string baseMonitorName,
+            SqlInstanceTopQueriesChannelInstanceRef? cir = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+
+        localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/topqueries/analysequery", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TopQueriesApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public TopQueriesApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="selectedWait"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="sqlQueryTextFragment"> (optional)</param>
+    /// <param name="groupResults"> (optional, default to true)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess</returns>
+    public TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess ApiBasemonitorsBaseMonitorNameTopqueriesGetGet(
+        string baseMonitorName, ChannelInstanceRef? cir = default, string? selectedWait = default,
+        IntegerIdentifier? alertId = default, DateTime? startTime = default, DateTime? endTime = default,
+        string? sqlQueryTextFragment = default, bool? groupResults = default, int operationIndex = 0)
+    {
+        var localVarResponse = ApiBasemonitorsBaseMonitorNameTopqueriesGetGetWithHttpInfo(baseMonitorName, cir,
+            selectedWait, alertId, startTime, endTime, sqlQueryTextFragment, groupResults);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="selectedWait"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="sqlQueryTextFragment"> (optional)</param>
+    /// <param name="groupResults"> (optional, default to true)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess</returns>
+    public ApiResponse<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesGetGetWithHttpInfo(string baseMonitorName,
+            ChannelInstanceRef? cir = default, string? selectedWait = default, IntegerIdentifier? alertId = default,
+            DateTime? startTime = default, DateTime? endTime = default, string? sqlQueryTextFragment = default,
+            bool? groupResults = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesGetGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (selectedWait != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "selectedWait", selectedWait));
+        if (alertId != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "alertId", alertId));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+        if (sqlQueryTextFragment != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "sqlQueryTextFragment", sqlQueryTextFragment));
+        if (groupResults != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "groupResults", groupResults));
+
+        localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesGetGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/topqueries/get", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesGetGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TopQueriesApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public TopQueriesApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="selectedWait"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="sqlQueryTextFragment"> (optional)</param>
+    /// <param name="groupResults"> (optional, default to true)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess</returns>
+    public async Task<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesGetGetAsync(string baseMonitorName, ChannelInstanceRef? cir = default,
+            string? selectedWait = default, IntegerIdentifier? alertId = default, DateTime? startTime = default,
+            DateTime? endTime = default, string? sqlQueryTextFragment = default, bool? groupResults = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse = await ApiBasemonitorsBaseMonitorNameTopqueriesGetGetWithHttpInfoAsync(baseMonitorName,
+            cir, selectedWait, alertId, startTime, endTime, sqlQueryTextFragment, groupResults, operationIndex,
+            cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="selectedWait"> (optional)</param>
+    /// <param name="alertId"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="sqlQueryTextFragment"> (optional)</param>
+    /// <param name="groupResults"> (optional, default to true)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameTopqueriesGetGetWithHttpInfoAsync(string baseMonitorName,
+            ChannelInstanceRef? cir = default, string? selectedWait = default, IntegerIdentifier? alertId = default,
+            DateTime? startTime = default, DateTime? endTime = default, string? sqlQueryTextFragment = default,
+            bool? groupResults = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesGetGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (selectedWait != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "selectedWait", selectedWait));
+        if (alertId != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "alertId", alertId));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+        if (sqlQueryTextFragment != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "sqlQueryTextFragment", sqlQueryTextFragment));
+        if (groupResults != null)
+            localVarRequestOptions.QueryParameters.Add(
+                ClientUtils.ParameterToMultiMap("", "groupResults", groupResults));
+
+        localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesGetGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/topqueries/get", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesGetGet", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess</returns>
+    public TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess
+        ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet(string baseMonitorName,
+            SqlInstanceTopQueriesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetWithHttpInfo(baseMonitorName, cir, startTime,
+                endTime);
+        return localVarResponse.Data;
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess</returns>
+    public ApiResponse<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetWithHttpInfo(string baseMonitorName,
+            SqlInstanceTopQueriesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            return this.Configuration.BasePath;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/topqueries/queryhistory", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess</returns>
+    public async Task<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetAsync(string baseMonitorName,
+            SqlInstanceTopQueriesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetWithHttpInfoAsync(baseMonitorName, cir,
+                startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess)</returns>
+    public async Task<ApiResponse<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetWithHttpInfoAsync(string baseMonitorName,
+            SqlInstanceTopQueriesChannelInstanceRef? cir = default, DateTime? startTime = default,
+            DateTime? endTime = default, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/topqueries/queryhistory", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>FragmentAnalysisIssueWithIdDtoArrayJSendSuccess</returns>
-        public FragmentAnalysisIssueWithIdDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess</returns>
+    public TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess
+        ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet(string baseMonitorName,
+            SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+            int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetWithHttpInfo(baseMonitorName, cir, startTime,
+                endTime);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess</returns>
+    public ApiResponse<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetWithHttpInfo(string baseMonitorName,
+            SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetWithHttpInfo(baseMonitorName, cir);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
+
+        localVarRequestOptions.Operation =
+            "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/topqueries/trackedqueryrecords", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of FragmentAnalysisIssueWithIdDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetWithHttpInfo(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess</returns>
+    public async Task<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetAsync(string baseMonitorName,
+            SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetWithHttpInfoAsync(baseMonitorName, cir,
+                startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="cir"> (optional)</param>
+    /// <param name="startTime"> (optional)</param>
+    /// <param name="endTime"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetWithHttpInfoAsync(string baseMonitorName,
+            SqlInstanceChannelInstanceRef? cir = default, DateTime? startTime = default, DateTime? endTime = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet");
-            }
+        };
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            string[] _contentTypes = new string[] {
-            };
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        if (cir != null) localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "cir", cir));
+        if (startTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startTime", startTime));
+        if (endTime != null)
+            localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endTime", endTime));
 
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-
-            localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/topqueries/analysequery", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/topqueries/trackedqueryrecords", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of FragmentAnalysisIssueWithIdDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetAsync(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetWithHttpInfoAsync(baseMonitorName, cir, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (FragmentAnalysisIssueWithIdDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-
-            localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<FragmentAnalysisIssueWithIdDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/topqueries/analysequery", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesAnalysequeryGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="selectedWait"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="sqlQueryTextFragment"> (optional)</param>
-        /// <param name="groupResults"> (optional, default to true)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess</returns>
-        public TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess ApiBasemonitorsBaseMonitorNameTopqueriesGetGet(string baseMonitorName, ChannelInstanceRef? cir = default(ChannelInstanceRef?), string? selectedWait = default(string?), IntegerIdentifier? alertId = default(IntegerIdentifier?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), string? sqlQueryTextFragment = default(string?), bool? groupResults = default(bool?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameTopqueriesGetGetWithHttpInfo(baseMonitorName, cir, selectedWait, alertId, startTime, endTime, sqlQueryTextFragment, groupResults);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="selectedWait"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="sqlQueryTextFragment"> (optional)</param>
-        /// <param name="groupResults"> (optional, default to true)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesGetGetWithHttpInfo(string baseMonitorName, ChannelInstanceRef? cir = default(ChannelInstanceRef?), string? selectedWait = default(string?), IntegerIdentifier? alertId = default(IntegerIdentifier?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), string? sqlQueryTextFragment = default(string?), bool? groupResults = default(bool?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesGetGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (selectedWait != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "selectedWait", selectedWait));
-            }
-            if (alertId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "alertId", alertId));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-            if (sqlQueryTextFragment != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "sqlQueryTextFragment", sqlQueryTextFragment));
-            }
-            if (groupResults != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "groupResults", groupResults));
-            }
-
-            localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesGetGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/topqueries/get", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesGetGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="selectedWait"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="sqlQueryTextFragment"> (optional)</param>
-        /// <param name="groupResults"> (optional, default to true)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesGetGetAsync(string baseMonitorName, ChannelInstanceRef? cir = default(ChannelInstanceRef?), string? selectedWait = default(string?), IntegerIdentifier? alertId = default(IntegerIdentifier?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), string? sqlQueryTextFragment = default(string?), bool? groupResults = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameTopqueriesGetGetWithHttpInfoAsync(baseMonitorName, cir, selectedWait, alertId, startTime, endTime, sqlQueryTextFragment, groupResults, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="selectedWait"> (optional)</param>
-        /// <param name="alertId"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="sqlQueryTextFragment"> (optional)</param>
-        /// <param name="groupResults"> (optional, default to true)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameTopqueriesGetGetWithHttpInfoAsync(string baseMonitorName, ChannelInstanceRef? cir = default(ChannelInstanceRef?), string? selectedWait = default(string?), IntegerIdentifier? alertId = default(IntegerIdentifier?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), string? sqlQueryTextFragment = default(string?), bool? groupResults = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesGetGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (selectedWait != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "selectedWait", selectedWait));
-            }
-            if (alertId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "alertId", alertId));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-            if (sqlQueryTextFragment != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "sqlQueryTextFragment", sqlQueryTextFragment));
-            }
-            if (groupResults != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "groupResults", groupResults));
-            }
-
-            localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesGetGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<TopQueryDtoGroupedTopQueryDtoOneOfArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/topqueries/get", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesGetGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess</returns>
-        public TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetWithHttpInfo(baseMonitorName, cir, startTime, endTime);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess</returns>
-        public cli.Client.ApiResponse<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetWithHttpInfo(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/topqueries/queryhistory", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetAsync(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetWithHttpInfoAsync(baseMonitorName, cir, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess>> ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceTopQueriesChannelInstanceRef? cir = default(SqlInstanceTopQueriesChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<TopQueryPropertySqlServerQueryHistoryPlanKeyDtoQueryHistoryDtoJSendSuccess>("/api/basemonitors/{baseMonitorName}/topqueries/queryhistory", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesQueryhistoryGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess</returns>
-        public TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetWithHttpInfo(baseMonitorName, cir, startTime, endTime);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetWithHttpInfo(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/topqueries/trackedqueryrecords", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetAsync(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetWithHttpInfoAsync(baseMonitorName, cir, startTime, endTime, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="cir"> (optional)</param>
-        /// <param name="startTime"> (optional)</param>
-        /// <param name="endTime"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGetWithHttpInfoAsync(string baseMonitorName, SqlInstanceChannelInstanceRef? cir = default(SqlInstanceChannelInstanceRef?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling TopQueriesApi->ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            if (cir != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "cir", cir));
-            }
-            if (startTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startTime", startTime));
-            }
-            if (endTime != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endTime", endTime));
-            }
-
-            localVarRequestOptions.Operation = "TopQueriesApi.ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<TopQueryDtoTopQueryOutOfRangeDtoOneOfArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/topqueries/trackedqueryrecords", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameTopqueriesTrackedqueryrecordsGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

@@ -9,172 +9,161 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     DatabaseFileUsageInfoDto
+/// </summary>
+[DataContract(Name = "DatabaseFileUsageInfoDto")]
+public class DatabaseFileUsageInfoDto : IValidatableObject
 {
     /// <summary>
-    /// DatabaseFileUsageInfoDto
+    ///     Initializes a new instance of the <see cref="DatabaseFileUsageInfoDto" /> class.
     /// </summary>
-    [DataContract(Name = "DatabaseFileUsageInfoDto")]
-    public partial class DatabaseFileUsageInfoDto : IValidatableObject
+    [JsonConstructorAttribute]
+    protected DatabaseFileUsageInfoDto()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabaseFileUsageInfoDto" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected DatabaseFileUsageInfoDto() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DatabaseFileUsageInfoDto" /> class.
-        /// </summary>
-        /// <param name="cluster">cluster (required).</param>
-        /// <param name="instance">instance (required).</param>
-        /// <param name="database">database (required).</param>
-        /// <param name="file">file (required).</param>
-        /// <param name="used">used (required).</param>
-        /// <param name="capacity">capacity (required).</param>
-        /// <param name="fileType">fileType (required).</param>
-        /// <param name="filePath">filePath (required).</param>
-        public DatabaseFileUsageInfoDto(string cluster = default(string), string instance = default(string), string database = default(string), string file = default(string), long used = default(long), long capacity = default(long), string fileType = default(string), string filePath = default(string))
-        {
-            // to ensure "cluster" is required (not null)
-            if (cluster == null)
-            {
-                throw new ArgumentNullException("cluster is a required property for DatabaseFileUsageInfoDto and cannot be null");
-            }
-            this.Cluster = cluster;
-            // to ensure "instance" is required (not null)
-            if (instance == null)
-            {
-                throw new ArgumentNullException("instance is a required property for DatabaseFileUsageInfoDto and cannot be null");
-            }
-            this.Instance = instance;
-            // to ensure "database" is required (not null)
-            if (database == null)
-            {
-                throw new ArgumentNullException("database is a required property for DatabaseFileUsageInfoDto and cannot be null");
-            }
-            this.Database = database;
-            // to ensure "file" is required (not null)
-            if (file == null)
-            {
-                throw new ArgumentNullException("file is a required property for DatabaseFileUsageInfoDto and cannot be null");
-            }
-            this.File = file;
-            this.Used = used;
-            this.Capacity = capacity;
-            // to ensure "fileType" is required (not null)
-            if (fileType == null)
-            {
-                throw new ArgumentNullException("fileType is a required property for DatabaseFileUsageInfoDto and cannot be null");
-            }
-            this.FileType = fileType;
-            // to ensure "filePath" is required (not null)
-            if (filePath == null)
-            {
-                throw new ArgumentNullException("filePath is a required property for DatabaseFileUsageInfoDto and cannot be null");
-            }
-            this.FilePath = filePath;
-        }
-
-        /// <summary>
-        /// Gets or Sets Cluster
-        /// </summary>
-        [DataMember(Name = "cluster", IsRequired = true, EmitDefaultValue = true)]
-        public string Cluster { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Instance
-        /// </summary>
-        [DataMember(Name = "instance", IsRequired = true, EmitDefaultValue = true)]
-        public string Instance { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Database
-        /// </summary>
-        [DataMember(Name = "database", IsRequired = true, EmitDefaultValue = true)]
-        public string Database { get; set; }
-
-        /// <summary>
-        /// Gets or Sets File
-        /// </summary>
-        [DataMember(Name = "file", IsRequired = true, EmitDefaultValue = true)]
-        public string File { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Used
-        /// </summary>
-        [DataMember(Name = "used", IsRequired = true, EmitDefaultValue = true)]
-        public long Used { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Capacity
-        /// </summary>
-        [DataMember(Name = "capacity", IsRequired = true, EmitDefaultValue = true)]
-        public long Capacity { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FileType
-        /// </summary>
-        [DataMember(Name = "fileType", IsRequired = true, EmitDefaultValue = true)]
-        public string FileType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FilePath
-        /// </summary>
-        [DataMember(Name = "filePath", IsRequired = true, EmitDefaultValue = true)]
-        public string FilePath { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class DatabaseFileUsageInfoDto {\n");
-            sb.Append("  Cluster: ").Append(Cluster).Append("\n");
-            sb.Append("  Instance: ").Append(Instance).Append("\n");
-            sb.Append("  Database: ").Append(Database).Append("\n");
-            sb.Append("  File: ").Append(File).Append("\n");
-            sb.Append("  Used: ").Append(Used).Append("\n");
-            sb.Append("  Capacity: ").Append(Capacity).Append("\n");
-            sb.Append("  FileType: ").Append(FileType).Append("\n");
-            sb.Append("  FilePath: ").Append(FilePath).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="DatabaseFileUsageInfoDto" /> class.
+    /// </summary>
+    /// <param name="cluster">cluster (required).</param>
+    /// <param name="instance">instance (required).</param>
+    /// <param name="database">database (required).</param>
+    /// <param name="file">file (required).</param>
+    /// <param name="used">used (required).</param>
+    /// <param name="capacity">capacity (required).</param>
+    /// <param name="fileType">fileType (required).</param>
+    /// <param name="filePath">filePath (required).</param>
+    public DatabaseFileUsageInfoDto(string cluster = default, string instance = default, string database = default,
+        string file = default, long used = default, long capacity = default, string fileType = default,
+        string filePath = default)
+    {
+        // to ensure "cluster" is required (not null)
+        if (cluster == null)
+            throw new ArgumentNullException(
+                "cluster is a required property for DatabaseFileUsageInfoDto and cannot be null");
+        Cluster = cluster;
+        // to ensure "instance" is required (not null)
+        if (instance == null)
+            throw new ArgumentNullException(
+                "instance is a required property for DatabaseFileUsageInfoDto and cannot be null");
+        Instance = instance;
+        // to ensure "database" is required (not null)
+        if (database == null)
+            throw new ArgumentNullException(
+                "database is a required property for DatabaseFileUsageInfoDto and cannot be null");
+        Database = database;
+        // to ensure "file" is required (not null)
+        if (file == null)
+            throw new ArgumentNullException(
+                "file is a required property for DatabaseFileUsageInfoDto and cannot be null");
+        File = file;
+        Used = used;
+        Capacity = capacity;
+        // to ensure "fileType" is required (not null)
+        if (fileType == null)
+            throw new ArgumentNullException(
+                "fileType is a required property for DatabaseFileUsageInfoDto and cannot be null");
+        FileType = fileType;
+        // to ensure "filePath" is required (not null)
+        if (filePath == null)
+            throw new ArgumentNullException(
+                "filePath is a required property for DatabaseFileUsageInfoDto and cannot be null");
+        FilePath = filePath;
+    }
+
+    /// <summary>
+    ///     Gets or Sets Cluster
+    /// </summary>
+    [DataMember(Name = "cluster", IsRequired = true, EmitDefaultValue = true)]
+    public string Cluster { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Instance
+    /// </summary>
+    [DataMember(Name = "instance", IsRequired = true, EmitDefaultValue = true)]
+    public string Instance { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Database
+    /// </summary>
+    [DataMember(Name = "database", IsRequired = true, EmitDefaultValue = true)]
+    public string Database { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets File
+    /// </summary>
+    [DataMember(Name = "file", IsRequired = true, EmitDefaultValue = true)]
+    public string File { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Used
+    /// </summary>
+    [DataMember(Name = "used", IsRequired = true, EmitDefaultValue = true)]
+    public long Used { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Capacity
+    /// </summary>
+    [DataMember(Name = "capacity", IsRequired = true, EmitDefaultValue = true)]
+    public long Capacity { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FileType
+    /// </summary>
+    [DataMember(Name = "fileType", IsRequired = true, EmitDefaultValue = true)]
+    public string FileType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets FilePath
+    /// </summary>
+    [DataMember(Name = "filePath", IsRequired = true, EmitDefaultValue = true)]
+    public string FilePath { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class DatabaseFileUsageInfoDto {\n");
+        sb.Append("  Cluster: ").Append(Cluster).Append("\n");
+        sb.Append("  Instance: ").Append(Instance).Append("\n");
+        sb.Append("  Database: ").Append(Database).Append("\n");
+        sb.Append("  File: ").Append(File).Append("\n");
+        sb.Append("  Used: ").Append(Used).Append("\n");
+        sb.Append("  Capacity: ").Append(Capacity).Append("\n");
+        sb.Append("  FileType: ").Append(FileType).Append("\n");
+        sb.Append("  FilePath: ").Append(FilePath).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

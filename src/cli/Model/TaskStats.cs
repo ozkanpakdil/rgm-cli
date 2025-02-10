@@ -8,93 +8,82 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     TaskStats
+/// </summary>
+[DataContract(Name = "TaskStats")]
+public class TaskStats : IValidatableObject
 {
     /// <summary>
-    /// TaskStats
+    ///     Initializes a new instance of the <see cref="TaskStats" /> class.
     /// </summary>
-    [DataContract(Name = "TaskStats")]
-    public partial class TaskStats : IValidatableObject
+    /// <param name="fires">fires.</param>
+    /// <param name="misfires">misfires.</param>
+    /// <param name="medianRunnableTime">medianRunnableTime.</param>
+    public TaskStats(long? fires = default, long? misfires = default, double? medianRunnableTime = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TaskStats" /> class.
-        /// </summary>
-        /// <param name="fires">fires.</param>
-        /// <param name="misfires">misfires.</param>
-        /// <param name="medianRunnableTime">medianRunnableTime.</param>
-        public TaskStats(long? fires = default(long?), long? misfires = default(long?), double? medianRunnableTime = default(double?))
-        {
-            this.Fires = fires;
-            this.Misfires = misfires;
-            this.MedianRunnableTime = medianRunnableTime;
-        }
-
-        /// <summary>
-        /// Gets or Sets Fires
-        /// </summary>
-        [DataMember(Name = "fires", EmitDefaultValue = true)]
-        public long? Fires { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Misfires
-        /// </summary>
-        [DataMember(Name = "misfires", EmitDefaultValue = true)]
-        public long? Misfires { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MedianRunnableTime
-        /// </summary>
-        [DataMember(Name = "medianRunnableTime", EmitDefaultValue = true)]
-        public double? MedianRunnableTime { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class TaskStats {\n");
-            sb.Append("  Fires: ").Append(Fires).Append("\n");
-            sb.Append("  Misfires: ").Append(Misfires).Append("\n");
-            sb.Append("  MedianRunnableTime: ").Append(MedianRunnableTime).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Fires = fires;
+        Misfires = misfires;
+        MedianRunnableTime = medianRunnableTime;
     }
 
+    /// <summary>
+    ///     Gets or Sets Fires
+    /// </summary>
+    [DataMember(Name = "fires", EmitDefaultValue = true)]
+    public long? Fires { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Misfires
+    /// </summary>
+    [DataMember(Name = "misfires", EmitDefaultValue = true)]
+    public long? Misfires { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MedianRunnableTime
+    /// </summary>
+    [DataMember(Name = "medianRunnableTime", EmitDefaultValue = true)]
+    public double? MedianRunnableTime { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class TaskStats {\n");
+        sb.Append("  Fires: ").Append(Fires).Append("\n");
+        sb.Append("  Misfires: ").Append(Misfires).Append("\n");
+        sb.Append("  MedianRunnableTime: ").Append(MedianRunnableTime).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

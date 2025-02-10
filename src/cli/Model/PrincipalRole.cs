@@ -8,47 +8,30 @@
  */
 
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+namespace cli.Model;
 
-namespace cli.Model
+/// <summary>
+///     Defines PrincipalRole
+/// </summary>
+public enum PrincipalRole
 {
     /// <summary>
-    /// Defines PrincipalRole
+    ///     Enum NUMBER_1 for value: 1
     /// </summary>
-    public enum PrincipalRole
-    {
-        /// <summary>
-        /// Enum NUMBER_1 for value: 1
-        /// </summary>
-        NUMBER_1 = 1,
+    NUMBER_1 = 1,
 
-        /// <summary>
-        /// Enum NUMBER_2 for value: 2
-        /// </summary>
-        NUMBER_2 = 2,
+    /// <summary>
+    ///     Enum NUMBER_2 for value: 2
+    /// </summary>
+    NUMBER_2 = 2,
 
-        /// <summary>
-        /// Enum NUMBER_3 for value: 3
-        /// </summary>
-        NUMBER_3 = 3,
+    /// <summary>
+    ///     Enum NUMBER_3 for value: 3
+    /// </summary>
+    NUMBER_3 = 3,
 
-        /// <summary>
-        /// Enum NUMBER_4 for value: 4
-        /// </summary>
-        NUMBER_4 = 4
-    }
-
+    /// <summary>
+    ///     Enum NUMBER_4 for value: 4
+    /// </summary>
+    NUMBER_4 = 4
 }

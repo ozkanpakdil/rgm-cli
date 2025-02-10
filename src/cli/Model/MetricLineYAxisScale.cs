@@ -8,84 +8,73 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     MetricLineYAxisScale
+/// </summary>
+[DataContract(Name = "MetricLineYAxisScale")]
+public class MetricLineYAxisScale : IValidatableObject
 {
     /// <summary>
-    /// MetricLineYAxisScale
+    ///     Initializes a new instance of the <see cref="MetricLineYAxisScale" /> class.
     /// </summary>
-    [DataContract(Name = "MetricLineYAxisScale")]
-    public partial class MetricLineYAxisScale : IValidatableObject
+    /// <param name="min">min.</param>
+    /// <param name="max">max.</param>
+    public MetricLineYAxisScale(int min = default, int max = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MetricLineYAxisScale" /> class.
-        /// </summary>
-        /// <param name="min">min.</param>
-        /// <param name="max">max.</param>
-        public MetricLineYAxisScale(int min = default(int), int max = default(int))
-        {
-            this.Min = min;
-            this.Max = max;
-        }
-
-        /// <summary>
-        /// Gets or Sets Min
-        /// </summary>
-        [DataMember(Name = "min", EmitDefaultValue = false)]
-        public int Min { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Max
-        /// </summary>
-        [DataMember(Name = "max", EmitDefaultValue = false)]
-        public int Max { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class MetricLineYAxisScale {\n");
-            sb.Append("  Min: ").Append(Min).Append("\n");
-            sb.Append("  Max: ").Append(Max).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Min = min;
+        Max = max;
     }
 
+    /// <summary>
+    ///     Gets or Sets Min
+    /// </summary>
+    [DataMember(Name = "min", EmitDefaultValue = false)]
+    public int Min { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Max
+    /// </summary>
+    [DataMember(Name = "max", EmitDefaultValue = false)]
+    public int Max { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class MetricLineYAxisScale {\n");
+        sb.Append("  Min: ").Append(Min).Append("\n");
+        sb.Append("  Max: ").Append(Max).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

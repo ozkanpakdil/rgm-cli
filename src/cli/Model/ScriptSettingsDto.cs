@@ -8,93 +8,83 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     ScriptSettingsDto
+/// </summary>
+[DataContract(Name = "ScriptSettingsDto")]
+public class ScriptSettingsDto : IValidatableObject
 {
     /// <summary>
-    /// ScriptSettingsDto
+    ///     Initializes a new instance of the <see cref="ScriptSettingsDto" /> class.
     /// </summary>
-    [DataContract(Name = "ScriptSettingsDto")]
-    public partial class ScriptSettingsDto : IValidatableObject
+    /// <param name="enable">enable.</param>
+    /// <param name="scriptText">scriptText.</param>
+    /// <param name="scriptType">scriptType.</param>
+    public ScriptSettingsDto(bool enable = default, string scriptText = default,
+        ScriptExecutorType? scriptType = default)
     {
-
-        /// <summary>
-        /// Gets or Sets ScriptType
-        /// </summary>
-        [DataMember(Name = "scriptType", EmitDefaultValue = false)]
-        public ScriptExecutorType? ScriptType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ScriptSettingsDto" /> class.
-        /// </summary>
-        /// <param name="enable">enable.</param>
-        /// <param name="scriptText">scriptText.</param>
-        /// <param name="scriptType">scriptType.</param>
-        public ScriptSettingsDto(bool enable = default(bool), string scriptText = default(string), ScriptExecutorType? scriptType = default(ScriptExecutorType?))
-        {
-            this.Enable = enable;
-            this.ScriptText = scriptText;
-            this.ScriptType = scriptType;
-        }
-
-        /// <summary>
-        /// Gets or Sets Enable
-        /// </summary>
-        [DataMember(Name = "enable", EmitDefaultValue = true)]
-        public bool Enable { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ScriptText
-        /// </summary>
-        [DataMember(Name = "scriptText", EmitDefaultValue = true)]
-        public string ScriptText { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class ScriptSettingsDto {\n");
-            sb.Append("  Enable: ").Append(Enable).Append("\n");
-            sb.Append("  ScriptText: ").Append(ScriptText).Append("\n");
-            sb.Append("  ScriptType: ").Append(ScriptType).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Enable = enable;
+        ScriptText = scriptText;
+        ScriptType = scriptType;
     }
 
+    /// <summary>
+    ///     Gets or Sets ScriptType
+    /// </summary>
+    [DataMember(Name = "scriptType", EmitDefaultValue = false)]
+    public ScriptExecutorType? ScriptType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Enable
+    /// </summary>
+    [DataMember(Name = "enable", EmitDefaultValue = true)]
+    public bool Enable { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ScriptText
+    /// </summary>
+    [DataMember(Name = "scriptText", EmitDefaultValue = true)]
+    public string ScriptText { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class ScriptSettingsDto {\n");
+        sb.Append("  Enable: ").Append(Enable).Append("\n");
+        sb.Append("  ScriptText: ").Append(ScriptText).Append("\n");
+        sb.Append("  ScriptType: ").Append(ScriptType).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

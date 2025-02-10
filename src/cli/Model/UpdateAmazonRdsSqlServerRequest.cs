@@ -9,138 +9,133 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     UpdateAmazonRdsSqlServerRequest
+/// </summary>
+[DataContract(Name = "UpdateAmazonRdsSqlServerRequest")]
+public class UpdateAmazonRdsSqlServerRequest : IValidatableObject
 {
     /// <summary>
-    /// UpdateAmazonRdsSqlServerRequest
+    ///     Initializes a new instance of the <see cref="UpdateAmazonRdsSqlServerRequest" /> class.
     /// </summary>
-    [DataContract(Name = "UpdateAmazonRdsSqlServerRequest")]
-    public partial class UpdateAmazonRdsSqlServerRequest : IValidatableObject
+    [JsonConstructorAttribute]
+    protected UpdateAmazonRdsSqlServerRequest()
     {
-
-        /// <summary>
-        /// Gets or Sets AuthenticationMode
-        /// </summary>
-        [DataMember(Name = "authenticationMode", EmitDefaultValue = false)]
-        public SqlServerAuthenticationMode? AuthenticationMode { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateAmazonRdsSqlServerRequest" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected UpdateAmazonRdsSqlServerRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateAmazonRdsSqlServerRequest" /> class.
-        /// </summary>
-        /// <param name="endpoints">endpoints (required).</param>
-        /// <param name="username">username.</param>
-        /// <param name="password">password.</param>
-        /// <param name="authenticationMode">authenticationMode.</param>
-        /// <param name="connectionProperties">connectionProperties.</param>
-        /// <param name="amazonApiCredentials">amazonApiCredentials.</param>
-        /// <param name="useBaseMonitorAccount">useBaseMonitorAccount.</param>
-        public UpdateAmazonRdsSqlServerRequest(List<string> endpoints = default(List<string>), string username = default(string), string password = default(string), SqlServerAuthenticationMode? authenticationMode = default(SqlServerAuthenticationMode?), SqlServerConnectionPropertiesModel connectionProperties = default(SqlServerConnectionPropertiesModel), AmazonApiCredentialsUpdateDto amazonApiCredentials = default(AmazonApiCredentialsUpdateDto), bool useBaseMonitorAccount = default(bool))
-        {
-            // to ensure "endpoints" is required (not null)
-            if (endpoints == null)
-            {
-                throw new ArgumentNullException("endpoints is a required property for UpdateAmazonRdsSqlServerRequest and cannot be null");
-            }
-            this.Endpoints = endpoints;
-            this.Username = username;
-            this.Password = password;
-            this.AuthenticationMode = authenticationMode;
-            this.ConnectionProperties = connectionProperties;
-            this.AmazonApiCredentials = amazonApiCredentials;
-            this.UseBaseMonitorAccount = useBaseMonitorAccount;
-        }
-
-        /// <summary>
-        /// Gets or Sets Endpoints
-        /// </summary>
-        [DataMember(Name = "endpoints", IsRequired = true, EmitDefaultValue = true)]
-        public List<string> Endpoints { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Username
-        /// </summary>
-        [DataMember(Name = "username", EmitDefaultValue = false)]
-        public string Username { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Password
-        /// </summary>
-        [DataMember(Name = "password", EmitDefaultValue = true)]
-        public string Password { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ConnectionProperties
-        /// </summary>
-        [DataMember(Name = "connectionProperties", EmitDefaultValue = false)]
-        public SqlServerConnectionPropertiesModel ConnectionProperties { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AmazonApiCredentials
-        /// </summary>
-        [DataMember(Name = "amazonApiCredentials", EmitDefaultValue = false)]
-        public AmazonApiCredentialsUpdateDto AmazonApiCredentials { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UseBaseMonitorAccount
-        /// </summary>
-        [DataMember(Name = "useBaseMonitorAccount", EmitDefaultValue = true)]
-        public bool UseBaseMonitorAccount { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class UpdateAmazonRdsSqlServerRequest {\n");
-            sb.Append("  Endpoints: ").Append(Endpoints).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
-            sb.Append("  AuthenticationMode: ").Append(AuthenticationMode).Append("\n");
-            sb.Append("  ConnectionProperties: ").Append(ConnectionProperties).Append("\n");
-            sb.Append("  AmazonApiCredentials: ").Append(AmazonApiCredentials).Append("\n");
-            sb.Append("  UseBaseMonitorAccount: ").Append(UseBaseMonitorAccount).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="UpdateAmazonRdsSqlServerRequest" /> class.
+    /// </summary>
+    /// <param name="endpoints">endpoints (required).</param>
+    /// <param name="username">username.</param>
+    /// <param name="password">password.</param>
+    /// <param name="authenticationMode">authenticationMode.</param>
+    /// <param name="connectionProperties">connectionProperties.</param>
+    /// <param name="amazonApiCredentials">amazonApiCredentials.</param>
+    /// <param name="useBaseMonitorAccount">useBaseMonitorAccount.</param>
+    public UpdateAmazonRdsSqlServerRequest(List<string> endpoints = default, string username = default,
+        string password = default, SqlServerAuthenticationMode? authenticationMode = default,
+        SqlServerConnectionPropertiesModel connectionProperties = default,
+        AmazonApiCredentialsUpdateDto amazonApiCredentials = default, bool useBaseMonitorAccount = default)
+    {
+        // to ensure "endpoints" is required (not null)
+        if (endpoints == null)
+            throw new ArgumentNullException(
+                "endpoints is a required property for UpdateAmazonRdsSqlServerRequest and cannot be null");
+        Endpoints = endpoints;
+        Username = username;
+        Password = password;
+        AuthenticationMode = authenticationMode;
+        ConnectionProperties = connectionProperties;
+        AmazonApiCredentials = amazonApiCredentials;
+        UseBaseMonitorAccount = useBaseMonitorAccount;
+    }
+
+    /// <summary>
+    ///     Gets or Sets AuthenticationMode
+    /// </summary>
+    [DataMember(Name = "authenticationMode", EmitDefaultValue = false)]
+    public SqlServerAuthenticationMode? AuthenticationMode { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Endpoints
+    /// </summary>
+    [DataMember(Name = "endpoints", IsRequired = true, EmitDefaultValue = true)]
+    public List<string> Endpoints { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Username
+    /// </summary>
+    [DataMember(Name = "username", EmitDefaultValue = false)]
+    public string Username { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Password
+    /// </summary>
+    [DataMember(Name = "password", EmitDefaultValue = true)]
+    public string Password { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ConnectionProperties
+    /// </summary>
+    [DataMember(Name = "connectionProperties", EmitDefaultValue = false)]
+    public SqlServerConnectionPropertiesModel ConnectionProperties { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AmazonApiCredentials
+    /// </summary>
+    [DataMember(Name = "amazonApiCredentials", EmitDefaultValue = false)]
+    public AmazonApiCredentialsUpdateDto AmazonApiCredentials { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UseBaseMonitorAccount
+    /// </summary>
+    [DataMember(Name = "useBaseMonitorAccount", EmitDefaultValue = true)]
+    public bool UseBaseMonitorAccount { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class UpdateAmazonRdsSqlServerRequest {\n");
+        sb.Append("  Endpoints: ").Append(Endpoints).Append("\n");
+        sb.Append("  Username: ").Append(Username).Append("\n");
+        sb.Append("  Password: ").Append(Password).Append("\n");
+        sb.Append("  AuthenticationMode: ").Append(AuthenticationMode).Append("\n");
+        sb.Append("  ConnectionProperties: ").Append(ConnectionProperties).Append("\n");
+        sb.Append("  AmazonApiCredentials: ").Append(AmazonApiCredentials).Append("\n");
+        sb.Append("  UseBaseMonitorAccount: ").Append(UseBaseMonitorAccount).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

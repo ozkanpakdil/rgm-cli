@@ -8,102 +8,92 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AuthenticatedUserDto
+/// </summary>
+[DataContract(Name = "AuthenticatedUserDto")]
+public class AuthenticatedUserDto : IValidatableObject
 {
     /// <summary>
-    /// AuthenticatedUserDto
+    ///     Initializes a new instance of the <see cref="AuthenticatedUserDto" /> class.
     /// </summary>
-    [DataContract(Name = "AuthenticatedUserDto")]
-    public partial class AuthenticatedUserDto : IValidatableObject
+    /// <param name="groups">groups.</param>
+    /// <param name="authorizationLevel">authorizationLevel.</param>
+    /// <param name="authenticationType">authenticationType.</param>
+    /// <param name="userName">userName.</param>
+    public AuthenticatedUserDto(List<string> groups = default, AuthorizationLevel? authorizationLevel = default,
+        AuthenticationTypeDto? authenticationType = default, string userName = default)
     {
-
-        /// <summary>
-        /// Gets or Sets AuthorizationLevel
-        /// </summary>
-        [DataMember(Name = "authorizationLevel", EmitDefaultValue = false)]
-        public AuthorizationLevel? AuthorizationLevel { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AuthenticationType
-        /// </summary>
-        [DataMember(Name = "authenticationType", EmitDefaultValue = false)]
-        public AuthenticationTypeDto? AuthenticationType { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticatedUserDto" /> class.
-        /// </summary>
-        /// <param name="groups">groups.</param>
-        /// <param name="authorizationLevel">authorizationLevel.</param>
-        /// <param name="authenticationType">authenticationType.</param>
-        /// <param name="userName">userName.</param>
-        public AuthenticatedUserDto(List<string> groups = default(List<string>), AuthorizationLevel? authorizationLevel = default(AuthorizationLevel?), AuthenticationTypeDto? authenticationType = default(AuthenticationTypeDto?), string userName = default(string))
-        {
-            this.Groups = groups;
-            this.AuthorizationLevel = authorizationLevel;
-            this.AuthenticationType = authenticationType;
-            this.UserName = userName;
-        }
-
-        /// <summary>
-        /// Gets or Sets Groups
-        /// </summary>
-        [DataMember(Name = "groups", EmitDefaultValue = false)]
-        public List<string> Groups { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UserName
-        /// </summary>
-        [DataMember(Name = "userName", EmitDefaultValue = true)]
-        public string UserName { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AuthenticatedUserDto {\n");
-            sb.Append("  Groups: ").Append(Groups).Append("\n");
-            sb.Append("  AuthorizationLevel: ").Append(AuthorizationLevel).Append("\n");
-            sb.Append("  AuthenticationType: ").Append(AuthenticationType).Append("\n");
-            sb.Append("  UserName: ").Append(UserName).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Groups = groups;
+        AuthorizationLevel = authorizationLevel;
+        AuthenticationType = authenticationType;
+        UserName = userName;
     }
 
+    /// <summary>
+    ///     Gets or Sets AuthorizationLevel
+    /// </summary>
+    [DataMember(Name = "authorizationLevel", EmitDefaultValue = false)]
+    public AuthorizationLevel? AuthorizationLevel { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AuthenticationType
+    /// </summary>
+    [DataMember(Name = "authenticationType", EmitDefaultValue = false)]
+    public AuthenticationTypeDto? AuthenticationType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Groups
+    /// </summary>
+    [DataMember(Name = "groups", EmitDefaultValue = false)]
+    public List<string> Groups { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UserName
+    /// </summary>
+    [DataMember(Name = "userName", EmitDefaultValue = true)]
+    public string UserName { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AuthenticatedUserDto {\n");
+        sb.Append("  Groups: ").Append(Groups).Append("\n");
+        sb.Append("  AuthorizationLevel: ").Append(AuthorizationLevel).Append("\n");
+        sb.Append("  AuthenticationType: ").Append(AuthenticationType).Append("\n");
+        sb.Append("  UserName: ").Append(UserName).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

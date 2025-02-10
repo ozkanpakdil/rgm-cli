@@ -8,84 +8,74 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     ErrorReportingStatusDto
+/// </summary>
+[DataContract(Name = "ErrorReportingStatusDto")]
+public class ErrorReportingStatusDto : IValidatableObject
 {
     /// <summary>
-    /// ErrorReportingStatusDto
+    ///     Initializes a new instance of the <see cref="ErrorReportingStatusDto" /> class.
     /// </summary>
-    [DataContract(Name = "ErrorReportingStatusDto")]
-    public partial class ErrorReportingStatusDto : IValidatableObject
+    /// <param name="isWebsiteEnabled">isWebsiteEnabled.</param>
+    /// <param name="baseMonitors">baseMonitors.</param>
+    public ErrorReportingStatusDto(bool isWebsiteEnabled = default,
+        List<BaseMonitorErrorReportingStatusDto> baseMonitors = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ErrorReportingStatusDto" /> class.
-        /// </summary>
-        /// <param name="isWebsiteEnabled">isWebsiteEnabled.</param>
-        /// <param name="baseMonitors">baseMonitors.</param>
-        public ErrorReportingStatusDto(bool isWebsiteEnabled = default(bool), List<BaseMonitorErrorReportingStatusDto> baseMonitors = default(List<BaseMonitorErrorReportingStatusDto>))
-        {
-            this.IsWebsiteEnabled = isWebsiteEnabled;
-            this.BaseMonitors = baseMonitors;
-        }
-
-        /// <summary>
-        /// Gets or Sets IsWebsiteEnabled
-        /// </summary>
-        [DataMember(Name = "isWebsiteEnabled", EmitDefaultValue = true)]
-        public bool IsWebsiteEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BaseMonitors
-        /// </summary>
-        [DataMember(Name = "baseMonitors", EmitDefaultValue = true)]
-        public List<BaseMonitorErrorReportingStatusDto> BaseMonitors { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class ErrorReportingStatusDto {\n");
-            sb.Append("  IsWebsiteEnabled: ").Append(IsWebsiteEnabled).Append("\n");
-            sb.Append("  BaseMonitors: ").Append(BaseMonitors).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        IsWebsiteEnabled = isWebsiteEnabled;
+        BaseMonitors = baseMonitors;
     }
 
+    /// <summary>
+    ///     Gets or Sets IsWebsiteEnabled
+    /// </summary>
+    [DataMember(Name = "isWebsiteEnabled", EmitDefaultValue = true)]
+    public bool IsWebsiteEnabled { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets BaseMonitors
+    /// </summary>
+    [DataMember(Name = "baseMonitors", EmitDefaultValue = true)]
+    public List<BaseMonitorErrorReportingStatusDto> BaseMonitors { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class ErrorReportingStatusDto {\n");
+        sb.Append("  IsWebsiteEnabled: ").Append(IsWebsiteEnabled).Append("\n");
+        sb.Append("  BaseMonitors: ").Append(BaseMonitors).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

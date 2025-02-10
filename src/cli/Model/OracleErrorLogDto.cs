@@ -9,119 +9,110 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     OracleErrorLogDto
+/// </summary>
+[DataContract(Name = "OracleErrorLogDto")]
+public class OracleErrorLogDto : IValidatableObject
 {
     /// <summary>
-    /// OracleErrorLogDto
+    ///     Initializes a new instance of the <see cref="OracleErrorLogDto" /> class.
     /// </summary>
-    [DataContract(Name = "OracleErrorLogDto")]
-    public partial class OracleErrorLogDto : IValidatableObject
+    /// <param name="logDate">logDate.</param>
+    /// <param name="containerName">containerName.</param>
+    /// <param name="processId">processId.</param>
+    /// <param name="messageType">messageType.</param>
+    /// <param name="messageLevel">messageLevel.</param>
+    /// <param name="messageText">messageText.</param>
+    public OracleErrorLogDto(DateTime logDate = default, string containerName = default, string processId = default,
+        string messageType = default, string messageLevel = default, string messageText = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OracleErrorLogDto" /> class.
-        /// </summary>
-        /// <param name="logDate">logDate.</param>
-        /// <param name="containerName">containerName.</param>
-        /// <param name="processId">processId.</param>
-        /// <param name="messageType">messageType.</param>
-        /// <param name="messageLevel">messageLevel.</param>
-        /// <param name="messageText">messageText.</param>
-        public OracleErrorLogDto(DateTime logDate = default(DateTime), string containerName = default(string), string processId = default(string), string messageType = default(string), string messageLevel = default(string), string messageText = default(string))
-        {
-            this.LogDate = logDate;
-            this.ContainerName = containerName;
-            this.ProcessId = processId;
-            this.MessageType = messageType;
-            this.MessageLevel = messageLevel;
-            this.MessageText = messageText;
-        }
-
-        /// <summary>
-        /// Gets or Sets LogDate
-        /// </summary>
-        [DataMember(Name = "logDate", EmitDefaultValue = false)]
-        public DateTime LogDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ContainerName
-        /// </summary>
-        [DataMember(Name = "containerName", EmitDefaultValue = true)]
-        public string ContainerName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ProcessId
-        /// </summary>
-        [DataMember(Name = "processId", EmitDefaultValue = true)]
-        public string ProcessId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MessageType
-        /// </summary>
-        [DataMember(Name = "messageType", EmitDefaultValue = true)]
-        public string MessageType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MessageLevel
-        /// </summary>
-        [DataMember(Name = "messageLevel", EmitDefaultValue = true)]
-        public string MessageLevel { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MessageText
-        /// </summary>
-        [DataMember(Name = "messageText", EmitDefaultValue = true)]
-        public string MessageText { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class OracleErrorLogDto {\n");
-            sb.Append("  LogDate: ").Append(LogDate).Append("\n");
-            sb.Append("  ContainerName: ").Append(ContainerName).Append("\n");
-            sb.Append("  ProcessId: ").Append(ProcessId).Append("\n");
-            sb.Append("  MessageType: ").Append(MessageType).Append("\n");
-            sb.Append("  MessageLevel: ").Append(MessageLevel).Append("\n");
-            sb.Append("  MessageText: ").Append(MessageText).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        LogDate = logDate;
+        ContainerName = containerName;
+        ProcessId = processId;
+        MessageType = messageType;
+        MessageLevel = messageLevel;
+        MessageText = messageText;
     }
 
+    /// <summary>
+    ///     Gets or Sets LogDate
+    /// </summary>
+    [DataMember(Name = "logDate", EmitDefaultValue = false)]
+    public DateTime LogDate { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ContainerName
+    /// </summary>
+    [DataMember(Name = "containerName", EmitDefaultValue = true)]
+    public string ContainerName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ProcessId
+    /// </summary>
+    [DataMember(Name = "processId", EmitDefaultValue = true)]
+    public string ProcessId { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MessageType
+    /// </summary>
+    [DataMember(Name = "messageType", EmitDefaultValue = true)]
+    public string MessageType { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MessageLevel
+    /// </summary>
+    [DataMember(Name = "messageLevel", EmitDefaultValue = true)]
+    public string MessageLevel { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets MessageText
+    /// </summary>
+    [DataMember(Name = "messageText", EmitDefaultValue = true)]
+    public string MessageText { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class OracleErrorLogDto {\n");
+        sb.Append("  LogDate: ").Append(LogDate).Append("\n");
+        sb.Append("  ContainerName: ").Append(ContainerName).Append("\n");
+        sb.Append("  ProcessId: ").Append(ProcessId).Append("\n");
+        sb.Append("  MessageType: ").Append(MessageType).Append("\n");
+        sb.Append("  MessageLevel: ").Append(MessageLevel).Append("\n");
+        sb.Append("  MessageText: ").Append(MessageText).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -9,155 +9,148 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     PostgresCredentialsModel
+/// </summary>
+[DataContract(Name = "PostgresCredentialsModel")]
+public class PostgresCredentialsModel : IValidatableObject
 {
     /// <summary>
-    /// PostgresCredentialsModel
+    ///     Initializes a new instance of the <see cref="PostgresCredentialsModel" /> class.
     /// </summary>
-    [DataContract(Name = "PostgresCredentialsModel")]
-    public partial class PostgresCredentialsModel : IValidatableObject
+    /// <param name="authenticationMode">authenticationMode.</param>
+    /// <param name="userName">userName.</param>
+    /// <param name="password">password.</param>
+    /// <param name="decryptionFailed">decryptionFailed.</param>
+    /// <param name="database">database.</param>
+    /// <param name="iamAccessKey">iamAccessKey.</param>
+    /// <param name="iamSecretKey">iamSecretKey.</param>
+    /// <param name="iamRoleArn">iamRoleArn.</param>
+    /// <param name="iamRegion">iamRegion.</param>
+    /// <param name="entraServicePrincipalCredentialsId">entraServicePrincipalCredentialsId.</param>
+    public PostgresCredentialsModel(PostgresAuthenticationMode? authenticationMode = default, string userName = default,
+        string password = default, bool decryptionFailed = default, string database = default,
+        string iamAccessKey = default, string iamSecretKey = default, string iamRoleArn = default,
+        string iamRegion = default, Guid? entraServicePrincipalCredentialsId = default)
     {
-
-        /// <summary>
-        /// Gets or Sets AuthenticationMode
-        /// </summary>
-        [DataMember(Name = "authenticationMode", EmitDefaultValue = false)]
-        public PostgresAuthenticationMode? AuthenticationMode { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PostgresCredentialsModel" /> class.
-        /// </summary>
-        /// <param name="authenticationMode">authenticationMode.</param>
-        /// <param name="userName">userName.</param>
-        /// <param name="password">password.</param>
-        /// <param name="decryptionFailed">decryptionFailed.</param>
-        /// <param name="database">database.</param>
-        /// <param name="iamAccessKey">iamAccessKey.</param>
-        /// <param name="iamSecretKey">iamSecretKey.</param>
-        /// <param name="iamRoleArn">iamRoleArn.</param>
-        /// <param name="iamRegion">iamRegion.</param>
-        /// <param name="entraServicePrincipalCredentialsId">entraServicePrincipalCredentialsId.</param>
-        public PostgresCredentialsModel(PostgresAuthenticationMode? authenticationMode = default(PostgresAuthenticationMode?), string userName = default(string), string password = default(string), bool decryptionFailed = default(bool), string database = default(string), string iamAccessKey = default(string), string iamSecretKey = default(string), string iamRoleArn = default(string), string iamRegion = default(string), Guid? entraServicePrincipalCredentialsId = default(Guid?))
-        {
-            this.AuthenticationMode = authenticationMode;
-            this.UserName = userName;
-            this.Password = password;
-            this.DecryptionFailed = decryptionFailed;
-            this.Database = database;
-            this.IamAccessKey = iamAccessKey;
-            this.IamSecretKey = iamSecretKey;
-            this.IamRoleArn = iamRoleArn;
-            this.IamRegion = iamRegion;
-            this.EntraServicePrincipalCredentialsId = entraServicePrincipalCredentialsId;
-        }
-
-        /// <summary>
-        /// Gets or Sets UserName
-        /// </summary>
-        [DataMember(Name = "userName", EmitDefaultValue = false)]
-        public string UserName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Password
-        /// </summary>
-        [DataMember(Name = "password", EmitDefaultValue = true)]
-        public string Password { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DecryptionFailed
-        /// </summary>
-        [DataMember(Name = "decryptionFailed", EmitDefaultValue = true)]
-        public bool DecryptionFailed { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Database
-        /// </summary>
-        [DataMember(Name = "database", EmitDefaultValue = true)]
-        public string Database { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IamAccessKey
-        /// </summary>
-        [DataMember(Name = "iamAccessKey", EmitDefaultValue = true)]
-        public string IamAccessKey { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IamSecretKey
-        /// </summary>
-        [DataMember(Name = "iamSecretKey", EmitDefaultValue = true)]
-        public string IamSecretKey { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IamRoleArn
-        /// </summary>
-        [DataMember(Name = "iamRoleArn", EmitDefaultValue = true)]
-        public string IamRoleArn { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IamRegion
-        /// </summary>
-        [DataMember(Name = "iamRegion", EmitDefaultValue = true)]
-        public string IamRegion { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EntraServicePrincipalCredentialsId
-        /// </summary>
-        [DataMember(Name = "entraServicePrincipalCredentialsId", EmitDefaultValue = true)]
-        public Guid? EntraServicePrincipalCredentialsId { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class PostgresCredentialsModel {\n");
-            sb.Append("  AuthenticationMode: ").Append(AuthenticationMode).Append("\n");
-            sb.Append("  UserName: ").Append(UserName).Append("\n");
-            sb.Append("  Password: ").Append(Password).Append("\n");
-            sb.Append("  DecryptionFailed: ").Append(DecryptionFailed).Append("\n");
-            sb.Append("  Database: ").Append(Database).Append("\n");
-            sb.Append("  IamAccessKey: ").Append(IamAccessKey).Append("\n");
-            sb.Append("  IamSecretKey: ").Append(IamSecretKey).Append("\n");
-            sb.Append("  IamRoleArn: ").Append(IamRoleArn).Append("\n");
-            sb.Append("  IamRegion: ").Append(IamRegion).Append("\n");
-            sb.Append("  EntraServicePrincipalCredentialsId: ").Append(EntraServicePrincipalCredentialsId).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        AuthenticationMode = authenticationMode;
+        UserName = userName;
+        Password = password;
+        DecryptionFailed = decryptionFailed;
+        Database = database;
+        IamAccessKey = iamAccessKey;
+        IamSecretKey = iamSecretKey;
+        IamRoleArn = iamRoleArn;
+        IamRegion = iamRegion;
+        EntraServicePrincipalCredentialsId = entraServicePrincipalCredentialsId;
     }
 
+    /// <summary>
+    ///     Gets or Sets AuthenticationMode
+    /// </summary>
+    [DataMember(Name = "authenticationMode", EmitDefaultValue = false)]
+    public PostgresAuthenticationMode? AuthenticationMode { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets UserName
+    /// </summary>
+    [DataMember(Name = "userName", EmitDefaultValue = false)]
+    public string UserName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Password
+    /// </summary>
+    [DataMember(Name = "password", EmitDefaultValue = true)]
+    public string Password { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DecryptionFailed
+    /// </summary>
+    [DataMember(Name = "decryptionFailed", EmitDefaultValue = true)]
+    public bool DecryptionFailed { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Database
+    /// </summary>
+    [DataMember(Name = "database", EmitDefaultValue = true)]
+    public string Database { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IamAccessKey
+    /// </summary>
+    [DataMember(Name = "iamAccessKey", EmitDefaultValue = true)]
+    public string IamAccessKey { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IamSecretKey
+    /// </summary>
+    [DataMember(Name = "iamSecretKey", EmitDefaultValue = true)]
+    public string IamSecretKey { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IamRoleArn
+    /// </summary>
+    [DataMember(Name = "iamRoleArn", EmitDefaultValue = true)]
+    public string IamRoleArn { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets IamRegion
+    /// </summary>
+    [DataMember(Name = "iamRegion", EmitDefaultValue = true)]
+    public string IamRegion { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets EntraServicePrincipalCredentialsId
+    /// </summary>
+    [DataMember(Name = "entraServicePrincipalCredentialsId", EmitDefaultValue = true)]
+    public Guid? EntraServicePrincipalCredentialsId { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class PostgresCredentialsModel {\n");
+        sb.Append("  AuthenticationMode: ").Append(AuthenticationMode).Append("\n");
+        sb.Append("  UserName: ").Append(UserName).Append("\n");
+        sb.Append("  Password: ").Append(Password).Append("\n");
+        sb.Append("  DecryptionFailed: ").Append(DecryptionFailed).Append("\n");
+        sb.Append("  Database: ").Append(Database).Append("\n");
+        sb.Append("  IamAccessKey: ").Append(IamAccessKey).Append("\n");
+        sb.Append("  IamSecretKey: ").Append(IamSecretKey).Append("\n");
+        sb.Append("  IamRoleArn: ").Append(IamRoleArn).Append("\n");
+        sb.Append("  IamRegion: ").Append(IamRegion).Append("\n");
+        sb.Append("  EntraServicePrincipalCredentialsId: ").Append(EntraServicePrincipalCredentialsId).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

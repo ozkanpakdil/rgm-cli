@@ -8,111 +8,101 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     CommunicationProtocolDto
+/// </summary>
+[DataContract(Name = "CommunicationProtocolDto")]
+public class CommunicationProtocolDto : IValidatableObject
 {
     /// <summary>
-    /// CommunicationProtocolDto
+    ///     Initializes a new instance of the <see cref="CommunicationProtocolDto" /> class.
     /// </summary>
-    [DataContract(Name = "CommunicationProtocolDto")]
-    public partial class CommunicationProtocolDto : IValidatableObject
+    /// <param name="protocolVersion">protocolVersion.</param>
+    /// <param name="clientEnabled">clientEnabled.</param>
+    /// <param name="clientDisabledByDefault">clientDisabledByDefault.</param>
+    /// <param name="serverEnabled">serverEnabled.</param>
+    /// <param name="serverDisabledByDefault">serverDisabledByDefault.</param>
+    public CommunicationProtocolDto(string protocolVersion = default, bool? clientEnabled = default,
+        bool? clientDisabledByDefault = default, bool? serverEnabled = default, bool? serverDisabledByDefault = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CommunicationProtocolDto" /> class.
-        /// </summary>
-        /// <param name="protocolVersion">protocolVersion.</param>
-        /// <param name="clientEnabled">clientEnabled.</param>
-        /// <param name="clientDisabledByDefault">clientDisabledByDefault.</param>
-        /// <param name="serverEnabled">serverEnabled.</param>
-        /// <param name="serverDisabledByDefault">serverDisabledByDefault.</param>
-        public CommunicationProtocolDto(string protocolVersion = default(string), bool? clientEnabled = default(bool?), bool? clientDisabledByDefault = default(bool?), bool? serverEnabled = default(bool?), bool? serverDisabledByDefault = default(bool?))
-        {
-            this.ProtocolVersion = protocolVersion;
-            this.ClientEnabled = clientEnabled;
-            this.ClientDisabledByDefault = clientDisabledByDefault;
-            this.ServerEnabled = serverEnabled;
-            this.ServerDisabledByDefault = serverDisabledByDefault;
-        }
-
-        /// <summary>
-        /// Gets or Sets ProtocolVersion
-        /// </summary>
-        [DataMember(Name = "protocolVersion", EmitDefaultValue = true)]
-        public string ProtocolVersion { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ClientEnabled
-        /// </summary>
-        [DataMember(Name = "clientEnabled", EmitDefaultValue = true)]
-        public bool? ClientEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ClientDisabledByDefault
-        /// </summary>
-        [DataMember(Name = "clientDisabledByDefault", EmitDefaultValue = true)]
-        public bool? ClientDisabledByDefault { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ServerEnabled
-        /// </summary>
-        [DataMember(Name = "serverEnabled", EmitDefaultValue = true)]
-        public bool? ServerEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ServerDisabledByDefault
-        /// </summary>
-        [DataMember(Name = "serverDisabledByDefault", EmitDefaultValue = true)]
-        public bool? ServerDisabledByDefault { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class CommunicationProtocolDto {\n");
-            sb.Append("  ProtocolVersion: ").Append(ProtocolVersion).Append("\n");
-            sb.Append("  ClientEnabled: ").Append(ClientEnabled).Append("\n");
-            sb.Append("  ClientDisabledByDefault: ").Append(ClientDisabledByDefault).Append("\n");
-            sb.Append("  ServerEnabled: ").Append(ServerEnabled).Append("\n");
-            sb.Append("  ServerDisabledByDefault: ").Append(ServerDisabledByDefault).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        ProtocolVersion = protocolVersion;
+        ClientEnabled = clientEnabled;
+        ClientDisabledByDefault = clientDisabledByDefault;
+        ServerEnabled = serverEnabled;
+        ServerDisabledByDefault = serverDisabledByDefault;
     }
 
+    /// <summary>
+    ///     Gets or Sets ProtocolVersion
+    /// </summary>
+    [DataMember(Name = "protocolVersion", EmitDefaultValue = true)]
+    public string ProtocolVersion { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ClientEnabled
+    /// </summary>
+    [DataMember(Name = "clientEnabled", EmitDefaultValue = true)]
+    public bool? ClientEnabled { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ClientDisabledByDefault
+    /// </summary>
+    [DataMember(Name = "clientDisabledByDefault", EmitDefaultValue = true)]
+    public bool? ClientDisabledByDefault { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ServerEnabled
+    /// </summary>
+    [DataMember(Name = "serverEnabled", EmitDefaultValue = true)]
+    public bool? ServerEnabled { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ServerDisabledByDefault
+    /// </summary>
+    [DataMember(Name = "serverDisabledByDefault", EmitDefaultValue = true)]
+    public bool? ServerDisabledByDefault { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class CommunicationProtocolDto {\n");
+        sb.Append("  ProtocolVersion: ").Append(ProtocolVersion).Append("\n");
+        sb.Append("  ClientEnabled: ").Append(ClientEnabled).Append("\n");
+        sb.Append("  ClientDisabledByDefault: ").Append(ClientDisabledByDefault).Append("\n");
+        sb.Append("  ServerEnabled: ").Append(ServerEnabled).Append("\n");
+        sb.Append("  ServerDisabledByDefault: ").Append(ServerDisabledByDefault).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -9,1243 +9,1315 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
+using System.Threading;
+using System.Threading.Tasks;
 using cli.Client;
 using cli.Model;
 
-namespace cli.Api
+namespace cli.Api;
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IQueryRecommendationsApiApiSync : IApiAccessor
 {
+    #region Synchronous Operations
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IQueryRecommendationsApiApiSync : IApiAccessor
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sqlInstanceCir"></param>
+    /// <param name="planHandle"></param>
+    /// <param name="createDate"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>QueryRecommendationDtoArrayJSendSuccess</returns>
+    QueryRecommendationDtoArrayJSendSuccess
+        ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet(
+            SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName,
+            DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sqlInstanceCir"></param>
+    /// <param name="planHandle"></param>
+    /// <param name="createDate"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of QueryRecommendationDtoArrayJSendSuccess</returns>
+    ApiResponse<QueryRecommendationDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetWithHttpInfo(
+            SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName,
+            DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="queryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
+    QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess
+        ApiBasemonitorsBaseMonitorNameRecommendationsPost(string baseMonitorName,
+            QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="queryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
+    ApiResponse<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostWithHttpInfo(string baseMonitorName,
+            QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
+    PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost(string baseMonitorName,
+            PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
+    ApiResponse<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostWithHttpInfo(string baseMonitorName,
+            PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default,
+            int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postgresInstanceCir"></param>
+    /// <param name="queryHash"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="queryId"></param>
+    /// <param name="userId"></param>
+    /// <param name="databaseId"></param>
+    /// <param name="topLevel"></param>
+    /// <param name="planHash"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>PostgresQueryRecommendationDtoArrayJSendSuccess</returns>
+    PostgresQueryRecommendationDtoArrayJSendSuccess
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet(
+            PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName,
+            string queryId,
+            string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate,
+            string baseMonitorName, int operationIndex = 0);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postgresInstanceCir"></param>
+    /// <param name="queryHash"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="queryId"></param>
+    /// <param name="userId"></param>
+    /// <param name="databaseId"></param>
+    /// <param name="topLevel"></param>
+    /// <param name="planHash"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of PostgresQueryRecommendationDtoArrayJSendSuccess</returns>
+    ApiResponse<PostgresQueryRecommendationDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetWithHttpInfo(
+            PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName,
+            string queryId,
+            string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate,
+            string baseMonitorName, int operationIndex = 0);
+
+    #endregion Synchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IQueryRecommendationsApiApiAsync : IApiAccessor
+{
+    #region Asynchronous Operations
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sqlInstanceCir"></param>
+    /// <param name="planHandle"></param>
+    /// <param name="createDate"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of QueryRecommendationDtoArrayJSendSuccess</returns>
+    Task<QueryRecommendationDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetAsync(
+            SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName,
+            DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sqlInstanceCir"></param>
+    /// <param name="planHandle"></param>
+    /// <param name="createDate"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (QueryRecommendationDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<QueryRecommendationDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetWithHttpInfoAsync(
+            SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName,
+            DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="queryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
+    Task<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostAsync(string baseMonitorName,
+            QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="queryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostWithHttpInfoAsync(string baseMonitorName,
+            QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
+    Task<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostAsync(string baseMonitorName,
+            PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostWithHttpInfoAsync(string baseMonitorName,
+            PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postgresInstanceCir"></param>
+    /// <param name="queryHash"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="queryId"></param>
+    /// <param name="userId"></param>
+    /// <param name="databaseId"></param>
+    /// <param name="topLevel"></param>
+    /// <param name="planHash"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of PostgresQueryRecommendationDtoArrayJSendSuccess</returns>
+    Task<PostgresQueryRecommendationDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetAsync(
+            PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName,
+            string queryId,
+            string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// </summary>
+    /// <remarks>
+    /// </remarks>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postgresInstanceCir"></param>
+    /// <param name="queryHash"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="queryId"></param>
+    /// <param name="userId"></param>
+    /// <param name="databaseId"></param>
+    /// <param name="topLevel"></param>
+    /// <param name="planHash"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (PostgresQueryRecommendationDtoArrayJSendSuccess)</returns>
+    Task<ApiResponse<PostgresQueryRecommendationDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetWithHttpInfoAsync(
+            PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName,
+            string queryId,
+            string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default);
+
+    #endregion Asynchronous Operations
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public interface IQueryRecommendationsApiApi : IQueryRecommendationsApiApiSync, IQueryRecommendationsApiApiAsync
+{
+}
+
+/// <summary>
+///     Represents a collection of functions to interact with the API endpoints
+/// </summary>
+public class QueryRecommendationsApiApi : IQueryRecommendationsApiApi
+{
+    private ExceptionFactory _exceptionFactory = (name, response) => null;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="QueryRecommendationsApiApi" /> class.
+    /// </summary>
+    /// <returns></returns>
+    public QueryRecommendationsApiApi() : this((string)null)
     {
-        #region Synchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sqlInstanceCir"></param>
-        /// <param name="planHandle"></param>
-        /// <param name="createDate"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>QueryRecommendationDtoArrayJSendSuccess</returns>
-        QueryRecommendationDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet(SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sqlInstanceCir"></param>
-        /// <param name="planHandle"></param>
-        /// <param name="createDate"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of QueryRecommendationDtoArrayJSendSuccess</returns>
-        ApiResponse<QueryRecommendationDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetWithHttpInfo(SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="queryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
-        QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameRecommendationsPost(string baseMonitorName, QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default(QueryRecommendationsRequestDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="queryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
-        ApiResponse<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsPostWithHttpInfo(string baseMonitorName, QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default(QueryRecommendationsRequestDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
-        PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost(string baseMonitorName, PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default(PostgresQueryRecommendationsRequestDto?), int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
-        ApiResponse<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostWithHttpInfo(string baseMonitorName, PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default(PostgresQueryRecommendationsRequestDto?), int operationIndex = 0);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="postgresInstanceCir"></param>
-        /// <param name="queryHash"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="queryId"></param>
-        /// <param name="userId"></param>
-        /// <param name="databaseId"></param>
-        /// <param name="topLevel"></param>
-        /// <param name="planHash"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>PostgresQueryRecommendationDtoArrayJSendSuccess</returns>
-        PostgresQueryRecommendationDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet(PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName, string queryId, string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="postgresInstanceCir"></param>
-        /// <param name="queryHash"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="queryId"></param>
-        /// <param name="userId"></param>
-        /// <param name="databaseId"></param>
-        /// <param name="topLevel"></param>
-        /// <param name="planHash"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of PostgresQueryRecommendationDtoArrayJSendSuccess</returns>
-        ApiResponse<PostgresQueryRecommendationDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetWithHttpInfo(PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName, string queryId, string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0);
-        #endregion Synchronous Operations
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="QueryRecommendationsApiApi" /> class.
     /// </summary>
-    public interface IQueryRecommendationsApiApiAsync : IApiAccessor
+    /// <returns></returns>
+    public QueryRecommendationsApiApi(string basePath)
     {
-        #region Asynchronous Operations
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sqlInstanceCir"></param>
-        /// <param name="planHandle"></param>
-        /// <param name="createDate"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of QueryRecommendationDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<QueryRecommendationDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetAsync(SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sqlInstanceCir"></param>
-        /// <param name="planHandle"></param>
-        /// <param name="createDate"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (QueryRecommendationDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<QueryRecommendationDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetWithHttpInfoAsync(SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="queryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsPostAsync(string baseMonitorName, QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default(QueryRecommendationsRequestDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="queryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameRecommendationsPostWithHttpInfoAsync(string baseMonitorName, QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default(QueryRecommendationsRequestDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostAsync(string baseMonitorName, PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default(PostgresQueryRecommendationsRequestDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostWithHttpInfoAsync(string baseMonitorName, PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default(PostgresQueryRecommendationsRequestDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="postgresInstanceCir"></param>
-        /// <param name="queryHash"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="queryId"></param>
-        /// <param name="userId"></param>
-        /// <param name="databaseId"></param>
-        /// <param name="topLevel"></param>
-        /// <param name="planHash"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PostgresQueryRecommendationDtoArrayJSendSuccess</returns>
-        System.Threading.Tasks.Task<PostgresQueryRecommendationDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetAsync(PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName, string queryId, string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="postgresInstanceCir"></param>
-        /// <param name="queryHash"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="queryId"></param>
-        /// <param name="userId"></param>
-        /// <param name="databaseId"></param>
-        /// <param name="topLevel"></param>
-        /// <param name="planHash"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PostgresQueryRecommendationDtoArrayJSendSuccess)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PostgresQueryRecommendationDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetWithHttpInfoAsync(PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName, string queryId, string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
-        #endregion Asynchronous Operations
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            new Configuration { BasePath = basePath }
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="QueryRecommendationsApiApi" /> class
+    ///     using Configuration object
     /// </summary>
-    public interface IQueryRecommendationsApiApi : IQueryRecommendationsApiApiSync, IQueryRecommendationsApiApiAsync
+    /// <param name="configuration">An instance of Configuration</param>
+    /// <returns></returns>
+    public QueryRecommendationsApiApi(Configuration configuration)
     {
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
+        Configuration = cli.Client.Configuration.MergeConfigurations(
+            GlobalConfiguration.Instance,
+            configuration
+        );
+        Client = new ApiClient(Configuration.BasePath);
+        AsynchronousClient = new ApiClient(Configuration.BasePath);
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
     }
 
     /// <summary>
-    /// Represents a collection of functions to interact with the API endpoints
+    ///     Initializes a new instance of the <see cref="QueryRecommendationsApiApi" /> class
+    ///     using a Configuration object and client instance.
     /// </summary>
-    public partial class QueryRecommendationsApiApi : IQueryRecommendationsApiApi
+    /// <param name="client">The client interface for synchronous API access.</param>
+    /// <param name="asyncClient">The client interface for asynchronous API access.</param>
+    /// <param name="configuration">The configuration object.</param>
+    public QueryRecommendationsApiApi(ISynchronousClient client, IAsynchronousClient asyncClient,
+        IReadableConfiguration configuration)
     {
-        private cli.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
+        if (client == null) throw new ArgumentNullException("client");
+        if (asyncClient == null) throw new ArgumentNullException("asyncClient");
+        if (configuration == null) throw new ArgumentNullException("configuration");
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="QueryRecommendationsApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public QueryRecommendationsApiApi() : this((string)null)
+        Client = client;
+        AsynchronousClient = asyncClient;
+        Configuration = configuration;
+        ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    }
+
+    /// <summary>
+    ///     The client for accessing this underlying API asynchronously.
+    /// </summary>
+    public IAsynchronousClient AsynchronousClient { get; set; }
+
+    /// <summary>
+    ///     The client for accessing this underlying API synchronously.
+    /// </summary>
+    public ISynchronousClient Client { get; set; }
+
+    /// <summary>
+    ///     Gets the base path of the API client.
+    /// </summary>
+    /// <value>The base path</value>
+    public string GetBasePath()
+    {
+        return Configuration.BasePath;
+    }
+
+    /// <summary>
+    ///     Gets or sets the configuration object
+    /// </summary>
+    /// <value>An instance of the Configuration</value>
+    public IReadableConfiguration Configuration { get; set; }
+
+    /// <summary>
+    ///     Provides a factory method hook for the creation of exceptions.
+    /// </summary>
+    public ExceptionFactory ExceptionFactory
+    {
+        get
         {
+            if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
+            return _exceptionFactory;
+        }
+        set => _exceptionFactory = value;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sqlInstanceCir"></param>
+    /// <param name="planHandle"></param>
+    /// <param name="createDate"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>QueryRecommendationDtoArrayJSendSuccess</returns>
+    public QueryRecommendationDtoArrayJSendSuccess
+        ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet(
+            SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName,
+            DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetWithHttpInfo(
+                sqlInstanceCir, planHandle, createDate, databaseName, startDate, endDate, baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sqlInstanceCir"></param>
+    /// <param name="planHandle"></param>
+    /// <param name="createDate"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of QueryRecommendationDtoArrayJSendSuccess</returns>
+    public ApiResponse<QueryRecommendationDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetWithHttpInfo(
+            SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName,
+            DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'sqlInstanceCir' is set
+        if (sqlInstanceCir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'sqlInstanceCir' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
+
+        // verify the required parameter 'planHandle' is set
+        if (planHandle == null)
+            throw new ApiException(400,
+                "Missing required parameter 'planHandle' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
+        {
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("sqlInstanceCir",
+            ClientUtils.ParameterToString(sqlInstanceCir)); // path parameter
+        localVarRequestOptions.PathParameters.Add("planHandle",
+            ClientUtils.ParameterToString(planHandle)); // path parameter
+        localVarRequestOptions.PathParameters.Add("createDate",
+            ClientUtils.ParameterToString(createDate)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+
+        localVarRequestOptions.Operation =
+            "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<QueryRecommendationDtoArrayJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/recommendations/instance/{sqlInstanceCir}/queryplan/{planHandle}/{createDate}/{databaseName}",
+            localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="QueryRecommendationsApiApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public QueryRecommendationsApiApi(string basePath)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sqlInstanceCir"></param>
+    /// <param name="planHandle"></param>
+    /// <param name="createDate"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of QueryRecommendationDtoArrayJSendSuccess</returns>
+    public async Task<QueryRecommendationDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetAsync(
+            SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName,
+            DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await
+                ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetWithHttpInfoAsync(
+                    sqlInstanceCir, planHandle, createDate, databaseName, startDate, endDate, baseMonitorName,
+                    operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sqlInstanceCir"></param>
+    /// <param name="planHandle"></param>
+    /// <param name="createDate"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (QueryRecommendationDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<QueryRecommendationDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetWithHttpInfoAsync(
+            SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName,
+            DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'sqlInstanceCir' is set
+        if (sqlInstanceCir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'sqlInstanceCir' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
+
+        // verify the required parameter 'planHandle' is set
+        if (planHandle == null)
+            throw new ApiException(400,
+                "Missing required parameter 'planHandle' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                new cli.Client.Configuration { BasePath = basePath }
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("sqlInstanceCir",
+            ClientUtils.ParameterToString(sqlInstanceCir)); // path parameter
+        localVarRequestOptions.PathParameters.Add("planHandle",
+            ClientUtils.ParameterToString(planHandle)); // path parameter
+        localVarRequestOptions.PathParameters.Add("createDate",
+            ClientUtils.ParameterToString(createDate)); // path parameter
+        localVarRequestOptions.PathParameters.Add("databaseName",
+            ClientUtils.ParameterToString(databaseName)); // path parameter
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+
+        localVarRequestOptions.Operation =
+            "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient.GetAsync<QueryRecommendationDtoArrayJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/recommendations/instance/{sqlInstanceCir}/queryplan/{planHandle}/{createDate}/{databaseName}",
+            localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory(
+                    "ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="QueryRecommendationsApiApi"/> class
-        /// using Configuration object
-        /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
-        /// <returns></returns>
-        public QueryRecommendationsApiApi(cli.Client.Configuration configuration)
-        {
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Configuration = cli.Client.Configuration.MergeConfigurations(
-                cli.Client.GlobalConfiguration.Instance,
-                configuration
-            );
-            this.Client = new cli.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new cli.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="queryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
+    public QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess
+        ApiBasemonitorsBaseMonitorNameRecommendationsPost(string baseMonitorName,
+            QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default, int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameRecommendationsPostWithHttpInfo(baseMonitorName,
+                queryRecommendationsRequestDto);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="queryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
+    public ApiResponse<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostWithHttpInfo(string baseMonitorName,
+            QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default, int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPost");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = queryRecommendationsRequestDto;
+
+        localVarRequestOptions.Operation =
+            "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Post<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/recommendations", localVarRequestOptions, Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsPost", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="QueryRecommendationsApiApi"/> class
-        /// using a Configuration object and client instance.
-        /// </summary>
-        /// <param name="client">The client interface for synchronous API access.</param>
-        /// <param name="asyncClient">The client interface for asynchronous API access.</param>
-        /// <param name="configuration">The configuration object.</param>
-        public QueryRecommendationsApiApi(cli.Client.ISynchronousClient client, cli.Client.IAsynchronousClient asyncClient, cli.Client.IReadableConfiguration configuration)
-        {
-            if (client == null) throw new ArgumentNullException("client");
-            if (asyncClient == null) throw new ArgumentNullException("asyncClient");
-            if (configuration == null) throw new ArgumentNullException("configuration");
+        return localVarResponse;
+    }
 
-            this.Client = client;
-            this.AsynchronousClient = asyncClient;
-            this.Configuration = configuration;
-            this.ExceptionFactory = cli.Client.Configuration.DefaultExceptionFactory;
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="queryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
+    public async Task<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostAsync(string baseMonitorName,
+            QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameRecommendationsPostWithHttpInfoAsync(baseMonitorName,
+                queryRecommendationsRequestDto, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="queryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostWithHttpInfoAsync(string baseMonitorName,
+            QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default, int operationIndex = 0,
+            CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPost");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
+        {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = queryRecommendationsRequestDto;
+
+        localVarRequestOptions.Operation =
+            "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PostAsync<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/recommendations", localVarRequestOptions, Configuration,
+                cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsPost", localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// The client for accessing this underlying API asynchronously.
-        /// </summary>
-        public cli.Client.IAsynchronousClient AsynchronousClient { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// The client for accessing this underlying API synchronously.
-        /// </summary>
-        public cli.Client.ISynchronousClient Client { get; set; }
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
+    public PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost(string baseMonitorName,
+            PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default,
+            int operationIndex = 0)
+    {
+        var localVarResponse =
+            ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostWithHttpInfo(baseMonitorName,
+                postgresQueryRecommendationsRequestDto);
+        return localVarResponse.Data;
+    }
 
-        /// <summary>
-        /// Gets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        public string GetBasePath()
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
+    public ApiResponse<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostWithHttpInfo(string baseMonitorName,
+            PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default,
+            int operationIndex = 0)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            return this.Configuration.BasePath;
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = postgresQueryRecommendationsRequestDto;
+
+        localVarRequestOptions.Operation =
+            "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse =
+            Client.Post<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/recommendations/postgresinstances", localVarRequestOptions,
+                Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        /// Gets or sets the configuration object
-        /// </summary>
-        /// <value>An instance of the Configuration</value>
-        public cli.Client.IReadableConfiguration Configuration { get; set; }
+        return localVarResponse;
+    }
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public cli.Client.ExceptionFactory ExceptionFactory
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
+    public async Task<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostAsync(string baseMonitorName,
+            PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostWithHttpInfoAsync(baseMonitorName,
+                postgresQueryRecommendationsRequestDto, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess)</returns>
+    public async
+        Task<ApiResponse<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostWithHttpInfoAsync(string baseMonitorName,
+            PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default,
+            int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new[]
         {
-            get
-            {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set { _exceptionFactory = value; }
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.Data = postgresQueryRecommendationsRequestDto;
+
+        localVarRequestOptions.Operation =
+            "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .PostAsync<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/recommendations/postgresinstances", localVarRequestOptions,
+                Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost",
+                localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sqlInstanceCir"></param>
-        /// <param name="planHandle"></param>
-        /// <param name="createDate"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>QueryRecommendationDtoArrayJSendSuccess</returns>
-        public QueryRecommendationDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet(SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postgresInstanceCir"></param>
+    /// <param name="queryHash"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="queryId"></param>
+    /// <param name="userId"></param>
+    /// <param name="databaseId"></param>
+    /// <param name="topLevel"></param>
+    /// <param name="planHash"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>PostgresQueryRecommendationDtoArrayJSendSuccess</returns>
+    public PostgresQueryRecommendationDtoArrayJSendSuccess
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet(
+            PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName,
+            string queryId,
+            string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate,
+            string baseMonitorName, int operationIndex = 0)
+    {
+        var localVarResponse = ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetWithHttpInfo(
+            postgresInstanceCir, queryHash, databaseName, queryId, userId, databaseId, topLevel, planHash, startDate,
+            endDate, baseMonitorName);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postgresInstanceCir"></param>
+    /// <param name="queryHash"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="queryId"></param>
+    /// <param name="userId"></param>
+    /// <param name="databaseId"></param>
+    /// <param name="topLevel"></param>
+    /// <param name="planHash"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <returns>ApiResponse of PostgresQueryRecommendationDtoArrayJSendSuccess</returns>
+    public ApiResponse<PostgresQueryRecommendationDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetWithHttpInfo(
+            PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName,
+            string queryId,
+            string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate,
+            string baseMonitorName, int operationIndex = 0)
+    {
+        // verify the required parameter 'postgresInstanceCir' is set
+        if (postgresInstanceCir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'postgresInstanceCir' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'queryHash' is set
+        if (queryHash == null)
+            throw new ApiException(400,
+                "Missing required parameter 'queryHash' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'queryId' is set
+        if (queryId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'queryId' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'userId' is set
+        if (userId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'userId' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'databaseId' is set
+        if (databaseId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseId' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'planHash' is set
+        if (planHash == null)
+            throw new ApiException(400,
+                "Missing required parameter 'planHash' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            cli.Client.ApiResponse<QueryRecommendationDtoArrayJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetWithHttpInfo(sqlInstanceCir, planHandle, createDate, databaseName, startDate, endDate, baseMonitorName);
-            return localVarResponse.Data;
+        };
+
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "postgresInstanceCir",
+            postgresInstanceCir));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "queryHash", queryHash));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "databaseName", databaseName));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "queryId", queryId));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "userId", userId));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "databaseId", databaseId));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "topLevel", topLevel));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "planHash", planHash));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+
+        localVarRequestOptions.Operation =
+            "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
+
+
+        // make the HTTP request
+        var localVarResponse = Client.Get<PostgresQueryRecommendationDtoArrayJSendSuccess>(
+            "/api/basemonitors/{baseMonitorName}/recommendations/postgresinstances/queryplan", localVarRequestOptions,
+            Configuration);
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sqlInstanceCir"></param>
-        /// <param name="planHandle"></param>
-        /// <param name="createDate"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of QueryRecommendationDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<QueryRecommendationDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetWithHttpInfo(SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0)
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postgresInstanceCir"></param>
+    /// <param name="queryHash"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="queryId"></param>
+    /// <param name="userId"></param>
+    /// <param name="databaseId"></param>
+    /// <param name="topLevel"></param>
+    /// <param name="planHash"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of PostgresQueryRecommendationDtoArrayJSendSuccess</returns>
+    public async Task<PostgresQueryRecommendationDtoArrayJSendSuccess>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetAsync(
+            PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName,
+            string queryId,
+            string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        var localVarResponse =
+            await ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetWithHttpInfoAsync(
+                postgresInstanceCir, queryHash, databaseName, queryId, userId, databaseId, topLevel, planHash,
+                startDate, endDate, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="postgresInstanceCir"></param>
+    /// <param name="queryHash"></param>
+    /// <param name="databaseName"></param>
+    /// <param name="queryId"></param>
+    /// <param name="userId"></param>
+    /// <param name="databaseId"></param>
+    /// <param name="topLevel"></param>
+    /// <param name="planHash"></param>
+    /// <param name="startDate"></param>
+    /// <param name="endDate"></param>
+    /// <param name="baseMonitorName"></param>
+    /// <param name="operationIndex">Index associated with the operation.</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (PostgresQueryRecommendationDtoArrayJSendSuccess)</returns>
+    public async Task<ApiResponse<PostgresQueryRecommendationDtoArrayJSendSuccess>>
+        ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetWithHttpInfoAsync(
+            PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName,
+            string queryId,
+            string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate,
+            string baseMonitorName, int operationIndex = 0, CancellationToken cancellationToken = default)
+    {
+        // verify the required parameter 'postgresInstanceCir' is set
+        if (postgresInstanceCir == null)
+            throw new ApiException(400,
+                "Missing required parameter 'postgresInstanceCir' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'queryHash' is set
+        if (queryHash == null)
+            throw new ApiException(400,
+                "Missing required parameter 'queryHash' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'databaseName' is set
+        if (databaseName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'queryId' is set
+        if (queryId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'queryId' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'userId' is set
+        if (userId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'userId' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'databaseId' is set
+        if (databaseId == null)
+            throw new ApiException(400,
+                "Missing required parameter 'databaseId' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'planHash' is set
+        if (planHash == null)
+            throw new ApiException(400,
+                "Missing required parameter 'planHash' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+        // verify the required parameter 'baseMonitorName' is set
+        if (baseMonitorName == null)
+            throw new ApiException(400,
+                "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
+
+
+        var localVarRequestOptions = new RequestOptions();
+
+        var _contentTypes = new string[]
         {
-            // verify the required parameter 'sqlInstanceCir' is set
-            if (sqlInstanceCir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'sqlInstanceCir' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
-            }
+        };
 
-            // verify the required parameter 'planHandle' is set
-            if (planHandle == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'planHandle' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
-            }
+        // to determine the Accept header
+        var _accepts = new[]
+        {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
 
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
-            }
+        var localVarContentType = ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
-            }
+        var localVarAccept = ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
+        localVarRequestOptions.PathParameters.Add("baseMonitorName",
+            ClientUtils.ParameterToString(baseMonitorName)); // path parameter
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "postgresInstanceCir",
+            postgresInstanceCir));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "queryHash", queryHash));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "databaseName", databaseName));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "queryId", queryId));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "userId", userId));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "databaseId", databaseId));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "topLevel", topLevel));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "planHash", planHash));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+        localVarRequestOptions.QueryParameters.Add(ClientUtils.ParameterToMultiMap("", "endDate", endDate));
 
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("sqlInstanceCir", cli.Client.ClientUtils.ParameterToString(sqlInstanceCir)); // path parameter
-            localVarRequestOptions.PathParameters.Add("planHandle", cli.Client.ClientUtils.ParameterToString(planHandle)); // path parameter
-            localVarRequestOptions.PathParameters.Add("createDate", cli.Client.ClientUtils.ParameterToString(createDate)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
-
-            localVarRequestOptions.Operation = "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
+        localVarRequestOptions.Operation =
+            "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet";
+        localVarRequestOptions.OperationIndex = operationIndex;
 
 
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<QueryRecommendationDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/recommendations/instance/{sqlInstanceCir}/queryplan/{planHandle}/{createDate}/{databaseName}", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
+        // make the HTTP request
+        var localVarResponse = await AsynchronousClient
+            .GetAsync<PostgresQueryRecommendationDtoArrayJSendSuccess>(
+                "/api/basemonitors/{baseMonitorName}/recommendations/postgresinstances/queryplan",
+                localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
-            return localVarResponse;
+        if (ExceptionFactory != null)
+        {
+            var _exception =
+                ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet",
+                    localVarResponse);
+            if (_exception != null) throw _exception;
         }
 
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sqlInstanceCir"></param>
-        /// <param name="planHandle"></param>
-        /// <param name="createDate"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of QueryRecommendationDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<QueryRecommendationDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetAsync(SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<QueryRecommendationDtoArrayJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetWithHttpInfoAsync(sqlInstanceCir, planHandle, createDate, databaseName, startDate, endDate, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sqlInstanceCir"></param>
-        /// <param name="planHandle"></param>
-        /// <param name="createDate"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (QueryRecommendationDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<QueryRecommendationDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGetWithHttpInfoAsync(SqlInstanceChannelInstanceRef sqlInstanceCir, string planHandle, DateTime createDate, string databaseName, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'sqlInstanceCir' is set
-            if (sqlInstanceCir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'sqlInstanceCir' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
-            }
-
-            // verify the required parameter 'planHandle' is set
-            if (planHandle == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'planHandle' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("sqlInstanceCir", cli.Client.ClientUtils.ParameterToString(sqlInstanceCir)); // path parameter
-            localVarRequestOptions.PathParameters.Add("planHandle", cli.Client.ClientUtils.ParameterToString(planHandle)); // path parameter
-            localVarRequestOptions.PathParameters.Add("createDate", cli.Client.ClientUtils.ParameterToString(createDate)); // path parameter
-            localVarRequestOptions.PathParameters.Add("databaseName", cli.Client.ClientUtils.ParameterToString(databaseName)); // path parameter
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
-
-            localVarRequestOptions.Operation = "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<QueryRecommendationDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/recommendations/instance/{sqlInstanceCir}/queryplan/{planHandle}/{createDate}/{databaseName}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsInstanceSqlInstanceCirQueryplanPlanHandleCreateDateDatabaseNameGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="queryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
-        public QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameRecommendationsPost(string baseMonitorName, QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default(QueryRecommendationsRequestDto?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameRecommendationsPostWithHttpInfo(baseMonitorName, queryRecommendationsRequestDto);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="queryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsPostWithHttpInfo(string baseMonitorName, QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default(QueryRecommendationsRequestDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPost");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = queryRecommendationsRequestDto;
-
-            localVarRequestOptions.Operation = "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/recommendations", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="queryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsPostAsync(string baseMonitorName, QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default(QueryRecommendationsRequestDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameRecommendationsPostWithHttpInfoAsync(baseMonitorName, queryRecommendationsRequestDto, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="queryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameRecommendationsPostWithHttpInfoAsync(string baseMonitorName, QueryRecommendationsRequestDto? queryRecommendationsRequestDto = default(QueryRecommendationsRequestDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPost");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = queryRecommendationsRequestDto;
-
-            localVarRequestOptions.Operation = "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<QueryRecommendationDtoQueryRecommendationCollectionDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/recommendations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
-        public PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost(string baseMonitorName, PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default(PostgresQueryRecommendationsRequestDto?), int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostWithHttpInfo(baseMonitorName, postgresQueryRecommendationsRequestDto);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostWithHttpInfo(string baseMonitorName, PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default(PostgresQueryRecommendationsRequestDto?), int operationIndex = 0)
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json",
-                "application/json",
-                "text/json",
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = postgresQueryRecommendationsRequestDto;
-
-            localVarRequestOptions.Operation = "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/recommendations/postgresinstances", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostAsync(string baseMonitorName, PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default(PostgresQueryRecommendationsRequestDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostWithHttpInfoAsync(baseMonitorName, postgresQueryRecommendationsRequestDto, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="postgresQueryRecommendationsRequestDto"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPostWithHttpInfoAsync(string baseMonitorName, PostgresQueryRecommendationsRequestDto? postgresQueryRecommendationsRequestDto = default(PostgresQueryRecommendationsRequestDto?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
-                "application/json", 
-                "text/json", 
-                "application/*+json"
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.Data = postgresQueryRecommendationsRequestDto;
-
-            localVarRequestOptions.Operation = "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<PostgresQueryRecommendationDtoPostgresQueryRecommendationCollectionDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/recommendations/postgresinstances", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesPost", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="postgresInstanceCir"></param>
-        /// <param name="queryHash"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="queryId"></param>
-        /// <param name="userId"></param>
-        /// <param name="databaseId"></param>
-        /// <param name="topLevel"></param>
-        /// <param name="planHash"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>PostgresQueryRecommendationDtoArrayJSendSuccess</returns>
-        public PostgresQueryRecommendationDtoArrayJSendSuccess ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet(PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName, string queryId, string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0)
-        {
-            cli.Client.ApiResponse<PostgresQueryRecommendationDtoArrayJSendSuccess> localVarResponse = ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetWithHttpInfo(postgresInstanceCir, queryHash, databaseName, queryId, userId, databaseId, topLevel, planHash, startDate, endDate, baseMonitorName);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="postgresInstanceCir"></param>
-        /// <param name="queryHash"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="queryId"></param>
-        /// <param name="userId"></param>
-        /// <param name="databaseId"></param>
-        /// <param name="topLevel"></param>
-        /// <param name="planHash"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of PostgresQueryRecommendationDtoArrayJSendSuccess</returns>
-        public cli.Client.ApiResponse<PostgresQueryRecommendationDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetWithHttpInfo(PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName, string queryId, string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0)
-        {
-            // verify the required parameter 'postgresInstanceCir' is set
-            if (postgresInstanceCir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'postgresInstanceCir' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'queryHash' is set
-            if (queryHash == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'queryHash' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'queryId' is set
-            if (queryId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'queryId' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'userId' is set
-            if (userId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'userId' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'databaseId' is set
-            if (databaseId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseId' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'planHash' is set
-            if (planHash == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'planHash' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "postgresInstanceCir", postgresInstanceCir));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "queryHash", queryHash));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "databaseName", databaseName));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "queryId", queryId));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "userId", userId));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "databaseId", databaseId));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "topLevel", topLevel));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "planHash", planHash));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
-
-            localVarRequestOptions.Operation = "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<PostgresQueryRecommendationDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/recommendations/postgresinstances/queryplan", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="postgresInstanceCir"></param>
-        /// <param name="queryHash"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="queryId"></param>
-        /// <param name="userId"></param>
-        /// <param name="databaseId"></param>
-        /// <param name="topLevel"></param>
-        /// <param name="planHash"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of PostgresQueryRecommendationDtoArrayJSendSuccess</returns>
-        public async System.Threading.Tasks.Task<PostgresQueryRecommendationDtoArrayJSendSuccess> ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetAsync(PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName, string queryId, string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            cli.Client.ApiResponse<PostgresQueryRecommendationDtoArrayJSendSuccess> localVarResponse = await ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetWithHttpInfoAsync(postgresInstanceCir, queryHash, databaseName, queryId, userId, databaseId, topLevel, planHash, startDate, endDate, baseMonitorName, operationIndex, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  
-        /// </summary>
-        /// <exception cref="cli.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="postgresInstanceCir"></param>
-        /// <param name="queryHash"></param>
-        /// <param name="databaseName"></param>
-        /// <param name="queryId"></param>
-        /// <param name="userId"></param>
-        /// <param name="databaseId"></param>
-        /// <param name="topLevel"></param>
-        /// <param name="planHash"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="baseMonitorName"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (PostgresQueryRecommendationDtoArrayJSendSuccess)</returns>
-        public async System.Threading.Tasks.Task<cli.Client.ApiResponse<PostgresQueryRecommendationDtoArrayJSendSuccess>> ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGetWithHttpInfoAsync(PostgresInstanceChannelInstanceRef postgresInstanceCir, string queryHash, string databaseName, string queryId, string userId, string databaseId, bool topLevel, string planHash, DateTime startDate, DateTime endDate, string baseMonitorName, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'postgresInstanceCir' is set
-            if (postgresInstanceCir == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'postgresInstanceCir' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'queryHash' is set
-            if (queryHash == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'queryHash' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'databaseName' is set
-            if (databaseName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'queryId' is set
-            if (queryId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'queryId' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'userId' is set
-            if (userId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'userId' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'databaseId' is set
-            if (databaseId == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'databaseId' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'planHash' is set
-            if (planHash == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'planHash' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-            // verify the required parameter 'baseMonitorName' is set
-            if (baseMonitorName == null)
-            {
-                throw new cli.Client.ApiException(400, "Missing required parameter 'baseMonitorName' when calling QueryRecommendationsApiApi->ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet");
-            }
-
-
-            cli.Client.RequestOptions localVarRequestOptions = new cli.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-
-            var localVarContentType = cli.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = cli.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("baseMonitorName", cli.Client.ClientUtils.ParameterToString(baseMonitorName)); // path parameter
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "postgresInstanceCir", postgresInstanceCir));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "queryHash", queryHash));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "databaseName", databaseName));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "queryId", queryId));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "userId", userId));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "databaseId", databaseId));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "topLevel", topLevel));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "planHash", planHash));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
-            localVarRequestOptions.QueryParameters.Add(cli.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
-
-            localVarRequestOptions.Operation = "QueryRecommendationsApiApi.ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<PostgresQueryRecommendationDtoArrayJSendSuccess>("/api/basemonitors/{baseMonitorName}/recommendations/postgresinstances/queryplan", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ApiBasemonitorsBaseMonitorNameRecommendationsPostgresinstancesQueryplanGet", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
+        return localVarResponse;
     }
 }

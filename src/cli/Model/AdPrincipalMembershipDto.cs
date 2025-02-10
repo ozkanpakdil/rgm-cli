@@ -8,111 +8,101 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AdPrincipalMembershipDto
+/// </summary>
+[DataContract(Name = "AdPrincipalMembershipDto")]
+public class AdPrincipalMembershipDto : IValidatableObject
 {
     /// <summary>
-    /// AdPrincipalMembershipDto
+    ///     Initializes a new instance of the <see cref="AdPrincipalMembershipDto" /> class.
     /// </summary>
-    [DataContract(Name = "AdPrincipalMembershipDto")]
-    public partial class AdPrincipalMembershipDto : IValidatableObject
+    /// <param name="sid">sid.</param>
+    /// <param name="name">name.</param>
+    /// <param name="displayName">displayName.</param>
+    /// <param name="type">type.</param>
+    /// <param name="adMemberships">adMemberships.</param>
+    public AdPrincipalMembershipDto(string sid = default, string name = default, string displayName = default,
+        LoginTypeDto? type = default, List<AdPrincipalMembershipDto> adMemberships = default)
     {
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public LoginTypeDto? Type { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AdPrincipalMembershipDto" /> class.
-        /// </summary>
-        /// <param name="sid">sid.</param>
-        /// <param name="name">name.</param>
-        /// <param name="displayName">displayName.</param>
-        /// <param name="type">type.</param>
-        /// <param name="adMemberships">adMemberships.</param>
-        public AdPrincipalMembershipDto(string sid = default(string), string name = default(string), string displayName = default(string), LoginTypeDto? type = default(LoginTypeDto?), List<AdPrincipalMembershipDto> adMemberships = default(List<AdPrincipalMembershipDto>))
-        {
-            this.Sid = sid;
-            this.Name = name;
-            this.DisplayName = displayName;
-            this.Type = type;
-            this.AdMemberships = adMemberships;
-        }
-
-        /// <summary>
-        /// Gets or Sets Sid
-        /// </summary>
-        [DataMember(Name = "sid", EmitDefaultValue = false)]
-        public string Sid { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DisplayName
-        /// </summary>
-        [DataMember(Name = "displayName", EmitDefaultValue = false)]
-        public string DisplayName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AdMemberships
-        /// </summary>
-        [DataMember(Name = "adMemberships", EmitDefaultValue = false)]
-        public List<AdPrincipalMembershipDto> AdMemberships { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AdPrincipalMembershipDto {\n");
-            sb.Append("  Sid: ").Append(Sid).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  AdMemberships: ").Append(AdMemberships).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        Sid = sid;
+        Name = name;
+        DisplayName = displayName;
+        Type = type;
+        AdMemberships = adMemberships;
     }
 
+    /// <summary>
+    ///     Gets or Sets Type
+    /// </summary>
+    [DataMember(Name = "type", EmitDefaultValue = false)]
+    public LoginTypeDto? Type { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Sid
+    /// </summary>
+    [DataMember(Name = "sid", EmitDefaultValue = false)]
+    public string Sid { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", EmitDefaultValue = false)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets DisplayName
+    /// </summary>
+    [DataMember(Name = "displayName", EmitDefaultValue = false)]
+    public string DisplayName { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AdMemberships
+    /// </summary>
+    [DataMember(Name = "adMemberships", EmitDefaultValue = false)]
+    public List<AdPrincipalMembershipDto> AdMemberships { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AdPrincipalMembershipDto {\n");
+        sb.Append("  Sid: ").Append(Sid).Append("\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+        sb.Append("  Type: ").Append(Type).Append("\n");
+        sb.Append("  AdMemberships: ").Append(AdMemberships).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

@@ -8,67 +8,50 @@
  */
 
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
+namespace cli.Model;
 
-namespace cli.Model
+/// <summary>
+///     Defines StatusCategoryDto
+/// </summary>
+public enum StatusCategoryDto
 {
     /// <summary>
-    /// Defines StatusCategoryDto
+    ///     Enum NUMBER_0 for value: 0
     /// </summary>
-    public enum StatusCategoryDto
-    {
-        /// <summary>
-        /// Enum NUMBER_0 for value: 0
-        /// </summary>
-        NUMBER_0 = 0,
+    NUMBER_0 = 0,
 
-        /// <summary>
-        /// Enum NUMBER_50 for value: 50
-        /// </summary>
-        NUMBER_50 = 50,
+    /// <summary>
+    ///     Enum NUMBER_50 for value: 50
+    /// </summary>
+    NUMBER_50 = 50,
 
-        /// <summary>
-        /// Enum NUMBER_100 for value: 100
-        /// </summary>
-        NUMBER_100 = 100,
+    /// <summary>
+    ///     Enum NUMBER_100 for value: 100
+    /// </summary>
+    NUMBER_100 = 100,
 
-        /// <summary>
-        /// Enum NUMBER_200 for value: 200
-        /// </summary>
-        NUMBER_200 = 200,
+    /// <summary>
+    ///     Enum NUMBER_200 for value: 200
+    /// </summary>
+    NUMBER_200 = 200,
 
-        /// <summary>
-        /// Enum NUMBER_250 for value: 250
-        /// </summary>
-        NUMBER_250 = 250,
+    /// <summary>
+    ///     Enum NUMBER_250 for value: 250
+    /// </summary>
+    NUMBER_250 = 250,
 
-        /// <summary>
-        /// Enum NUMBER_300 for value: 300
-        /// </summary>
-        NUMBER_300 = 300,
+    /// <summary>
+    ///     Enum NUMBER_300 for value: 300
+    /// </summary>
+    NUMBER_300 = 300,
 
-        /// <summary>
-        /// Enum NUMBER_400 for value: 400
-        /// </summary>
-        NUMBER_400 = 400,
+    /// <summary>
+    ///     Enum NUMBER_400 for value: 400
+    /// </summary>
+    NUMBER_400 = 400,
 
-        /// <summary>
-        /// Enum NUMBER_500 for value: 500
-        /// </summary>
-        NUMBER_500 = 500
-    }
-
+    /// <summary>
+    ///     Enum NUMBER_500 for value: 500
+    /// </summary>
+    NUMBER_500 = 500
 }

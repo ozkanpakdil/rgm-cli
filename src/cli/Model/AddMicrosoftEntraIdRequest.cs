@@ -9,99 +9,90 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     AddMicrosoftEntraIdRequest
+/// </summary>
+[DataContract(Name = "AddMicrosoftEntraIdRequest")]
+public class AddMicrosoftEntraIdRequest : IValidatableObject
 {
     /// <summary>
-    /// AddMicrosoftEntraIdRequest
+    ///     Initializes a new instance of the <see cref="AddMicrosoftEntraIdRequest" /> class.
     /// </summary>
-    [DataContract(Name = "AddMicrosoftEntraIdRequest")]
-    public partial class AddMicrosoftEntraIdRequest : IValidatableObject
+    [JsonConstructorAttribute]
+    protected AddMicrosoftEntraIdRequest()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AddMicrosoftEntraIdRequest" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected AddMicrosoftEntraIdRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AddMicrosoftEntraIdRequest" /> class.
-        /// </summary>
-        /// <param name="name">name (required).</param>
-        /// <param name="azureApiCredentials">azureApiCredentials.</param>
-        public AddMicrosoftEntraIdRequest(string name = default(string), AzureApiCredentialsDto azureApiCredentials = default(AzureApiCredentialsDto))
-        {
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for AddMicrosoftEntraIdRequest and cannot be null");
-            }
-            this.Name = name;
-            this.AzureApiCredentials = azureApiCredentials;
-        }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AzureApiCredentials
-        /// </summary>
-        [DataMember(Name = "azureApiCredentials", EmitDefaultValue = false)]
-        public AzureApiCredentialsDto AzureApiCredentials { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class AddMicrosoftEntraIdRequest {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  AzureApiCredentials: ").Append(AzureApiCredentials).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // Name (string) minLength
-            if (this.Name != null && this.Name.Length < 1)
-            {
-                yield return new ValidationResult("Invalid value for Name, length must be greater than 1.", new [] { "Name" });
-            }
-
-            yield break;
-        }
     }
 
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="AddMicrosoftEntraIdRequest" /> class.
+    /// </summary>
+    /// <param name="name">name (required).</param>
+    /// <param name="azureApiCredentials">azureApiCredentials.</param>
+    public AddMicrosoftEntraIdRequest(string name = default, AzureApiCredentialsDto azureApiCredentials = default)
+    {
+        // to ensure "name" is required (not null)
+        if (name == null)
+            throw new ArgumentNullException(
+                "name is a required property for AddMicrosoftEntraIdRequest and cannot be null");
+        Name = name;
+        AzureApiCredentials = azureApiCredentials;
+    }
+
+    /// <summary>
+    ///     Gets or Sets Name
+    /// </summary>
+    [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
+    public string Name { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets AzureApiCredentials
+    /// </summary>
+    [DataMember(Name = "azureApiCredentials", EmitDefaultValue = false)]
+    public AzureApiCredentialsDto AzureApiCredentials { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        // Name (string) minLength
+        if (Name != null && Name.Length < 1)
+            yield return new ValidationResult("Invalid value for Name, length must be greater than 1.",
+                new[] { "Name" });
+
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class AddMicrosoftEntraIdRequest {\n");
+        sb.Append("  Name: ").Append(Name).Append("\n");
+        sb.Append("  AzureApiCredentials: ").Append(AzureApiCredentials).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }

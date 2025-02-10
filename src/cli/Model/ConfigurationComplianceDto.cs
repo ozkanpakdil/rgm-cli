@@ -8,84 +8,74 @@
  */
 
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = cli.Client.OpenAPIDateConverter;
 
-namespace cli.Model
+namespace cli.Model;
+
+/// <summary>
+///     ConfigurationComplianceDto
+/// </summary>
+[DataContract(Name = "ConfigurationComplianceDto")]
+public class ConfigurationComplianceDto : IValidatableObject
 {
     /// <summary>
-    /// ConfigurationComplianceDto
+    ///     Initializes a new instance of the <see cref="ConfigurationComplianceDto" /> class.
     /// </summary>
-    [DataContract(Name = "ConfigurationComplianceDto")]
-    public partial class ConfigurationComplianceDto : IValidatableObject
+    /// <param name="machineConfigurations">machineConfigurations.</param>
+    /// <param name="serverConfigurations">serverConfigurations.</param>
+    public ConfigurationComplianceDto(List<MachineConfigurationDto> machineConfigurations = default,
+        List<ServerConfigurationDto> serverConfigurations = default)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigurationComplianceDto" /> class.
-        /// </summary>
-        /// <param name="machineConfigurations">machineConfigurations.</param>
-        /// <param name="serverConfigurations">serverConfigurations.</param>
-        public ConfigurationComplianceDto(List<MachineConfigurationDto> machineConfigurations = default(List<MachineConfigurationDto>), List<ServerConfigurationDto> serverConfigurations = default(List<ServerConfigurationDto>))
-        {
-            this.MachineConfigurations = machineConfigurations;
-            this.ServerConfigurations = serverConfigurations;
-        }
-
-        /// <summary>
-        /// Gets or Sets MachineConfigurations
-        /// </summary>
-        [DataMember(Name = "machineConfigurations", EmitDefaultValue = true)]
-        public List<MachineConfigurationDto> MachineConfigurations { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ServerConfigurations
-        /// </summary>
-        [DataMember(Name = "serverConfigurations", EmitDefaultValue = true)]
-        public List<ServerConfigurationDto> ServerConfigurations { get; set; }
-
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class ConfigurationComplianceDto {\n");
-            sb.Append("  MachineConfigurations: ").Append(MachineConfigurations).Append("\n");
-            sb.Append("  ServerConfigurations: ").Append(ServerConfigurations).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        MachineConfigurations = machineConfigurations;
+        ServerConfigurations = serverConfigurations;
     }
 
+    /// <summary>
+    ///     Gets or Sets MachineConfigurations
+    /// </summary>
+    [DataMember(Name = "machineConfigurations", EmitDefaultValue = true)]
+    public List<MachineConfigurationDto> MachineConfigurations { get; set; }
+
+    /// <summary>
+    ///     Gets or Sets ServerConfigurations
+    /// </summary>
+    [DataMember(Name = "serverConfigurations", EmitDefaultValue = true)]
+    public List<ServerConfigurationDto> ServerConfigurations { get; set; }
+
+    /// <summary>
+    ///     To validate all properties of the instance
+    /// </summary>
+    /// <param name="validationContext">Validation context</param>
+    /// <returns>Validation Result</returns>
+    IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+    {
+        yield break;
+    }
+
+    /// <summary>
+    ///     Returns the string presentation of the object
+    /// </summary>
+    /// <returns>String presentation of the object</returns>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        sb.Append("class ConfigurationComplianceDto {\n");
+        sb.Append("  MachineConfigurations: ").Append(MachineConfigurations).Append("\n");
+        sb.Append("  ServerConfigurations: ").Append(ServerConfigurations).Append("\n");
+        sb.Append("}\n");
+        return sb.ToString();
+    }
+
+    /// <summary>
+    ///     Returns the JSON string presentation of the object
+    /// </summary>
+    /// <returns>JSON string presentation of the object</returns>
+    public virtual string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
 }
